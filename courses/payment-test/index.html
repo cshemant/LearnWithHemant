@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="msvalidate.01" content="4F051335E3D7ED544E20B8292B4E66BD" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Razorpay Test Payment ₹1 | Learn with Hemant</title>
+  <meta name="description" content="Internal Razorpay live payment flow test page for Learn with Hemant." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/png" href="/brand-logo.png" />
+  <link rel="apple-touch-icon" href="/brand-logo.png" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body class="inner-v2-body">
+
+  <header class="site-header home-v2-header">
+    <div class="container nav home-v2-nav">
+      <a class="brand home-v2-brand" href="/home/">
+        <img class="brand-logo" src="/brand-logo.png" alt="Learn with Hemant logo" />
+        <div>
+          <span>Learn with Hemant</span>
+          <small>Build • Deploy • Grow</small>
+        </div>
+      </a>
+
+      <nav class="nav-links home-v2-links" aria-label="Main Navigation">
+        <a href="/about/">Mentor</a>
+        <a href="/roadmap/">Roadmap</a>
+        <a href="/courses/web-development/">Courses</a>
+        <a href="/projects/">Projects</a>
+        <a href="/guest-lecture/">Guest Lecture</a>
+        <a href="/tool/">Tool</a>
+      </nav>
+
+      <a class="nav-cta home-v2-cta" href="/apply/">Apply Now <span>→</span></a>
+
+      <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-controls="mobileSiteMenu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu-backdrop" data-mobile-menu-close></div>
+  <aside class="mobile-site-menu" id="mobileSiteMenu" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <a class="mobile-menu-brand" href="/home/">
+        <img src="/brand-logo.png" alt="Learn with Hemant logo" />
+      </a>
+      <button class="mobile-menu-close" type="button" aria-label="Close menu" data-mobile-menu-close>×</button>
+    </div>
+    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+      <a href="/home/">Home</a>
+      <a href="/about/">Mentor</a>
+      <a href="/roadmap/">Roadmap</a>
+      <a href="/courses/web-development/">Courses</a>
+      <a href="/projects/">Projects</a>
+      <a href="/guest-lecture/">Guest Lecture</a>
+      <a href="/tool/">Tool</a>
+      <a href="/apply/">Apply Now</a>
+      <a href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20want%20course%20details." target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.linkedin.com/company/learnwithhemant/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </aside><main>
+    <section class="hero page-hero">
+      <div class="container">
+        <p class="eyebrow">Internal Test Page</p>
+        <h1>Razorpay Test Payment — ₹1</h1>
+        <p class="hero-subtitle">Use this page only to test the live Razorpay payment flow. After successful payment, the site will verify the payment, capture it through Cloudflare Worker, show a success message, and then redirect to the home page.</p>
+        <div class="hero-actions">
+          <button class="btn primary" id="testPayBtn" type="button">Pay ₹1 & Confirm on WhatsApp</button>
+          <a class="btn secondary" href="/courses/web-development/">Back to Course Page</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow-container">
+        <div class="course-card featured-course" style="max-width:760px;margin:0 auto;">
+          <div class="course-topline"><span>Testing</span><small>Live Razorpay Flow</small></div>
+          <h3>What this ₹1 test checks</h3>
+          <ul>
+            <li>Razorpay Checkout opens correctly from the live website.</li>
+            <li>Course/payment description and amount are passed correctly.</li>
+            <li>Payment ID and Order ID are generated after successful payment.</li>
+            <li>A success message appears with Payment ID, Order ID and capture status.</li>
+            <li>You can verify the same payment ID inside Razorpay Dashboard.</li>
+          </ul>
+          <div class="payment-box" style="margin-top:20px;">
+            <ul>
+              <li>Test amount: ₹1</li>
+              <li>Purpose: payment integration testing only</li>
+              <li>Enrollment status: no course enrollment is confirmed from this test page</li>
+            </ul>
+            <p class="payment-note"><strong>Auto-capture verification:</strong> After payment, the Worker verifies the signature and captures authorized payments automatically. Verify that the payment status is Captured in Razorpay Dashboard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Learn with Hemant</strong>
+        <p>Practical web development, e-commerce, AI-assisted coding and live project mentoring.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p>WhatsApp: +91 81975 65002</p>
+        <p>Email: learnwithhemant@gmail.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const testCourse = {
+      title: 'Razorpay Test Payment - Learn with Hemant',
+      amount: 1
+    };
+
+    const RAZORPAY_KEY_ID = 'rzp_live_T1q6CpwpZLV7wA';
+      const RAZORPAY_API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? 'http://localhost:8787' : 'https://learnwithhemant.com';
+
+      function getRazorpayLogoUrl() {
+        return window.location.origin + '/razorpay-logo.png?v=63';
+      }
+    const RAZORPAY_ORDER_ENDPOINT = RAZORPAY_API_BASE + '/api/razorpay/order';
+    const RAZORPAY_VERIFY_ENDPOINT = RAZORPAY_API_BASE + '/api/razorpay/verify';
+
+    async function postJson(url, payload) {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json().catch(() => ({ ok: false, error: 'Invalid server response.' }));
+      if (!response.ok || data.ok === false) {
+        throw new Error(data.error || 'Payment server error.');
+      }
+      return data;
+    }
+
+
+    function showPaymentSuccess(details) {
+      const existing = document.getElementById('paymentSuccessOverlay');
+      if (existing) existing.remove();
+
+      const overlay = document.createElement('div');
+      overlay.id = 'paymentSuccessOverlay';
+      overlay.className = 'payment-success-overlay';
+      overlay.innerHTML = `
+        <div class="payment-success-card" role="dialog" aria-modal="true" aria-labelledby="paymentSuccessTitle">
+        <div class="payment-success-icon">✓</div>
+        <p class="payment-success-kicker">Payment Successful</p>
+        <h2 id="paymentSuccessTitle">Thank you! Your payment has been received.</h2>
+        <p class="payment-success-text">
+          Your payment has been verified successfully. You will be redirected to the home page in
+          <strong><span id="paymentRedirectCount">5</span> seconds</strong>.
+        </p>
+        <div class="payment-success-details">
+          <div><span>Amount</span><strong>₹${details.amount}</strong></div>
+          <div><span>Payment ID</span><strong>${details.paymentId || '-'}</strong></div>
+          <div><span>Order ID</span><strong>${details.orderId || '-'}</strong></div>
+          <div><span>Status</span><strong>${details.status || 'Captured'}</strong></div>
+        </div>
+        <div class="payment-success-actions">
+          <a class="btn primary" href="/index.html">Go to Home Now</a>
+        </div>
+        </div>
+      `;
+
+      document.body.appendChild(overlay);
+      document.body.classList.remove('modal-open');
+
+      let seconds = 5;
+      const countEl = document.getElementById('paymentRedirectCount');
+      const timer = setInterval(() => {
+        seconds -= 1;
+        if (countEl) countEl.textContent = String(seconds);
+        if (seconds <= 0) {
+        clearInterval(timer);
+        window.location.href = '/';
+        }
+      }, 1000);
+    }
+
+
+    async function startTestPayment() {
+      const btn = document.getElementById('testPayBtn');
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Creating secure order...';
+
+      try {
+        const order = await postJson(RAZORPAY_ORDER_ENDPOINT, {
+          amount: testCourse.amount,
+          course: testCourse.title,
+          plan: 'Live payment test'
+        });
+
+        const options = {
+          key: RAZORPAY_KEY_ID,
+          amount: order.amount,
+          currency: order.currency || 'INR',
+          order_id: order.order_id,
+          name: 'Learn With Hemant',
+            image: getRazorpayLogoUrl(),
+          description: testCourse.title,
+          notes: {
+            course_name: testCourse.title,
+            course_fee: String(testCourse.amount),
+            purpose: 'Live Razorpay payment flow test',
+            website: 'https://learnwithhemant.com/'
+          },
+          theme: {
+            color: '#1463ff'
+          },
+          handler: async function (response) {
+            btn.textContent = 'Verifying payment...';
+
+            try {
+              const verification = await postJson(RAZORPAY_VERIFY_ENDPOINT, {
+                amount: testCourse.amount,
+                course: testCourse.title,
+                plan: 'Live payment test',
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature
+              });
+
+              showPaymentSuccess({
+                amount: testCourse.amount,
+                paymentId: response.razorpay_payment_id,
+                orderId: response.razorpay_order_id,
+                status: verification.capture_status || verification.payment_status || 'captured'
+              });
+            } catch (error) {
+              alert('Payment completed, but verification/capture failed: ' + error.message);
+              btn.disabled = false;
+              btn.textContent = originalText;
+            }
+          },
+          modal: {
+            ondismiss: function () {
+              btn.disabled = false;
+              btn.textContent = originalText;
+              alert('Test payment was not completed. You can try again or contact Learn With Hemant on WhatsApp.');
+            }
+          }
+        };
+
+        btn.disabled = false;
+        btn.textContent = originalText;
+        const razorpay = new Razorpay(options);
+        razorpay.open();
+      } catch (error) {
+        btn.disabled = false;
+        btn.textContent = originalText;
+        alert('Could not start test payment: ' + error.message);
+      }
+    }
+
+    document.getElementById('testPayBtn').addEventListener('click', startTestPayment);
+  </script>
+
+  <script>
+    (function () {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const menu = document.getElementById('mobileSiteMenu');
+      const backdrop = document.querySelector('.mobile-menu-backdrop');
+      const closeItems = document.querySelectorAll('[data-mobile-menu-close]');
+      const links = document.querySelectorAll('.mobile-menu-links a');
+
+      if (!toggle || !menu || !backdrop) return;
+
+      function openMenu() {
+        document.body.classList.add('mobile-menu-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeMenu() {
+        document.body.classList.remove('mobile-menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+      }
+
+      toggle.addEventListener('click', openMenu);
+      closeItems.forEach(item => item.addEventListener('click', closeMenu));
+      links.forEach(link => link.addEventListener('click', closeMenu));
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeMenu();
+      });
+    })();
+  </script>
+</body>
+</html>

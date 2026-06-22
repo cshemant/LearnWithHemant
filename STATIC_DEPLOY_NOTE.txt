@@ -1,0 +1,13 @@
+Important deployment note
+=========================
+
+This website is no longer a purely static tool page.
+The Fresher Career Score Scanner now depends on Cloudflare Pages Functions under `/functions`.
+
+For the tool to scan resumes, deploy the whole V78 folder to Cloudflare Pages with the `functions/` directory included.
+
+For local testing, use:
+
+  npx wrangler pages dev . --port 8000
+
+Do not use only `python -m http.server` for the tool page, because `/api/resume-score` and `/api/resume-advanced` will not exist there.

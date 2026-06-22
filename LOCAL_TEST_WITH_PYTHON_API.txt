@@ -1,0 +1,33 @@
+LOCAL TESTING WITHOUT NPX / WRANGLER
+
+Your screenshot shows:
+- npx is not installed / not recognized.
+- python -m http.server was started on port 8787.
+- That is the wrong server for port 8787, because static Python server cannot handle POST /api/razorpay/order.
+- That is why you saw 501 Unsupported method ('POST') and the browser showed Failed to fetch.
+
+Use this setup instead:
+
+Terminal 1: local Razorpay API backend
+-------------------------------------
+cd E:\LearnwithHemant\V66
+python local_razorpay_api.py
+
+Terminal 2: static website
+--------------------------
+cd E:\LearnwithHemant\V66
+python -m http.server 8000
+
+Open:
+http://localhost:8000/apply/
+
+Keep both terminals open.
+
+Required .dev.vars file:
+------------------------
+Create .dev.vars in the same V66 folder:
+
+RAZORPAY_KEY_ID=rzp_live_your_key
+RAZORPAY_KEY_SECRET=your_secret
+
+Do not upload .dev.vars publicly.

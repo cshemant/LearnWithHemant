@@ -1,0 +1,14 @@
+IMPORTANT LOCAL TESTING NOTE
+
+The old issue happened because /index.html is a root-level link. If localhost:8000 root contains Automation In Trade, clicking the Learn with Hemant brand will open that other site.
+
+Fix applied:
+- Header brand link now opens /home/ instead of /index.html.
+- A duplicate Learn with Hemant home page is available at /home/index.html.
+- Header Free Demo link is replaced with Tool.
+
+Best testing method:
+Run the local server from inside the Learn with Hemant folder only, not from a parent folder that also contains Automation In Trade files.
+Example:
+cd V78
+python -m http.server 8000

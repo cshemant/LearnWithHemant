@@ -1,0 +1,12 @@
+V69 Apply Success Redirect Fix
+
+Issue:
+After payment success, the Apply page success popup was showing details, but no 10-second redirect timer was wired into the Apply page success overlay.
+
+Fix:
+- Added 10-second countdown inside the payment success popup.
+- Automatically redirects to /courses/web-development/ after countdown.
+- Added "Go to Course Page Now" button for immediate navigation.
+
+Flow:
+Payment captured -> enquiry submitted -> success popup -> redirect to course page after 10 seconds.

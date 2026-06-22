@@ -1,0 +1,71 @@
+Cloudflare Pages setup for Fresher Career Score Tool
+====================================================
+
+This ZIP is configured to use your EXISTING Learn with Hemant Razorpay Worker for payments.
+Do not create duplicate Cloudflare Pages Functions for /api/razorpay/order or /api/razorpay/verify.
+
+What this Pages project contains:
+
+  POST /api/resume-score
+  POST /api/resume-advanced
+
+What your existing Worker should continue to handle:
+
+  POST https://learnwithhemant.com/api/razorpay/order
+  POST https://learnwithhemant.com/api/razorpay/verify
+
+Important folder structure:
+
+  index.html
+  style.css
+  tool/
+  functions/
+    api/
+      resume-score.js
+      resume-advanced.js
+    _utils/
+      resume-analyzer.js
+      security.js
+      http.js
+
+Local testing:
+
+  npx wrangler pages dev . --port 8000
+
+Then open:
+
+  http://127.0.0.1:8000/tool/
+
+Local note:
+- Free resume scan and PDF download work through local Pages Functions.
+- Payment buttons call the existing live Razorpay Worker at https://learnwithhemant.com/api/razorpay/*.
+
+Required Cloudflare Pages secret:
+
+  REPORT_TOKEN_SECRET = same value used in the existing Razorpay Worker
+
+Why REPORT_TOKEN_SECRET is needed:
+- The existing Razorpay Worker verifies ₹99 payment and returns an unlock_token.
+- /api/resume-advanced verifies that token before generating the paid advanced report.
+- Use the SAME REPORT_TOKEN_SECRET in both places, otherwise the ₹99 advanced report cannot unlock.
+
+Existing Razorpay Worker reminder:
+- Your current payment Worker can remain active.
+- It must allow ₹99 and ₹499 amounts.
+- For ₹99 Advanced Resume Report payments, /api/razorpay/verify should return unlock_token.
+- If your Worker does not return unlock_token yet, update it using razorpay-api-worker-update.js included in this folder.
+
+What is protected now:
+- Resume scoring rules
+- Negative-point logic
+- Improvement report logic
+- Advanced report generation
+- Advanced report unlock after verified ₹99 payment
+
+What remains in browser:
+- UI rendering
+- PDF/DOCX/TXT text extraction
+- Scorecard PDF download
+- Razorpay checkout popup
+
+Do not test this version with plain `python -m http.server` if you need resume scanning, because Python cannot run /api/* Cloudflare Pages Functions.

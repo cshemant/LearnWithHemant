@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fresher Career Score Tool | Learn with Hemant</title>
+  <meta name="description" content="Upload your resume and get a fresher career scorecard with negative points, improvement areas, ATS checks, project proof analysis and paid advanced resume report options." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/png" href="/brand-logo.png" />
+  <link rel="apple-touch-icon" href="/brand-logo.png" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <style>
+    .tool-page-main {
+      background:
+        radial-gradient(circle at 20% 5%, rgba(37, 99, 235, 0.16), transparent 34%),
+        radial-gradient(circle at 82% 10%, rgba(20, 184, 166, 0.13), transparent 32%),
+        #f7fbff;
+      min-height: 100vh;
+      padding: 86px 0 72px;
+    }
+    .tool-hero {
+      text-align: center;
+      max-width: 960px;
+      margin: 0 auto 28px;
+    }
+    .tool-hero h1 {
+      margin: 0;
+      font-size: clamp(1.85rem, 3.9vw, 3.15rem);
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+      color: #111827;
+    }
+    .tool-hero h1 span { color: #2563eb; }
+    .tool-scanner-panel {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid #dbe7f6;
+      border-radius: 32px;
+      box-shadow: 0 28px 75px rgba(15, 23, 42, 0.1);
+      padding: clamp(18px, 3vw, 30px);
+      margin-top: 30px;
+    }
+    .tool-search-row {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) 210px;
+      gap: 14px;
+      align-items: center;
+      background: #f8fbff;
+      border: 1px solid #e0e9f6;
+      border-radius: 28px;
+      padding: 16px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+    }
+    .tool-upload-label,
+    .tool-textarea {
+      width: 100%;
+      border: 1px solid #d9e5f4;
+      background: #ffffff;
+      border-radius: 18px;
+      min-height: 62px;
+      padding: 0 20px;
+      font: inherit;
+      font-weight: 800;
+      color: #172033;
+      outline: none;
+    }
+    .tool-upload-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      color: #64748b;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .tool-upload-label strong { color: #111827; }
+    .tool-upload-label input { display: none; }
+    .tool-scan-btn,
+    .tool-pay-btn {
+      border: 0;
+      min-height: 62px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #0f766e, #0d9488);
+      color: #ffffff;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 18px 35px rgba(13, 148, 136, .24);
+      transition: transform .2s ease, box-shadow .2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .tool-scan-btn:hover,
+    .tool-pay-btn:hover { transform: translateY(-2px); box-shadow: 0 22px 42px rgba(13, 148, 136, .3); }
+    .tool-scan-btn:disabled,
+    .tool-pay-btn:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+    .tool-pay-btn.secondary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      box-shadow: 0 18px 35px rgba(37, 99, 235, .22);
+    }
+    .tool-pay-btn.ghost {
+      background: #ffffff;
+      color: #111827;
+      border: 1px solid #dbe7f6;
+      box-shadow: none;
+    }
+    .tool-paste-area {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .result-action-row {
+      display: none;
+      justify-content: flex-end;
+      margin-top: 18px;
+    }
+    .result-action-row.show { display: flex; }
+    .download-score-btn {
+      min-width: 240px;
+    }
+    .download-score-btn.loading {
+      opacity: .8;
+      pointer-events: none;
+    }
+    .pdf-export-shell {
+      width: 1180px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at 20% 5%, rgba(37, 99, 235, 0.16), transparent 34%),
+        radial-gradient(circle at 82% 10%, rgba(20, 184, 166, 0.13), transparent 32%),
+        #f7fbff;
+      font-family: 'Inter', sans-serif;
+    }
+    .pdf-brand-header,
+    .pdf-brand-footer {
+      border: 1px solid #dbe7f6;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 22px;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, .06);
+    }
+    .pdf-brand-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 22px;
+      margin-bottom: 18px;
+    }
+    .pdf-brand-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .pdf-brand-left img {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #dbeafe;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, .18);
+      flex: 0 0 auto;
+    }
+    .pdf-brand-name {
+      margin: 0;
+      color: #111827;
+      font-size: 1.25rem;
+      line-height: 1.1;
+      font-weight: 950;
+      letter-spacing: -0.035em;
+    }
+    .pdf-brand-subtitle {
+      margin: 4px 0 0;
+      color: #2563eb;
+      font-weight: 900;
+      font-size: .82rem;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .pdf-brand-meta {
+      text-align: right;
+      color: #64748b;
+      font-weight: 750;
+      font-size: .86rem;
+      line-height: 1.55;
+      white-space: nowrap;
+    }
+    .pdf-brand-footer {
+      margin-top: 20px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: #475569;
+      font-size: .84rem;
+      line-height: 1.5;
+      font-weight: 750;
+    }
+    .pdf-brand-footer strong { color: #111827; }
+    .pdf-brand-footer span:last-child { text-align: right; }
+    .pdf-export-shell .tool-hero {
+      margin-bottom: 20px;
+    }
+    .pdf-export-shell .tool-result-grid {
+      display: grid !important;
+      margin-top: 0;
+    }
+    .pdf-export-shell .advanced-panel {
+      display: block !important;
+      margin-top: 24px;
+    }
+    .tool-paste-area label {
+      font-weight: 900;
+      color: #111827;
+    }
+    .tool-textarea {
+      min-height: 150px;
+      padding: 18px 20px;
+      resize: vertical;
+      font-weight: 600;
+      line-height: 1.65;
+    }
+    .tool-result-grid {
+      display: none;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(300px, 1.1fr);
+      gap: 22px;
+      margin-top: 26px;
+    }
+    .tool-result-grid.show { display: grid; }
+    .score-card,
+    .report-card,
+    .advanced-panel,
+    .advanced-report-card,
+    .mentor-success-card {
+      border: 1px solid #dbe7f6;
+      border-radius: 30px;
+      background: #ffffff;
+      padding: clamp(20px, 3vw, 28px);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, .07);
+    }
+    .score-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+    .score-circle {
+      width: 154px;
+      height: 154px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(#2563eb var(--score-angle, 0deg), #e8effa 0deg);
+      box-shadow: inset 0 0 0 1px #dbe7f6;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    .score-circle::after {
+      content: '';
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      background: #ffffff;
+      position: absolute;
+    }
+    .score-number {
+      position: relative;
+      z-index: 1;
+      font-size: 2.5rem;
+      font-weight: 950;
+      letter-spacing: -0.055em;
+      color: #111827;
+    }
+    .score-number small { font-size: .9rem; color: #64748b; letter-spacing: 0; }
+    .score-grade h2 {
+      margin: 0 0 6px;
+      font-size: 1.8rem;
+      letter-spacing: -0.04em;
+      color: #111827;
+    }
+    .score-grade p { margin: 0; color: #64748b; line-height: 1.6; }
+    .category-row { margin-top: 16px; }
+    .category-row-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 8px;
+      color: #263247;
+      font-size: .92rem;
+      font-weight: 800;
+    }
+    .category-bar {
+      height: 11px;
+      background: #e9f0fb;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .category-fill {
+      display: block;
+      height: 100%;
+      width: var(--w, 0%);
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2563eb, #0d9488);
+    }
+    .report-tabs,
+    .advanced-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .report-pill,
+    .advanced-tag {
+      border: 1px solid #dbe7f6;
+      background: #f6f9ff;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-weight: 900;
+      color: #334155;
+      font-size: .9rem;
+    }
+    .report-block + .report-block { margin-top: 22px; }
+    .report-block h3 {
+      margin: 0 0 12px;
+      color: #111827;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+    .report-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .report-list li {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 10px;
+      align-items: start;
+      border: 1px solid #e4edf9;
+      background: #fbfdff;
+      border-radius: 16px;
+      padding: 12px 14px;
+      color: #475569;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+    .report-list .bad-icon,
+    .report-list .good-icon,
+    .report-list .fix-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: .82rem;
+      font-weight: 950;
+    }
+    .bad-icon { background: #fff1f2; color: #e11d48; }
+    .good-icon { background: #ecfdf5; color: #059669; }
+    .fix-icon { background: #eff6ff; color: #2563eb; }
+    .tool-extra-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .tool-mini-card {
+      border: 1px solid #dbe7f6;
+      border-radius: 24px;
+      background: rgba(255,255,255,.82);
+      padding: 20px;
+    }
+    .tool-mini-card h3 { margin: 0 0 8px; color: #111827; }
+    .tool-mini-card p { margin: 0; color: #64748b; line-height: 1.6; }
+    .advanced-panel {
+      display: none;
+      margin-top: 26px;
+    }
+    .advanced-panel.show { display: block; }
+    .advanced-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .advanced-head h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+      line-height: 1.15;
+      letter-spacing: -0.045em;
+      color: #111827;
+    }
+    .advanced-head p {
+      margin: 0;
+      color: #64748b;
+      line-height: 1.65;
+      max-width: 720px;
+    }
+    .paid-offer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+      margin-bottom: 22px;
+    }
+    .paid-offer-card {
+      border: 1px solid #dbe7f6;
+      border-radius: 24px;
+      padding: 22px;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, .06);
+      display: grid;
+      gap: 14px;
+    }
+    .paid-offer-card.featured {
+      border-color: rgba(37, 99, 235, .35);
+      box-shadow: 0 22px 45px rgba(37, 99, 235, .09);
+    }
+    .paid-offer-card h3 {
+      margin: 0;
+      color: #111827;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .price-line {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      color: #111827;
+      font-weight: 950;
+      font-size: 2rem;
+    }
+    .price-line small { font-size: .9rem; color: #64748b; font-weight: 800; }
+    .paid-feature-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      color: #475569;
+      font-weight: 650;
+      line-height: 1.5;
+    }
+    .paid-feature-list li::before {
+      content: '✓';
+      color: #059669;
+      font-weight: 950;
+      margin-right: 8px;
+    }
+    .tool-status {
+      display: none;
+      margin: 14px 0 0;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1e40af;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-weight: 750;
+      line-height: 1.55;
+    }
+    .tool-status.show { display: block; }
+    .advanced-report-wrap {
+      position: relative;
+      margin-top: 18px;
+    }
+    .advanced-report-wrap.locked .advanced-report-grid {
+      max-height: 520px;
+      overflow: hidden;
+      filter: blur(2px);
+      pointer-events: none;
+      user-select: none;
+    }
+    .lock-overlay {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      min-height: 240px;
+      border-radius: 0 0 30px 30px;
+      background: linear-gradient(180deg, rgba(247,251,255,0.02), rgba(247,251,255,0.98) 50%, #f7fbff);
+      place-items: end center;
+      padding: 28px;
+      text-align: center;
+    }
+    .advanced-report-wrap.locked .lock-overlay { display: grid; }
+    .lock-card {
+      max-width: 620px;
+      border: 1px solid #dbe7f6;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, .12);
+    }
+    .lock-card h3 { margin: 0 0 8px; color: #111827; }
+    .lock-card p { margin: 0 0 16px; color: #64748b; line-height: 1.6; }
+    .advanced-report-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .advanced-report-card h3 {
+      margin: 0 0 12px;
+      color: #111827;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+    .advanced-score-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: #334155;
+      font-weight: 900;
+    }
+    .advanced-meter {
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #e9f0fb;
+      margin-bottom: 14px;
+    }
+    .advanced-meter span {
+      display: block;
+      width: var(--meter, 0%);
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2563eb, #0d9488);
+    }
+    .advanced-report-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #475569;
+      line-height: 1.62;
+      font-weight: 650;
+    }
+    .advanced-report-card li + li { margin-top: 8px; }
+    .rewrite-box {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .rewrite-box div {
+      border: 1px solid #e4edf9;
+      background: #fbfdff;
+      border-radius: 16px;
+      padding: 12px;
+      color: #475569;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+    .rewrite-box strong { color: #111827; }
+    .mentor-success-card {
+      display: none;
+      margin-top: 18px;
+      border-color: rgba(5, 150, 105, .28);
+      background: linear-gradient(180deg, #ffffff, #f0fdf4);
+    }
+    .mentor-success-card.show { display: block; }
+    .mentor-success-card h3 { margin: 0 0 8px; color: #111827; }
+    .mentor-success-card p { margin: 0 0 14px; color: #475569; line-height: 1.6; }
+    @media (max-width: 980px) {
+      .tool-search-row,
+      .tool-result-grid,
+      .tool-extra-grid,
+      .paid-offer-grid,
+      .advanced-report-grid { grid-template-columns: 1fr; }
+      .score-top { align-items: flex-start; flex-direction: column; }
+      .advanced-head { flex-direction: column; }
+    }
+    @media (max-width: 640px) {
+      .tool-page-main { padding-top: 58px; }
+      .tool-scanner-panel,
+      .advanced-panel { border-radius: 24px; padding: 14px; }
+      .tool-search-row { border-radius: 22px; padding: 12px; }
+      .tool-upload-label, .tool-scan-btn, .tool-pay-btn { min-height: 56px; }
+      .score-circle { width: 132px; height: 132px; }
+      .score-circle::after { width: 100px; height: 100px; }
+    }
+  </style>
+</head>
+<body class="home-v2-body">
+  <header class="site-header home-v2-header">
+    <div class="container nav home-v2-nav">
+      <a class="brand home-v2-brand" href="/home/">
+        <img class="brand-logo" src="/brand-logo.png" alt="Learn with Hemant logo" />
+        <div>
+          <span>Learn with Hemant</span>
+          <small>Build • Deploy • Grow</small>
+        </div>
+      </a>
+
+      <nav class="nav-links home-v2-links" aria-label="Main Navigation">
+        <a href="/about/">Mentor</a>
+        <a href="/roadmap/">Roadmap</a>
+        <a href="/courses/web-development/">Courses</a>
+        <a href="/projects/">Projects</a>
+        <a href="/guest-lecture/">Guest Lecture</a>
+        <a href="/tool/">Tool</a>
+      </nav>
+
+      <a class="nav-cta home-v2-cta" href="/apply/">Apply Now <span>→</span></a>
+
+      <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-controls="mobileSiteMenu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu-backdrop" data-mobile-menu-close></div>
+  <aside class="mobile-site-menu" id="mobileSiteMenu" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <a class="mobile-menu-brand" href="/home/">
+        <img src="/brand-logo.png" alt="Learn with Hemant logo" />
+      </a>
+      <button class="mobile-menu-close" type="button" aria-label="Close menu" data-mobile-menu-close>×</button>
+    </div>
+    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+      <a href="/home/">Home</a>
+      <a href="/about/">Mentor</a>
+      <a href="/roadmap/">Roadmap</a>
+      <a href="/courses/web-development/">Courses</a>
+      <a href="/projects/">Projects</a>
+      <a href="/guest-lecture/">Guest Lecture</a>
+      <a href="/tool/">Tool</a>
+      <a href="/apply/">Apply Now</a>
+      <a href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20want%20course%20details." target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.linkedin.com/company/learnwithhemant/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </aside>
+
+  <main class="tool-page-main">
+    <section class="container">
+      <div class="tool-hero">
+        <h1>Fresher <span>Career Score</span> Scanner</h1>
+      </div>
+
+      <div class="tool-scanner-panel">
+        <div class="tool-search-row" aria-label="Fresher Career Score scanner">
+          <label class="tool-upload-label" for="resumeFile">
+            <strong>Upload Resume</strong>
+            <span id="fileName">PDF, DOCX or TXT</span>
+            <input id="resumeFile" type="file" accept=".pdf,.docx,.txt,.doc,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain" />
+          </label>
+
+          <button class="tool-scan-btn" id="scanBtn" type="button">Scan Resume</button>
+        </div>
+        <div class="tool-paste-area">
+          <label for="resumeText">Optional: paste resume text if PDF/DOCX text is not detected</label>
+          <textarea id="resumeText" class="tool-textarea" placeholder="Paste resume content here, or upload a resume above. The report will detect skills, projects, links, education, experience, ATS clarity and missing career proof."></textarea>
+        </div>
+
+        <div class="tool-result-grid" id="resultGrid">
+          <section class="score-card" aria-label="Career scorecard">
+            <div class="score-top">
+              <div class="score-circle" id="scoreCircle" style="--score-angle:0deg">
+                <div class="score-number"><span id="overallScore">0</span><small>/100</small></div>
+              </div>
+              <div class="score-grade">
+                <h2 id="gradeTitle">Scorecard</h2>
+                <p id="gradeSummary">Upload or paste a resume and click Scan Resume.</p>
+              </div>
+            </div>
+            <div id="categoryScores"></div>
+          </section>
+
+          <section class="report-card" aria-label="Resume report">
+            <div class="report-tabs">
+              <span class="report-pill" id="wordCountPill">0 words scanned</span>
+              <span class="report-pill" id="jobReadyPill">Freshers</span>
+              <span class="report-pill">Web Career Focus</span>
+            </div>
+
+            <div class="report-block">
+              <h3>Strong Points</h3>
+              <ul class="report-list" id="strengthList"></ul>
+            </div>
+
+            <div class="report-block">
+              <h3>Negative / Missing Points</h3>
+              <ul class="report-list" id="negativeList"></ul>
+            </div>
+
+            <div class="report-block">
+              <h3>Improvement Report</h3>
+              <ul class="report-list" id="improvementList"></ul>
+            </div>
+          </section>
+        </div>
+
+        <div class="result-action-row" id="resultActionRow">
+          <button class="tool-pay-btn secondary download-score-btn" id="downloadScoreBtn" type="button">Download Scorecard PDF</button>
+        </div>
+      </div>
+
+      <section class="advanced-panel" id="advancedPanel" aria-label="Advanced resume analysis options">
+        <div class="advanced-head">
+          <div>
+            <h2>Advanced Version: detailed resume report</h2>
+            <p>Free scan gives the quick score. The advanced version adds section-wise ATS review, project proof analysis, skill gaps, red flags, rewrite examples and a 30-day career roadmap.</p>
+          </div>
+          <div class="advanced-tags">
+            <span class="advanced-tag">Free → ₹99 → ₹499</span>
+            <span class="advanced-tag">Resume + Career Focus</span>
+          </div>
+        </div>
+
+        <div class="paid-offer-grid">
+          <article class="paid-offer-card featured">
+            <h3>Advanced Resume Report</h3>
+            <div class="price-line">₹99 <small>one-time</small></div>
+            <ul class="paid-feature-list">
+              <li>ATS & parsing check</li>
+              <li>Project proof and skill-gap analysis</li>
+              <li>Negative points with priority fixes</li>
+              <li>Resume rewrite examples and 30-day roadmap</li>
+            </ul>
+            <button class="tool-pay-btn secondary" id="unlockAdvancedBtn" type="button">Unlock Advanced Report ₹99</button>
+            <a class="tool-pay-btn ghost" id="applyAdvancedLink" href="/apply/?service=advanced-report&source=career-tool">Apply / Pay from form</a>
+          </article>
+
+          <article class="paid-offer-card">
+            <h3>Personal Resume + Career Mentorship</h3>
+            <div class="price-line">₹499 <small>personal guidance</small></div>
+            <ul class="paid-feature-list">
+              <li>Advanced report included</li>
+              <li>Manual resume and profile review</li>
+              <li>WhatsApp guidance + 15–20 min call</li>
+              <li>Role suggestion and learning priority list</li>
+            </ul>
+            <button class="tool-pay-btn" id="mentorPayBtn" type="button">Get Personal Mentorship ₹499</button>
+            <a class="tool-pay-btn ghost" id="mentorWhatsAppLink" href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20want%20personal%20resume%20and%20career%20mentorship." target="_blank" rel="noopener">Ask on WhatsApp</a>
+          </article>
+        </div>
+
+        <div class="tool-status" id="toolStatus"></div>
+
+        <div class="advanced-report-wrap locked" id="advancedReportWrap">
+          <div class="advanced-report-grid" id="advancedReportGrid"></div>
+          <div class="lock-overlay">
+            <div class="lock-card">
+              <h3>Detailed report is locked</h3>
+              <p>Unlock the advanced version to view exact ATS issues, role-fit gaps, rewrite examples and a practical improvement roadmap.</p>
+              <button class="tool-pay-btn secondary" id="unlockAdvancedBtnBottom" type="button">Unlock Advanced Report ₹99</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mentor-success-card" id="mentorSuccessCard">
+          <h3>Mentorship request is ready</h3>
+          <p>Send your score and resume details on WhatsApp after payment so the review can be handled personally.</p>
+          <a class="tool-pay-btn" id="mentorAfterPayLink" href="https://wa.me/918197565002" target="_blank" rel="noopener">Send details on WhatsApp</a>
+        </div>
+      </section>
+
+      <div class="tool-extra-grid">
+        <article class="tool-mini-card">
+          <h3>What it checks</h3>
+          <p>Skills, projects, links, education, internships, ATS clarity, action words and career proof.</p>
+        </article>
+        <article class="tool-mini-card">
+          <h3>Best for</h3>
+          <p>B.Tech, BCA, MCA, diploma students, freshers and beginners preparing for web development jobs.</p>
+        </article>
+        <article class="tool-mini-card">
+          <h3>Next step</h3>
+          <p>After the scorecard, fix weak areas or unlock the advanced report for a deeper improvement plan.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer v2-footer">
+    <div class="container v2-footer-bottom">
+      <span>© 2026 Learn with Hemant. All rights reserved.</span>
+      <div class="v2-footer-bottom-links">
+        <a href="/home/">Home</a>
+        <a href="/tool/">Tool</a>
+        <a href="/apply/">Apply Now</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const menu = document.getElementById('mobileSiteMenu');
+      const backdrop = document.querySelector('.mobile-menu-backdrop');
+      const closeItems = document.querySelectorAll('[data-mobile-menu-close]');
+      const links = document.querySelectorAll('.mobile-menu-links a');
+
+      if (!toggle || !menu || !backdrop) return;
+
+      function openMenu() {
+        document.body.classList.add('mobile-menu-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeMenu() {
+        document.body.classList.remove('mobile-menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+      }
+
+      toggle.addEventListener('click', openMenu);
+      closeItems.forEach(item => item.addEventListener('click', closeMenu));
+      links.forEach(link => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeMenu(); });
+    })();
+
+    (function () {
+      const WHATSAPP_NUMBER = '918197565002';
+      const RAZORPAY_KEY_ID = 'rzp_live_T1q6CpwpZLV7wA';
+      const SCORE_ENDPOINT = '/api/resume-score';
+      const ADVANCED_ENDPOINT = '/api/resume-advanced';
+      // Payment is handled by the existing Learn with Hemant Razorpay Worker.
+      // On localhost/pages.dev this calls the live domain; on learnwithhemant.com it stays same-origin.
+      const PAYMENT_API_ORIGIN = window.location.hostname.includes('learnwithhemant.com') ? window.location.origin : 'https://learnwithhemant.com';
+      const RAZORPAY_ORDER_ENDPOINT = PAYMENT_API_ORIGIN + '/api/razorpay/order';
+      const RAZORPAY_VERIFY_ENDPOINT = PAYMENT_API_ORIGIN + '/api/razorpay/verify';
+
+      const resumeFile = document.getElementById('resumeFile');
+      const fileName = document.getElementById('fileName');
+      const resumeText = document.getElementById('resumeText');
+      const scanBtn = document.getElementById('scanBtn');
+      const resultGrid = document.getElementById('resultGrid');
+      const advancedPanel = document.getElementById('advancedPanel');
+      const advancedReportWrap = document.getElementById('advancedReportWrap');
+      const advancedReportGrid = document.getElementById('advancedReportGrid');
+      const unlockAdvancedBtn = document.getElementById('unlockAdvancedBtn');
+      const unlockAdvancedBtnBottom = document.getElementById('unlockAdvancedBtnBottom');
+      const mentorPayBtn = document.getElementById('mentorPayBtn');
+      const mentorWhatsAppLink = document.getElementById('mentorWhatsAppLink');
+      const mentorAfterPayLink = document.getElementById('mentorAfterPayLink');
+      const mentorSuccessCard = document.getElementById('mentorSuccessCard');
+      const toolStatus = document.getElementById('toolStatus');
+      const applyAdvancedLink = document.getElementById('applyAdvancedLink');
+      const overallScore = document.getElementById('overallScore');
+      const scoreCircle = document.getElementById('scoreCircle');
+      const gradeTitle = document.getElementById('gradeTitle');
+      const gradeSummary = document.getElementById('gradeSummary');
+      const categoryScores = document.getElementById('categoryScores');
+      const strengthList = document.getElementById('strengthList');
+      const negativeList = document.getElementById('negativeList');
+      const improvementList = document.getElementById('improvementList');
+      const wordCountPill = document.getElementById('wordCountPill');
+      const jobReadyPill = document.getElementById('jobReadyPill');
+      const resultActionRow = document.getElementById('resultActionRow');
+      const downloadScoreBtn = document.getElementById('downloadScoreBtn');
+
+      let latestReport = null;
+      let latestResumeText = '';
+
+      resumeFile.addEventListener('change', function () {
+        const file = resumeFile.files && resumeFile.files[0];
+        fileName.textContent = file ? file.name : 'PDF, DOCX or TXT';
+      });
+
+      scanBtn.addEventListener('click', async function () {
+        scanBtn.disabled = true;
+        scanBtn.textContent = 'Scanning...';
+        hideStatus();
+        try {
+          let text = resumeText.value.trim();
+          const file = resumeFile.files && resumeFile.files[0];
+          if (file) {
+            const extracted = await extractTextFromFile(file);
+            if (extracted && extracted.trim().length > text.length) text = extracted.trim();
+          }
+          if (!text || text.split(/\s+/).length < 40) text = resumeText.value.trim();
+          if (!text || text.split(/\s+/).length < 40) {
+            showMessageReport('Not enough readable text found. Please upload a text-based PDF/DOCX or paste resume content in the text box.');
+            return;
+          }
+
+          const report = await postJson(SCORE_ENDPOINT, { text });
+          latestReport = report;
+          latestResumeText = text;
+          try { localStorage.setItem('latestCareerScoreReport', JSON.stringify({ score: report.score, grade: report.grade, reportId: report.reportId })); } catch (e) {}
+          renderReport(report);
+          renderLockedAdvancedPreview(report.advancedPreview || []);
+          updatePaidLinks(report);
+        } catch (error) {
+          console.error(error);
+          showMessageReport(formatApiError(error));
+        } finally {
+          scanBtn.disabled = false;
+          scanBtn.textContent = 'Scan Resume';
+        }
+      });
+
+      unlockAdvancedBtn.addEventListener('click', () => payOrApply('advanced'));
+      unlockAdvancedBtnBottom.addEventListener('click', () => payOrApply('advanced'));
+      mentorPayBtn.addEventListener('click', () => payOrApply('mentor'));
+      downloadScoreBtn.addEventListener('click', downloadScorecardPdf);
+
+      async function extractTextFromFile(file) {
+        if (file.size > 2.5 * 1024 * 1024) {
+          throw new Error('File is too large. Please upload a resume under 2.5 MB or paste the text manually.');
+        }
+        const name = file.name.toLowerCase();
+        const buffer = await file.arrayBuffer();
+        if (name.endsWith('.txt')) {
+          return new TextDecoder('utf-8').decode(buffer);
+        }
+        if (name.endsWith('.docx') && window.mammoth) {
+          const result = await window.mammoth.extractRawText({ arrayBuffer: buffer });
+          return result.value || '';
+        }
+        if (name.endsWith('.pdf') && window.pdfjsLib) {
+          window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+          const pdf = await window.pdfjsLib.getDocument({ data: buffer }).promise;
+          const pages = [];
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
+            pages.push(content.items.map(item => item.str).join(' '));
+          }
+          return pages.join('\n');
+        }
+        const raw = new TextDecoder('utf-8', { fatal: false }).decode(buffer);
+        return raw.replace(/[^\x20-\x7E\n\r\t]/g, ' ').replace(/\s+/g, ' ');
+      }
+
+      function renderReport(report) {
+        resultGrid.classList.add('show');
+        advancedPanel.classList.add('show');
+        advancedReportWrap.classList.add('locked');
+        mentorSuccessCard.classList.remove('show');
+        resultActionRow.classList.add('show');
+        overallScore.textContent = report.score;
+        scoreCircle.style.setProperty('--score-angle', (report.score * 3.6) + 'deg');
+        gradeTitle.textContent = report.grade;
+        gradeSummary.textContent = report.summary;
+        wordCountPill.textContent = report.wordCount + ' words scanned';
+        jobReadyPill.textContent = report.score >= 80 ? 'Job Ready' : report.score >= 65 ? 'Almost Ready' : report.score >= 45 ? 'Needs Improvement' : 'Foundation Needed';
+
+        categoryScores.innerHTML = report.categories.map(item => {
+          const pct = Math.round((item.score / item.max) * 100);
+          return `<div class="category-row">
+            <div class="category-row-head"><span>${escapeHtml(item.name)}</span><span>${item.score}/${item.max}</span></div>
+            <div class="category-bar"><span class="category-fill" style="--w:${pct}%"></span></div>
+          </div>`;
+        }).join('');
+
+        strengthList.innerHTML = listHtml(report.strengths, 'good-icon', '✓');
+        negativeList.innerHTML = listHtml(report.negatives.length ? report.negatives : ['No major negative point detected from readable text.'], 'bad-icon', '!');
+        improvementList.innerHTML = listHtml(report.improvements.length ? report.improvements : ['Make the resume more specific for your target role and add measurable project outcomes.'], 'fix-icon', '↗');
+        resultGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      function renderLockedAdvancedPreview(preview) {
+        const items = preview.length ? preview : [
+          { title: 'ATS & Resume Parsing Check', short: 'Unlock detailed ATS and resume parsing issues.' },
+          { title: 'Project Proof Score', short: 'Unlock detailed project proof analysis.' },
+          { title: 'Skills Match Score', short: 'Unlock skill gap report.' }
+        ];
+        advancedReportGrid.innerHTML = items.map(section => `<article class="advanced-report-card">
+          <h3>${escapeHtml(section.title)}</h3>
+          <div class="advanced-score-line"><span>Locked advanced section</span><span>₹99</span></div>
+          <div class="advanced-meter"><span style="--meter:35%"></span></div>
+          <ul><li>${escapeHtml(section.short)}</li><li>Pay ₹99 to generate the full server-side report.</li></ul>
+        </article>`).join('');
+        advancedReportWrap.classList.add('locked');
+      }
+
+      function renderAdvancedReport(sections) {
+        advancedReportGrid.innerHTML = sections.map(section => {
+          const meter = Math.max(0, Math.min(100, section.score));
+          if (section.rewrite) {
+            return `<article class="advanced-report-card">
+              <h3>${escapeHtml(section.title)}</h3>
+              <div class="advanced-score-line"><span>Rewrite quality guidance</span><span>${meter}/100</span></div>
+              <div class="advanced-meter"><span style="--meter:${meter}%"></span></div>
+              <div class="rewrite-box">
+                ${section.rewrite.map(item => `<div><strong>Old:</strong> ${escapeHtml(item.old)}<br><strong>Better:</strong> ${escapeHtml(item.better)}</div>`).join('')}
+              </div>
+            </article>`;
+          }
+          return `<article class="advanced-report-card">
+            <h3>${escapeHtml(section.title)}</h3>
+            <div class="advanced-score-line"><span>Section score</span><span>${meter}/100</span></div>
+            <div class="advanced-meter"><span style="--meter:${meter}%"></span></div>
+            <ul>${section.points.map(point => `<li>${escapeHtml(point)}</li>`).join('')}</ul>
+          </article>`;
+        }).join('');
+      }
+
+      function showMessageReport(message) {
+        resultGrid.classList.add('show');
+        advancedPanel.classList.remove('show');
+        resultActionRow.classList.remove('show');
+        overallScore.textContent = '0';
+        scoreCircle.style.setProperty('--score-angle', '0deg');
+        gradeTitle.textContent = 'Text Not Detected';
+        gradeSummary.textContent = message;
+        wordCountPill.textContent = '0 words scanned';
+        jobReadyPill.textContent = 'Retry';
+        categoryScores.innerHTML = '';
+        strengthList.innerHTML = listHtml(['Upload a text-based PDF/DOCX or paste resume text manually.'], 'good-icon', '✓');
+        negativeList.innerHTML = listHtml([message], 'bad-icon', '!');
+        improvementList.innerHTML = listHtml(['For local testing, run the site with Cloudflare Pages Functions using wrangler, not plain python http.server.'], 'fix-icon', '↗');
+      }
+
+      function listHtml(items, iconClass, iconText) {
+        return items.map(item => `<li><span class="${iconClass}">${iconText}</span><span>${escapeHtml(item)}</span></li>`).join('');
+      }
+
+      function updatePaidLinks(report) {
+        const scoreText = report ? ` Score: ${report.score}/100. Grade: ${report.grade}.` : '';
+        const mentorMessage = 'Hi Hemant, I used the Fresher Career Score Tool and want personal resume + career mentorship for ₹499.' + scoreText;
+        mentorWhatsAppLink.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(mentorMessage);
+        mentorAfterPayLink.href = mentorWhatsAppLink.href;
+        applyAdvancedLink.href = '/apply/?service=advanced-report&source=career-tool&score=' + encodeURIComponent(report.score);
+      }
+
+      function unlockAdvancedReport() {
+        advancedReportWrap.classList.remove('locked');
+        showStatus('Advanced report unlocked successfully. Review the detailed sections below.');
+      }
+
+      async function downloadScorecardPdf() {
+        if (!latestReport || !resultGrid.classList.contains('show')) {
+          showStatus('Please scan a resume first, then download the scorecard PDF.');
+          return;
+        }
+        if (!window.html2canvas || !window.jspdf || !window.jspdf.jsPDF) {
+          showStatus('PDF download library is not available right now. Please refresh and try again.');
+          return;
+        }
+
+        hideStatus();
+        const originalText = downloadScoreBtn.textContent;
+        downloadScoreBtn.disabled = true;
+        downloadScoreBtn.classList.add('loading');
+        downloadScoreBtn.textContent = 'Preparing PDF...';
+
+        const exportShell = document.createElement('div');
+        exportShell.className = 'pdf-export-shell';
+        exportShell.style.position = 'fixed';
+        exportShell.style.left = '-10000px';
+        exportShell.style.top = '0';
+        exportShell.style.zIndex = '-1';
+        exportShell.style.pointerEvents = 'none';
+
+        const generatedDate = new Date().toLocaleString('en-IN', {
+          day: '2-digit', month: 'short', year: 'numeric',
+          hour: '2-digit', minute: '2-digit'
+        });
+        const sourceResumeName = (resumeFile.files && resumeFile.files[0] && resumeFile.files[0].name) || fileName.textContent || 'Uploaded resume';
+        const brandHeader = document.createElement('div');
+        brandHeader.className = 'pdf-brand-header';
+        brandHeader.innerHTML = `
+          <div class="pdf-brand-left">
+            <img src="/brand-logo.png" alt="Learn with Hemant logo">
+            <div>
+              <p class="pdf-brand-name">Learn with Hemant</p>
+              <p class="pdf-brand-subtitle">Fresher Career Score Report</p>
+            </div>
+          </div>
+          <div class="pdf-brand-meta">
+            <div>Generated: ${escapeHtml(generatedDate)}</div>
+            <div>Score: ${escapeHtml(latestReport.score)}/100 • ${escapeHtml(latestReport.grade)}</div>
+            <div>Resume: ${escapeHtml(sourceResumeName)}</div>
+          </div>
+        `;
+        const heroClone = document.querySelector('.tool-hero').cloneNode(true);
+        const resultClone = resultGrid.cloneNode(true);
+        exportShell.appendChild(brandHeader);
+        exportShell.appendChild(heroClone);
+        exportShell.appendChild(resultClone);
+
+        if (advancedPanel.classList.contains('show')) {
+          const advancedClone = advancedPanel.cloneNode(true);
+          advancedClone.querySelectorAll('.tool-pay-btn, .ghost, a[href], button').forEach(el => {
+            if (el.closest('.lock-overlay')) return;
+            el.remove();
+          });
+          exportShell.appendChild(advancedClone);
+        }
+
+        const brandFooter = document.createElement('div');
+        brandFooter.className = 'pdf-brand-footer';
+        brandFooter.innerHTML = `
+          <span><strong>Generated by Learn with Hemant</strong> | learnwithhemant.com</span>
+          <span>For personal guidance: Apply Now / WhatsApp +91 8197565002</span>
+        `;
+        exportShell.appendChild(brandFooter);
+
+        document.body.appendChild(exportShell);
+
+        try {
+          await new Promise(resolve => setTimeout(resolve, 250));
+          await Promise.all(Array.from(exportShell.querySelectorAll('img')).map(img => {
+            if (img.complete) return Promise.resolve();
+            return new Promise(resolve => {
+              img.onload = resolve;
+              img.onerror = resolve;
+            });
+          }));
+          const canvas = await window.html2canvas(exportShell, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#f7fbff',
+            windowWidth: 1280,
+            logging: false
+          });
+
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
+          const pageWidth = pdf.internal.pageSize.getWidth();
+          const pageHeight = pdf.internal.pageSize.getHeight();
+          const margin = 18;
+          const footerSpace = 32;
+          const usableWidth = pageWidth - margin * 2;
+          const usableHeight = pageHeight - margin * 2 - footerSpace;
+          const sliceHeight = Math.floor(usableHeight * canvas.width / usableWidth);
+
+          let renderedHeight = 0;
+          let pageIndex = 0;
+          while (renderedHeight < canvas.height) {
+            const pageCanvas = document.createElement('canvas');
+            pageCanvas.width = canvas.width;
+            pageCanvas.height = Math.min(sliceHeight, canvas.height - renderedHeight);
+            const pageCtx = pageCanvas.getContext('2d');
+            pageCtx.drawImage(
+              canvas,
+              0,
+              renderedHeight,
+              canvas.width,
+              pageCanvas.height,
+              0,
+              0,
+              canvas.width,
+              pageCanvas.height
+            );
+
+            const imgData = pageCanvas.toDataURL('image/png', 1.0);
+            const imgHeight = pageCanvas.height * usableWidth / pageCanvas.width;
+            if (pageIndex > 0) pdf.addPage();
+            pdf.addImage(imgData, 'PNG', margin, margin, usableWidth, imgHeight, undefined, 'FAST');
+            pdf.setDrawColor(219, 231, 246);
+            pdf.setLineWidth(0.6);
+            pdf.line(margin, pageHeight - footerSpace + 2, pageWidth - margin, pageHeight - footerSpace + 2);
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(8.5);
+            pdf.setTextColor(71, 85, 105);
+            pdf.text('Generated by Learn with Hemant | learnwithhemant.com', margin, pageHeight - 18);
+            pdf.text('For personal guidance: Apply Now / WhatsApp +91 8197565002', pageWidth - margin, pageHeight - 18, { align: 'right' });
+            pdf.text('Page ' + (pageIndex + 1), pageWidth / 2, pageHeight - 18, { align: 'center' });
+            renderedHeight += pageCanvas.height;
+            pageIndex += 1;
+          }
+
+          const nameSource = (resumeFile.files && resumeFile.files[0] && resumeFile.files[0].name) || fileName.textContent || 'resume-scorecard';
+          const cleanBase = String(nameSource)
+            .replace(/\\.[^.]+$/, '')
+            .replace(/[^a-z0-9]+/gi, '-')
+            .replace(/^-+|-+$/g, '') || 'resume-scorecard';
+          pdf.save(cleanBase + '-scorecard.pdf');
+          showStatus('Scorecard PDF downloaded successfully.');
+        } catch (error) {
+          console.error(error);
+          showStatus('Could not generate the PDF right now. Please try again.');
+        } finally {
+          exportShell.remove();
+          downloadScoreBtn.disabled = false;
+          downloadScoreBtn.classList.remove('loading');
+          downloadScoreBtn.textContent = originalText;
+        }
+      }
+
+      async function payOrApply(type) {
+        if (!latestReport || !latestResumeText) {
+          showStatus('Please scan a resume first, then choose Advanced Report or Mentorship.');
+          return;
+        }
+        const isMentor = type === 'mentor';
+        const amount = isMentor ? 499 : 99;
+        const plan = isMentor ? 'Personal Resume + Career Mentorship' : 'Advanced Resume Report';
+        const btns = isMentor ? [mentorPayBtn] : [unlockAdvancedBtn, unlockAdvancedBtnBottom];
+        btns.forEach(btn => { btn.disabled = true; btn.textContent = 'Opening payment...'; });
+        hideStatus();
+        try {
+          const payment = await startToolPayment({ amount, plan });
+          if (isMentor) {
+            mentorSuccessCard.classList.add('show');
+            showStatus('Payment successful. Send your score and resume details on WhatsApp for personal review. Payment ID: ' + (payment.paymentId || 'captured'));
+            mentorSuccessCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            const advanced = await postJson(ADVANCED_ENDPOINT, {
+              text: latestResumeText,
+              reportId: latestReport.reportId,
+              unlockToken: payment.unlockToken
+            });
+            renderAdvancedReport(advanced.advancedSections || []);
+            unlockAdvancedReport();
+          }
+        } catch (error) {
+          console.error(error);
+          showStatus(formatApiError(error));
+        } finally {
+          unlockAdvancedBtn.disabled = false;
+          unlockAdvancedBtnBottom.disabled = false;
+          mentorPayBtn.disabled = false;
+          unlockAdvancedBtn.textContent = 'Unlock Advanced Report ₹99';
+          unlockAdvancedBtnBottom.textContent = 'Unlock Advanced Report ₹99';
+          mentorPayBtn.textContent = 'Get Personal Mentorship ₹499';
+        }
+      }
+
+      async function startToolPayment({ amount, plan }) {
+        const order = await postJson(RAZORPAY_ORDER_ENDPOINT, {
+          amount,
+          course: plan,
+          plan,
+          name: '',
+          phone: '',
+          email: '',
+          score: latestReport ? latestReport.score : '',
+          reportId: latestReport ? latestReport.reportId : '',
+          source: 'career-score-tool'
+        });
+
+        return new Promise((resolve, reject) => {
+          if (typeof Razorpay === 'undefined') {
+            reject(new Error('Razorpay checkout could not be loaded.'));
+            return;
+          }
+          const options = {
+            key: RAZORPAY_KEY_ID,
+            amount: order.amount,
+            currency: order.currency || 'INR',
+            order_id: order.order_id,
+            name: 'Learn With Hemant',
+            image: window.location.origin + '/razorpay-logo.png?v=64',
+            description: plan,
+            notes: {
+              service: plan,
+              score: latestReport ? String(latestReport.score) : '',
+              grade: latestReport ? latestReport.grade : '',
+              reportId: latestReport ? latestReport.reportId : '',
+              website: 'https://learnwithhemant.com/tool/'
+            },
+            theme: { color: '#1463ff' },
+            handler: async function (response) {
+              try {
+                const verification = await postJson(RAZORPAY_VERIFY_ENDPOINT, {
+                  amount,
+                  course: plan,
+                  plan,
+                  reportId: latestReport ? latestReport.reportId : '',
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_signature: response.razorpay_signature
+                });
+                if (amount === 99 && !verification.unlock_token) {
+                  throw new Error('Payment verified, but advanced report unlock token was not returned. Please update the existing Razorpay Worker with the latest unlock-token code.');
+                }
+                resolve({
+                  paymentId: response.razorpay_payment_id,
+                  orderId: response.razorpay_order_id,
+                  status: verification.capture_status || verification.payment_status || 'Captured',
+                  unlockToken: verification.unlock_token || ''
+                });
+              } catch (error) {
+                reject(new Error('Payment completed, but verification failed: ' + error.message));
+              }
+            },
+            modal: {
+              ondismiss: function () { reject(new Error('Payment window closed before completion.')); }
+            }
+          };
+          const razorpay = new Razorpay(options);
+          razorpay.open();
+        });
+      }
+
+      async function postJson(url, payload) {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json().catch(() => ({ ok: false, error: 'Invalid server response.' }));
+        if (!response.ok || data.ok === false) {
+          throw new Error(data.error || 'Server error.');
+        }
+        return data;
+      }
+
+      function formatApiError(error) {
+        const msg = error && error.message ? error.message : 'Something went wrong.';
+        if (msg.includes('Failed to fetch') || msg.includes('Unexpected token') || msg.includes('Invalid server response')) {
+          return 'Cloudflare API is not running here. Deploy to Cloudflare Pages or test locally with wrangler pages dev, because the scoring logic is now server-side.';
+        }
+        return msg;
+      }
+
+      function showStatus(message) {
+        toolStatus.textContent = message;
+        toolStatus.classList.add('show');
+      }
+
+      function hideStatus() {
+        toolStatus.textContent = '';
+        toolStatus.classList.remove('show');
+      }
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
+      }
+    })();
+
+  </script>
+</body>
+</html>
