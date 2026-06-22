@@ -1,37 +1,68 @@
+function escapeRegex(value) {
+  return String(value || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function countMatches(text, list) {
   const lower = String(text || '').toLowerCase();
-  return list.filter(item => new RegExp('\\b' + item.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(lower)).length;
+  return list.filter(item => new RegExp('\\b' + escapeRegex(item) + '\\b', 'i').test(lower)).length;
 }
 
 function matchedTerms(text, list) {
   const lower = String(text || '').toLowerCase();
-  return list.filter(item => new RegExp('\\b' + item.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(lower));
+  return list.filter(item => new RegExp('\\b' + escapeRegex(item) + '\\b', 'i').test(lower));
+}
+
+function unique(list) {
+  return [...new Set((list || []).filter(Boolean))];
+}
+
+function normalizeResumeText(text) {
+  return String(text || '')
+    .replace(/\u0000/g, ' ')
+    .replace(/\r/g, '\n')
+    .replace(/[\t ]+/g, ' ')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+function compactText(text) {
+  return normalizeResumeText(text).replace(/\s+/g, ' ').trim();
+}
+
+function wordCountOf(text) {
+  const normalized = compactText(text);
+  return normalized ? normalized.split(/\s+/).filter(Boolean).length : 0;
 }
 
 function hasAny(text, patterns) {
   return patterns.some(pattern => pattern.test(text));
 }
 
-function dedupe(list) {
-  return [...new Set(list)];
+function pct(score, max) {
+  return Math.round((score / max) * 100);
 }
 
-function normalizeResumeText(text) {
-  return String(text || '')
-    .replace(/\u0000/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+function clamp(num, min, max) {
+  return Math.max(min, Math.min(max, num));
 }
 
-function wordCountOf(text) {
-  return normalizeResumeText(text).split(/\s+/).filter(Boolean).length;
+function sectionLikeText(text, keywords) {
+  const lower = String(text || '').toLowerCase();
+  const blocks = lower.split(/\n{2,}|(?=\b(?:project|projects|experience|skills|education|training|internship|summary)\b)/i);
+  return blocks.filter(block => keywords.some(k => block.includes(k))).join(' ');
+}
+
+function getRoleScore(parts) {
+  const total = parts.reduce((sum, item) => sum + item.max, 0);
+  const score = parts.reduce((sum, item) => sum + (item.ok ? item.max : 0), 0);
+  return Math.round((score / total) * 100);
 }
 
 export function validateResumeText(text) {
   const normalized = normalizeResumeText(text).slice(0, 30000);
   const wordCount = wordCountOf(normalized);
   if (wordCount < 40) {
-    const error = new Error('Not enough readable resume text found. Upload a text-based PDF/DOCX or paste resume text manually.');
+    const error = new Error('Not enough readable resume text found. Please upload a text-based PDF/DOCX resume.');
     error.status = 400;
     throw error;
   }
@@ -40,261 +71,339 @@ export function validateResumeText(text) {
 
 export function getAdvancedPreview() {
   return [
-    { title: 'ATS & Resume Parsing Check', short: 'Checks contact visibility, sections, readability and parsing risk.' },
-    { title: 'Project Proof Score', short: 'Reviews projects, live links, GitHub proof, features and deployment signals.' },
-    { title: 'Skills Match Score', short: 'Detects technical skills, missing job-ready skills and skill clustering quality.' },
-    { title: 'Experience / Internship / Training Review', short: 'Checks exposure, timeline clarity, practical training and proof.' },
-    { title: 'Impact & Achievement Check', short: 'Finds weak verbs, missing numbers and duty-based bullet points.' },
-    { title: 'Red Flags', short: 'Highlights role confusion, weak links, missing proof and ATS risks.' },
-    { title: 'Priority Improvement Plan', short: 'Gives high, medium and low priority fixes.' },
-    { title: 'Suggested Resume Rewrite Examples', short: 'Shows old vs better bullet examples.' },
-    { title: '7-Day and 30-Day Career Roadmap', short: 'Gives a practical short-term improvement plan.' }
+    { title: 'Skill-to-Project Mapping', short: 'Shows which skills are proven by projects and which are only written as keywords.' },
+    { title: 'Project Proof Analysis', short: 'Checks GitHub/live links, deployment, database, API, admin, authentication and payment proof.' },
+    { title: 'Role Fit Score', short: 'Estimates readiness for Frontend, WordPress, Magento, Full Stack and Internship roles.' },
+    { title: 'Interview Risk Areas', short: 'Highlights topics where an interviewer may find weak proof or shallow understanding.' },
+    { title: 'ATS & Resume Parsing Check', short: 'Checks machine readability, section clarity, contact visibility and ATS risk.' },
+    { title: 'Red Flags', short: 'Finds generic claims, missing portfolio proof, weak metrics and copied-project signals.' },
+    { title: '7-Day Fix Plan', short: 'Gives immediate tasks that a fresher can complete this week.' },
+    { title: '30-Day Career Roadmap', short: 'Gives a practical project and profile roadmap for job readiness.' },
+    { title: 'Resume Rewrite Examples', short: 'Shows weak lines and better proof-based alternatives.' }
   ];
 }
 
 export function analyzeResume(inputText, options = {}) {
   const text = validateResumeText(inputText);
-  const lower = text.toLowerCase();
-  const words = text.trim().split(/\s+/).filter(Boolean);
-  const wordCount = words.length;
+  const lower = compactText(text).toLowerCase();
+  const wordCount = wordCountOf(text);
+
   const strengths = [];
   const negatives = [];
   const improvements = [];
   const categories = [];
-  const facts = {};
 
   const emailFound = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i.test(text);
   const phoneFound = /(\+?91[-\s]?)?[6-9]\d{9}\b/.test(text.replace(/\s+/g, ' '));
-  const linkHits = countMatches(lower, ['linkedin', 'github', 'portfolio', 'behance']) + ((/https?:\/\//i.test(text) || /www\./i.test(text)) ? 1 : 0);
+  const hasLinkedIn = /linkedin\.com|\blinkedin\b/i.test(text);
+  const hasGithub = /github\.com|\bgithub\b/i.test(text);
+  const hasPortfolio = /portfolio|netlify|vercel|pages\.dev|cloudflare|live\s+link|deployed|deployment|https?:\/\//i.test(text);
 
-  let contact = 0;
-  if (emailFound) { contact += 3; strengths.push('Email address is present.'); } else { negatives.push('Email address is missing or not clearly visible.'); improvements.push('Add a professional email address near your name at the top.'); }
-  if (phoneFound) { contact += 3; strengths.push('Mobile number is available for recruiter contact.'); } else { negatives.push('Phone number is missing or difficult to detect.'); improvements.push('Add a 10-digit mobile number in the header area.'); }
-  contact += Math.min(6, linkHits * 2);
-  if (linkHits >= 2) strengths.push('Profile or portfolio links are included.');
-  else { negatives.push('LinkedIn, GitHub or portfolio proof is weak.'); improvements.push('Add LinkedIn plus GitHub/portfolio/live project links.'); }
-  categories.push({ name: 'Contact & Links', score: contact, max: 12 });
+  let contactScore = 0;
+  if (emailFound) { contactScore += 3; strengths.push('Email address is present.'); } else { negatives.push('Email address is missing or not clearly visible.'); improvements.push('Add a professional email address in the top header.'); }
+  if (phoneFound) { contactScore += 3; strengths.push('Mobile number is available for recruiter contact.'); } else { negatives.push('Phone number is missing or difficult to detect.'); improvements.push('Add a recruiter-visible mobile number near your name.'); }
+  if (hasLinkedIn) contactScore += 2; else improvements.push('Add a LinkedIn profile link to improve recruiter trust.');
+  if (hasGithub) contactScore += 2; else improvements.push('Add a GitHub link so your skills have public proof.');
+  if (hasPortfolio) contactScore += 2; else { negatives.push('Portfolio, GitHub or live project proof is weak.'); improvements.push('Add at least one live project or portfolio link.'); }
+  categories.push({ name: 'Contact & Proof Links', score: clamp(contactScore, 0, 12), max: 12 });
 
-  const skillList = ['html','css','javascript','react','node','nodejs','php','wordpress','magento','mysql','sql','mongodb','git','github','api','rest','bootstrap','tailwind','deployment','cpanel','cloudflare','figma','python','java','typescript','jquery','laravel','docker','linux','postman'];
-  const detectedSkills = matchedTerms(lower, skillList);
-  const skillHits = detectedSkills.length;
-  const skillScore = Math.min(18, Math.round(skillHits * 2.2));
-  if (skillHits >= 6) strengths.push('Good number of technical skills detected.');
-  else { negatives.push('Technical skills section looks thin for a web development fresher.'); improvements.push('Add focused skills: HTML, CSS, JavaScript, GitHub, API, database, deployment and one framework/CMS.'); }
-  categories.push({ name: 'Technical Skills', score: skillScore, max: 18 });
+  const skillGroups = {
+    frontend: ['html','css','javascript','typescript','react','bootstrap','tailwind','jquery','responsive'],
+    backend: ['php','node','nodejs','express','laravel','python','java','rest','api','graphql'],
+    database: ['mysql','sql','mongodb','database'],
+    cms: ['wordpress','magento','adobe commerce','shopify','e-commerce','ecommerce'],
+    workflow: ['git','github','postman','docker','linux','cloudflare','vercel','netlify','deployment','cpanel'],
+    ai: ['ai','chatgpt','copilot','prompt','openai','automation']
+  };
+  const allSkills = unique(Object.values(skillGroups).flat());
+  const detectedSkills = matchedTerms(lower, allSkills);
+
+  const projectKeywords = ['project','projects','website','ecommerce','e-commerce','portfolio','dashboard','application','system','clone','module','portal'];
+  const projectText = sectionLikeText(text, projectKeywords) || lower;
+  const actionWords = ['built','developed','created','designed','implemented','integrated','deployed','optimized','automated','customized','handled','maintained'];
+  const proofWindow = (projectText + ' ' + lower.match(/.{0,120}(built|developed|implemented|integrated|deployed|project|website|application).{0,220}/gi)?.join(' ') || '').toLowerCase();
+  const provenSkills = detectedSkills.filter(skill => new RegExp('\\b' + escapeRegex(skill) + '\\b', 'i').test(proofWindow));
+  const weakProofSkills = detectedSkills.filter(skill => !provenSkills.includes(skill));
+
+  let skillProofScore = 0;
+  skillProofScore += Math.min(7, detectedSkills.length);
+  skillProofScore += Math.min(8, provenSkills.length * 2);
+  if (detectedSkills.length >= 6 && provenSkills.length >= 3) { skillProofScore += 3; strengths.push('Multiple technical skills are backed by project or work context.'); }
+  else if (detectedSkills.length >= 6) { negatives.push('Several skills are listed, but project-level proof is not strong enough.'); improvements.push('Connect every major skill with a project line that shows where it was used.'); }
+  else { negatives.push('Technical skill coverage is thin for a web development fresher.'); improvements.push('Add focused skills such as HTML, CSS, JavaScript, GitHub, API, database and deployment.'); }
+  categories.push({ name: 'Skill Proof Mapping', score: clamp(skillProofScore, 0, 18), max: 18 });
+
+  const projectMentions = countMatches(lower, projectKeywords);
+  const featureKeywords = ['api','payment','gateway','admin','database','authentication','login','crud','responsive','checkout','cart','dashboard','cms','theme','plugin'];
+  const projectFeatureHits = countMatches(lower, featureKeywords);
+  const projectActionHits = countMatches(lower, actionWords);
+  const projectProofFound = hasGithub || hasPortfolio;
+  const hasRealWorldFeature = projectFeatureHits >= 3;
+  const hasDeploymentProof = /deployed|deployment|live\s+link|netlify|vercel|cloudflare|pages\.dev|cpanel|server/i.test(text);
 
   let projectScore = 0;
-  const projectMentions = countMatches(lower, ['project','projects','website','ecommerce','e-commerce','portfolio','dashboard','application','clone','system']);
-  const projectFeatureHits = countMatches(lower, ['api','payment','gateway','admin','database','authentication','login','crud','responsive','checkout']);
-  const projectActionHits = countMatches(lower, ['built','developed','created','designed','implemented','integrated','deployed','optimized']);
-  const projectProofFound = hasAny(text, [/github\.com/i, /netlify/i, /vercel/i, /cloudflare/i, /live\s+link/i, /deployed/i, /deployment/i]);
-  if (projectMentions >= 2) { projectScore += 8; strengths.push('Project work is mentioned in the resume.'); } else { negatives.push('Project section is missing or not detailed enough.'); improvements.push('Add 2-3 projects with title, tech stack, features, your role and outcome.'); }
-  if (projectProofFound) { projectScore += 6; strengths.push('Live/deployment or GitHub proof is visible.'); } else { negatives.push('No live project, deployment or GitHub proof found.'); improvements.push('Add GitHub repository and live deployed link for at least one project.'); }
-  if (projectFeatureHits >= 3) projectScore += 5;
-  else improvements.push('Mention practical project features like API, database, admin panel, authentication, payment or responsive design.');
-  if (projectActionHits >= 3) projectScore += 3;
-  else improvements.push('Use action words such as built, implemented, integrated, deployed and optimized.');
-  categories.push({ name: 'Project Proof', score: Math.min(22, projectScore), max: 22 });
+  if (projectMentions >= 2) { projectScore += 6; strengths.push('Project work is mentioned in the resume.'); } else { negatives.push('Project section is missing or not detailed enough.'); improvements.push('Add 2-3 projects with title, tech stack, features, your role and output.'); }
+  if (projectProofFound) { projectScore += 5; strengths.push('GitHub, portfolio or live project proof is visible.'); } else { negatives.push('No GitHub, portfolio or live project proof found.'); improvements.push('Deploy one project and add both live link and GitHub repository.'); }
+  if (hasDeploymentProof) projectScore += 4; else improvements.push('Mention deployment proof such as Cloudflare Pages, Vercel, Netlify, cPanel or server deployment.');
+  if (hasRealWorldFeature) projectScore += 4; else improvements.push('Add real-world project features like login, database, API, admin panel, cart, payment or dashboard.');
+  if (projectActionHits >= 4) projectScore += 3; else improvements.push('Use action verbs such as built, implemented, integrated, deployed and optimized.');
+  categories.push({ name: 'Project Proof Score', score: clamp(projectScore, 0, 22), max: 22 });
 
-  let education = 0;
-  const educationFound = /(b\.?tech|m\.?tech|bca|mca|diploma|computer science|information technology|engineering)/i.test(text);
-  const yearOrMarksFound = /(cgpa|percentage|%|20\d{2}|202\d|201\d)/i.test(text);
-  if (educationFound) { education += 6; strengths.push('Education background is clearly mentioned.'); }
-  else { negatives.push('Education details are not clearly detected.'); improvements.push('Add degree, branch, college, year and CGPA/percentage if useful.'); }
-  if (yearOrMarksFound) education += 4;
-  else improvements.push('Add graduation year and CGPA/percentage to improve profile clarity.');
-  categories.push({ name: 'Education Clarity', score: education, max: 10 });
-
-  let experience = 0;
-  const experienceFound = /(internship|intern|trainee|freelance|client|job|experience|training|workshop|industrial|developer|lecturer|assistant professor)/i.test(text);
-  const durationFound = /(month|months|year|years|present|remote|onsite|full[- ]?time|part[- ]?time)/i.test(text);
-  if (experienceFound) { experience += 7; strengths.push('Some internship, training or work exposure is mentioned.'); }
-  else { negatives.push('No internship, training, freelance or practical exposure found.'); improvements.push('If you have no job experience, add training, workshop, freelance, college project or self-built project experience.'); }
-  if (durationFound) experience += 3;
-  categories.push({ name: 'Experience / Training', score: experience, max: 10 });
-
-  let ats = 0;
-  const standardSectionsFound = /(skills|technical skills|projects|education|experience|certification|achievements|summary)/i.test(text);
+  const standardSectionsFound = /(skills|technical skills|projects|education|experience|internship|training|certification|achievements|summary)/i.test(text);
   const bulletsFound = /[-•●▪*]/.test(text) || /\n\s*\d+[.)]/.test(text);
-  const actionAchievementHits = countMatches(lower, ['improved','reduced','increased','achieved','managed','integrated','deployed','optimized','automated']);
-  const personalRedFlag = /(photo|father|mother|marital|religion|blood group)/i.test(text);
-  if (wordCount >= 300 && wordCount <= 900) ats += 5;
-  else if (wordCount > 150) ats += 3;
-  else { negatives.push('Resume text is too short for a strong fresher profile.'); improvements.push('Keep a one-page resume but include enough detail: summary, skills, projects, education and links.'); }
-  if (standardSectionsFound) ats += 5;
-  else { negatives.push('Standard resume sections are not clearly visible.'); improvements.push('Use clear section headings: Skills, Projects, Education, Experience/Training, Certifications.'); }
-  if (bulletsFound) ats += 3;
-  else improvements.push('Use bullet points to make project and experience details easy to scan.');
-  if (actionAchievementHits >= 2) ats += 3;
-  else improvements.push('Add result-oriented lines showing what you achieved or delivered.');
-  if (!personalRedFlag) ats += 2;
-  else { negatives.push('Personal details/photo-style content may reduce professional resume quality.'); improvements.push('Avoid unnecessary personal details; keep the resume job-focused.'); }
-  categories.push({ name: 'ATS & Clarity', score: ats, max: 18 });
+  const personalRedFlag = /(father|mother|marital|religion|blood group)/i.test(text);
+  const hasMetrics = /(\d+\s*%|\b\d+\+|\b\d+\s*(users|students|projects|pages|modules|clients|months|years|websites|apis|features)\b)/i.test(text);
+  const hasTargetRole = /(web developer|frontend|front-end|backend|back-end|full stack|wordpress developer|magento developer|software developer|technical trainer|lecturer|assistant professor|intern)/i.test(text);
 
-  let modern = 0;
-  const modernHits = countMatches(lower, ['ai','chatgpt','copilot','prompt','automation','git','github','cloud','deploy','api','postman']);
-  if (modernHits >= 3) { modern += 7; strengths.push('Modern tools or AI/deployment awareness is visible.'); }
-  else { negatives.push('Modern tools like GitHub, AI tools, API testing or deployment are not strongly visible.'); improvements.push('Add GitHub, AI-assisted coding, API testing, deployment or automation tools if you know them.'); }
-  if (/(wordpress|magento|e-commerce|ecommerce|payment gateway|api integration)/i.test(text)) modern += 3;
-  categories.push({ name: 'Modern Job Skills', score: Math.min(10, modern), max: 10 });
+  let atsScore = 0;
+  if (wordCount >= 300 && wordCount <= 900) atsScore += 3; else if (wordCount > 150) atsScore += 2; else improvements.push('Add enough readable details while keeping the resume concise.');
+  if (standardSectionsFound) atsScore += 3; else { negatives.push('Standard resume sections are not clearly visible.'); improvements.push('Use clear sections: Summary, Skills, Projects, Education, Experience/Training and Certifications.'); }
+  if (bulletsFound) atsScore += 2; else improvements.push('Use bullet points for project and experience details.');
+  if (!personalRedFlag) atsScore += 2; else { negatives.push('Unnecessary personal details may reduce professional resume quality.'); improvements.push('Remove unnecessary personal details and keep the resume job-focused.'); }
+  if (hasTargetRole) atsScore += 2; else { negatives.push('Target role is not clear enough.'); improvements.push('Add a focused headline such as “Fresher Web Developer” or “WordPress / Magento Developer”.'); }
+  categories.push({ name: 'ATS Readability', score: clamp(atsScore, 0, 12), max: 12 });
 
-  const score = categories.reduce((sum, c) => sum + c.score, 0);
-  let grade = 'Needs Foundation Work';
-  let summary = 'Start by improving skills, project proof and resume clarity.';
-  if (score >= 80) { grade = 'Job-Ready Fresher'; summary = 'Strong resume foundation. Focus on interview practice and targeted applications.'; }
-  else if (score >= 65) { grade = 'Interview-Ready Soon'; summary = 'Good base. Fix missing proof and make projects more measurable.'; }
-  else if (score >= 45) { grade = 'Improving Profile'; summary = 'Potential is visible, but your resume needs stronger projects, links and clarity.'; }
+  const roleFits = buildRoleFits({ lower, detectedSkills, provenSkills, projectProofFound, hasDeploymentProof, hasRealWorldFeature, hasTargetRole });
+  const topRole = roleFits[0];
+  const roleScore = Math.round(roleFits.slice(0, 3).reduce((sum, role) => sum + role.score, 0) / 3 * 0.16);
+  if (topRole.score >= 70) strengths.push(`${topRole.name} role readiness is visible.`);
+  else { negatives.push('Role fit is not strong enough for a clear fresher job target.'); improvements.push('Choose one primary target role and make skills, projects and headline match that role.'); }
+  categories.push({ name: 'Role Fit Score', score: clamp(roleScore, 0, 16), max: 16 });
 
-  facts.detectedSkills = detectedSkills;
-  facts.emailFound = emailFound;
-  facts.phoneFound = phoneFound;
-  facts.linkHits = linkHits;
-  facts.projectProofFound = projectProofFound;
-  facts.projectMentions = projectMentions;
-  facts.projectFeatureHits = projectFeatureHits;
-  facts.projectActionHits = projectActionHits;
-  facts.educationFound = educationFound;
-  facts.experienceFound = experienceFound;
-  facts.durationFound = durationFound;
-  facts.standardSectionsFound = standardSectionsFound;
-  facts.bulletsFound = bulletsFound;
-  facts.actionAchievementHits = actionAchievementHits;
-  facts.personalRedFlag = personalRedFlag;
-  facts.modernHits = modernHits;
-  facts.hasMetrics = /(\d+\s*%|\b\d+\+|\b\d+\s*(users|students|projects|pages|modules|clients|months|years|websites|apis)\b)/i.test(text);
-  facts.hasTargetRole = /(web developer|frontend|front-end|backend|back-end|full stack|wordpress developer|magento developer|software developer|technical trainer|lecturer|assistant professor)/i.test(text);
-  facts.weakVerbHits = countMatches(lower, ['worked','handled','maintained','responsible','helped','learned','involved']);
+  let interviewScore = 0;
+  if (hasMetrics) { interviewScore += 3; strengths.push('Resume includes measurable proof or quantified experience.'); } else { negatives.push('Resume lacks measurable outcomes or numbers.'); improvements.push('Add numbers such as projects built, modules handled, pages created, students trained or performance improved.'); }
+  if (provenSkills.length >= 4) interviewScore += 3; else improvements.push('Prepare explanations for each listed skill through one real project example.');
+  if (projectFeatureHits >= 4) interviewScore += 2; else improvements.push('Add features that create interview discussion points: login, database, API, deployment, payment or admin panel.');
+  if (projectActionHits >= 4) interviewScore += 2; else improvements.push('Rewrite duty-based lines into achievement-oriented bullets.');
+  categories.push({ name: 'Interview Readiness', score: clamp(interviewScore, 0, 10), max: 10 });
 
-  if (strengths.length === 0) strengths.push('Basic resume content is present and can be improved with structure.');
+  let modernScore = 0;
+  const workflowHits = matchedTerms(lower, skillGroups.workflow);
+  const aiHits = matchedTerms(lower, skillGroups.ai);
+  if (workflowHits.length >= 3) { modernScore += 6; strengths.push('Modern workflow tools such as GitHub, deployment or API testing are visible.'); }
+  else { negatives.push('Modern workflow proof is weak.'); improvements.push('Show GitHub, deployment, API testing, Cloudflare/Vercel/Netlify or automation usage.'); }
+  if (aiHits.length >= 1) modernScore += 2; else improvements.push('If you use AI tools, mention practical AI-assisted debugging, code review or productivity workflow.');
+  if (/api|payment gateway|e-commerce|ecommerce|wordpress|magento/i.test(text)) modernScore += 2;
+  categories.push({ name: 'Modern Workflow Proof', score: clamp(modernScore, 0, 10), max: 10 });
+
+  const rawScore = categories.reduce((sum, c) => sum + c.score, 0);
+  const score = clamp(rawScore, 0, 100);
+  let grade = 'Foundation Stage';
+  let summary = 'Your resume needs stronger project proof, clearer role focus and practical action steps.';
+  if (score >= 85) { grade = 'Job-Ready Fresher'; summary = 'Strong proof-based profile. Focus on interview practice and targeted applications.'; }
+  else if (score >= 70) { grade = 'Interview-Ready Soon'; summary = 'Good base. Improve project proof, metrics and role-specific positioning.'; }
+  else if (score >= 50) { grade = 'Improving Profile'; summary = 'Potential is visible, but proof, role fit and interview evidence need work.'; }
+
+  const proofSummary = {
+    skillsMentioned: detectedSkills.length,
+    skillsProven: provenSkills.length,
+    weakProofSkills: weakProofSkills.slice(0, 8),
+    topRole: topRole.name,
+    topRoleScore: topRole.score
+  };
+
+  const insightCards = [
+    {
+      label: 'Skills Mentioned',
+      value: String(detectedSkills.length),
+      note: detectedSkills.length ? detectedSkills.slice(0, 6).join(', ') : 'Add focused web development skills.'
+    },
+    {
+      label: 'Skills Proven by Projects',
+      value: `${provenSkills.length}/${Math.max(detectedSkills.length, 1)}`,
+      note: weakProofSkills.length ? `Weak proof: ${weakProofSkills.slice(0, 4).join(', ')}` : 'Major skills are connected with proof.'
+    },
+    {
+      label: 'Best Role Fit',
+      value: `${topRole.score}%`,
+      note: topRole.name
+    },
+    {
+      label: 'Job Proof Score',
+      value: `${pct(projectScore + skillProofScore, 40)}%`,
+      note: 'Based on projects, links, deployment, features and skill evidence.'
+    }
+  ];
 
   const report = {
     score,
     grade,
     summary,
     categories,
-    strengths: dedupe(strengths).slice(0, 6),
-    negatives: dedupe(negatives).slice(0, 6),
-    improvements: dedupe(improvements).slice(0, 8),
+    strengths: unique(strengths).slice(0, 6),
+    negatives: unique(negatives).slice(0, 6),
+    improvements: unique(improvements).slice(0, 9),
     wordCount,
+    insightCards,
+    proofSummary,
+    roleFits,
     advancedLocked: !options.includeAdvanced,
     advancedPreview: getAdvancedPreview()
   };
 
   if (options.includeAdvanced) {
-    report.advancedSections = buildAdvancedSections({ categories, facts, wordCount, score });
+    report.advancedSections = buildAdvancedSections({ categories, proofSummary, roleFits, detectedSkills, provenSkills, weakProofSkills, facts: { emailFound, phoneFound, hasLinkedIn, hasGithub, hasPortfolio, projectMentions, projectFeatureHits, projectActionHits, projectProofFound, hasDeploymentProof, hasRealWorldFeature, standardSectionsFound, bulletsFound, personalRedFlag, hasMetrics, hasTargetRole, workflowHits, aiHits, wordCount, score } });
   }
 
   return report;
 }
 
+function buildRoleFits(ctx) {
+  const { lower, detectedSkills, provenSkills, projectProofFound, hasDeploymentProof, hasRealWorldFeature, hasTargetRole } = ctx;
+  const has = (items) => items.some(item => detectedSkills.includes(item) || lower.includes(item));
+  const proven = (items) => items.some(item => provenSkills.includes(item));
+
+  const roles = [
+    {
+      name: 'Frontend Fresher',
+      score: getRoleScore([
+        { ok: has(['html']), max: 15 }, { ok: has(['css']), max: 15 }, { ok: has(['javascript','typescript']), max: 20 },
+        { ok: has(['react','bootstrap','tailwind','jquery']), max: 15 }, { ok: proven(['html','css','javascript','react']), max: 20 }, { ok: hasDeploymentProof, max: 15 }
+      ])
+    },
+    {
+      name: 'WordPress Developer',
+      score: getRoleScore([
+        { ok: has(['wordpress']), max: 25 }, { ok: has(['php']), max: 20 }, { ok: has(['mysql','sql']), max: 15 },
+        { ok: /theme|plugin|woocommerce|cms/i.test(lower), max: 15 }, { ok: projectProofFound, max: 15 }, { ok: hasDeploymentProof, max: 10 }
+      ])
+    },
+    {
+      name: 'Magento / E-commerce Developer',
+      score: getRoleScore([
+        { ok: has(['magento','adobe commerce']), max: 30 }, { ok: has(['php']), max: 15 }, { ok: has(['mysql','sql']), max: 10 },
+        { ok: /e-commerce|ecommerce|checkout|cart|payment|api/i.test(lower), max: 20 }, { ok: projectProofFound, max: 15 }, { ok: hasDeploymentProof, max: 10 }
+      ])
+    },
+    {
+      name: 'Full Stack Fresher',
+      score: getRoleScore([
+        { ok: has(['html','css']), max: 15 }, { ok: has(['javascript','typescript']), max: 15 }, { ok: has(['php','node','nodejs','laravel','python','java']), max: 20 },
+        { ok: has(['mysql','sql','mongodb','database']), max: 15 }, { ok: /api|rest|authentication|login|crud/i.test(lower), max: 20 }, { ok: hasDeploymentProof, max: 15 }
+      ])
+    },
+    {
+      name: 'Internship Ready',
+      score: getRoleScore([
+        { ok: hasTargetRole, max: 15 }, { ok: detectedSkills.length >= 6, max: 20 }, { ok: provenSkills.length >= 3, max: 25 },
+        { ok: projectProofFound, max: 20 }, { ok: hasRealWorldFeature, max: 10 }, { ok: hasDeploymentProof, max: 10 }
+      ])
+    }
+  ];
+  return roles.sort((a, b) => b.score - a.score);
+}
+
 function buildAdvancedSections(context) {
-  const { categories, facts, wordCount, score } = context;
+  const { categories, proofSummary, roleFits, detectedSkills, provenSkills, weakProofSkills, facts } = context;
   const getPct = (name) => {
     const item = categories.find(c => c.name === name);
-    return item ? Math.round((item.score / item.max) * 100) : 0;
+    return item ? pct(item.score, item.max) : 0;
   };
-  const missingSkills = ['GitHub', 'Live deployment', 'API integration', 'Database', 'JavaScript project', 'Portfolio link'].filter(item => {
-    const l = item.toLowerCase();
-    if (l.includes('github')) return !facts.detectedSkills.includes('github') && facts.linkHits < 2;
-    if (l.includes('deployment')) return !facts.projectProofFound;
-    if (l.includes('api')) return facts.projectFeatureHits < 2;
-    if (l.includes('database')) return !facts.detectedSkills.some(s => ['mysql','sql','mongodb'].includes(s));
-    if (l.includes('javascript')) return !facts.detectedSkills.includes('javascript');
-    if (l.includes('portfolio')) return facts.linkHits < 2;
-    return false;
-  });
+
+  const interviewRisks = [];
+  if (weakProofSkills.length) interviewRisks.push(`You may be asked about ${weakProofSkills.slice(0, 4).join(', ')}, but project proof for these skills is weak.`);
+  if (!facts.hasMetrics) interviewRisks.push('Interview answers may sound generic because measurable outcomes are missing.');
+  if (!facts.hasDeploymentProof) interviewRisks.push('Deployment questions may become risky because live hosting proof is not visible.');
+  if (facts.projectFeatureHits < 4) interviewRisks.push('Project-depth questions may become risky because real-world features are limited.');
+  if (!interviewRisks.length) interviewRisks.push('Interview risk is moderate. Prepare strong explanations for your best project and deployment workflow.');
+
   const redFlags = [];
-  if (!facts.hasTargetRole) redFlags.push('Target role is not clear enough. Add one focused headline like “Fresher Web Developer” or “Magento / WordPress Developer”.');
-  if (!facts.projectProofFound) redFlags.push('Project proof is weak because GitHub/live deployment link is missing.');
-  if (!facts.hasMetrics) redFlags.push('Resume lacks numbers such as projects built, modules handled, students trained, pages created, or performance improvement.');
-  if (facts.weakVerbHits >= 2) redFlags.push('Several lines may sound duty-based instead of result-based because weak verbs are visible.');
-  if (!facts.standardSectionsFound) redFlags.push('ATS may not parse the resume cleanly without standard section headings.');
+  if (!facts.hasTargetRole) redFlags.push('Target role is unclear; the resume should be focused on one primary job path.');
+  if (!facts.hasGithub && !facts.hasPortfolio) redFlags.push('No public project proof is visible through GitHub, portfolio or live project links.');
+  if (!facts.hasMetrics) redFlags.push('No measurable achievements are visible, so the resume may look duty-based.');
   if (facts.personalRedFlag) redFlags.push('Unnecessary personal details may reduce professional quality.');
-  if (!redFlags.length) redFlags.push('No major red flag detected, but resume can still be improved with stronger proof and sharper targeting.');
+  if (facts.projectFeatureHits < 3) redFlags.push('Projects may look like tutorial-level work because real-world features are not clearly shown.');
+  if (!redFlags.length) redFlags.push('No major red flag detected, but stronger proof and sharper targeting can still improve conversion.');
+
+  const sevenDay = [
+    'Day 1: Add one focused target role headline and remove generic summary lines.',
+    'Day 2: Add GitHub and live project links near each major project.',
+    'Day 3: Rewrite project bullets using feature + tech stack + outcome format.',
+    'Day 4: Add missing proof for weak skills listed in the Skill-to-Project Mapping section.',
+    'Day 5: Add one measurable result such as pages built, modules completed, APIs integrated or performance improved.',
+    'Day 6: Prepare interview explanations for your strongest project, deployment, database and API workflow.',
+    'Day 7: Apply to 15 targeted internships/jobs with this improved resume.'
+  ];
+
+  const thirtyDay = [
+    'Week 1: Fix resume structure, role focus, GitHub/live links and project descriptions.',
+    'Week 2: Build one proof project with login, database, API and responsive UI.',
+    'Week 3: Deploy the project and document the workflow in GitHub README with screenshots.',
+    'Week 4: Practice interview questions from your weak areas and apply with a targeted message.'
+  ];
 
   return [
     {
+      title: 'Skill-to-Project Mapping',
+      score: getPct('Skill Proof Mapping'),
+      points: [
+        `${proofSummary.skillsMentioned} skills are mentioned in the resume.`,
+        `${proofSummary.skillsProven} skills are connected with project/work proof.`,
+        weakProofSkills.length ? `Weak proof skills: ${weakProofSkills.slice(0, 8).join(', ')}.` : 'Major skills are supported by project or work context.',
+        'USP insight: this is not only a resume check; it checks whether skills are proven through real work.'
+      ]
+    },
+    {
+      title: 'Project Proof Analysis',
+      score: getPct('Project Proof Score'),
+      points: [
+        facts.hasGithub || facts.hasPortfolio ? 'Public proof is visible through GitHub, portfolio or live project signals.' : 'Public proof is missing; add GitHub and live project links.',
+        facts.hasDeploymentProof ? 'Deployment proof is visible.' : 'Deployment proof is missing; add Cloudflare Pages, Vercel, Netlify, cPanel or server details.',
+        facts.projectFeatureHits >= 3 ? 'Real-world project features are visible.' : 'Add features such as login, database, API, admin panel, checkout or payment gateway.',
+        'Best improvement: make every project show problem, features, tech stack, your contribution and output.'
+      ]
+    },
+    {
+      title: 'Role Fit Score',
+      score: Math.round(roleFits.slice(0, 3).reduce((sum, role) => sum + role.score, 0) / 3),
+      points: roleFits.map(role => `${role.name}: ${role.score}% readiness.`)
+    },
+    {
+      title: 'Interview Risk Areas',
+      score: getPct('Interview Readiness'),
+      points: interviewRisks
+    },
+    {
       title: 'ATS & Resume Parsing Check',
-      score: Math.round((getPct('ATS & Clarity') + getPct('Contact & Links')) / 2),
+      score: getPct('ATS Readability'),
       points: [
         facts.emailFound && facts.phoneFound ? 'Email and phone are readable for recruiter contact.' : 'Contact details need better visibility in the top header.',
-        facts.standardSectionsFound ? 'Standard resume sections are detected.' : 'Use standard headings: Summary, Skills, Projects, Education, Experience.',
-        facts.bulletsFound ? 'Bullet-style formatting is visible.' : 'Convert long paragraphs into short bullet points.',
-        wordCount >= 300 && wordCount <= 900 ? 'Resume length looks suitable for a one-page fresher resume.' : 'Resume length needs balance; keep it concise but detailed enough.'
-      ]
-    },
-    {
-      title: 'Project Proof Score',
-      score: getPct('Project Proof'),
-      points: [
-        facts.projectMentions >= 2 ? 'Projects are mentioned, which is good for a fresher profile.' : 'Add 2–3 project entries with clear titles.',
-        facts.projectProofFound ? 'Live/GitHub/deployment proof is visible.' : 'Add GitHub repository and live deployed project links.',
-        facts.projectFeatureHits >= 3 ? 'Practical features like API/database/payment/admin flow are visible.' : 'Mention practical features like API, database, admin panel, payment or deployment.',
-        facts.projectActionHits >= 3 ? 'Action words are visible in project/work descriptions.' : 'Start bullets with built, implemented, integrated, deployed, optimized.'
-      ]
-    },
-    {
-      title: 'Skills Match Score',
-      score: getPct('Technical Skills'),
-      points: [
-        facts.detectedSkills.length ? 'Detected skills: ' + facts.detectedSkills.slice(0, 12).join(', ') + '.' : 'No strong technical skill cluster detected.',
-        missingSkills.length ? 'Missing or weak proof: ' + missingSkills.join(', ') + '.' : 'Skill proof looks balanced for web-development targeting.',
-        facts.modernHits >= 3 ? 'Modern tools like AI/Git/API/deployment are visible.' : 'Add modern tools: GitHub, AI-assisted coding, API testing, deployment workflow.',
-        'Group skills into Frontend, Backend/CMS, Database, Tools and Deployment for better readability.'
-      ]
-    },
-    {
-      title: 'Experience / Internship / Training Review',
-      score: getPct('Experience / Training'),
-      points: [
-        facts.experienceFound ? 'Experience/training exposure is visible.' : 'Add internship, training, workshop, freelance or self-project exposure.',
-        facts.durationFound ? 'Timeline or duration is visible.' : 'Add month/year duration to each role, training or internship.',
-        'Freshers should convert academic projects into experience-style proof with role, tools and output.',
-        'Mention what you built, where it was deployed and what problem it solved.'
-      ]
-    },
-    {
-      title: 'Impact & Achievement Check',
-      score: facts.hasMetrics ? 78 : 48,
-      points: [
-        facts.hasMetrics ? 'Some numbers/scale signals are present.' : 'Add measurable details like number of pages, modules, users, students, APIs or projects.',
-        facts.actionAchievementHits >= 2 ? 'Result-oriented action words are present.' : 'Add impact verbs: improved, reduced, increased, automated, optimized, delivered.',
-        facts.weakVerbHits >= 2 ? 'Replace weak phrases like “worked on” or “handled” with stronger delivery-focused lines.' : 'Weak verb usage is not very high.',
-        'Each important bullet should show: action + technology + output/result.'
+        facts.standardSectionsFound ? 'Standard resume sections are detected.' : 'Use standard section headings for better ATS readability.',
+        facts.bulletsFound ? 'Bullet-style formatting is visible.' : 'Use bullet points for easy scanning.',
+        facts.wordCount >= 300 && facts.wordCount <= 900 ? 'Resume length is in a practical one-page range.' : 'Resume length should be optimized for quick recruiter scanning.'
       ]
     },
     {
       title: 'Red Flags',
-      score: Math.max(25, 100 - redFlags.length * 14),
+      score: Math.max(35, 100 - redFlags.length * 12),
       points: redFlags
     },
     {
-      title: 'Priority Improvement Plan',
-      score: score,
-      points: [
-        'High priority: fix missing contact, links, role clarity and project proof first.',
-        'Medium priority: improve bullet quality with action verbs and measurable outcomes.',
-        'Low priority: polish formatting, spacing and section order after content is strong.',
-        'Apply only after resume has one clear target role and 2–3 proof-based projects.'
-      ]
-    },
-    {
-      title: 'Suggested Resume Rewrite Examples',
-      score: facts.hasMetrics ? 80 : 60,
-      rewrite: [
-        { old: 'Worked on web development projects.', better: 'Built responsive web pages using HTML, CSS and JavaScript with clean layout, mobile-friendly design and reusable components.' },
-        { old: 'Handled project tasks and learning activities.', better: 'Implemented project features such as login flow, database connection, admin panel or deployment workflow and documented the process.' },
-        { old: 'Good knowledge of WordPress/Magento.', better: 'Created WordPress/Magento pages, configured products/content, understood admin workflow and practiced deployment/payment integration basics.' }
-      ]
-    },
-    {
-      title: '7-Day and 30-Day Career Roadmap',
+      title: '7-Day Fix Plan',
       score: 90,
-      points: [
-        'Next 7 days: add LinkedIn, GitHub, live project links and rewrite top 5 weak bullets.',
-        'Next 7 days: create one project proof section with tech stack, features, role and output.',
-        'Next 30 days: build/deploy 2 practical projects and document screenshots plus live links.',
-        'Next 30 days: prepare interview topics from HTML, CSS, JavaScript, Git, API, database and deployment.'
+      points: sevenDay
+    },
+    {
+      title: '30-Day Career Roadmap',
+      score: 90,
+      points: thirtyDay
+    },
+    {
+      title: 'Resume Rewrite Examples',
+      score: 84,
+      rewrite: [
+        {
+          old: 'Worked on web development projects.',
+          better: 'Built and deployed responsive web pages with project-specific features, clean UI structure and live hosting proof.'
+        },
+        {
+          old: 'Knowledge of HTML, CSS and JavaScript.',
+          better: 'Used HTML, CSS and JavaScript to build a responsive project with form handling, UI interactions and deployment-ready structure.'
+        },
+        {
+          old: 'Responsible for project work.',
+          better: 'Implemented project modules including UI, database/API flow, testing and deployment documentation.'
+        }
       ]
     }
   ];

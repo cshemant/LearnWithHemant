@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fresher Career Score Tool | Learn with Hemant</title>
-  <meta name="description" content="Upload your resume and get a fresher career scorecard with negative points, improvement areas, ATS checks, project proof analysis and paid advanced resume report options." />
+  <title>Proof-Based Fresher Career Score Tool | Learn with Hemant</title>
+  <meta name="description" content="Upload your resume and get a proof-based fresher career score with skill-to-project mapping, role-fit score, interview risks and practical improvement actions." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -332,6 +332,53 @@
       color: #334155;
       font-size: .9rem;
     }
+    .proof-insight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 4px 0 22px;
+    }
+    .proof-insight-card {
+      border: 1px solid #dbe7f6;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, .05);
+    }
+    .proof-insight-card small {
+      display: block;
+      color: #64748b;
+      font-weight: 900;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .035em;
+      margin-bottom: 6px;
+    }
+    .proof-insight-card strong {
+      display: block;
+      color: #111827;
+      font-size: 1.35rem;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+    .proof-insight-card span {
+      display: block;
+      color: #475569;
+      line-height: 1.45;
+      font-weight: 650;
+      font-size: .88rem;
+    }
+    .usp-note {
+      border: 1px solid #bfdbfe;
+      background: linear-gradient(135deg, rgba(37, 99, 235, .08), rgba(13, 148, 136, .08));
+      color: #1e3a8a;
+      border-radius: 18px;
+      padding: 13px 15px;
+      margin: 0 0 18px;
+      font-weight: 850;
+      line-height: 1.5;
+    }
     .report-block + .report-block { margin-top: 22px; }
     .report-block h3 {
       margin: 0 0 12px;
@@ -591,6 +638,7 @@
       .advanced-panel { border-radius: 24px; padding: 14px; }
       .tool-search-row { border-radius: 22px; padding: 12px; }
       .tool-upload-label, .tool-scan-btn, .tool-pay-btn { min-height: 56px; }
+      .proof-insight-grid { grid-template-columns: 1fr; }
       .score-circle { width: 132px; height: 132px; }
       .score-circle::after { width: 100px; height: 100px; }
     }
@@ -651,7 +699,7 @@
   <main class="tool-page-main">
     <section class="container">
       <div class="tool-hero">
-        <h1>Fresher <span>Career Score</span> Scanner</h1>
+        <h1>Fresher <span>Career Proof</span> Scanner</h1>
       </div>
 
       <div class="tool-scanner-panel">
@@ -664,10 +712,7 @@
 
           <button class="tool-scan-btn" id="scanBtn" type="button">Scan Resume</button>
         </div>
-        <div class="tool-paste-area">
-          <label for="resumeText">Optional: paste resume text if PDF/DOCX text is not detected</label>
-          <textarea id="resumeText" class="tool-textarea" placeholder="Paste resume content here, or upload a resume above. The report will detect skills, projects, links, education, experience, ATS clarity and missing career proof."></textarea>
-        </div>
+        <textarea id="resumeText" style="display:none" aria-hidden="true"></textarea>
 
         <div class="tool-result-grid" id="resultGrid">
           <section class="score-card" aria-label="Career scorecard">
@@ -677,7 +722,7 @@
               </div>
               <div class="score-grade">
                 <h2 id="gradeTitle">Scorecard</h2>
-                <p id="gradeSummary">Upload or paste a resume and click Scan Resume.</p>
+                <p id="gradeSummary">Upload your resume and check whether your skills are proven by projects.</p>
               </div>
             </div>
             <div id="categoryScores"></div>
@@ -687,8 +732,11 @@
             <div class="report-tabs">
               <span class="report-pill" id="wordCountPill">0 words scanned</span>
               <span class="report-pill" id="jobReadyPill">Freshers</span>
-              <span class="report-pill">Web Career Focus</span>
+              <span class="report-pill">Proof-Based Score</span>
             </div>
+
+            <p class="usp-note" id="uspNote">AI can rewrite a resume. This tool checks whether the resume has real job proof, role fit and interview evidence.</p>
+            <div class="proof-insight-grid" id="proofInsightGrid"></div>
 
             <div class="report-block">
               <h3>Strong Points</h3>
@@ -715,12 +763,12 @@
       <section class="advanced-panel" id="advancedPanel" aria-label="Advanced resume analysis options">
         <div class="advanced-head">
           <div>
-            <h2>Advanced Version: detailed resume report</h2>
-            <p>Free scan gives the quick score. The advanced version adds section-wise ATS review, project proof analysis, skill gaps, red flags, rewrite examples and a 30-day career roadmap.</p>
+            <h2>Advanced Version: proof-based career report</h2>
+            <p>Free scan gives a proof-based score. The advanced version adds skill-to-project mapping, role-fit scores, interview risk areas, red flags, rewrite examples and a practical 30-day career roadmap.</p>
           </div>
           <div class="advanced-tags">
             <span class="advanced-tag">Free → ₹99 → ₹499</span>
-            <span class="advanced-tag">Resume + Career Focus</span>
+            <span class="advanced-tag">Skill Proof + Role Fit</span>
           </div>
         </div>
 
@@ -745,7 +793,7 @@
               <li>Advanced report included</li>
               <li>Manual resume and profile review</li>
               <li>WhatsApp guidance + 15–20 min call</li>
-              <li>Role suggestion and learning priority list</li>
+              <li>Role suggestion, project direction and learning priority list</li>
             </ul>
             <button class="tool-pay-btn" id="mentorPayBtn" type="button">Get Personal Mentorship ₹499</button>
             <a class="tool-pay-btn ghost" id="mentorWhatsAppLink" href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20want%20personal%20resume%20and%20career%20mentorship." target="_blank" rel="noopener">Ask on WhatsApp</a>
@@ -759,7 +807,7 @@
           <div class="lock-overlay">
             <div class="lock-card">
               <h3>Detailed report is locked</h3>
-              <p>Unlock the advanced version to view exact ATS issues, role-fit gaps, rewrite examples and a practical improvement roadmap.</p>
+              <p>Unlock the advanced version to view exact skill-proof gaps, role-fit gaps, interview risks, rewrite examples and a practical improvement roadmap.</p>
               <button class="tool-pay-btn secondary" id="unlockAdvancedBtnBottom" type="button">Unlock Advanced Report ₹99</button>
             </div>
           </div>
@@ -775,15 +823,15 @@
       <div class="tool-extra-grid">
         <article class="tool-mini-card">
           <h3>What it checks</h3>
-          <p>Skills, projects, links, education, internships, ATS clarity, action words and career proof.</p>
+          <p>Skill proof, project evidence, live links, role fit, ATS clarity, interview risk and career proof.</p>
         </article>
         <article class="tool-mini-card">
           <h3>Best for</h3>
-          <p>B.Tech, BCA, MCA, diploma students, freshers and beginners preparing for web development jobs.</p>
+          <p>B.Tech, BCA, MCA, diploma students and freshers who need proof-based web development readiness.</p>
         </article>
         <article class="tool-mini-card">
           <h3>Next step</h3>
-          <p>After the scorecard, fix weak areas or unlock the advanced report for a deeper improvement plan.</p>
+          <p>After the scorecard, fix weak proof areas or unlock the advanced report for a role-specific action plan.</p>
         </article>
       </div>
     </section>
@@ -867,6 +915,7 @@
       const improvementList = document.getElementById('improvementList');
       const wordCountPill = document.getElementById('wordCountPill');
       const jobReadyPill = document.getElementById('jobReadyPill');
+      const proofInsightGrid = document.getElementById('proofInsightGrid');
       const resultActionRow = document.getElementById('resultActionRow');
       const downloadScoreBtn = document.getElementById('downloadScoreBtn');
 
@@ -891,7 +940,7 @@
           }
           if (!text || text.split(/\s+/).length < 40) text = resumeText.value.trim();
           if (!text || text.split(/\s+/).length < 40) {
-            showMessageReport('Not enough readable text found. Please upload a text-based PDF/DOCX or paste resume content in the text box.');
+            showMessageReport('Not enough readable text found. Please upload a text-based PDF/DOCX resume.');
             return;
           }
 
@@ -955,7 +1004,9 @@
         gradeTitle.textContent = report.grade;
         gradeSummary.textContent = report.summary;
         wordCountPill.textContent = report.wordCount + ' words scanned';
-        jobReadyPill.textContent = report.score >= 80 ? 'Job Ready' : report.score >= 65 ? 'Almost Ready' : report.score >= 45 ? 'Needs Improvement' : 'Foundation Needed';
+        jobReadyPill.textContent = report.proofSummary && report.proofSummary.topRole ? report.proofSummary.topRole : (report.score >= 80 ? 'Job Ready' : report.score >= 65 ? 'Almost Ready' : report.score >= 45 ? 'Needs Improvement' : 'Foundation Needed');
+
+        proofInsightGrid.innerHTML = renderProofInsights(report.insightCards || []);
 
         categoryScores.innerHTML = report.categories.map(item => {
           const pct = Math.round((item.score / item.max) * 100);
@@ -1019,9 +1070,19 @@
         wordCountPill.textContent = '0 words scanned';
         jobReadyPill.textContent = 'Retry';
         categoryScores.innerHTML = '';
-        strengthList.innerHTML = listHtml(['Upload a text-based PDF/DOCX or paste resume text manually.'], 'good-icon', '✓');
+        proofInsightGrid.innerHTML = '';
+        strengthList.innerHTML = listHtml(['Upload a text-based PDF/DOCX resume.'], 'good-icon', '✓');
         negativeList.innerHTML = listHtml([message], 'bad-icon', '!');
         improvementList.innerHTML = listHtml(['For local testing, run the site with Cloudflare Pages Functions using wrangler, not plain python http.server.'], 'fix-icon', '↗');
+      }
+
+      function renderProofInsights(items) {
+        if (!items.length) return '';
+        return items.map(item => `<article class="proof-insight-card">
+          <small>${escapeHtml(item.label)}</small>
+          <strong>${escapeHtml(item.value)}</strong>
+          <span>${escapeHtml(item.note)}</span>
+        </article>`).join('');
       }
 
       function listHtml(items, iconClass, iconText) {
@@ -1030,7 +1091,7 @@
 
       function updatePaidLinks(report) {
         const scoreText = report ? ` Score: ${report.score}/100. Grade: ${report.grade}.` : '';
-        const mentorMessage = 'Hi Hemant, I used the Fresher Career Score Tool and want personal resume + career mentorship for ₹499.' + scoreText;
+        const mentorMessage = 'Hi Hemant, I used the Fresher Career Proof Scanner and want personal resume + career mentorship for ₹499.' + scoreText;
         mentorWhatsAppLink.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(mentorMessage);
         mentorAfterPayLink.href = mentorWhatsAppLink.href;
         applyAdvancedLink.href = '/apply/?service=advanced-report&source=career-tool&score=' + encodeURIComponent(report.score);
@@ -1077,7 +1138,7 @@
             <img src="/brand-logo.png" alt="Learn with Hemant logo">
             <div>
               <p class="pdf-brand-name">Learn with Hemant</p>
-              <p class="pdf-brand-subtitle">Fresher Career Score Report</p>
+              <p class="pdf-brand-subtitle">Proof-Based Fresher Career Report</p>
             </div>
           </div>
           <div class="pdf-brand-meta">
