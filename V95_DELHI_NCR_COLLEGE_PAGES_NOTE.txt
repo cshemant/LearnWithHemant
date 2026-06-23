@@ -1,0 +1,18 @@
+V95 Delhi-NCR College Pages Added
+
+Added 10 one-page-per-college Delhi-NCR landing pages inside /college/:
+
+- Amity University Noida
+- Bennett University Greater Noida
+- Shiv Nadar University Greater Noida
+- JIIT Noida
+- Galgotias University Greater Noida
+- Sharda University Greater Noida
+- GL Bajaj Institute Greater Noida
+- JSS Academy of Technical Education Noida
+- NIET Greater Noida
+- GNIOT Greater Noida
+
+Each page uses mixed keyword variations, sample scorecard image, independent disclaimer, CTA to /tool/?college=..., and one consolidated page per college to reduce doorway-page risk.
+
+Updated /college/ index page, sitemap.xml, and _redirects.

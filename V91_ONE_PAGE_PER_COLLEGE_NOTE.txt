@@ -1,0 +1,17 @@
+V91 update: one page per college strategy
+
+What changed:
+- Consolidated college SEO pages to one strong page per college.
+- Removed separate CSE/IT and placement page directories for JECRC, Poornima, SKIT Jaipur and Arya Engineering College Jaipur.
+- Added CSE/IT, web development, placement and internship sections inside each main college page.
+- Updated /college/ hub page to show only one page per college plus the Jaipur hub page.
+- Updated sitemap.xml to include only the consolidated /college/ URLs.
+- Updated _redirects so old split URLs redirect to the main college page.
+- Header menu remains unchanged.
+
+Active college URLs:
+/college/jecrc-student-career-proof-score/
+/college/poornima-student-career-proof-score/
+/college/skit-student-career-proof-score/
+/college/arya-student-career-proof-score/
+/college/jaipur-engineering-student-resume-score/

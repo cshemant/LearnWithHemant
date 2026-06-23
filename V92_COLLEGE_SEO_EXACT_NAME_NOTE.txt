@@ -1,0 +1,12 @@
+V92 College SEO Exact Name Update
+
+Changes made:
+- Updated college page titles, meta descriptions, meta keywords and Open Graph fields to include popular exact-name keywords.
+- JECRC pages now use JECRC University Jaipur / JECRC University phrases naturally.
+- Poornima pages now use Poornima University Jaipur / Poornima University phrases naturally.
+- SKIT page includes SKIT Jaipur and Swami Keshvanand Institute of Technology keyword variant.
+- Arya page includes Arya Engineering College Jaipur and Arya College Jaipur keyword variants.
+- Changed visible sidebar heading from Target search intent to Popular searches covered.
+- Kept one consolidated page per college to reduce doorway-page risk.
+- Sitemap keeps only consolidated /college/ URLs; old split pages remain handled by _redirects.
+- Header menu unchanged.

@@ -1,0 +1,1 @@
+Updated college page independent disclaimers so each college-specific page names only the college/university of that page. The generic Jaipur page uses a general non-affiliation disclaimer without listing college names.

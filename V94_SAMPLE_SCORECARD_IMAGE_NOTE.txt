@@ -1,0 +1,11 @@
+V94 update - sample scorecard image added
+
+Changes:
+- Added SEO-named sample scorecard image inside /college/Images/
+- Image file:
+  /college/Images/fresher-career-proof-score-sample-scorecard.png
+
+- Replaced the generic "What the report highlights" box on college landing pages with this sample scorecard image.
+- Added SEO-friendly alt text for each college page.
+- Kept one active page per college and did not change header menu links.
+- Sitemap URLs were not changed because page URLs remain the same.

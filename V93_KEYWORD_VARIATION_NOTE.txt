@@ -1,0 +1,1 @@
+V93 update: Reduced exact-name keyword repetition on college pages. Mixed short college names, full college names and intent keywords naturally in titles, meta descriptions, headings, content and popular-search chips. Sitemap URLs remain unchanged and only one consolidated page per college is active.

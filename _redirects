@@ -1,0 +1,67 @@
+# College landing page redirects to organized /college/ folder
+/jecrc-student-career-proof-score/ /college/jecrc-student-career-proof-score/ 301
+/jecrc-student-career-proof-score /college/jecrc-student-career-proof-score/ 301
+/poornima-student-career-proof-score/ /college/poornima-student-career-proof-score/ 301
+/poornima-student-career-proof-score /college/poornima-student-career-proof-score/ 301
+/skit-student-career-proof-score/ /college/skit-student-career-proof-score/ 301
+/skit-student-career-proof-score /college/skit-student-career-proof-score/ 301
+/arya-student-career-proof-score/ /college/arya-student-career-proof-score/ 301
+/arya-student-career-proof-score /college/arya-student-career-proof-score/ 301
+/jaipur-engineering-student-resume-score/ /college/jaipur-engineering-student-resume-score/ 301
+/jaipur-engineering-student-resume-score /college/jaipur-engineering-student-resume-score/ 301
+
+# Deprecated split pages now redirect to the single consolidated college page
+/jecrc-cse-it-resume-score/ /college/jecrc-student-career-proof-score/ 301
+/jecrc-cse-it-resume-score /college/jecrc-student-career-proof-score/ 301
+/college/jecrc-cse-it-resume-score/ /college/jecrc-student-career-proof-score/ 301
+/college/jecrc-cse-it-resume-score /college/jecrc-student-career-proof-score/ 301
+/jecrc-placement-resume-checker/ /college/jecrc-student-career-proof-score/ 301
+/jecrc-placement-resume-checker /college/jecrc-student-career-proof-score/ 301
+/college/jecrc-placement-resume-checker/ /college/jecrc-student-career-proof-score/ 301
+/college/jecrc-placement-resume-checker /college/jecrc-student-career-proof-score/ 301
+/poornima-cse-it-resume-score/ /college/poornima-student-career-proof-score/ 301
+/poornima-cse-it-resume-score /college/poornima-student-career-proof-score/ 301
+/college/poornima-cse-it-resume-score/ /college/poornima-student-career-proof-score/ 301
+/college/poornima-cse-it-resume-score /college/poornima-student-career-proof-score/ 301
+/poornima-placement-resume-checker/ /college/poornima-student-career-proof-score/ 301
+/poornima-placement-resume-checker /college/poornima-student-career-proof-score/ 301
+/college/poornima-placement-resume-checker/ /college/poornima-student-career-proof-score/ 301
+/college/poornima-placement-resume-checker /college/poornima-student-career-proof-score/ 301
+/skit-cse-it-resume-score/ /college/skit-student-career-proof-score/ 301
+/skit-cse-it-resume-score /college/skit-student-career-proof-score/ 301
+/college/skit-cse-it-resume-score/ /college/skit-student-career-proof-score/ 301
+/college/skit-cse-it-resume-score /college/skit-student-career-proof-score/ 301
+/skit-placement-resume-checker/ /college/skit-student-career-proof-score/ 301
+/skit-placement-resume-checker /college/skit-student-career-proof-score/ 301
+/college/skit-placement-resume-checker/ /college/skit-student-career-proof-score/ 301
+/college/skit-placement-resume-checker /college/skit-student-career-proof-score/ 301
+/arya-cse-it-resume-score/ /college/arya-student-career-proof-score/ 301
+/arya-cse-it-resume-score /college/arya-student-career-proof-score/ 301
+/college/arya-cse-it-resume-score/ /college/arya-student-career-proof-score/ 301
+/college/arya-cse-it-resume-score /college/arya-student-career-proof-score/ 301
+/arya-placement-resume-checker/ /college/arya-student-career-proof-score/ 301
+/arya-placement-resume-checker /college/arya-student-career-proof-score/ 301
+/college/arya-placement-resume-checker/ /college/arya-student-career-proof-score/ 301
+/college/arya-placement-resume-checker /college/arya-student-career-proof-score/ 301
+
+# Delhi-NCR college landing page redirects to organized /college/ folder
+/amity-university-noida-student-career-proof-score/ /college/amity-university-noida-student-career-proof-score/ 301
+/amity-university-noida-student-career-proof-score /college/amity-university-noida-student-career-proof-score/ 301
+/bennett-university-student-career-proof-score/ /college/bennett-university-student-career-proof-score/ 301
+/bennett-university-student-career-proof-score /college/bennett-university-student-career-proof-score/ 301
+/shiv-nadar-university-student-career-proof-score/ /college/shiv-nadar-university-student-career-proof-score/ 301
+/shiv-nadar-university-student-career-proof-score /college/shiv-nadar-university-student-career-proof-score/ 301
+/jiit-noida-student-career-proof-score/ /college/jiit-noida-student-career-proof-score/ 301
+/jiit-noida-student-career-proof-score /college/jiit-noida-student-career-proof-score/ 301
+/galgotias-university-student-career-proof-score/ /college/galgotias-university-student-career-proof-score/ 301
+/galgotias-university-student-career-proof-score /college/galgotias-university-student-career-proof-score/ 301
+/sharda-university-student-career-proof-score/ /college/sharda-university-student-career-proof-score/ 301
+/sharda-university-student-career-proof-score /college/sharda-university-student-career-proof-score/ 301
+/gl-bajaj-student-career-proof-score/ /college/gl-bajaj-student-career-proof-score/ 301
+/gl-bajaj-student-career-proof-score /college/gl-bajaj-student-career-proof-score/ 301
+/jss-noida-student-career-proof-score/ /college/jss-noida-student-career-proof-score/ 301
+/jss-noida-student-career-proof-score /college/jss-noida-student-career-proof-score/ 301
+/niet-greater-noida-student-career-proof-score/ /college/niet-greater-noida-student-career-proof-score/ 301
+/niet-greater-noida-student-career-proof-score /college/niet-greater-noida-student-career-proof-score/ 301
+/gniot-greater-noida-student-career-proof-score/ /college/gniot-greater-noida-student-career-proof-score/ 301
+/gniot-greater-noida-student-career-proof-score /college/gniot-greater-noida-student-career-proof-score/ 301
