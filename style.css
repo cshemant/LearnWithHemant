@@ -3967,3 +3967,236 @@ body.home-v2-body .v2-demo-agenda-card h2{
   .jobs-table{min-width:0 !important;}
   .jobs-table td[data-label="Eligible For"]{font-size:13.5px !important;line-height:1.45 !important;}
 }
+
+/* =========================================================
+   V117 government job guide value/SEO content upgrade
+   ========================================================= */
+.blog-section-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#eef4ff;
+  border:1px solid #cfe0ff;
+  color:#2563eb;
+  font-size:12px;
+  font-weight:850;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.blog-live-jobs{
+  margin:24px 0 32px;
+  padding:22px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#f8fbff 0%,#ffffff 100%);
+  border:1px solid #dce6f3;
+  box-shadow:0 14px 34px rgba(16,24,40,.05);
+}
+.blog-live-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  margin-bottom:14px;
+}
+.blog-live-head h2{
+  margin:0 0 8px !important;
+}
+.blog-live-head p{
+  margin:0;
+  max-width:760px;
+}
+.blog-live-meta{
+  display:inline-flex;
+  margin:6px 0 14px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  font-size:13px;
+  font-weight:800;
+}
+.blog-live-table-wrap{
+  overflow-x:auto;
+  border:1px solid #dce6f3;
+  border-radius:18px;
+  background:#fff;
+}
+.blog-live-table{
+  width:100%;
+  min-width:820px;
+  border-collapse:separate;
+  border-spacing:0;
+}
+.blog-live-table th,
+.blog-live-table td{
+  padding:14px;
+  text-align:left;
+  border-bottom:1px solid #edf2f8;
+  vertical-align:top;
+}
+.blog-live-table th{
+  background:#f1f6ff;
+  color:#182230;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  font-weight:850;
+}
+.blog-live-table td{
+  color:#475467;
+  font-size:14px;
+  line-height:1.5;
+}
+.blog-live-table td strong{
+  display:block;
+  color:#0b1324;
+  font-size:14.5px;
+  line-height:1.35;
+  margin-bottom:5px;
+}
+.blog-live-table td span:not(.blog-status-pill){
+  display:block;
+  color:#667085;
+  font-size:12.5px;
+  font-weight:650;
+}
+.blog-live-table td a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:8px 12px;
+  border-radius:12px;
+  background:#2563eb;
+  color:#fff !important;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:850;
+}
+.blog-live-table tr:last-child td{border-bottom:0;}
+.blog-status-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:92px;
+  padding:7px 11px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:850;
+  border:1px solid #dce6f3;
+  background:#f8fafc;
+  color:#334155;
+  white-space:nowrap;
+}
+.blog-status-good{background:#ecfdf3;border-color:#a7f3c5;color:#027a48;}
+.blog-status-doubtful,.blog-status-caution{background:#fffbeb;border-color:#fde68a;color:#b45309;}
+.blog-status-watch{background:#eff6ff;border-color:#bfdbfe;color:#2563eb;}
+.blog-status-avoid{background:#fef2f2;border-color:#fecaca;color:#dc2626;}
+.blog-mini-note{
+  margin:13px 0 0 !important;
+  padding:12px 14px;
+  border-radius:16px;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412 !important;
+  font-size:14px !important;
+  font-weight:700;
+}
+.blog-qualification-grid,
+.blog-state-grid,
+.verification-steps{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin:18px 0 28px;
+}
+.blog-focus-card,
+.blog-state-grid div,
+.verification-steps div{
+  background:#f8fbff;
+  border:1px solid #dce6f3;
+  border-radius:20px;
+  padding:18px;
+}
+.blog-focus-card h3,
+.blog-state-grid h3{
+  margin:0 0 9px;
+  font-size:18px;
+  line-height:1.25;
+  color:#0b1324;
+}
+.blog-focus-card p,
+.blog-state-grid p{
+  margin:0;
+  color:#475467;
+  font-size:15px;
+  line-height:1.7;
+}
+.blog-focus-wide{
+  grid-column:1 / -1;
+  background:linear-gradient(135deg,#eff6ff 0%,#ffffff 100%);
+}
+.verification-steps strong{
+  display:block;
+  color:#0b1324;
+  font-size:15px;
+  margin-bottom:7px;
+}
+.verification-steps span{
+  display:block;
+  color:#475467;
+  font-size:14px;
+  line-height:1.62;
+}
+.blog-faq-list{
+  display:grid;
+  gap:10px;
+  margin:14px 0 4px;
+}
+.blog-faq-list details{
+  border:1px solid #dce6f3;
+  border-radius:18px;
+  padding:14px 16px;
+  background:#fff;
+}
+.blog-faq-list summary{
+  cursor:pointer;
+  color:#0b1324;
+  font-weight:850;
+  line-height:1.4;
+}
+.blog-faq-list details p{
+  margin:10px 0 0;
+  font-size:15px;
+  line-height:1.68;
+}
+.blog-side-warning{
+  background:#fff7ed;
+  border-color:#fed7aa;
+}
+.blog-side-warning h3{color:#9a3412;}
+@media(max-width:980px){
+  .blog-live-head{flex-direction:column;}
+  .blog-live-head .btn{width:100%;justify-content:center;}
+  .blog-qualification-grid,
+  .blog-state-grid,
+  .verification-steps{grid-template-columns:1fr;}
+}
+@media(max-width:700px){
+  .blog-live-jobs{padding:16px;border-radius:20px;}
+  .blog-live-table{min-width:760px;}
+  .blog-live-table th,
+  .blog-live-table td{padding:12px;}
+  .blog-live-meta{font-size:12px;line-height:1.35;}
+  .blog-focus-card,
+  .blog-state-grid div,
+  .verification-steps div{padding:16px;border-radius:18px;}
+  .blog-focus-card h3,
+  .blog-state-grid h3{font-size:16.5px;}
+  .blog-focus-card p,
+  .blog-state-grid p{font-size:14.5px;}
+}
