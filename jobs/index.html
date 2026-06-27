@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="msvalidate.01" content="4F051335E3D7ED544E20B8292B4E66BD" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSE Govt Job Tracker | B.Tech, M.Tech, MCA, BCA Computer Jobs | Learn with Hemant</title>
+  <meta name="description" content="Clean computer science government job tracker for B.Tech CSE, M.Tech CSE, MCA, BCA and IT candidates. See eligibility, role type, status, last date and official apply links." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/png" href="/brand-logo.png" />
+  <link rel="apple-touch-icon" href="/brand-logo.png" />
+</head>
+<body class="home-v2-body jobs-dashboard-body">
+  <header class="site-header home-v2-header">
+    <div class="container nav home-v2-nav">
+      <a class="brand home-v2-brand" href="/home/">
+        <img class="brand-logo" src="/brand-logo.png" alt="Learn with Hemant logo" />
+        <div>
+          <span>Learn with Hemant</span>
+          <small>Build • Deploy • Grow</small>
+        </div>
+      </a>
+
+      <nav class="nav-links home-v2-links" aria-label="Main Navigation">
+        <a href="/about/">Mentor</a>
+<a href="/courses/web-development/">Courses</a>
+        <a href="/projects/">Projects</a>
+        <a href="/guest-lecture/">Guest Lecture</a>
+        <a href="/tool/">Tool</a>
+        <a href="/jobs/" class="active-nav-link">Govt Jobs</a>
+      </nav>
+
+      <a class="nav-cta home-v2-cta" href="/apply/">Apply Now <span>→</span></a>
+
+      <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-controls="mobileSiteMenu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu-backdrop" data-mobile-menu-close></div>
+  <aside class="mobile-site-menu" id="mobileSiteMenu" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <a class="mobile-menu-brand" href="/home/">
+        <img src="/brand-logo.png" alt="Learn with Hemant logo" />
+      </a>
+      <button class="mobile-menu-close" type="button" aria-label="Close menu" data-mobile-menu-close>×</button>
+    </div>
+    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+      <a href="/home/">Home</a>
+      <a href="/about/">Mentor</a>
+      <a href="/roadmap/">Roadmap</a>
+      <a href="/courses/web-development/">Courses</a>
+      <a href="/projects/">Projects</a>
+      <a href="/guest-lecture/">Guest Lecture</a>
+      <a href="/tool/">Tool</a>
+      <a href="/jobs/">Govt Jobs</a>
+      <a href="/apply/">Apply Now</a>
+      <a href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20want%20CSE%20govt%20job%20updates." target="_blank" rel="noopener">WhatsApp Updates</a>
+      <a href="https://www.linkedin.com/company/learnwithhemant/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </aside>
+
+  <main class="jobs-dashboard-main">
+    <section class="jobs-summary-section">
+      <div class="container jobs-summary-grid" id="jobsSummaryGrid">
+        <article class="jobs-summary-card">
+          <strong data-summary="total">0</strong>
+          <span>Total Listed</span>
+        </article>
+        <article class="jobs-summary-card good">
+          <strong data-summary="good">0</strong>
+          <span>Good Match</span>
+        </article>
+        <article class="jobs-summary-card soon">
+          <strong data-summary="soon">0</strong>
+          <span>Closing Soon</span>
+        </article>
+        <article class="jobs-summary-card teach">
+          <strong data-summary="teaching">0</strong>
+          <span>Teaching Jobs</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="jobs-table-section" id="jobsTableSection">
+      <div class="container">
+        <div class="jobs-panel">
+          <div class="jobs-panel-head">
+            <div>
+              <span class="jobs-mini-eyebrow">Updated: 27 Jun 2026</span>
+              <h2>CSE / IT Government Vacancy Dashboard</h2>
+            </div>
+            <a class="jobs-suggest-btn" href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20found%20a%20CSE%20government%20vacancy%20to%20add%20on%20the%20tracker." target="_blank" rel="noopener">Suggest Vacancy</a>
+          </div>
+
+          <div class="jobs-controls" aria-label="Job filters">
+            <div class="jobs-search-wrap">
+              <input id="jobsSearch" type="search" placeholder="Search job, state, qualification, type..." aria-label="Search government jobs" />
+            </div>
+            <div class="jobs-filter-chips" role="group" aria-label="Filter by job type or status">
+              <button class="active" type="button" data-filter="all">All</button>
+              <button type="button" data-filter="Good Match">Good Match</button>
+              <button type="button" data-filter="Teaching">Teaching</button>
+              <button type="button" data-filter="Computer/IT">Computer/IT</button>
+              <button type="button" data-filter="Office">Office</button>
+              <button type="button" data-filter="Closing Soon">Closing Soon</button>
+              <button type="button" data-filter="Avoid">Avoid</button>
+            </div>
+          </div>
+
+          <div class="jobs-table-wrap">
+            <table class="jobs-table" aria-describedby="jobsTableNote">
+              <thead>
+                <tr>
+                  <th>Job</th>
+                  <th>Eligible For</th>
+                  <th>Type</th>
+                  <th>Status</th>
+                  <th>Last Date</th>
+                  <th>Official Link</th>
+                </tr>
+              </thead>
+              <tbody id="jobsTableBody">
+                <tr data-type="Teaching" data-status="Good Match" data-last="2026-07-15">
+                  <td data-label="Job"><strong>SET 2026 – Computer Science and Applications</strong><span>University of Kota / Rajasthan SET</span></td>
+                  <td data-label="Eligible For">M.Tech / PG Computer Science or related subject with required marks. Best route for Assistant Professor eligibility.</td>
+                  <td data-label="Type">Teaching</td>
+                  <td data-label="Status"><span class="fit-badge good">Good Match</span></td>
+                  <td data-label="Last Date"><strong>15-Jul-2026</strong></td>
+                  <td data-label="Official Link"><a class="official-link" href="https://recruitment.rajasthan.gov.in/" target="_blank" rel="noopener">Apply</a></td>
+                </tr>
+                <tr data-type="Office" data-status="Good Match" data-last="2026-07-23">
+                  <td data-label="Job"><strong>CET Senior Secondary Level 2026</strong><span>Rajasthan common eligibility gateway</span></td>
+                  <td data-label="Eligible For">12th pass and above candidates. Useful gateway for several office / junior assistant type recruitments.</td>
+                  <td data-label="Type">Office</td>
+                  <td data-label="Status"><span class="fit-badge good">Good Match</span></td>
+                  <td data-label="Last Date"><strong>23-Jul-2026</strong></td>
+                  <td data-label="Official Link"><a class="official-link" href="https://recruitment.rajasthan.gov.in/" target="_blank" rel="noopener">Apply</a></td>
+                </tr>
+                <tr data-type="Office" data-status="Doubtful" data-last="2026-07-03">
+                  <td data-label="Job"><strong>Raj. State and Sub. Services Comb. Comp Exam 2026</strong><span>RPSC / RAS route</span></td>
+                  <td data-label="Eligible For">Graduates. Relevant as an admin/office route, but competition is high and not CSE-specific.</td>
+                  <td data-label="Type">Office</td>
+                  <td data-label="Status"><span class="fit-badge doubtful">High Competition</span></td>
+                  <td data-label="Last Date"><strong>03-Jul-2026</strong></td>
+                  <td data-label="Official Link"><a class="official-link" href="https://recruitment.rajasthan.gov.in/" target="_blank" rel="noopener">Apply</a></td>
+                </tr>
+                <tr data-type="Technical" data-status="Doubtful" data-last="2026-07-10">
+                  <td data-label="Job"><strong>Senior Scientific Officer 2026</strong><span>RPSC technical/scientific role</span></td>
+                  <td data-label="Eligible For">Only if the official notification accepts your subject/specialization and experience. Manual check required.</td>
+                  <td data-label="Type">Technical</td>
+                  <td data-label="Status"><span class="fit-badge caution">Doubtful</span></td>
+                  <td data-label="Last Date"><strong>10-Jul-2026</strong></td>
+                  <td data-label="Official Link"><a class="official-link" href="https://recruitment.rajasthan.gov.in/" target="_blank" rel="noopener">Check</a></td>
+                </tr>
+                <tr data-type="Non-CSE" data-status="Avoid" data-last="2026-07-07">
+                  <td data-label="Job"><strong>Assistant Prosecution Officer Exam 2026</strong><span>RPSC law/prosecution role</span></td>
+                  <td data-label="Eligible For">LLB / law background candidates. CSE degree alone is not suitable.</td>
+                  <td data-label="Type">Non-CSE</td>
+                  <td data-label="Status"><span class="fit-badge avoid">Avoid</span></td>
+                  <td data-label="Last Date"><strong>07-Jul-2026</strong></td>
+                  <td data-label="Official Link"><a class="official-link muted-link" href="https://recruitment.rajasthan.gov.in/" target="_blank" rel="noopener">Verify</a></td>
+                </tr>
+                <tr data-type="Central" data-status="Watch" data-last="">
+                  <td data-label="Job"><strong>SSC CGL / CHSL / Selection Post</strong><span>Central government office route</span></td>
+                  <td data-label="Eligible For">Graduates / 12th pass as per exam. Useful backup for office jobs; age and current notification must be checked.</td>
+                  <td data-label="Type">Office</td>
+                  <td data-label="Status"><span class="fit-badge watch">Watch</span></td>
+                  <td data-label="Last Date"><strong>Check official notice</strong></td>
+                  <td data-label="Official Link"><a class="official-link" href="https://ssc.gov.in/" target="_blank" rel="noopener">SSC</a></td>
+                </tr>
+                <tr data-type="Computer/IT" data-status="Watch" data-last="">
+                  <td data-label="Job"><strong>NIELIT / NIC / IT Assistant / Programmer Roles</strong><span>Central/state IT recruitment watchlist</span></td>
+                  <td data-label="Eligible For">B.Tech CSE / MCA / M.Tech CSE candidates depending on notification. Good technical job source.</td>
+                  <td data-label="Type">Computer/IT</td>
+                  <td data-label="Status"><span class="fit-badge watch">Watch</span></td>
+                  <td data-label="Last Date"><strong>Check official notice</strong></td>
+                  <td data-label="Official Link"><a class="official-link" href="https://recruit-delhi.nielit.gov.in/" target="_blank" rel="noopener">NIELIT</a></td>
+                </tr>
+                <tr data-type="Teaching" data-status="Watch" data-last="">
+                  <td data-label="Job"><strong>Assistant Professor / Lecturer – CSE</strong><span>State universities, engineering colleges, polytechnics</span></td>
+                  <td data-label="Eligible For">M.Tech CSE / NET/SET/PhD requirements as per institution and notification.</td>
+                  <td data-label="Type">Teaching</td>
+                  <td data-label="Status"><span class="fit-badge watch">Watch</span></td>
+                  <td data-label="Last Date"><strong>Check university notice</strong></td>
+                  <td data-label="Official Link"><a class="official-link" href="https://www.ncs.gov.in/" target="_blank" rel="noopener">NCS</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="jobs-table-note" id="jobsTableNote">Eligibility summaries are for quick filtering only. Always verify the official notification PDF, age limit, subject code, category rules, documents and fee before final submission.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="v2-footer">
+    <div class="container v2-footer-grid">
+      <div>
+        <a class="brand home-v2-brand footer-brand" href="/home/">
+          <img class="brand-logo" src="/brand-logo.png" alt="Learn with Hemant logo" />
+          <div>
+            <span>Learn with Hemant</span>
+            <small>Build • Deploy • Grow</small>
+          </div>
+        </a>
+        <p>Practical web development, deployment, AI tools and career guidance for students and job seekers.</p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <div class="v2-footer-links">
+          <a href="/about/">Mentor</a>
+          <a href="/roadmap/">Roadmap</a>
+          <a href="/courses/web-development/">Courses</a>
+          <a href="/projects/">Projects</a>
+          <a href="/tool/">Tool</a>
+          <a href="/jobs/">Govt Jobs</a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Career Tools</h3>
+        <div class="v2-footer-links">
+          <a href="/jobs/">CSE Govt Job Tracker</a>
+          <a href="/blog/government-job-vacancies-for-cse-it/">Govt Job Vacancy Guide</a>
+          <a href="/college/">Career Proof Score</a>
+          <a href="/apply/">Free Demo</a>
+          <a href="/guest-lecture/">Guest Lecture</a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Connect</h3>
+        <div class="v2-footer-links">
+          <a href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20want%20career%20guidance." target="_blank" rel="noopener">WhatsApp Support</a>
+          <a href="mailto:learnwithhemantsingh@gmail.com">learnwithhemantsingh@gmail.com</a>
+          <span>India (IST)</span>
+          <span>Mon - Sat: 9:00 AM - 8:00 PM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container v2-footer-bottom">
+      <span>© 2026 Learn with Hemant. All rights reserved.</span>
+      <div class="v2-footer-bottom-links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+        <a href="/refund.html">Refund Policy</a>
+        <a href="/blog/government-job-vacancies-for-cse-it/">Govt Job Guide</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const menu = document.getElementById('mobileSiteMenu');
+      const backdrop = document.querySelector('.mobile-menu-backdrop');
+      const closeItems = document.querySelectorAll('[data-mobile-menu-close]');
+      const links = document.querySelectorAll('.mobile-menu-links a');
+
+      if (!toggle || !menu || !backdrop) return;
+
+      function openMenu() {
+        document.body.classList.add('mobile-menu-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeMenu() {
+        document.body.classList.remove('mobile-menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+      }
+
+      toggle.addEventListener('click', openMenu);
+      closeItems.forEach(item => item.addEventListener('click', closeMenu));
+      links.forEach(link => link.addEventListener('click', closeMenu));
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeMenu();
+      });
+    })();
+
+    (function () {
+      const rows = Array.from(document.querySelectorAll('#jobsTableBody tr'));
+      const search = document.getElementById('jobsSearch');
+      const chips = Array.from(document.querySelectorAll('.jobs-filter-chips button'));
+      let activeFilter = 'all';
+
+      function daysLeft(dateString) {
+        if (!dateString) return null;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const date = new Date(dateString + 'T00:00:00');
+        if (Number.isNaN(date.getTime())) return null;
+        return Math.ceil((date - today) / (1000 * 60 * 60 * 24));
+      }
+
+      function rowMatchesFilter(row) {
+        const filter = activeFilter.toLowerCase();
+        if (filter === 'all') return true;
+        const text = row.textContent.toLowerCase();
+        const type = (row.dataset.type || '').toLowerCase();
+        const status = (row.dataset.status || '').toLowerCase();
+        const left = daysLeft(row.dataset.last || '');
+        if (filter === 'closing soon') return left !== null && left >= 0 && left <= 7;
+        return text.includes(filter) || type.includes(filter) || status.includes(filter);
+      }
+
+      function applyFilters() {
+        const q = (search.value || '').trim().toLowerCase();
+        rows.forEach(row => {
+          const textMatch = !q || row.textContent.toLowerCase().includes(q);
+          const filterMatch = rowMatchesFilter(row);
+          row.hidden = !(textMatch && filterMatch);
+        });
+      }
+
+      function updateSummary() {
+        const total = rows.length;
+        const good = rows.filter(r => (r.dataset.status || '').toLowerCase().includes('good')).length;
+        const soon = rows.filter(r => {
+          const left = daysLeft(r.dataset.last || '');
+          return left !== null && left >= 0 && left <= 7;
+        }).length;
+        const teaching = rows.filter(r => (r.dataset.type || '').toLowerCase().includes('teaching')).length;
+        const map = { total, good, soon, teaching };
+        Object.keys(map).forEach(key => {
+          const el = document.querySelector('[data-summary="' + key + '"]');
+          if (el) el.textContent = map[key];
+        });
+      }
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          activeFilter = chip.dataset.filter || 'all';
+          applyFilters();
+        });
+      });
+
+      if (search) search.addEventListener('input', applyFilters);
+      updateSummary();
+      applyFilters();
+    })();
+  </script>
+</body>
+</html>

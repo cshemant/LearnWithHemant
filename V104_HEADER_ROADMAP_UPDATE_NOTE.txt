@@ -1,0 +1,1 @@
+Removed Roadmap from the desktop main header navigation and added an Explore Roadmap button on the homepage roadmap section linking to /roadmap/.
