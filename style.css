@@ -3920,3 +3920,50 @@ body.home-v2-body .v2-demo-agenda-card h2{
     font-weight:550 !important;
   }
 }
+
+
+/* =========================================================
+   V115 CSE Govt Jobs USP upgrade: reason column, deadline countdown,
+   profile filters and separate notification/apply links
+   ========================================================= */
+.jobs-table{min-width:1180px !important;}
+.jobs-table th:nth-child(1){width:20%;}
+.jobs-table th:nth-child(2){width:20%;}
+.jobs-table th:nth-child(3){width:24%;}
+.jobs-table th:nth-child(4){width:9%;}
+.jobs-table th:nth-child(5){width:10%;}
+.jobs-table th:nth-child(6){width:9%;}
+.jobs-table th:nth-child(7){width:8%;}
+.fit-reason-text{display:block !important;color:#344054 !important;font-size:14px !important;font-weight:650 !important;line-height:1.5 !important;}
+.verified-note,.deadline-note{display:block !important;margin-top:6px !important;color:#667085 !important;font-size:11.5px !important;font-weight:850 !important;line-height:1.25 !important;text-transform:uppercase !important;letter-spacing:.025em !important;}
+.deadline-note{color:#dc2626 !important;}
+.official-links-stack{display:flex !important;flex-direction:column !important;align-items:flex-start !important;gap:7px !important;min-width:104px !important;}
+.official-link.notice-link{background:#ffffff !important;color:#2563eb !important;border:1px solid #cfe0ff !important;box-shadow:none !important;}
+.official-link.notice-link:hover{background:#eef5ff !important;color:#174ea6 !important;}
+.official-links-stack .official-link{min-height:32px !important;padding:7px 10px !important;border-radius:10px !important;font-size:12px !important;line-height:1 !important;box-shadow:0 8px 18px rgba(37,99,235,.12) !important;}
+.jobs-filter-chips button{white-space:nowrap !important;}
+@media (max-width:700px){
+  .jobs-table{min-width:0 !important;}
+  .fit-reason-text{font-size:13.5px !important;line-height:1.48 !important;}
+  .verified-note,.deadline-note{font-size:10.5px !important;line-height:1.25 !important;}
+  .jobs-table td[data-label="Official Links"]{align-items:start !important;}
+  .official-links-stack{flex-direction:row !important;flex-wrap:wrap !important;gap:7px !important;min-width:0 !important;}
+  .official-links-stack .official-link{min-height:34px !important;padding:8px 10px !important;font-size:12px !important;}
+}
+
+
+/* =========================================================
+   V116 CSE Govt Jobs cleanup: remove reason column and keep table compact
+   ========================================================= */
+.jobs-table{min-width:980px !important;}
+.jobs-table th:nth-child(1){width:25% !important;}
+.jobs-table th:nth-child(2){width:28% !important;}
+.jobs-table th:nth-child(3){width:11% !important;}
+.jobs-table th:nth-child(4){width:12% !important;}
+.jobs-table th:nth-child(5){width:11% !important;}
+.jobs-table th:nth-child(6){width:13% !important;}
+.jobs-table td[data-label="Eligible For"]{color:#344054 !important;font-weight:750 !important;line-height:1.45 !important;}
+@media (max-width:700px){
+  .jobs-table{min-width:0 !important;}
+  .jobs-table td[data-label="Eligible For"]{font-size:13.5px !important;line-height:1.45 !important;}
+}

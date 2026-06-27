@@ -126,6 +126,58 @@ def link_label(status: str) -> str:
     return "Check"
 
 
+def infer_fit_reason(status: str, role: str, eligibility: str, reason: str) -> str:
+    blob = f"{role} {eligibility} {reason}".lower()
+    if status == "Good Match":
+        return "Good Match: Your CSE/IT/graduate profile appears relevant. Still verify the official notification PDF before final submission."
+
+
+def shorten_eligibility(status: str, role: str, eligibility: str, reason: str) -> str:
+    base = clean(eligibility)
+    combined = f"{base} {reason}".lower()
+    role_l = clean(role).lower()
+    if status == "Avoid":
+        return "Avoid: qualification/subject not suitable for CSE."
+    if "law" in combined or "llb" in combined or "prosecution" in combined:
+        return "Avoid for CSE: LLB/law degree required."
+    if "teaching" in role_l:
+        return "M.Tech/NET/SET/PhD as per official notice."
+    if "computer" in role_l or "it" in role_l or "programmer" in combined:
+        return "B.Tech/M.Tech CSE or MCA; verify exact post."
+    if "office" in role_l or "assistant" in combined or "clerk" in combined:
+        return "Graduate/12th route; check age and post rules."
+    if base:
+        return (base[:82].rstrip(" ,.;") + "...") if len(base) > 85 else base
+    return "Check official notification before applying."
+    if status == "Avoid":
+        return "Avoid: This appears outside the usual CSE/IT background or may be closed. Verify only if you have the required subject, degree and documents."
+    if "experience" in blob:
+        return "Doubtful: CSE/IT qualification may be relevant, but experience or specialization must be verified in the official notification."
+    if "age" in blob:
+        return "Doubtful: Qualification may be relevant, but age/category relaxation must be verified before applying."
+    if "teach" in blob or "professor" in blob or "lecturer" in blob:
+        return "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules."
+    if "programmer" in blob or "computer" in blob or "it" in blob or "software" in blob:
+        return "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements."
+    return "Watch: Potential government vacancy source. Verify qualification, age, subject and deadline from the official notification."
+
+
+def infer_profile_tags(text: str) -> str:
+    blob = text.lower()
+    tags: List[str] = []
+    if any(x in blob for x in ["b.tech", "btech", "b.e.", "graduate", "graduation"]):
+        tags.append("B.Tech CSE")
+    if any(x in blob for x in ["m.tech", "mtech", "pg ", "post graduate", "assistant professor", "lecturer"]):
+        tags.append("M.Tech CSE")
+    if any(x in blob for x in ["mca", "bca", "computer application"]):
+        tags.append("MCA/BCA")
+    if "experience" in blob:
+        tags.append("Experience Needed")
+    if "age" in blob:
+        tags.append("Check Age")
+    return ", ".join(dict.fromkeys(tags))
+
+
 def row_to_job(row: Dict[str, Any]) -> Dict[str, Any]:
     name = clean(row.get("Name"))
     eligibility = clean(row.get("Eligibility")).replace("Auto-extracted:", "").strip()
@@ -145,10 +197,16 @@ def row_to_job(row: Dict[str, Any]) -> Dict[str, Any]:
     subtitle_parts = [part for part in [agency, state] if part]
     subtitle = " / ".join(subtitle_parts) if subtitle_parts else "Official recruitment source"
 
+    fit_reason = infer_fit_reason(status_info["status"], role, eligibility, reason)
+    verified_on = dt.datetime.now(dt.timezone(dt.timedelta(hours=5, minutes=30))).strftime("%d %b %Y")
     return {
         "job": safe_job_title(name),
         "subtitle": subtitle[:90],
-        "eligible_for": eligibility[:260] or "Check official notification for education, subject code, age limit and documents.",
+        "eligible_for": shorten_eligibility(status_info["status"], role, eligibility, reason),
+        "fit_reason": fit_reason,
+        "why": fit_reason,
+        "verified_on": verified_on,
+        "profile_tags": infer_profile_tags(f"{name} {eligibility} {reason} {role}"),
         "type": role,
         "status": status_info["status"],
         "status_label": status_info["label"],
@@ -157,6 +215,10 @@ def row_to_job(row: Dict[str, Any]) -> Dict[str, Any]:
         "last_date_display": display_date(raw_apply_date, parsed_apply_date),
         "official_link": link,
         "official_label": link_label(status_info["status"]),
+        "notification_link": link,
+        "notification_label": "Notification",
+        "apply_link": link,
+        "apply_label": link_label(status_info["status"]),
         "state": state,
         "agency": agency,
         "match_score": score,
