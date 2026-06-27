@@ -1,0 +1,23 @@
+Nightly Govt Jobs Dashboard Update
+
+What was added:
+1. scripts/govt_job_finder.py
+   - Your government job finder script has been included in the project.
+
+2. scripts/update_jobs_dashboard_data.py
+   - Runs the finder, creates jobs/government_jobs_tracker.xlsx, and converts the result into jobs/jobs-data.json.
+   - If the scan fails or finds no jobs, it keeps the previous JSON file so the dashboard does not go blank.
+
+3. .github/workflows/nightly-govt-jobs-update.yml
+   - Runs every night at 18:35 UTC, which is around 12:05 AM IST.
+   - Also supports manual run from GitHub Actions using workflow_dispatch.
+   - Commits the updated jobs/jobs-data.json back to the repository.
+
+4. jobs/index.html
+   - The current layout is unchanged.
+   - The table now loads jobs/jobs-data.json dynamically and falls back to static rows if the JSON file is unavailable.
+
+Important:
+- This automation works when your site code is in GitHub and GitHub Actions is enabled.
+- If Cloudflare Pages is connected to the GitHub repository, each automatic commit will trigger a fresh deployment.
+- If you upload ZIP manually to Cloudflare Pages, scheduled updates cannot run automatically. Use GitHub + Cloudflare Pages integration.

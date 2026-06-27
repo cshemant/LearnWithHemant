@@ -1,0 +1,38 @@
+name: Nightly Govt Jobs Dashboard Update
+
+on:
+  schedule:
+    # Runs around midnight IST every night. GitHub cron uses UTC.
+    # 18:35 UTC = 12:05 AM IST.
+    - cron: "35 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-govt-jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-govt-jobs.txt
+
+      - name: Run nightly govt job scanner
+        run: |
+          python scripts/update_jobs_dashboard_data.py --out-json jobs/jobs-data.json --excel-out jobs/government_jobs_tracker.xlsx --max-pdfs 4 --limit 40
+
+      - name: Commit updated job data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto update govt jobs dashboard data"
+          file_pattern: "jobs/jobs-data.json jobs/government_jobs_tracker.xlsx profile.json sources_gov_jobs.csv"

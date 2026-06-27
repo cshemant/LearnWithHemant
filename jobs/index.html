@@ -93,7 +93,7 @@
         <div class="jobs-panel">
           <div class="jobs-panel-head">
             <div>
-              <span class="jobs-mini-eyebrow">Updated: 27 Jun 2026</span>
+              <span class="jobs-mini-eyebrow" id="jobsUpdatedLabel">Updated: 27 Jun 2026</span>
               <h2>CSE / IT Government Vacancy Dashboard</h2>
             </div>
             <a class="jobs-suggest-btn" href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20found%20a%20CSE%20government%20vacancy%20to%20add%20on%20the%20tracker." target="_blank" rel="noopener">Suggest Vacancy</a>
@@ -293,9 +293,11 @@
     })();
 
     (function () {
-      const rows = Array.from(document.querySelectorAll('#jobsTableBody tr'));
+      const tableBody = document.getElementById('jobsTableBody');
       const search = document.getElementById('jobsSearch');
       const chips = Array.from(document.querySelectorAll('.jobs-filter-chips button'));
+      const updatedLabel = document.getElementById('jobsUpdatedLabel');
+      let rows = Array.from(document.querySelectorAll('#jobsTableBody tr'));
       let activeFilter = 'all';
 
       function daysLeft(dateString) {
@@ -319,7 +321,7 @@
       }
 
       function applyFilters() {
-        const q = (search.value || '').trim().toLowerCase();
+        const q = (search && search.value ? search.value : '').trim().toLowerCase();
         rows.forEach(row => {
           const textMatch = !q || row.textContent.toLowerCase().includes(q);
           const filterMatch = rowMatchesFilter(row);
@@ -342,6 +344,81 @@
         });
       }
 
+      function statusClass(job) {
+        const allowed = ['good', 'doubtful', 'caution', 'avoid', 'watch'];
+        return allowed.includes(job.status_class) ? job.status_class : 'watch';
+      }
+
+      function buildJobRow(job) {
+        const row = document.createElement('tr');
+        row.dataset.type = job.type || '';
+        row.dataset.status = job.status || '';
+        row.dataset.last = job.last_date_iso || '';
+
+        const jobCell = document.createElement('td');
+        jobCell.dataset.label = 'Job';
+        const title = document.createElement('strong');
+        title.textContent = job.job || 'Government Job Notice';
+        const subtitle = document.createElement('span');
+        subtitle.textContent = job.subtitle || job.agency || 'Official recruitment source';
+        jobCell.append(title, subtitle);
+
+        const eligibleCell = document.createElement('td');
+        eligibleCell.dataset.label = 'Eligible For';
+        eligibleCell.textContent = job.eligible_for || 'Check official notification before applying.';
+
+        const typeCell = document.createElement('td');
+        typeCell.dataset.label = 'Type';
+        typeCell.textContent = job.type || 'Computer/IT';
+
+        const statusCell = document.createElement('td');
+        statusCell.dataset.label = 'Status';
+        const badge = document.createElement('span');
+        badge.className = 'fit-badge ' + statusClass(job);
+        badge.textContent = job.status_label || job.status || 'Watch';
+        statusCell.appendChild(badge);
+
+        const dateCell = document.createElement('td');
+        dateCell.dataset.label = 'Last Date';
+        const dateStrong = document.createElement('strong');
+        dateStrong.textContent = job.last_date_display || 'Check official notice';
+        dateCell.appendChild(dateStrong);
+
+        const linkCell = document.createElement('td');
+        linkCell.dataset.label = 'Official Link';
+        const link = document.createElement('a');
+        link.className = job.status === 'Avoid' ? 'official-link muted-link' : 'official-link';
+        link.href = job.official_link || '#';
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = job.official_label || 'Check';
+        linkCell.appendChild(link);
+
+        row.append(jobCell, eligibleCell, typeCell, statusCell, dateCell, linkCell);
+        return row;
+      }
+
+      function renderJobs(jobs) {
+        if (!tableBody || !Array.isArray(jobs) || !jobs.length) return;
+        tableBody.replaceChildren(...jobs.map(buildJobRow));
+        rows = Array.from(document.querySelectorAll('#jobsTableBody tr'));
+        updateSummary();
+        applyFilters();
+      }
+
+      async function loadJobsData() {
+        try {
+          const response = await fetch('/jobs/jobs-data.json?ts=' + Date.now(), { cache: 'no-store' });
+          if (!response.ok) throw new Error('Jobs data not available');
+          const data = await response.json();
+          if (data && data.updated_label && updatedLabel) updatedLabel.textContent = data.updated_label;
+          if (data && Array.isArray(data.jobs)) renderJobs(data.jobs);
+        } catch (error) {
+          // Keep the static fallback rows if JSON is unavailable.
+          console.warn('Using fallback job rows:', error);
+        }
+      }
+
       chips.forEach(chip => {
         chip.addEventListener('click', () => {
           chips.forEach(c => c.classList.remove('active'));
@@ -354,6 +431,7 @@
       if (search) search.addEventListener('input', applyFilters);
       updateSummary();
       applyFilters();
+      loadJobsData();
     })();
   </script>
 </body>
