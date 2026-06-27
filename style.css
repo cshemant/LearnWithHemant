@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#f7f9fc;--text:#101828;--muted:#5f6c80;--primary:#0f62fe;--primary-dark:#0847b9;--card:#fff;--border:#e5eaf2;--soft:#edf4ff;--shadow:0 18px 45px rgba(16,24,40,.08)}
 body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
@@ -3217,4 +3218,462 @@ body.inner-v2-body .cta-box .btn.primary{
   .blog-table{display:block;overflow-x:auto;white-space:normal;}
   .blog-cta-card{flex-direction:column;align-items:flex-start;}
   .blog-cta-card .btn{width:100%;justify-content:center;}
+}
+
+
+/* =========================================================
+   V111 global typography + clean UI polish
+   Inspired by Naukri-like readability, but adapted for a mentor/course brand
+   ========================================================= */
+:root{
+  --bg:#f8fbff;
+  --text:#111827;
+  --muted:#667085;
+  --primary:#2563eb;
+  --primary-dark:#1d4ed8;
+  --card:#ffffff;
+  --border:#e3ebf6;
+  --soft:#f3f7ff;
+  --shadow:0 14px 34px rgba(15,23,42,.06);
+}
+html{scroll-behavior:smooth;}
+body,
+body.home-v2-body,
+body.inner-v2-body,
+body.jobs-dashboard-body{
+  font-family:'Inter','Segoe UI',Roboto,Arial,sans-serif !important;
+  font-size:16px;
+  line-height:1.62;
+  font-weight:400;
+  color:var(--text);
+  background:#f8fbff;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+p,
+li,
+.muted,
+.card p,
+.course-card p,
+.v2-hero-text,
+.hero-subtitle,
+.jobs-hero-subtitle,
+.college-section-card p,
+.college-section-card li,
+.college-side-card p,
+.college-side-card li{
+  color:var(--muted) !important;
+  font-weight:500 !important;
+  line-height:1.68 !important;
+}
+h1,h2,h3,h4,
+.v2-hero-copy h1,
+.v2-profile-content h2,
+.section-heading h2,
+.jobs-panel-head h2,
+.course-card h3,
+.card h3,
+.college-hero h1,
+.college-section-card h2,
+.college-side-card h2,
+.college-side-card h3{
+  color:#111827;
+  font-weight:800 !important;
+  letter-spacing:-.035em !important;
+}
+.container{width:min(1160px,calc(100% - 40px));}
+
+/* Header: cleaner, lighter, less bulky */
+.site-header,
+.home-v2-header{
+  background:rgba(255,255,255,.96) !important;
+  border-bottom:1px solid #e7eef8 !important;
+  box-shadow:0 8px 22px rgba(15,23,42,.035) !important;
+}
+.nav,
+.home-v2-nav{
+  min-height:72px !important;
+  gap:20px !important;
+}
+.brand-logo{width:42px !important;height:42px !important;border-radius:50% !important;}
+.home-v2-brand{gap:12px !important;}
+.home-v2-brand span,
+.brand span{font-size:18px !important;line-height:1.05 !important;font-weight:800 !important;letter-spacing:-.025em !important;}
+.home-v2-brand small{font-size:12px !important;font-weight:700 !important;color:#667085 !important;}
+.nav-links,
+.home-v2-links{
+  gap:24px !important;
+  font-size:14.5px !important;
+  font-weight:700 !important;
+  color:#475467 !important;
+}
+.home-v2-cta,
+.nav-cta{
+  min-height:44px !important;
+  padding:11px 20px !important;
+  border-radius:16px !important;
+  font-size:15px !important;
+  font-weight:800 !important;
+  box-shadow:0 12px 26px rgba(37,99,235,.18) !important;
+}
+.home-v2-cta span{font-size:15px !important;}
+
+/* Hero sections: premium but calmer */
+.hero,
+.v2-hero,
+.inner-v2-hero,
+.apply-hero,
+.jobs-hero-section{
+  background:radial-gradient(circle at 12% 8%,rgba(37,99,235,.13),transparent 28%),linear-gradient(180deg,#f8fbff 0%,#ffffff 82%) !important;
+}
+.v2-hero{padding:44px 0 28px !important;}
+.v2-hero-grid{gap:34px !important;align-items:center !important;}
+.v2-hero-copy h1{
+  font-size:clamp(40px,5.4vw,64px) !important;
+  line-height:1.05 !important;
+  margin-bottom:18px !important;
+}
+.v2-hero-text,
+.hero-subtitle{
+  font-size:18px !important;
+  max-width:720px !important;
+  margin-bottom:24px !important;
+}
+.v2-badge,
+.eyebrow,
+.jobs-mini-eyebrow,
+.college-badge,
+.form-badge{
+  font-size:12px !important;
+  font-weight:800 !important;
+  letter-spacing:.035em !important;
+}
+.btn,
+.v2-actions .btn,
+.college-btn{
+  min-height:46px !important;
+  border-radius:14px !important;
+  padding:12px 20px !important;
+  font-size:15px !important;
+  font-weight:800 !important;
+}
+
+/* Cards: reduce visual heaviness */
+.card,
+.course-card,
+.outcome-card,
+.v2-profile-card,
+.v2-strip-card,
+.v2-impact-card,
+.v2-cta-box,
+.hero-card,
+.lead-form-card,
+.college-section-card,
+.college-side-card,
+.college-proof-card,
+.jobs-panel{
+  border:1px solid #e0e8f3 !important;
+  border-radius:22px !important;
+  box-shadow:var(--shadow) !important;
+  background:#ffffff !important;
+}
+.card,
+.course-card,
+.college-section-card,
+.college-side-card{padding:22px !important;}
+.card h3,
+.course-card h3{font-size:20px !important;line-height:1.25 !important;}
+.section{padding:58px 0 !important;}
+.v2-section{padding:42px 0 !important;}
+.section-heading{margin-bottom:28px !important;}
+h2,
+.section-heading h2{font-size:clamp(28px,3.4vw,40px) !important;}
+
+/* Homepage profile card and benefit pills */
+.v2-profile-card{padding:20px !important;}
+.v2-profile-image-wrap{border-radius:20px !important;padding:16px !important;}
+.v2-profile-image{width:min(100%,250px) !important;border-width:5px !important;}
+.v2-profile-content h2{font-size:30px !important;}
+.v2-profile-subtitle{font-size:16px !important;font-weight:600 !important;}
+.v2-profile-points li{font-size:14.5px !important;font-weight:600 !important;}
+.v2-pills span,
+.trust-row span,
+.form-benefits span{
+  border-radius:999px !important;
+  padding:8px 12px !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  color:#475467 !important;
+  background:#ffffff !important;
+  box-shadow:none !important;
+}
+
+/* Course/project grid readability */
+.course-grid{gap:18px !important;}
+.project-grid{gap:14px !important;}
+.mini-card{font-size:15px !important;border-radius:16px !important;box-shadow:0 8px 20px rgba(15,23,42,.045) !important;}
+
+/* Jobs page: replace big stats cards with compact professional status strip */
+.jobs-summary-section{padding:14px 0 12px !important;}
+.jobs-summary-grid{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  flex-wrap:wrap !important;
+  gap:0 !important;
+  width:min(900px,calc(100% - 40px)) !important;
+  margin:0 auto !important;
+  padding:10px 16px !important;
+  background:#ffffff !important;
+  border:1px solid #e0e8f3 !important;
+  border-radius:999px !important;
+  box-shadow:0 10px 26px rgba(15,23,42,.05) !important;
+}
+.jobs-summary-card{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  flex:0 0 auto !important;
+  padding:0 16px !important;
+  border:0 !important;
+  border-right:1px solid #e7eef8 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+.jobs-summary-card:last-child{border-right:0 !important;}
+.jobs-summary-card strong{
+  display:inline !important;
+  margin:0 !important;
+  font-size:16px !important;
+  line-height:1 !important;
+  letter-spacing:-.01em !important;
+  font-weight:800 !important;
+}
+.jobs-summary-card span{
+  font-size:13px !important;
+  line-height:1 !important;
+  color:#667085 !important;
+  font-weight:700 !important;
+}
+.jobs-table-section{padding:18px 0 38px !important;}
+.jobs-panel{padding:24px !important;border-radius:26px !important;}
+.jobs-panel-head{padding-top:30px !important;margin-bottom:18px !important;}
+.jobs-panel-head h2{
+  font-size:clamp(26px,3vw,34px) !important;
+  line-height:1.16 !important;
+}
+.jobs-mini-eyebrow{
+  min-height:24px !important;
+  padding:5px 12px !important;
+  border-radius:999px !important;
+  background:#f4f8ff !important;
+}
+.jobs-suggest-btn{
+  top:0 !important;
+  min-height:26px !important;
+  padding:5px 12px !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+  border-radius:999px !important;
+}
+.jobs-search-wrap input,
+.lead-form input,
+.lead-form select,
+.lead-form textarea{
+  min-height:46px !important;
+  border-radius:14px !important;
+  font-size:15px !important;
+  font-weight:500 !important;
+}
+.jobs-filter-chips{gap:8px !important;}
+.jobs-filter-chips button{
+  min-height:38px !important;
+  padding:8px 14px !important;
+  border-radius:999px !important;
+  font-size:13.5px !important;
+  font-weight:700 !important;
+}
+.jobs-table th{
+  padding:15px 16px !important;
+  font-size:12.5px !important;
+  font-weight:800 !important;
+  letter-spacing:.035em !important;
+}
+.jobs-table td{
+  padding:18px 16px !important;
+  font-size:15px !important;
+  line-height:1.5 !important;
+  font-weight:500 !important;
+}
+.jobs-table td strong{font-size:15.5px !important;font-weight:800 !important;line-height:1.35 !important;}
+.jobs-table td span{font-size:13px !important;font-weight:600 !important;}
+.fit-badge{font-size:12px !important;font-weight:800 !important;padding:6px 11px !important;}
+.official-link{min-height:42px !important;padding:10px 16px !important;border-radius:12px !important;font-size:14px !important;}
+.jobs-table-note{font-size:14px !important;line-height:1.55 !important;font-weight:600 !important;}
+
+/* Inner pages and college pages: normalize oversized text */
+.inner-v2-hero h1,
+.college-hero h1{
+  font-size:clamp(34px,4.8vw,58px) !important;
+  line-height:1.08 !important;
+}
+.inner-v2-hero p,
+.college-hero p,
+.govt-blog-lead{
+  font-size:17px !important;
+  line-height:1.68 !important;
+}
+.college-link-list a,
+.v2-footer-links a,
+.footer-links a{font-weight:700 !important;}
+.v2-footer{background:#0f172a !important;}
+.v2-footer p,.v2-footer a,.v2-footer small{font-weight:500 !important;}
+
+@media(max-width:980px){
+  .container{width:min(100% - 32px,1120px);}
+  .home-v2-nav{min-height:68px !important;}
+  .v2-hero-copy h1{font-size:44px !important;}
+  .v2-profile-card{max-width:520px;margin:0 auto;}
+  .jobs-summary-grid{width:min(760px,calc(100% - 32px)) !important;border-radius:22px !important;}
+  .jobs-summary-card{padding:7px 12px !important;}
+}
+@media(max-width:620px){
+  body{font-size:15.5px !important;}
+  .container{width:calc(100% - 26px);}
+  .home-v2-nav{min-height:64px !important;}
+  .home-v2-brand span{font-size:16px !important;}
+  .home-v2-brand small{font-size:11px !important;}
+  .brand-logo{width:38px !important;height:38px !important;}
+  .v2-hero{padding:32px 0 22px !important;}
+  .v2-hero-copy h1{font-size:36px !important;line-height:1.1 !important;}
+  .v2-hero-text,.hero-subtitle{font-size:16px !important;}
+  .section,.v2-section{padding:42px 0 !important;}
+  .jobs-summary-grid{justify-content:flex-start !important;border-radius:18px !important;padding:10px 12px !important;}
+  .jobs-summary-card{width:50% !important;border-right:0 !important;padding:7px 8px !important;}
+  .jobs-summary-card strong{font-size:15px !important;}
+  .jobs-summary-card span{font-size:12px !important;}
+  .jobs-panel{padding:18px !important;border-radius:22px !important;}
+  .jobs-panel-head{padding-top:62px !important;}
+  .jobs-panel-head h2{font-size:26px !important;}
+  .jobs-suggest-btn{left:0 !important;right:auto !important;top:31px !important;}
+  .jobs-table td{padding:16px 14px !important;}
+  .btn,.v2-actions .btn,.college-btn{width:100%;}
+}
+
+
+/* =========================================================
+   V111 mobile typography + clean menu refinement
+   ========================================================= */
+html{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif !important;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif !important;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+
+/* Ensure removed header links never show from old cached HTML */
+.nav-links a[href="/roadmap/"],
+.home-v2-links a[href="/roadmap/"],
+.mobile-menu-links a[href="/roadmap/"],
+.mobile-menu-links a[href*="wa.me/918197565002"],
+.mobile-menu-links a[href*="linkedin.com/company/learnwithhemant"]{display:none !important;}
+
+@media(max-width:980px){
+  .site-header,.home-v2-header{box-shadow:0 8px 20px rgba(15,23,42,.055) !important;}
+  .nav,.home-v2-nav{min-height:62px !important;padding:8px 0 !important;}
+  .home-v2-brand,.brand{gap:9px !important;min-width:0 !important;}
+  .brand-logo{width:38px !important;height:38px !important;}
+  .home-v2-brand span,.brand span{font-size:16px !important;line-height:1.05 !important;font-weight:800 !important;letter-spacing:-.02em !important;}
+  .home-v2-brand small,.brand small{font-size:11px !important;line-height:1.15 !important;font-weight:650 !important;color:#667085 !important;}
+  .mobile-menu-toggle{display:flex !important;width:42px !important;height:42px !important;border-radius:14px !important;background:#fff !important;box-shadow:0 8px 20px rgba(15,23,42,.08) !important;border:1px solid #dbe7f6 !important;}
+  .mobile-menu-toggle span{width:19px !important;height:2px !important;background:#111827 !important;}
+
+  /* Mobile menu: cleaner student-friendly white design */
+  .mobile-menu-backdrop{background:rgba(15,23,42,.46) !important;backdrop-filter:blur(2px) !important;}
+  .mobile-site-menu{
+    width:min(292px,84vw) !important;
+    background:#ffffff !important;
+    color:#111827 !important;
+    padding:18px 14px 22px !important;
+    border-right:1px solid #e5edf8 !important;
+    box-shadow:18px 0 45px rgba(15,23,42,.18) !important;
+  }
+  .mobile-menu-head{margin-bottom:14px !important;padding:2px 4px 10px !important;border-bottom:1px solid #edf2f7 !important;}
+  .mobile-menu-brand img{width:44px !important;height:44px !important;border:2px solid #dbeafe !important;box-shadow:0 8px 18px rgba(37,99,235,.14) !important;}
+  .mobile-menu-close{width:36px !important;height:36px !important;background:#f4f7fb !important;color:#111827 !important;font-size:26px !important;font-weight:700 !important;border-radius:12px !important;}
+  .mobile-menu-links{display:grid !important;gap:6px !important;padding-bottom:10px !important;}
+  .mobile-menu-links a{
+    min-height:42px !important;
+    padding:10px 13px !important;
+    border-radius:12px !important;
+    color:#344054 !important;
+    background:transparent !important;
+    font-size:14.5px !important;
+    line-height:1.2 !important;
+    font-weight:700 !important;
+    letter-spacing:-.01em !important;
+    text-transform:none !important;
+    border:1px solid transparent !important;
+    box-shadow:none !important;
+  }
+  .mobile-menu-links a:hover{background:#f5f8ff !important;color:#155eef !important;border-color:#d7e6ff !important;}
+  .mobile-menu-links a:first-child{background:#f8fbff !important;color:#111827 !important;border-color:#e2ebf8 !important;min-height:42px !important;font-size:14.5px !important;}
+  .mobile-menu-links a[href="/apply/"]{background:#2563eb !important;color:#fff !important;border-color:#2563eb !important;margin-top:6px !important;justify-content:center !important;min-height:46px !important;font-weight:800 !important;box-shadow:0 12px 26px rgba(37,99,235,.22) !important;}
+  .mobile-menu-links a[href="/tool/"]{background:#f5f8ff !important;color:#1d4ed8 !important;border-color:#dbeafe !important;}
+}
+
+@media(max-width:768px){
+  body{font-size:15px !important;line-height:1.62 !important;background:#f8fbff !important;}
+  .container{width:calc(100% - 24px) !important;}
+  h1,.v2-hero-copy h1,.inner-v2-hero h1,.college-hero h1,.page-hero h1{font-size:clamp(30px,8.8vw,38px) !important;line-height:1.08 !important;letter-spacing:-.035em !important;font-weight:800 !important;}
+  h2,.section-heading h2{font-size:clamp(24px,7vw,32px) !important;line-height:1.16 !important;font-weight:800 !important;letter-spacing:-.025em !important;}
+  h3{font-weight:750 !important;letter-spacing:-.015em !important;}
+  p,.muted,.hero-subtitle,.v2-hero-text,.inner-v2-hero p,.college-hero p{font-size:15px !important;line-height:1.65 !important;font-weight:450 !important;color:#5b6678 !important;}
+  .eyebrow,.v2-badge,.jobs-mini-eyebrow,.college-badge,.form-badge{font-size:11px !important;letter-spacing:.035em !important;padding:6px 10px !important;border-radius:999px !important;}
+
+  .hero,.v2-hero,.inner-v2-hero,.page-hero{padding:28px 0 24px !important;}
+  .v2-hero-grid,.hero-grid{gap:22px !important;}
+  .v2-hero-copy h1{margin-bottom:14px !important;}
+  .hero-actions,.v2-actions{gap:10px !important;margin-bottom:14px !important;}
+  .btn,.v2-actions .btn,.hero-actions .btn,.college-btn{width:100% !important;min-height:44px !important;border-radius:13px !important;font-size:14.5px !important;font-weight:750 !important;padding:11px 16px !important;}
+  .v2-pills,.trust-row{gap:8px !important;}
+  .v2-pills span,.trust-row span,.form-benefits span{font-size:12.5px !important;padding:7px 10px !important;}
+
+  .section,.v2-section{padding:34px 0 !important;}
+  .section-heading{margin-bottom:20px !important;}
+  .card,.course-card,.outcome-card,.v2-profile-card,.v2-strip-card,.v2-impact-card,.hero-card,.lead-form-card,.college-section-card,.college-side-card,.jobs-panel{border-radius:18px !important;padding:18px !important;box-shadow:0 10px 24px rgba(15,23,42,.055) !important;}
+  .card h3,.course-card h3{font-size:18px !important;}
+
+  .v2-profile-card{max-width:100% !important;}
+  .v2-profile-image-wrap{padding:12px !important;border-radius:18px !important;}
+  .v2-profile-content h2{font-size:24px !important;}
+  .v2-profile-subtitle{font-size:14px !important;}
+  .v2-profile-points li{font-size:13.5px !important;line-height:1.45 !important;}
+
+  /* Jobs page mobile readability */
+  .jobs-summary-section{padding:10px 0 8px !important;}
+  .jobs-summary-grid{width:calc(100% - 24px) !important;border-radius:16px !important;padding:9px 10px !important;gap:4px 0 !important;justify-content:flex-start !important;}
+  .jobs-summary-card{width:50% !important;padding:6px 8px !important;border:0 !important;gap:6px !important;}
+  .jobs-summary-card strong{font-size:15px !important;}
+  .jobs-summary-card span{font-size:11.5px !important;}
+  .jobs-panel{padding:16px !important;border-radius:20px !important;}
+  .jobs-panel-head{padding-top:44px !important;margin-bottom:14px !important;}
+  .jobs-panel-head h2{font-size:25px !important;line-height:1.18 !important;}
+  .jobs-suggest-btn{top:18px !important;left:16px !important;right:auto !important;min-height:26px !important;font-size:11px !important;padding:5px 10px !important;}
+  .jobs-search-wrap input{min-height:44px !important;font-size:14px !important;border-radius:13px !important;}
+  .jobs-filter-chips{gap:7px !important;overflow-x:auto !important;flex-wrap:nowrap !important;padding-bottom:4px !important;scrollbar-width:none;}
+  .jobs-filter-chips::-webkit-scrollbar{display:none;}
+  .jobs-filter-chips button{white-space:nowrap !important;min-height:34px !important;padding:7px 12px !important;font-size:12.5px !important;}
+  .jobs-table-wrap{overflow-x:auto !important;-webkit-overflow-scrolling:touch !important;border-radius:16px !important;}
+  .jobs-table{min-width:760px !important;}
+  .jobs-table th{font-size:11.5px !important;padding:13px 12px !important;}
+  .jobs-table td{font-size:13.5px !important;padding:14px 12px !important;}
+  .jobs-table td strong{font-size:14px !important;}
+  .official-link{min-height:38px !important;padding:8px 13px !important;font-size:13px !important;}
+}
+
+@media(max-width:430px){
+  .mobile-site-menu{width:min(282px,86vw) !important;padding:16px 12px 20px !important;}
+  .mobile-menu-links a{font-size:14px !important;min-height:40px !important;padding:9px 12px !important;}
+  .mobile-menu-links a[href="/apply/"]{min-height:44px !important;}
+  h1,.v2-hero-copy h1,.inner-v2-hero h1,.page-hero h1{font-size:31px !important;}
+  .home-v2-brand span,.brand span{font-size:15px !important;}
+  .home-v2-brand small,.brand small{font-size:10.5px !important;}
 }
