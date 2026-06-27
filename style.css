@@ -3677,3 +3677,199 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Aria
   .home-v2-brand span,.brand span{font-size:15px !important;}
   .home-v2-brand small,.brand small{font-size:10.5px !important;}
 }
+
+/* =========================================================
+   V112 mobile jobs visibility fix
+   Fixes hidden values, overflowing status badges and button overlap
+   ========================================================= */
+@media (max-width:700px){
+  .jobs-panel{
+    overflow:hidden !important;
+  }
+
+  .jobs-panel-head{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    gap:8px !important;
+    padding-top:0 !important;
+    margin-bottom:16px !important;
+    text-align:center !important;
+  }
+
+  .jobs-panel-head > div{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    gap:8px !important;
+    width:100% !important;
+    text-align:center !important;
+  }
+
+  .jobs-mini-eyebrow,
+  .jobs-suggest-btn{
+    position:static !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    max-width:100% !important;
+    white-space:nowrap !important;
+  }
+
+  .jobs-suggest-btn{
+    margin:0 auto 4px !important;
+  }
+
+  .jobs-panel-head h2{
+    margin:4px auto 0 !important;
+    max-width:100% !important;
+    font-size:24px !important;
+    line-height:1.15 !important;
+  }
+
+  .jobs-table-wrap{
+    overflow:visible !important;
+    border:0 !important;
+    background:transparent !important;
+    border-radius:0 !important;
+  }
+
+  .jobs-table{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    border-collapse:separate !important;
+    border-spacing:0 !important;
+  }
+
+  .jobs-table thead{
+    display:none !important;
+  }
+
+  .jobs-table tbody{
+    display:block !important;
+    width:100% !important;
+  }
+
+  .jobs-table tr{
+    display:block !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+    margin:0 0 14px !important;
+    padding:16px !important;
+    background:#ffffff !important;
+    border:1px solid #dce6f3 !important;
+    border-radius:20px !important;
+    box-shadow:0 10px 24px rgba(15,23,42,.055) !important;
+    overflow:hidden !important;
+  }
+
+  .jobs-table td{
+    display:grid !important;
+    grid-template-columns:minmax(96px,32%) minmax(0,1fr) !important;
+    align-items:start !important;
+    gap:10px !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
+    padding:10px 0 !important;
+    border:0 !important;
+    overflow:visible !important;
+    color:#344054 !important;
+    font-size:14px !important;
+    line-height:1.48 !important;
+  }
+
+  .jobs-table td:before{
+    content:attr(data-label) !important;
+    display:block !important;
+    color:#667085 !important;
+    font-size:11.5px !important;
+    font-weight:800 !important;
+    letter-spacing:.035em !important;
+    text-transform:uppercase !important;
+    line-height:1.25 !important;
+    padding-top:2px !important;
+  }
+
+  .jobs-table td > *,
+  .jobs-table td strong,
+  .jobs-table td span,
+  .jobs-table td a{
+    min-width:0 !important;
+    max-width:100% !important;
+    overflow-wrap:anywhere !important;
+    word-break:normal !important;
+  }
+
+  .jobs-table td:first-child{
+    display:block !important;
+    padding:0 0 14px !important;
+    margin-bottom:4px !important;
+    border-bottom:1px solid #edf2f7 !important;
+  }
+
+  .jobs-table td:first-child:before{
+    display:none !important;
+  }
+
+  .jobs-table td:first-child strong{
+    font-size:16px !important;
+    line-height:1.32 !important;
+    margin-bottom:6px !important;
+  }
+
+  .jobs-table td:first-child span{
+    font-size:13px !important;
+    line-height:1.4 !important;
+  }
+
+  .jobs-table td[data-label="Status"],
+  .jobs-table td[data-label="Official Link"]{
+    align-items:center !important;
+  }
+
+  .fit-badge{
+    justify-self:start !important;
+    width:auto !important;
+    max-width:100% !important;
+    min-height:34px !important;
+    white-space:normal !important;
+    text-align:center !important;
+    line-height:1.22 !important;
+    padding:8px 12px !important;
+  }
+
+  .official-link{
+    justify-self:start !important;
+    width:auto !important;
+    max-width:100% !important;
+    min-height:38px !important;
+    white-space:normal !important;
+    text-align:center !important;
+    line-height:1.2 !important;
+    padding:9px 14px !important;
+  }
+
+  .jobs-table td[data-label="Last Date"] strong{
+    font-size:14.5px !important;
+    line-height:1.35 !important;
+  }
+}
+
+@media (max-width:380px){
+  .jobs-table tr{
+    padding:14px !important;
+  }
+  .jobs-table td{
+    grid-template-columns:88px minmax(0,1fr) !important;
+    gap:8px !important;
+    font-size:13.5px !important;
+  }
+  .jobs-panel-head h2{
+    font-size:22px !important;
+  }
+}
