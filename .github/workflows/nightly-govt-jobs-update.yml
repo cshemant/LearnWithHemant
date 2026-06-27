@@ -35,4 +35,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Auto update govt jobs dashboard data"
-          file_pattern: "jobs/jobs-data.json jobs/government_jobs_tracker.xlsx profile.json sources_gov_jobs.csv"
+          file_pattern: "jobs/jobs-data.json jobs/manual-jobs.json jobs/government_jobs_tracker.xlsx profile.json sources_gov_jobs.csv"

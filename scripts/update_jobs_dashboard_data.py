@@ -23,6 +23,16 @@ import pandas as pd
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 FINDER_PATH = Path(__file__).with_name("govt_job_finder.py")
+MANUAL_JOBS_PATH = REPO_ROOT / "jobs" / "manual-jobs.json"
+
+# Auto-scraped government portals often contain FAQ, old notices, cut-off PDFs,
+# results, answer keys and other non-vacancy pages. These should not replace the
+# manually verified dashboard rows. Manual rows are always shown first.
+AUTO_EXCLUDE_TITLE_KEYWORDS = [
+    "faq", "frequently asked", "cut-off", "cut off", "answer key",
+    "admit card", "result", "merit list", "syllabus", "certificate, number is not",
+    "home guards", "old advertisement", "archive", "archives",
+]
 
 
 def load_finder_module():
@@ -151,7 +161,80 @@ def row_to_job(row: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
-def build_json_from_excel(excel_path: Path, limit: int) -> Dict[str, Any]:
+def load_manual_jobs(path: Path = MANUAL_JOBS_PATH) -> List[Dict[str, Any]]:
+    if not path.exists():
+        return []
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        jobs = payload.get("jobs") if isinstance(payload, dict) else payload
+        if not isinstance(jobs, list):
+            return []
+        clean_jobs: List[Dict[str, Any]] = []
+        for job in jobs:
+            if isinstance(job, dict) and clean(job.get("job")) and clean(job.get("official_link")):
+                job = dict(job)
+                job["source"] = job.get("source") or "manual_curated"
+                clean_jobs.append(job)
+        return clean_jobs
+    except Exception as exc:
+        print(f"[WARN] Could not load manual jobs from {path}: {exc}")
+        return []
+
+
+def is_closed_job(job: Dict[str, Any]) -> bool:
+    date_raw = clean(job.get("last_date_iso"))
+    if not date_raw:
+        return False
+    try:
+        d = dt.date.fromisoformat(date_raw)
+    except ValueError:
+        return False
+    return d < dt.date.today()
+
+
+def is_useful_auto_job(job: Dict[str, Any]) -> bool:
+    title = clean(job.get("job")).lower()
+    subtitle = clean(job.get("subtitle")).lower()
+    blob = f"{title} {subtitle}"
+    if any(bad in blob for bad in AUTO_EXCLUDE_TITLE_KEYWORDS):
+        return False
+    if is_closed_job(job):
+        return False
+    if job.get("status") == "Avoid":
+        return False
+    score = int(job.get("match_score") or 0)
+    if job.get("status") == "Doubtful" and score < 35:
+        return False
+    return True
+
+
+def merge_manual_and_auto_jobs(manual_jobs: List[Dict[str, Any]], auto_jobs: List[Dict[str, Any]], limit: int) -> List[Dict[str, Any]]:
+    merged: List[Dict[str, Any]] = []
+    seen = set()
+
+    def add(job: Dict[str, Any]) -> None:
+        key = (clean(job.get("job")).lower(), clean(job.get("official_link")).lower())
+        if key in seen or not key[0] or not key[1]:
+            return
+        seen.add(key)
+        merged.append(job)
+
+    # Keep verified/manual Rajasthan rows at the top so nightly scraping never hides them.
+    for job in manual_jobs:
+        add(job)
+
+    priority = {"Good Match": 0, "Doubtful": 1, "Watch": 2, "Avoid": 3}
+    auto_jobs = [job for job in auto_jobs if is_useful_auto_job(job)]
+    auto_jobs.sort(key=lambda j: (priority.get(j.get("status"), 9), -(j.get("match_score") or 0), j.get("last_date_iso") or "9999-12-31"))
+    for job in auto_jobs:
+        add(job)
+        if len(merged) >= limit:
+            break
+
+    return merged[:limit]
+
+
+def build_json_from_excel(excel_path: Path, limit: int, manual_jobs: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
     df = pd.read_excel(excel_path, sheet_name="All Raw Matches")
     if df.empty:
         return {"jobs": []}
@@ -169,13 +252,15 @@ def build_json_from_excel(excel_path: Path, limit: int) -> Dict[str, Any]:
     # Keep dashboard useful and not too noisy.
     priority = {"Good Match": 0, "Doubtful": 1, "Watch": 2, "Avoid": 3}
     jobs.sort(key=lambda j: (priority.get(j["status"], 9), -(j.get("match_score") or 0), j.get("last_date_iso") or "9999-12-31"))
-    jobs = jobs[:limit]
+    manual_jobs = manual_jobs or []
+    jobs = merge_manual_and_auto_jobs(manual_jobs, jobs, limit)
 
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=5, minutes=30)))
     return {
         "generated_at": now.isoformat(timespec="seconds"),
         "updated_label": now.strftime("Updated: %d %b %Y"),
-        "source": "nightly government job scanner",
+        "source": "manual verified jobs + nightly government job scanner",
+        "manual_count": len(manual_jobs),
         "jobs": jobs,
     }
 
@@ -198,6 +283,7 @@ def main() -> None:
     parser.add_argument("--sources", default=None, help="Optional sources_gov_jobs.csv path for the finder.")
     parser.add_argument("--excel-out", default="jobs/government_jobs_tracker.xlsx", help="Temporary / committed Excel output path.")
     parser.add_argument("--out-json", default="jobs/jobs-data.json", help="Dashboard JSON output path.")
+    parser.add_argument("--manual-json", default="jobs/manual-jobs.json", help="Manual verified dashboard jobs that must always remain visible.")
     parser.add_argument("--max-pdfs", type=int, default=int(os.getenv("MAX_PDFS", "4")), help="Max PDFs to parse per source.")
     parser.add_argument("--limit", type=int, default=int(os.getenv("MAX_DASHBOARD_JOBS", "40")), help="Max dashboard jobs to keep.")
     args = parser.parse_args()
@@ -205,6 +291,9 @@ def main() -> None:
     os.chdir(REPO_ROOT)
     excel_path = REPO_ROOT / args.excel_out
     out_json = REPO_ROOT / args.out_json
+    manual_json = REPO_ROOT / args.manual_json
+    manual_jobs = load_manual_jobs(manual_json)
+    print(f"[INFO] Loaded {len(manual_jobs)} manual verified dashboard jobs from {manual_json}")
 
     finder = load_finder_module()
     try:
@@ -216,7 +305,7 @@ def main() -> None:
             return
         raise
 
-    payload = build_json_from_excel(excel_path, args.limit)
+    payload = build_json_from_excel(excel_path, args.limit, manual_jobs=manual_jobs)
     write_json_safely(payload, out_json)
 
 
