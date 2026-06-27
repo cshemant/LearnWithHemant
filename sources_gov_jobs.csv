@@ -1,0 +1,20 @@
+state,agency,url,source_type
+Rajasthan,State Recruitment Portal,https://recruitment.rajasthan.gov.in/,html
+Rajasthan,RPSC,https://rpsc.rajasthan.gov.in/advertisements,html
+Rajasthan,RSSB,https://rssb.rajasthan.gov.in/,html
+Bihar,BPSC,https://bpsc.bihar.gov.in/advertisement/,html
+Bihar,BSSC,https://bssc.bihar.gov.in/,html
+Bihar,BTSC,https://btsc.bihar.gov.in/recruitment,html
+Bihar,CSBC,https://csbc.bihar.gov.in/,html
+Bihar,BPSSC,https://bpssc.bihar.gov.in/,html
+Uttar Pradesh,UPPSC,https://uppsc.up.nic.in/CandidatePages/Notifications.aspx,html
+Uttar Pradesh,UPSSSC,https://upsssc.gov.in/,html
+Delhi,DSSSB,https://dsssb.delhi.gov.in/dsssb-vacancies,html
+Central,SSC,https://ssc.gov.in/,html
+Central,UPSC,https://upsc.gov.in/recruitment/recruitment-advertisement,html
+Central,NIELIT Delhi Recruitment,https://recruit-delhi.nielit.gov.in/,html
+Central,NCS Govt Jobs,https://www.ncs.gov.in/job-seeker/Pages/GovtJob.aspx,html
+Madhya Pradesh,MPESB,https://esb.mp.gov.in/e_default.html,html
+Haryana,HSSC,https://hssc.gov.in/,html
+Jharkhand,JSSC,https://jssc.jharkhand.gov.in/,html
+Jharkhand,JPSC,https://www.jpsc.gov.in/,html
