@@ -1,0 +1,56 @@
+{
+  "name": "Hemant Kumar",
+  "dob": "1992-02-12",
+  "category": "GENERAL",
+  "education": [
+    "B.Tech Computer Science Engineering",
+    "M.Tech Computer Science Engineering"
+  ],
+  "highest_degree": "M.Tech",
+  "marks_percent": 60,
+  "subjects": [
+    "computer science",
+    "computer science and engineering",
+    "computer applications",
+    "information technology",
+    "software engineering",
+    "data science",
+    "artificial intelligence",
+    "machine learning",
+    "cyber security",
+    "database",
+    "programming"
+  ],
+  "preferred_roles": [
+    "assistant professor",
+    "lecturer",
+    "guest faculty",
+    "teaching assistant",
+    "computer instructor",
+    "programmer",
+    "software developer",
+    "system analyst",
+    "it assistant",
+    "computer operator",
+    "data entry operator",
+    "junior assistant",
+    "lower division clerk",
+    "clerk",
+    "office assistant",
+    "technical assistant",
+    "scientist b",
+    "scientific officer",
+    "informatics assistant",
+    "mis officer"
+  ],
+  "states_preferred": [
+    "Rajasthan",
+    "Bihar",
+    "Uttar Pradesh",
+    "Delhi",
+    "Madhya Pradesh",
+    "Jharkhand",
+    "Haryana",
+    "Central"
+  ]
+}
