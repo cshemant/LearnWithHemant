@@ -5,8 +5,6 @@ Rajasthan,RSSB,https://rssb.rajasthan.gov.in/,html
 Bihar,BPSC,https://bpsc.bihar.gov.in/advertisement/,html
 Bihar,BSSC,https://bssc.bihar.gov.in/,html
 Bihar,BTSC,https://btsc.bihar.gov.in/recruitment,html
-Bihar,CSBC,https://csbc.bihar.gov.in/,html
-Bihar,BPSSC,https://bpssc.bihar.gov.in/,html
 Uttar Pradesh,UPPSC,https://uppsc.up.nic.in/CandidatePages/Notifications.aspx,html
 Uttar Pradesh,UPSSSC,https://upsssc.gov.in/,html
 Delhi,DSSSB,https://dsssb.delhi.gov.in/dsssb-vacancies,html
@@ -18,3 +16,18 @@ Madhya Pradesh,MPESB,https://esb.mp.gov.in/e_default.html,html
 Haryana,HSSC,https://hssc.gov.in/,html
 Jharkhand,JSSC,https://jssc.jharkhand.gov.in/,html
 Jharkhand,JPSC,https://www.jpsc.gov.in/,html
+Maharashtra,MPSC,https://mpsc.gov.in/advertisements,html
+Gujarat,GPSC,https://gpsc.gujarat.gov.in/Advertisement,html
+Gujarat,OJAS,https://ojas.gujarat.gov.in/,html
+Karnataka,KPSC,https://kpsc.kar.nic.in/,html
+Tamil Nadu,TNPSC,https://www.tnpsc.gov.in/English/Notification.aspx,html
+Kerala,Kerala PSC,https://www.keralapsc.gov.in/notifications,html
+Odisha,OPSC,https://www.opsc.gov.in/Public/OPSC/Default.aspx,html
+West Bengal,WBPSC,https://psc.wb.gov.in/,html
+Telangana,TSPSC,https://www.tspsc.gov.in/website,html
+Andhra Pradesh,APPSC,https://psc.ap.gov.in/,html
+Punjab,PPSC,https://ppsc.gov.in/,html
+Himachal Pradesh,HPPSC,https://www.hppsc.hp.gov.in/hppsc/,html
+Uttarakhand,UKPSC,https://psc.uk.gov.in/,html
+Chhattisgarh,CGPSC,https://psc.cg.gov.in/,html
+Assam,APSC,https://apsc.nic.in/advt_2025.asp,html

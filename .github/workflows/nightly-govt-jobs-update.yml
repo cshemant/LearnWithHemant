@@ -42,7 +42,7 @@ jobs:
 
       - name: Run nightly govt job scanner
         run: |
-          python scripts/update_jobs_dashboard_data.py --out-json jobs/jobs-data.json --excel-out jobs/government_jobs_tracker.xlsx --max-pdfs 4 --limit 40
+          python scripts/update_jobs_dashboard_data.py --sources sources_gov_jobs.csv --out-json jobs/jobs-data.json --excel-out jobs/government_jobs_tracker.xlsx --max-pdfs 3 --limit 60
 
       - name: Commit and push updated job data
         run: |

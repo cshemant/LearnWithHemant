@@ -29,9 +29,11 @@ MANUAL_JOBS_PATH = REPO_ROOT / "jobs" / "manual-jobs.json"
 # results, answer keys and other non-vacancy pages. These should not replace the
 # manually verified dashboard rows. Manual rows are always shown first.
 AUTO_EXCLUDE_TITLE_KEYWORDS = [
-    "faq", "frequently asked", "cut-off", "cut off", "answer key",
-    "admit card", "result", "merit list", "syllabus", "certificate, number is not",
-    "home guards", "old advertisement", "archive", "archives",
+    # clear non-vacancy pages only. Keep the list conservative so all-India
+    # opportunities are not over-filtered.
+    "faq", "frequently asked", "answer key", "admit card", "result",
+    "merit list", "syllabus", "certificate, number is not",
+    "old advertisement", "archive", "archives",
 ]
 
 
@@ -195,17 +197,31 @@ def is_closed_job(job: Dict[str, Any]) -> bool:
 def is_useful_auto_job(job: Dict[str, Any]) -> bool:
     title = clean(job.get("job")).lower()
     subtitle = clean(job.get("subtitle")).lower()
-    blob = f"{title} {subtitle}"
+    eligible = clean(job.get("eligible_for")).lower()
+    agency = clean(job.get("agency")).lower()
+    blob = f"{title} {subtitle} {eligible} {agency}"
+
+    # Remove obvious non-vacancy pages, but do not over-filter.
     if any(bad in blob for bad in AUTO_EXCLUDE_TITLE_KEYWORDS):
         return False
     if is_closed_job(job):
         return False
     if job.get("status") == "Avoid":
         return False
+
     score = int(job.get("match_score") or 0)
-    if job.get("status") == "Doubtful" and score < 35:
-        return False
-    return True
+    useful_words = [
+        "recruit", "vacancy", "advertisement", "notification", "apply",
+        "assistant professor", "lecturer", "faculty", "computer", "it",
+        "programmer", "software", "scientist", "assistant", "clerk", "operator"
+    ]
+
+    # Keep more all-India scanner output as Manual Check/Watch, instead of hiding it.
+    if score >= 20:
+        return True
+    if any(word in blob for word in useful_words):
+        return True
+    return False
 
 
 def merge_manual_and_auto_jobs(manual_jobs: List[Dict[str, Any]], auto_jobs: List[Dict[str, Any]], limit: int) -> List[Dict[str, Any]]:
@@ -253,7 +269,10 @@ def build_json_from_excel(excel_path: Path, limit: int, manual_jobs: Optional[Li
     priority = {"Good Match": 0, "Doubtful": 1, "Watch": 2, "Avoid": 3}
     jobs.sort(key=lambda j: (priority.get(j["status"], 9), -(j.get("match_score") or 0), j.get("last_date_iso") or "9999-12-31"))
     manual_jobs = manual_jobs or []
+    useful_auto_count = sum(1 for job in jobs if is_useful_auto_job(job))
+    print(f"[INFO] Excel rows converted: {len(jobs)} | useful auto rows after filter: {useful_auto_count} | manual rows: {len(manual_jobs)}")
     jobs = merge_manual_and_auto_jobs(manual_jobs, jobs, limit)
+    print(f"[INFO] Final dashboard rows: {len(jobs)}")
 
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=5, minutes=30)))
     return {
@@ -285,7 +304,7 @@ def main() -> None:
     parser.add_argument("--out-json", default="jobs/jobs-data.json", help="Dashboard JSON output path.")
     parser.add_argument("--manual-json", default="jobs/manual-jobs.json", help="Manual verified dashboard jobs that must always remain visible.")
     parser.add_argument("--max-pdfs", type=int, default=int(os.getenv("MAX_PDFS", "4")), help="Max PDFs to parse per source.")
-    parser.add_argument("--limit", type=int, default=int(os.getenv("MAX_DASHBOARD_JOBS", "40")), help="Max dashboard jobs to keep.")
+    parser.add_argument("--limit", type=int, default=int(os.getenv("MAX_DASHBOARD_JOBS", "60")), help="Max dashboard jobs to keep.")
     args = parser.parse_args()
 
     os.chdir(REPO_ROOT)
