@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-29T18:29:42+05:30",
-  "updated_label": "Updated: 29 Jun 2026, 06:29 PM IST",
+  "generated_at": "2026-06-29T23:06:27+05:30",
+  "updated_label": "Updated: 29 Jun 2026, 11:06 PM IST",
   "source": "manual verified faculty jobs + source discovery + enabled official-source scanner",
   "manual_count": 3,
-  "auto_count": 134,
+  "auto_count": 133,
   "jobs": [
     {
       "college": "State Universities / Engineering Colleges",
@@ -254,31 +254,6 @@
       "profile_tags": "Information Technology / Software, Assistant Professor, Jharkhand",
       "job": "Junior Research Fellow (JRF) Assistant Professor Information Technology / Software",
       "slug": "junior-research-fellow-jrf-assistant-professor-information-technology-software-2026"
-    },
-    {
-      "college": "Guest Faculty",
-      "post": "Assistant Professor",
-      "department": "Information Technology / Software",
-      "eligibility": "Candidates must hold a Ph.D. (completed or thesis submitted) in Mathematics. Salary Details: The selected candidate will be paid a consolidated salary of Rs. 65,000/- per month. No other emoluments, medical reimbursement, or allowances are applicable. No…",
-      "last_date_iso": "2026-07-09",
-      "last_date_display": "09-Jul-2026",
-      "email": "",
-      "apply_link": "https://www.nitm.ac.in/news_details.php?p=1683",
-      "notification_link": "https://www.nitm.ac.in/news_details.php?p=1683",
-      "city": "",
-      "state": "Goa",
-      "address": "National Institute of Technology Meghalaya Bijni Complex, Laitumkhrah Shillong – 793003 Meghalaya, India Official Notification for Reference: NIT Meghalaya – Guest Faculty Recruitment Notification 2026 General…",
-      "source_page": "",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Information Technology / Software, Assistant Professor, Goa",
-      "job": "Guest Faculty Assistant Professor Information Technology / Software",
-      "slug": "guest-faculty-assistant-professor-information-technology-software-2026"
     },
     {
       "college": "Assistant Professor",
