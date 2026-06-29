@@ -4200,3 +4200,383 @@ body.home-v2-body .v2-demo-agenda-card h2{
   .blog-focus-card p,
   .blog-state-grid p{font-size:14.5px;}
 }
+
+/* =========================================================
+   V119 tablet navigation/menu alignment
+   Makes tablet hamburger menu match the refined mobile menu.
+   ========================================================= */
+.mobile-menu-backdrop{
+  background:rgba(15,23,42,.46) !important;
+  backdrop-filter:blur(2px) !important;
+}
+.mobile-site-menu{
+  background:#ffffff !important;
+  color:#111827 !important;
+  border-right:1px solid #e5edf8 !important;
+  box-shadow:18px 0 45px rgba(15,23,42,.18) !important;
+}
+.mobile-menu-head{
+  padding:2px 4px 10px !important;
+  border-bottom:1px solid #edf2f7 !important;
+}
+.mobile-menu-brand img{
+  border:2px solid #dbeafe !important;
+  box-shadow:0 8px 18px rgba(37,99,235,.14) !important;
+}
+.mobile-menu-close{
+  background:#f4f7fb !important;
+  color:#111827 !important;
+  border-radius:12px !important;
+  font-weight:700 !important;
+}
+.mobile-menu-links{
+  gap:6px !important;
+}
+.mobile-menu-links a{
+  color:#344054 !important;
+  background:transparent !important;
+  border:1px solid transparent !important;
+  box-shadow:none !important;
+  text-transform:none !important;
+  letter-spacing:-.01em !important;
+  font-weight:700 !important;
+}
+.mobile-menu-links a:hover{
+  background:#f5f8ff !important;
+  color:#155eef !important;
+  border-color:#d7e6ff !important;
+}
+.mobile-menu-links a:first-child{
+  background:#f8fbff !important;
+  color:#111827 !important;
+  border-color:#e2ebf8 !important;
+}
+.mobile-menu-links a[href="/apply/"]{
+  background:#2563eb !important;
+  color:#fff !important;
+  border-color:#2563eb !important;
+  justify-content:center !important;
+  font-weight:800 !important;
+  box-shadow:0 12px 26px rgba(37,99,235,.22) !important;
+}
+.mobile-menu-links a[href="/tool/"]{
+  background:#f5f8ff !important;
+  color:#1d4ed8 !important;
+  border-color:#dbeafe !important;
+}
+
+@media(max-width:1180px){
+  .home-v2-links,
+  .home-v2-cta,
+  .nav-links,
+  .nav-cta{
+    display:none !important;
+  }
+  .mobile-menu-toggle{
+    display:flex !important;
+    width:42px !important;
+    height:42px !important;
+    border-radius:14px !important;
+    background:#fff !important;
+    border:1px solid #dbe7f6 !important;
+    box-shadow:0 8px 20px rgba(15,23,42,.08) !important;
+  }
+  .mobile-menu-toggle span{
+    width:19px !important;
+    height:2px !important;
+    background:#111827 !important;
+  }
+  .site-header .container,
+  .home-v2-nav{
+    width:min(100% - 32px, 1280px) !important;
+  }
+  .nav,
+  .home-v2-nav{
+    min-height:64px !important;
+    padding:8px 0 !important;
+    justify-content:space-between !important;
+    gap:12px !important;
+  }
+  .home-v2-brand,
+  .brand{
+    gap:9px !important;
+    min-width:0 !important;
+  }
+  .brand-logo{
+    width:40px !important;
+    height:40px !important;
+  }
+  .home-v2-brand span,
+  .brand span{
+    font-size:16px !important;
+    line-height:1.08 !important;
+    font-weight:800 !important;
+    letter-spacing:-.02em !important;
+  }
+  .home-v2-brand small,
+  .brand small{
+    display:block !important;
+    font-size:11px !important;
+    line-height:1.15 !important;
+    font-weight:650 !important;
+    color:#667085 !important;
+  }
+}
+
+@media(min-width:769px) and (max-width:1180px){
+  body{
+    font-size:16px !important;
+    line-height:1.62 !important;
+  }
+  .mobile-site-menu{
+    width:min(300px, 42vw) !important;
+    max-width:320px !important;
+    padding:18px 14px 22px !important;
+  }
+  .mobile-menu-head{
+    margin-bottom:14px !important;
+  }
+  .mobile-menu-brand img{
+    width:44px !important;
+    height:44px !important;
+  }
+  .mobile-menu-close{
+    width:36px !important;
+    height:36px !important;
+    font-size:26px !important;
+  }
+  .mobile-menu-links a{
+    min-height:42px !important;
+    padding:10px 13px !important;
+    border-radius:12px !important;
+    font-size:14.5px !important;
+    line-height:1.2 !important;
+  }
+  .mobile-menu-links a:first-child{
+    min-height:42px !important;
+  }
+  .mobile-menu-links a[href="/apply/"]{
+    min-height:46px !important;
+    margin-top:6px !important;
+  }
+}
+
+/* Faculty Jobs Dashboard - added in V120 */
+.faculty-jobs-topbar{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+.faculty-jobs-topbar a,
+.faculty-related-links a,
+.faculty-back-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+  padding:8px 12px;
+  border:1px solid rgba(37,99,235,.16);
+  border-radius:999px;
+  background:#fff;
+  color:#1d4ed8;
+  font-weight:800;
+  font-size:13px;
+  text-decoration:none;
+}
+.faculty-job-title-link{
+  color:#101828;
+  text-decoration:none;
+}
+.faculty-job-title-link:hover{color:#2563eb;}
+.muted-link-text{color:#667085;font-weight:800;}
+.faculty-seo-section{padding:0 0 42px;}
+.faculty-seo-card{
+  background:#ffffff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 14px 34px rgba(15,23,42,.055);
+}
+.faculty-seo-card h2{margin:0 0 8px;font-size:24px;letter-spacing:-.03em;color:#101828;}
+.faculty-seo-card p{margin:0;color:#475467;font-weight:650;line-height:1.65;}
+.faculty-detail-card h1{font-size:36px;line-height:1.14;letter-spacing:-.04em;margin:12px 0 8px;color:#101828;}
+.faculty-detail-subtitle{margin:0 0 20px;color:#475467;font-weight:800;}
+.faculty-detail-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin:22px 0;
+}
+.faculty-detail-grid div{
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:18px;
+  padding:14px;
+  background:#f8fafc;
+}
+.faculty-detail-grid span{display:block;color:#667085;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;}
+.faculty-detail-grid strong{display:block;color:#101828;font-size:14px;line-height:1.45;}
+.faculty-detail-card h2{font-size:20px;margin:20px 0 8px;color:#101828;}
+.faculty-detail-card p{color:#475467;font-weight:650;line-height:1.65;}
+.faculty-detail-actions,
+.faculty-related-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.faculty-jobs-table th:nth-child(1){width:28% !important;}
+.faculty-jobs-table th:nth-child(2){width:31% !important;}
+.faculty-jobs-table th:nth-child(3){width:13% !important;}
+.faculty-jobs-table th:nth-child(4){width:14% !important;}
+.faculty-jobs-table th:nth-child(5){width:14% !important;}
+@media (max-width: 760px){
+  .faculty-jobs-topbar{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;}
+  .faculty-jobs-topbar a{white-space:nowrap;}
+  .faculty-detail-grid{grid-template-columns:1fr;}
+  .faculty-detail-card h1{font-size:28px;}
+}
+.jobs-panel-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+@media (max-width: 760px){.jobs-panel-actions{justify-content:flex-start;}.jobs-panel-actions .jobs-suggest-btn{position:static !important;}}
+.jobs-panel-head .jobs-panel-actions{position:absolute;right:0;top:0;display:flex;gap:8px;align-items:center;justify-content:flex-end;}
+.jobs-panel-head .jobs-panel-actions .jobs-suggest-btn{position:static !important;margin:0 !important;}
+@media (max-width: 760px){.jobs-panel-head .jobs-panel-actions{position:static !important;justify-content:center;width:100%;}.jobs-panel-head .jobs-panel-actions .jobs-suggest-btn{position:static !important;}}
+/* V122 External discovery + generated content */
+.faculty-jobs-table th:nth-child(1){width:24% !important;}
+.faculty-jobs-table th:nth-child(2){width:28% !important;}
+.faculty-jobs-table th:nth-child(3){width:12% !important;}
+.faculty-jobs-table th:nth-child(4){width:13% !important;}
+.faculty-jobs-table th:nth-child(5){width:11% !important;}
+.faculty-jobs-table th:nth-child(6){width:12% !important;}
+.faculty-auto-content{
+  margin-top:24px;
+  padding-top:8px;
+  border-top:1px solid rgba(15,23,42,.08);
+}
+.faculty-auto-content ul{
+  margin:10px 0 0 20px;
+  padding:0;
+  color:#475467;
+  font-weight:650;
+  line-height:1.68;
+}
+.faculty-auto-content li{margin:6px 0;}
+
+/* =========================================================
+   V123 Faculty jobs table visibility + compact desktop fix
+   ========================================================= */
+.faculty-jobs-main .jobs-table-wrap{
+  max-height:72vh;
+  overflow:auto !important;
+}
+.faculty-jobs-table{
+  min-width:1180px !important;
+  table-layout:fixed !important;
+}
+.faculty-jobs-table th,
+.faculty-jobs-table td{
+  vertical-align:top !important;
+}
+.faculty-jobs-table th:nth-child(1),
+.faculty-jobs-table td:nth-child(1){width:25% !important;}
+.faculty-jobs-table th:nth-child(2),
+.faculty-jobs-table td:nth-child(2){width:26% !important;}
+.faculty-jobs-table th:nth-child(3),
+.faculty-jobs-table td:nth-child(3){width:13% !important;}
+.faculty-jobs-table th:nth-child(4),
+.faculty-jobs-table td:nth-child(4){width:14% !important;}
+.faculty-jobs-table th:nth-child(5),
+.faculty-jobs-table td:nth-child(5){width:11% !important;}
+.faculty-jobs-table th:nth-child(6),
+.faculty-jobs-table td:nth-child(6){width:11% !important;}
+.faculty-jobs-table td,
+.faculty-jobs-table td strong,
+.faculty-jobs-table td span,
+.faculty-jobs-table td a{
+  overflow-wrap:anywhere !important;
+}
+.faculty-job-title-link{
+  color:#101828 !important;
+  text-decoration:none !important;
+}
+.faculty-job-title-link:hover strong{
+  color:#155eef !important;
+}
+.faculty-jobs-table .official-link{
+  width:100% !important;
+  max-width:96px !important;
+  padding:9px 10px !important;
+}
+@media(max-width:700px){
+  .faculty-jobs-main .jobs-table-wrap{max-height:none !important;overflow:visible !important;}
+  .faculty-jobs-table{min-width:0 !important;table-layout:auto !important;}
+  .faculty-jobs-table .official-link{width:auto !important;max-width:100% !important;}
+}
+
+/* =========================================================
+   V124 Faculty jobs clean table + detail text guard
+   ========================================================= */
+.faculty-jobs-main .container{max-width:1240px;}
+.faculty-jobs-main .jobs-table-wrap{
+  max-height:none !important;
+  overflow-x:hidden !important;
+  overflow-y:visible !important;
+}
+.faculty-jobs-table{
+  width:100% !important;
+  min-width:0 !important;
+  table-layout:fixed !important;
+}
+.faculty-jobs-table th,
+.faculty-jobs-table td{
+  padding:12px 14px !important;
+  font-size:13.5px !important;
+  line-height:1.42 !important;
+  vertical-align:top !important;
+}
+.faculty-jobs-table th:nth-child(1),
+.faculty-jobs-table td:nth-child(1){width:26% !important;}
+.faculty-jobs-table th:nth-child(2),
+.faculty-jobs-table td:nth-child(2){width:25% !important;}
+.faculty-jobs-table th:nth-child(3),
+.faculty-jobs-table td:nth-child(3){width:13% !important;}
+.faculty-jobs-table th:nth-child(4),
+.faculty-jobs-table td:nth-child(4){width:16% !important;}
+.faculty-jobs-table th:nth-child(5),
+.faculty-jobs-table td:nth-child(5){width:10% !important;}
+.faculty-jobs-table th:nth-child(6),
+.faculty-jobs-table td:nth-child(6){width:10% !important;}
+.faculty-jobs-table td strong,
+.faculty-jobs-table td span{
+  display:-webkit-box !important;
+  -webkit-box-orient:vertical !important;
+  overflow:hidden !important;
+}
+.faculty-jobs-table td strong{-webkit-line-clamp:2 !important;}
+.faculty-jobs-table td span{-webkit-line-clamp:1 !important;}
+.faculty-jobs-table td:nth-child(2){
+  display:table-cell;
+  max-height:56px;
+  overflow:hidden;
+}
+.faculty-jobs-table .official-link{
+  width:auto !important;
+  max-width:100% !important;
+  min-width:74px !important;
+  padding:8px 10px !important;
+  white-space:nowrap !important;
+}
+.faculty-detail-card h1{
+  max-width:1000px;
+  font-size:34px !important;
+  line-height:1.16 !important;
+}
+.faculty-detail-card p,
+.faculty-auto-content li{
+  max-width:980px;
+}
+@media(max-width:900px){
+  .faculty-jobs-main .jobs-table-wrap{overflow-x:auto !important;}
+  .faculty-jobs-table{min-width:880px !important;}
+}
+@media(max-width:700px){
+  .faculty-jobs-main .jobs-table-wrap{overflow:visible !important;}
+  .faculty-jobs-table{min-width:0 !important;}
+  .faculty-jobs-table td strong,
+  .faculty-jobs-table td span{display:block !important;overflow:visible !important;}
+}

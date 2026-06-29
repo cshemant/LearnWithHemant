@@ -65,3 +65,10 @@
 /niet-greater-noida-student-career-proof-score /college/niet-greater-noida-student-career-proof-score/ 301
 /gniot-greater-noida-student-career-proof-score/ /college/gniot-greater-noida-student-career-proof-score/ 301
 /gniot-greater-noida-student-career-proof-score /college/gniot-greater-noida-student-career-proof-score/ 301
+
+# Block internal automation/config files
+/scripts/* /404.html 404
+/.github/* /404.html 404
+/sources_faculty_jobs.csv /404.html 404
+/sources_gov_jobs.csv /404.html 404
+/*.txt /404.html 404

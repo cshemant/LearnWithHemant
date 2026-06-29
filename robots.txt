@@ -30,3 +30,4 @@ User-agent: meta-externalagent
 Disallow: /
 
 Sitemap: https://learnwithhemant.com/sitemap.xml
+Sitemap: https://learnwithhemant.com/sitemap-faculty-jobs.xml
