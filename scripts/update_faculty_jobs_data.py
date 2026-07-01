@@ -48,6 +48,13 @@ BAD_EXTERNAL_LINK_DOMAINS = {
     "youtube.com", "youtu.be", "facebook.com", "instagram.com", "twitter.com", "x.com", "linkedin.com",
     "whatsapp.com", "wa.me", "telegram.me", "t.me", "pinterest.com", "play.google.com", "apps.apple.com", "aratt.ai",
 }
+KNOWN_COLLEGE_WEBSITE_FALLBACKS = {
+    "daripally anantha ramulu college": "https://www.dare.ac.in/",
+    "daripally anantha ramulu college of engineering": "https://www.dare.ac.in/",
+    "mother theressa college": "https://mtec86.ac.in/",
+    "mother theressa college of engineering": "https://mtec86.ac.in/",
+    "sembodai r v arts": "https://www.srvgroups.in/home.html",
+}
 BANNED_PUBLIC_TERM_RE = re.compile(r"faculty[\s_-]*plus|external[\s_-]*listing|external[\s_-]*discovery", re.I)
 
 
@@ -140,6 +147,138 @@ def safe_public_link(url: str) -> str:
     if is_external_listing_url(url) or link_domain_blocked(url):
         return ""
     return url
+
+
+def normalize_public_url(value: str) -> str:
+    """Convert plain website text like www.example.ac.in into a safe public URL."""
+    value = clean(value).strip("<>[]()'\".,;")
+    if not value:
+        return ""
+    if value.lower().startswith("mailto:"):
+        return safe_public_link(value)
+    if value.startswith("//"):
+        value = "https:" + value
+    elif re.match(r"(?i)^www\.", value):
+        value = "https://" + value
+    elif re.match(r"(?i)^[a-z0-9][a-z0-9.-]+\.(?:ac\.in|edu\.in|edu|org|in|com|net)(?:/|$)", value):
+        value = "https://" + value
+    return safe_public_link(value)
+
+
+def extract_urls_from_text(value: str) -> List[str]:
+    value = clean(value)
+    if not value:
+        return []
+    patterns = [
+        r"https?://[^\s<>()'\"]+",
+        r"www\.[A-Za-z0-9.-]+(?:/[^\s<>()'\"]*)?",
+    ]
+    urls: List[str] = []
+    for pat in patterns:
+        for m in re.findall(pat, value, flags=re.I):
+            u = normalize_public_url(m)
+            if u and u not in urls:
+                urls.append(u)
+    return urls
+
+
+def base_website_from_url(url: str) -> str:
+    url = normalize_public_url(url)
+    if not url or url.startswith("mailto:"):
+        return ""
+    parsed = urlparse(url)
+    if not parsed.netloc:
+        return ""
+    return normalize_public_url(f"{parsed.scheme or 'https'}://{parsed.netloc}/")
+
+
+def website_from_email(email_value: str) -> str:
+    emails = extract_email_candidates(email_value)
+    free_domains = {
+        "gmail.com", "yahoo.com", "yahoo.co.in", "hotmail.com", "outlook.com", "rediffmail.com",
+        "icloud.com", "live.com", "aol.com", "proton.me", "protonmail.com"
+    }
+    for email in emails:
+        domain = email.split("@")[-1].lower().strip()
+        if domain and domain not in free_domains and "." in domain:
+            return normalize_public_url("https://" + domain + "/")
+    return ""
+
+
+def infer_college_website(job: Dict[str, Any]) -> str:
+    """Find a safe college/institution website without changing visible table data."""
+    college_blob = clean(" ".join([str(job.get("college") or ""), str(job.get("address") or "")])).lower()
+    for key, url in KNOWN_COLLEGE_WEBSITE_FALLBACKS.items():
+        if key in college_blob:
+            mapped = normalize_public_url(url)
+            if mapped:
+                return mapped
+    for key in ["website_link", "college_website", "organization_website", "website", "official_website"]:
+        link = normalize_public_url(clean(job.get(key)))
+        if link:
+            return link
+    for key in ["apply_link", "notification_link", "official_link", "source_page"]:
+        link = base_website_from_url(clean(job.get(key)))
+        if link:
+            return link
+    for key in ["address", "fit_reason", "verification_status", "source_name"]:
+        urls = extract_urls_from_text(clean(job.get(key)))
+        for url in urls:
+            if url:
+                return base_website_from_url(url) or url
+    return website_from_email(clean(job.get("email")))
+
+
+def is_designated_apply_link(url: str) -> bool:
+    """True when a URL looks like an actual application/career link rather than a generic page."""
+    url = normalize_public_url(url)
+    if not url:
+        return False
+    low = url.lower()
+    return any(x in low for x in ["career", "careers", "recruit", "vacancy", "job", "jobs", "apply", "application", "form", "temporaryjobs", "cf2021", "approval_report"])
+
+
+def resolve_single_notice_link(job: Dict[str, Any]) -> str:
+    """Single public action URL for both Apply/Notice usage.
+
+    Priority requested by user:
+    1. Official notification/reference file URL
+    2. Apply/application URL
+    3. College/organization website
+    """
+    website = infer_college_website(job)
+    raw_notice = normalize_public_url(clean(
+        job.get("notification_link")
+        or job.get("official_notification")
+        or job.get("notice_link")
+        or job.get("notification_url")
+    ))
+    raw_apply = normalize_public_url(clean(
+        job.get("apply_link")
+        or job.get("official_link")
+        or job.get("application_link")
+        or job.get("url")
+    ))
+    return safe_public_link(raw_notice or raw_apply or website)
+
+
+def resolve_apply_notice_links(job: Dict[str, Any]) -> tuple[str, str]:
+    """Backward-compatible wrapper. Both old buttons use the same resolved URL."""
+    href = resolve_single_notice_link(job)
+    return href, href
+
+def enrich_button_links(job: Dict[str, Any]) -> Dict[str, Any]:
+    """Populate apply/notice href fields for generated pages while keeping other values intact."""
+    job = dict(job)
+    website = infer_college_website(job)
+    if website and not clean(job.get("website_link")):
+        job["website_link"] = website
+    single_href = resolve_single_notice_link(job)
+    if single_href and not clean(job.get("notification_link")):
+        job["notification_link"] = single_href
+    if single_href and not clean(job.get("apply_link")):
+        job["apply_link"] = single_href
+    return job
 
 def slugify(value: str, fallback: str = "faculty-job") -> str:
     value = clean(value).lower()
@@ -260,14 +399,67 @@ def infer_eligibility(text: str) -> str:
 
 
 EMAIL_RE = re.compile(r"[A-Z0-9._%+\-]+@[A-Z0-9.\-]+\.[A-Z]{2,}", re.I)
+APPLICATION_EMAIL_LABEL_RE = re.compile(
+    r"\b(?:email|e-mail|mail)\s*(?:address|id)?\s*(?:to\s*)?apply\b\s*[:\-–]?|"
+    r"\bapply\s*(?:email|e-mail|mail)\b\s*[:\-–]?",
+    re.I,
+)
+NEXT_APPLICATION_FIELD_RE = re.compile(
+    r"(?i)\s+(?:organization\s+address|organisation\s+address|college\s+address|contact\s+number|reference\s+source|"
+    r"organization\s+website|organisation\s+website|official\s+website|website|how\s+to\s+apply|apply\s+mode|"
+    r"last\s+date|job\s+location|salary\s+details|department|qualification|benefits\s+of\s+joining)\s*[:\-–]"
+)
+
+CONTACT_LABEL_RE = re.compile(
+    r"\b(?:contact\s*(?:number|no\.?|details)?|phone\s*(?:number|no\.?)?|mobile\s*(?:number|no\.?)?)\b\s*[:\-–]?",
+    re.I,
+)
+NEXT_CONTACT_FIELD_RE = re.compile(
+    r"(?i)\s+(?:reference\s+source|organization\s+website|organisation\s+website|official\s+website|website|"
+    r"email\s+address\s+to\s+apply|email\s+id\s+to\s+apply|how\s+to\s+apply|apply\s+mode|"
+    r"last\s+date|job\s+location|salary\s+details|department|qualification|benefits\s+of\s+joining)\s*[:\-–]"
+)
+PHONE_RE = re.compile(r"(?:(?:\+91|91)[\s\-]?)?(?:[6-9][\d\s\-]{8,13}\d|0\d[\d\s\-]{7,12}\d|[1-9]\d{2,4}[\s\-]\d{6,8})")
+
+
+def extract_contact_number(text: Any) -> str:
+    """Extract the value beside a source-page Contact Number / Phone label."""
+    value = html.unescape(str(text or "")).replace("\xa0", " ")
+    if not value:
+        return ""
+    contacts: List[str] = []
+    seen = set()
+    for match in CONTACT_LABEL_RE.finditer(value):
+        segment = value[match.end(): match.end() + 260]
+        segment = NEXT_CONTACT_FIELD_RE.split(segment, maxsplit=1)[0]
+        for phone in PHONE_RE.findall(segment):
+            number = clean(phone).strip(" .,:;()[]{}")
+            digits = re.sub(r"\D", "", number)
+            if len(digits) < 10 or len(digits) > 13:
+                continue
+            key = digits[-10:] if len(digits) >= 10 else digits
+            if key in seen:
+                continue
+            seen.add(key)
+            contacts.append(number)
+            if len(contacts) >= 3:
+                break
+        if contacts:
+            break
+    return ", ".join(contacts)
 
 
 def deobfuscate_email_text(text: Any) -> str:
-    """Convert common visible email forms like name [at] domain [dot] in into name@domain.in."""
+    """Convert common visible email forms without creating fake emails from normal prose.
+
+    Important: do not replace plain words like " at " and " dot " globally.
+    That can turn text such as "Apply Mode: Website www..." into fake
+    emails like mode@www.example.com. Bracketed/parenthesized forms are safe.
+    """
     value = html.unescape(str(text or ""))
     value = value.replace("＠", "@").replace("(a)", "@")
-    value = re.sub(r"\s*(?:\[at\]|\(at\)|\{at\}|\sat\s)\s*", "@", value, flags=re.I)
-    value = re.sub(r"\s*(?:\[dot\]|\(dot\)|\{dot\}|\sdot\s)\s*", ".", value, flags=re.I)
+    value = re.sub(r"\s*(?:\[at\]|\(at\)|\{at\})\s*", "@", value, flags=re.I)
+    value = re.sub(r"\s*(?:\[dot\]|\(dot\)|\{dot\})\s*", ".", value, flags=re.I)
     value = re.sub(r"\s+@\s+", "@", value)
     value = re.sub(r"\s+\.\s+", ".", value)
     return value
@@ -281,6 +473,10 @@ def is_bad_email(email: str) -> bool:
         return True
     local, domain = email.rsplit("@", 1)
     if not local or not domain or "." not in domain:
+        return True
+    if domain.startswith("www."):
+        return True
+    if local in {"website", "mode", "address", "email", "apply", "organization", "organisation"}:
         return True
     bad_local_terms = ["noreply", "no-reply", "donotreply", "wordpress", "comments", "support", "admin"]
     # support/admin are rejected only for source/listing style domains, not for college domains.
@@ -308,6 +504,122 @@ def extract_email_candidates(text: Any) -> List[str]:
     return found
 
 
+
+
+def decode_cfemail(encoded: Any) -> str:
+    """Decode Cloudflare protected email hex used by some job listing pages."""
+    encoded = clean(encoded)
+    if not encoded:
+        return ""
+    m = re.search(r"#([0-9a-fA-F]+)", encoded)
+    if m:
+        encoded = m.group(1)
+    encoded = re.sub(r"[^0-9a-fA-F]", "", encoded)
+    if len(encoded) < 4 or len(encoded) % 2:
+        return ""
+    try:
+        key = int(encoded[:2], 16)
+        chars = [chr(int(encoded[i:i + 2], 16) ^ key) for i in range(2, len(encoded), 2)]
+        email = "".join(chars)
+        return normalize_email_list(extract_email_candidates(email))
+    except Exception:
+        return ""
+
+
+def extract_cloudflare_emails_from_soup(soup: BeautifulSoup, require_apply_context: bool = True) -> List[str]:
+    """Extract decoded emails from Cloudflare email-protection markup.
+
+    FacultyPlus frequently hides real emails in data-cfemail attributes. Browser JS
+    shows the address, but requests/BeautifulSoup only sees the encoded value. This
+    decoder makes the scraper read the same application email visible in the browser.
+    """
+    emails: List[str] = []
+    seen = set()
+
+    def add(email: str) -> None:
+        email = normalize_email_list(extract_email_candidates(email), max_emails=1)
+        if not email:
+            return
+        key = email.lower()
+        if key not in seen:
+            seen.add(key)
+            emails.append(email)
+
+    selectors = []
+    try:
+        selectors.extend(soup.select("[data-cfemail]"))
+    except Exception:
+        pass
+    try:
+        selectors.extend(a for a in soup.find_all("a", href=True) if "/cdn-cgi/l/email-protection" in clean(a.get("href")).lower())
+    except Exception:
+        pass
+
+    for el in selectors:
+        encoded = clean(el.get("data-cfemail") or "") if hasattr(el, "get") else ""
+        if not encoded and hasattr(el, "get"):
+            href = clean(el.get("href") or "")
+            m = re.search(r"#([0-9a-fA-F]+)", href)
+            encoded = m.group(1) if m else ""
+        email = decode_cfemail(encoded)
+        if not email:
+            continue
+        parent = getattr(el, "parent", None)
+        parent_text = clean(parent.get_text(" ", strip=True)) if parent else clean(el.get_text(" ", strip=True))
+        grand = getattr(parent, "parent", None)
+        grand_text = clean(grand.get_text(" ", strip=True)) if grand else ""
+        context = f"{parent_text} {grand_text}".lower()
+        if require_apply_context:
+            if not any(x in context for x in ["email address to apply", "email id to apply", "e-mail address to apply", "mail id to apply", "apply", "send", "resume", "cv"]):
+                continue
+        add(email)
+    return emails
+
+
+def append_decoded_cloudflare_emails_to_text(soup: BeautifulSoup, text: str) -> str:
+    emails = extract_cloudflare_emails_from_soup(soup, require_apply_context=True)
+    if not emails:
+        emails = extract_cloudflare_emails_from_soup(soup, require_apply_context=False)
+    if emails:
+        text = clean(text + " Email address to apply: " + ", ".join(emails))
+    return text
+
+def normalize_email_list(emails: Sequence[str], max_emails: int = 4) -> str:
+    clean_emails: List[str] = []
+    seen = set()
+    for email in emails:
+        email = clean(email).strip(". ,;:()[]{}<>\\\"'")
+        key = email.lower()
+        if not key or key in seen or is_bad_email(email):
+            continue
+        seen.add(key)
+        clean_emails.append(email)
+        if len(clean_emails) >= max_emails:
+            break
+    return ", ".join(clean_emails)
+
+
+def extract_application_email(text: Any) -> str:
+    """Return only the email(s) shown next to labels like 'Email address to apply'.
+
+    FacultyPlus-style posts often contain multiple unrelated fields, such as
+    Organization Website and Contact Number. The public Email column must show
+    only the application email label, not website/contact text accidentally
+    converted into an email.
+    """
+    value = deobfuscate_email_text(text)
+    if not value:
+        return ""
+    for match in APPLICATION_EMAIL_LABEL_RE.finditer(value):
+        segment = value[match.end(): match.end() + 700]
+        segment = NEXT_APPLICATION_FIELD_RE.split(segment, maxsplit=1)[0]
+        emails = extract_email_candidates(segment)
+        joined = normalize_email_list(emails)
+        if joined:
+            return joined
+    return ""
+
+
 def extract_email(text: Any) -> str:
     """Pick the best application email from visible page text.
 
@@ -315,6 +627,9 @@ def extract_email(text: Any) -> str:
     'How to apply', 'send CV', etc. This fixes cases where the source page shows
     the email in plain text instead of a mailto link.
     """
+    labeled_email = extract_application_email(text)
+    if labeled_email:
+        return labeled_email
     value = deobfuscate_email_text(text)
     scored: List[tuple[int, int, str]] = []
     seen = set()
@@ -344,21 +659,29 @@ def extract_email(text: Any) -> str:
 
 
 def extract_email_from_soup(soup: BeautifulSoup, visible_text: str = "") -> str:
-    """Extract email from mailto links plus full visible article text."""
+    """Extract only application email from mailto links, Cloudflare-protected emails, and visible article text."""
+    cf_emails = extract_cloudflare_emails_from_soup(soup, require_apply_context=True)
+    if cf_emails:
+        return normalize_email_list(cf_emails)
+    labeled = extract_application_email(visible_text)
+    if labeled:
+        return labeled
     pieces: List[str] = []
     try:
         for a in soup.find_all("a", href=True):
             href = clean(a.get("href"))
             text = clean(a.get_text(" ", strip=True))
-            if href.lower().startswith("mailto:"):
+            parent_text = clean(a.parent.get_text(" ", strip=True)) if getattr(a, "parent", None) else text
+            context = f"{parent_text} {text}".lower()
+            if href.lower().startswith("mailto:") and any(x in context for x in ["apply", "cv", "resume", "email address to apply", "send"]):
                 pieces.append("Email address to apply: " + href.replace("mailto:", "").split("?")[0])
-            if "@" in text or re.search(r"\b(at|dot)\b", text, re.I):
-                pieces.append(text)
+            if ("@" in text or "@" in parent_text) and any(x in context for x in ["apply", "cv", "resume", "email address to apply", "send"]):
+                pieces.append(parent_text or text)
     except Exception:
         pass
-    if visible_text:
-        pieces.append(visible_text)
-    return extract_email(" | ".join(pieces))
+    if pieces:
+        return extract_email(" | ".join(pieces))
+    return ""
 
 
 def days_left(date_string: str) -> Optional[int]:
@@ -380,15 +703,27 @@ def normalize_job(raw: Dict[str, Any], source_type: str = "manual_curated") -> O
     eligibility = clean_eligibility_text(clean(raw.get("eligibility") or raw.get("eligible_for") or ""), f"{title_text} {post} {department} {context_text[:1200]}")
     state = public_clean(raw.get("state") or raw.get("State") or "")
     city = public_clean(raw.get("city") or raw.get("City") or "")
-    email = clean(raw.get("email") or extract_email(context_text))
-    apply_link = safe_public_link(clean(raw.get("apply_link") or raw.get("official_link") or raw.get("link") or raw.get("url")))
-    notification_link = safe_public_link(clean(raw.get("notification_link") or raw.get("official_notification") or "")) or apply_link
+    email = clean(raw.get("email") or extract_application_email(context_text) or extract_email(context_text))
+    email = normalize_email_list(extract_email_candidates(email)) if email else ""
+    contact_number = clean(raw.get("contact_number") or raw.get("contact") or raw.get("phone") or raw.get("mobile") or extract_contact_number(context_text))
+    website_link = normalize_public_url(clean(raw.get("website_link") or raw.get("college_website") or raw.get("organization_website") or raw.get("official_website") or raw.get("website") or ""))
+    apply_link = normalize_public_url(clean(raw.get("apply_link") or raw.get("official_link") or raw.get("link") or raw.get("url")))
+    notification_link = normalize_public_url(clean(raw.get("notification_link") or raw.get("official_notification") or raw.get("notice_link") or raw.get("notification_url") or ""))
+    if not website_link:
+        website_link = base_website_from_url(apply_link) or base_website_from_url(notification_link) or website_from_email(email)
+    # Keep button links stable: application falls back to college website; notice falls back to official notice/reference or college website.
+    if not apply_link:
+        apply_link = website_link
+    if not notification_link:
+        notification_link = website_link or apply_link
     if not apply_link and not notification_link and not email:
         return None
     last_raw = clean(raw.get("last_date_iso") or raw.get("last_date") or raw.get("last_date_display") or "")
     parsed = parse_date(last_raw)
     last_iso = parsed.isoformat() if parsed else (last_raw if re.fullmatch(r"\d{4}-\d{2}-\d{2}", last_raw) else "")
     last_display = public_clean(raw.get("last_date_display")) or display_date(last_raw, parsed)
+    if parsed and parsed.year < 2026:
+        return None
     source_name = public_clean(raw.get("source_name") or raw.get("source") or college or "Source Discovery")
     if not source_name or "source discovery" in source_name.lower():
         source_name = "Source Discovery"
@@ -417,8 +752,10 @@ def normalize_job(raw: Dict[str, Any], source_type: str = "manual_curated") -> O
         "last_date_iso": last_iso if re.fullmatch(r"\d{4}-\d{2}-\d{2}", last_iso or "") else "",
         "last_date_display": public_clean(last_display),
         "email": email,
+        "contact_number": contact_number,
         "apply_link": apply_link,
         "notification_link": notification_link,
+        "website_link": website_link,
         "city": city,
         "state": state,
         "address": shorten(raw.get("address") or raw.get("Address") or raw.get("location") or raw.get("Location"), 220),
@@ -614,6 +951,7 @@ def extract_page_context(url: str, timeout: int = 14, max_bytes: int = 2_000_000
         tag.decompose()
     title = clean(soup.title.get_text(" ", strip=True)) if soup.title else ""
     text = clean(soup.get_text(" ", strip=True))
+    text = append_decoded_cloudflare_emails_to_text(soup, text)
     return title, text[:8000]
 
 
@@ -644,6 +982,7 @@ def build_auto_job_from_text(row: Dict[str, str], title: str, link: str, snippet
         "last_date_iso": parsed.isoformat() if parsed else "",
         "last_date_display": display_date(last_raw, parsed),
         "email": extract_email(page_text) or extract_email(context),
+        "contact_number": extract_contact_number(page_text) or extract_contact_number(context),
         "apply_link": link,
         "notification_link": link,
         "state": state,
@@ -686,7 +1025,9 @@ def extract_labeled_values(soup: BeautifulSoup, full_text: str) -> Dict[str, str
         "eligibility": ["Qualification", "Qualifications", "Eligibility", "Educational Qualification", "Candidate Profile", "Candidate Requirement", "Minimum Qualification"],
         "address": ["College Address", "Organization address", "Organization Address", "Address", "Job Location", "Location", "Venue"],
         "last_date": ["Last Date", "Last Date to Apply", "Apply Before", "Closing Date", "Deadline"],
-        "email": ["Email address to apply", "Email Address to Apply", "Email ID to Apply", "Email", "Email Address", "E-mail", "E Mail", "Mail ID", "Apply Email"],
+        "email": ["Email address to apply", "Email Address to Apply", "Email ID to Apply", "E-mail Address to Apply", "Mail ID to Apply", "Apply Email"],
+        "website": ["Organization Website", "Organisation Website", "College Website", "Institution Website", "Institute Website", "Official Website", "Website", "Web Site"],
+        "contact": ["Contact Number", "Contact No", "Contact No.", "Phone Number", "Mobile Number", "Contact Details"],
     }
     found = {k: "" for k in labels}
     for tr in soup.find_all("tr"):
@@ -704,9 +1045,71 @@ def extract_labeled_values(soup: BeautifulSoup, full_text: str) -> Dict[str, str
     return found
 
 
+def nearest_labeled_link(soup: BeautifulSoup, page_url: str, labels: Sequence[str]) -> str:
+    """Find a link near a label such as 'To Apply Online' or 'Organization Website'."""
+    label_re = re.compile("|".join(re.escape(x) for x in labels), re.I)
+    roots = soup.select("article, .entry-content, .post-content, main") or [soup]
+    for root in roots:
+        # 1) A label and link in the same paragraph/table/list item.
+        for node in root.find_all(["p", "li", "tr", "div"], limit=400):
+            node_text = clean(node.get_text(" ", strip=True))
+            if not node_text or not label_re.search(node_text):
+                continue
+            for a in node.find_all("a", href=True):
+                href = normalize_public_url(urljoin(page_url, clean(a.get("href"))))
+                if href:
+                    return href
+            urls = extract_urls_from_text(node_text)
+            if urls:
+                return urls[0]
+            # 2) Sometimes the actual <a> is placed in the next sibling.
+            sibling = node.find_next_sibling()
+            for _ in range(3):
+                if not sibling:
+                    break
+                for a in sibling.find_all("a", href=True):
+                    href = normalize_public_url(urljoin(page_url, clean(a.get("href"))))
+                    if href:
+                        return href
+                urls = extract_urls_from_text(clean(sibling.get_text(" ", strip=True)))
+                if urls:
+                    return urls[0]
+                sibling = sibling.find_next_sibling()
+    return ""
+
+
+def extract_website_link_from_page(soup: BeautifulSoup, page_url: str, labels: Optional[Dict[str, str]] = None, full_text: str = "") -> str:
+    """Prefer the college/organization website shown on the source post."""
+    labels = labels or {}
+    for raw in [labels.get("website", ""), full_text]:
+        urls = extract_urls_from_text(raw)
+        if urls:
+            return base_website_from_url(urls[0]) or urls[0]
+    return nearest_labeled_link(
+        soup,
+        page_url,
+        ["Organization Website", "Organisation Website", "College Website", "Institution Website", "Institute Website", "Official Website", "Website"],
+    )
+
+
 def choose_external_listing_links(soup: BeautifulSoup, page_url: str) -> tuple[str, str]:
     apply_candidates: List[tuple[int, str, str]] = []
     notice_candidates: List[tuple[int, str, str]] = []
+    # First prefer links explicitly placed next to application/notification labels.
+    labeled_apply = nearest_labeled_link(
+        soup,
+        page_url,
+        ["Apply Link", "Application Link", "Apply Online", "To Apply Online", "Application Form", "Career Page", "Careers", "How to Apply"],
+    )
+    labeled_notice = nearest_labeled_link(
+        soup,
+        page_url,
+        ["Official Notification", "Official Notice", "Notification", "Advertisement", "Reference File", "For More Details", "Read Carefully", "Details"],
+    )
+    if labeled_apply:
+        apply_candidates.append((120, labeled_apply, "labeled apply link"))
+    if labeled_notice:
+        notice_candidates.append((120, labeled_notice, "labeled notice link"))
     article = soup.select_one("article") or soup.select_one(".entry-content") or soup.select_one(".post-content") or soup
     for a in article.find_all("a", href=True):
         text = clean(a.get_text(" ", strip=True)).lower()
@@ -763,21 +1166,34 @@ def parse_external_listing_post(url: str, timeout: int = 16) -> Optional[Dict[st
     visible_title = clean(h1.get_text(" ", strip=True)) if h1 else title
     article = soup.select_one("article") or soup.select_one(".entry-content") or soup.select_one(".post-content") or soup
     full_text = clean(article.get_text(" ", strip=True))
+    full_text = append_decoded_cloudflare_emails_to_text(soup, full_text)
     context = clean(" ".join([visible_title, title, full_text[:9000]]))
     if not looks_like_faculty_job_text(context):
         return None
     labels = extract_labeled_values(article if isinstance(article, BeautifulSoup) else soup, full_text)
-    page_email = extract_email(labels.get("email")) or extract_email_from_soup(soup, full_text) or extract_email(context)
+    page_email = (
+        normalize_email_list(extract_email_candidates(labels.get("email")))
+        or extract_email_from_soup(soup, full_text)
+        or extract_application_email(full_text)
+        or extract_email(full_text)
+    )
     extracted_last_raw, extracted_parsed = extract_last_date(context)
     last_raw = labels.get("last_date") or extracted_last_raw
     parsed = parse_date(last_raw) or extracted_parsed
     apply_link, notification_link = choose_external_listing_links(soup, url)
-    official_found = bool(apply_link or notification_link)
+    website_link = extract_website_link_from_page(soup, url, labels, full_text)
+    # Required button behavior: Apply falls back to the college website; Notice falls back to the college website.
+    if not apply_link:
+        apply_link = website_link
+    if not notification_link:
+        notification_link = website_link
+    official_found = bool(apply_link or notification_link or website_link)
     college = clean_college_name(labels.get("college") or infer_college_name(visible_title, full_text, "College / University"), visible_title, "College / University")
     post = clean_post_name(labels.get("post") or infer_post(context), context)
     department = clean_department_name(labels.get("department") or infer_department(context), context)
     eligibility = clean_eligibility_text(labels.get("eligibility") or infer_eligibility(context), context)
     address = labels.get("address") or ""
+    contact_number = extract_contact_number(labels.get("contact") or full_text)
     state = infer_state(" ".join([address, context]), "All India")
     raw = {
         "college": college,
@@ -789,8 +1205,10 @@ def parse_external_listing_post(url: str, timeout: int = 16) -> Optional[Dict[st
         "last_date_iso": parsed.isoformat() if parsed else "",
         "last_date_display": display_date(last_raw, parsed),
         "email": page_email,
+        "contact_number": contact_number,
         "apply_link": apply_link,
         "notification_link": notification_link,
+        "website_link": website_link,
         "address": address,
         "state": state,
         "city": "",
@@ -1052,6 +1470,7 @@ def scrape_source(row: Dict[str, str], timeout: int = 18, max_links: int = 15) -
             "last_date_iso": parsed.isoformat() if parsed else "",
             "last_date_display": display_date(last_raw, parsed),
             "email": extract_email(detail_text) or extract_email(page_text) or extract_email(context),
+            "contact_number": extract_contact_number(detail_text) or extract_contact_number(page_text) or extract_contact_number(context),
             "apply_link": link,
             "notification_link": link,
             "state": clean(row.get("state")),
@@ -1086,6 +1505,50 @@ def load_sources(path: Path, max_sources: int) -> List[Dict[str, str]]:
                 break
     return rows
 
+
+
+
+
+def job_is_pre_2026(job: Dict[str, Any]) -> bool:
+    raw = clean(job.get("last_date_iso") or job.get("last_date_display") or job.get("last_date") or "")
+    parsed: Optional[dt.date] = None
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw or ""):
+        try:
+            parsed = dt.date.fromisoformat(raw)
+        except ValueError:
+            parsed = None
+    if parsed is None:
+        parsed = parse_date(raw)
+    return bool(parsed and parsed.year < 2026)
+
+
+def keep_2026_or_unknown(job: Dict[str, Any]) -> bool:
+    """Exclude outdated rows before 2026; keep undated watch rows for manual verification."""
+    return not job_is_pre_2026(job)
+
+
+def filter_recent_jobs(jobs: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    return [dict(job) for job in jobs if keep_2026_or_unknown(job)]
+
+def last_date_sort_key(job: Dict[str, Any]) -> tuple[int, int, str]:
+    """Sort latest valid last-date first; rows without a parseable date go to the bottom."""
+    raw = clean(job.get("last_date_iso") or job.get("last_date_display") or job.get("last_date") or "")
+    parsed: Optional[dt.date] = None
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw or ""):
+        try:
+            parsed = dt.date.fromisoformat(raw)
+        except ValueError:
+            parsed = None
+    if parsed is None:
+        parsed = parse_date(raw)
+    if parsed:
+        return (0, -parsed.toordinal(), clean(job.get("college") or job.get("job") or job.get("slug")).lower())
+    return (1, 0, clean(job.get("college") or job.get("job") or job.get("slug")).lower())
+
+
+def sort_jobs_by_last_date_desc(jobs: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Keep faculty dashboards sorted by Last Date in descending/latest-first order."""
+    return sorted(list(jobs), key=last_date_sort_key)
 
 def merge_jobs(manual: List[Dict[str, Any]], auto: List[Dict[str, Any]], limit: int) -> List[Dict[str, Any]]:
     merged: List[Dict[str, Any]] = []
@@ -1222,17 +1685,18 @@ def table_rows(jobs: Sequence[Dict[str, Any]]) -> str:
         college_html = f'<a class="faculty-job-title-link" href="{esc(detail_url)}"><strong>{esc(college_name)}</strong></a>'
         email_value = clean(job.get("email"))
         email_html = f'<a href="mailto:{esc(email_value)}">{esc(email_value)}</a>' if email_value else '<span class="muted-link-text">Check notice</span>'
-        apply = safe_public_link(clean(job.get("apply_link")))
-        notice = safe_public_link(clean(job.get("notification_link")))
-        apply_html = f'<a class="official-link" href="{esc(apply)}" target="_blank" rel="noopener">Apply</a>' if apply else '<span class="muted-link-text">Check notice</span>'
-        notice_html = f'<a class="official-link notice-link" href="{esc(notice)}" target="_blank" rel="noopener">Notice</a>' if notice else '<span class="muted-link-text">Check notice</span>'
+        contact_value = clean(job.get("contact_number") or job.get("contact") or job.get("phone") or "")
+        contact_html = esc(contact_value) if contact_value else '<span class="muted-link-text">Check notice</span>'
+        notice_href = resolve_single_notice_link(job)
+        notice_target = ' target="_blank" rel="noopener"' if notice_href and not notice_href.startswith("mailto:") else ""
+        notice_html = f'<a class="official-link notice-link" href="{esc(notice_href)}"{notice_target}>Notice</a>' if notice_href else f'<a class="official-link notice-link" href="{esc(detail_url)}">Notice</a>'
         row = (
             f'<tr data-state="{esc(job.get("state"))}" data-tags="{esc(job.get("profile_tags"))}" data-status="{esc(job.get("status"))}" data-last="{esc(job.get("last_date_iso"))}">'
             f'<td data-label="College">{college_html}<span>{esc(post_dept)}</span></td>'
             f'<td data-label="Eligibility">{esc(eligibility)}</td>'
             f'<td data-label="Last Date"><strong>{esc(job.get("last_date_display"))}</strong></td>'
             f'<td data-label="Email">{email_html}</td>'
-            f'<td data-label="Apply Link">{apply_html}</td>'
+            f'<td data-label="Contact">{contact_html}</td>'
             f'<td data-label="Official Notice">{notice_html}</td>'
             '</tr>'
         )
@@ -1240,7 +1704,6 @@ def table_rows(jobs: Sequence[Dict[str, Any]]) -> str:
     if not rows:
         return '<tr><td colspan="6">No faculty jobs available right now. Add rows in manual-faculty-jobs.json or enable official sources.</td></tr>'
     return "\n".join(rows)
-
 
 def dashboard_page(jobs: Sequence[Dict[str, Any]], payload: Dict[str, Any], title: str, description: str, canonical_path: str, heading: str, subheading: str, active_filter: str = "all") -> str:
     counts = summary_counts(jobs)
@@ -1264,7 +1727,7 @@ def dashboard_page(jobs: Sequence[Dict[str, Any]], payload: Dict[str, Any], titl
 <div class="container"><div class="jobs-panel">
 <div class="jobs-panel-head"><div><span class="jobs-mini-eyebrow">{esc(payload.get('updated_label') or 'Updated')}</span><h1>{esc(heading)}</h1><p>{esc(subheading)}</p></div><a class="jobs-suggest-btn" href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20found%20a%20faculty%20job%20to%20add." target="_blank" rel="noopener">Suggest Faculty Job</a></div>
 <div aria-label="Faculty job filters" class="jobs-controls"><div class="jobs-search-wrap"><input id="facultyJobsSearch" aria-label="Search faculty jobs" placeholder="Search college, eligibility, state, department..." type="search"/></div><div class="jobs-filter-chips" role="group">{chip_html}</div></div>
-<div class="jobs-table-wrap"><table class="jobs-table faculty-jobs-table"><thead><tr><th>College Name</th><th>Eligibility</th><th>Last Date</th><th>Email</th><th>Apply Link</th><th>Official Notice</th></tr></thead><tbody id="facultyJobsTableBody">{table_rows(jobs)}</tbody></table></div>
+<div class="jobs-table-wrap"><table class="jobs-table faculty-jobs-table"><thead><tr><th>College Name</th><th>Eligibility</th><th>Last Date</th><th>Email</th><th>Contact</th><th>Official Notice</th></tr></thead><tbody id="facultyJobsTableBody">{table_rows(jobs)}</tbody></table></div>
 <p class="jobs-table-note">This page is generated from verified manual rows plus optional official-source scanning. Always verify the official PDF/notice before applying or emailing your CV.</p>
 </div></div>
 </section>
@@ -1375,19 +1838,19 @@ def detail_page(job: Dict[str, Any]) -> str:
     post = clean_post_name(job.get("post"), f"{job.get('job')} {job.get('department')}")
     dept = clean_department_name(job.get("department"), f"{job.get('job')} {job.get('eligibility')}")
     title = f"{college} {post} {dept} | Faculty Job"
-    desc = f"Check {college} {post} details: eligibility, last date, email, official notice and apply link."
+    desc = f"Check {college} {post} details: eligibility, last date, email, contact and official notice."
     schema = jobposting_schema(job, canonical) if is_actual_job_posting(job) else ""
     email_value = clean(job.get("email"))
     email_html = f'<a href="mailto:{esc(email_value)}">{esc(email_value)}</a>' if email_value else 'Check official notice'
-    apply = safe_public_link(clean(job.get("apply_link")))
-    notice = safe_public_link(clean(job.get("notification_link")))
+    notice = resolve_single_notice_link(job)
+    contact_value = clean(job.get("contact_number") or job.get("contact") or job.get("phone") or "")
     actions = []
     if notice:
         actions.append(f'<a class="official-link notice-link" href="{esc(notice)}" target="_blank" rel="noopener">Open Official Notice</a>')
-    if apply:
-        actions.append(f'<a class="official-link" href="{esc(apply)}" target="_blank" rel="noopener">Apply / Career Page</a>')
+    else:
+        actions.append(f'<a class="official-link notice-link" href="{esc(canonical)}">View Notice Details</a>')
     if email_value:
-        actions.append(f'<a class="official-link" href="mailto:{esc(email_value)}">Email CV</a>')
+        actions.append(f'<a class="official-link" href="mailto:{esc(email_value.replace(" ", ""))}">Email CV</a>')
     actions_html = "".join(actions) if actions else '<span class="muted-link-text">Check the official notice before applying.</span>'
     return page_head(title, desc, canonical, schema) + site_header() + f'''
 <main class="jobs-dashboard-main faculty-jobs-main">
@@ -1402,6 +1865,7 @@ def detail_page(job: Dict[str, Any]) -> str:
 <div><span>Department</span><strong>{esc(dept)}</strong></div>
 <div><span>Last Date</span><strong>{esc(job.get('last_date_display'))}</strong></div>
 <div><span>Email</span><strong>{email_html}</strong></div>
+<div><span>Contact</span><strong>{esc(contact_value) if contact_value else 'Check official notice'}</strong></div>
 <div><span>Verification</span><strong>{esc(job.get('verification_status'))}</strong></div>
 </div>
 <h2>Eligibility</h2><p>{esc(job.get('eligibility'))}</p>
@@ -1436,15 +1900,17 @@ def filter_jobs(jobs: Sequence[Dict[str, Any]], kind: str) -> List[Dict[str, Any
 
 
 def generate_pages(payload: Dict[str, Any]) -> List[str]:
-    jobs = payload.get("jobs") or []
+    jobs = filter_recent_jobs([enrich_button_links(job) for job in (payload.get("jobs") or [])])
+    payload = dict(payload)
+    payload["jobs"] = jobs
     generated_paths: List[str] = []
     write_file(FACULTY_ROOT / "index.html", dashboard_page(
         jobs, payload,
         "Faculty Jobs for CSE/IT | College Teaching Vacancies | Learn with Hemant",
-        "Find faculty jobs for CSE, IT, MCA and Computer Science teaching roles. Check college name, eligibility, last date, email, official apply link and official notice.",
+        "Find faculty jobs for CSE, IT, MCA and Computer Science teaching roles. Check college name, eligibility, last date, email, contact and official notice.",
         "/jobs/faculty-jobs/",
         "Faculty Jobs for CSE / IT",
-        "Automated teaching-job dashboard with clean eligibility, last date, email and official apply links.",
+        "Automated teaching-job dashboard with clean eligibility, last date, email, contact and official notice links.",
     ))
     generated_paths.append("/jobs/faculty-jobs/")
     categories = {
@@ -1493,6 +1959,8 @@ def sanitize_public_payload(value: Any) -> Any:
 
 def write_json(payload: Dict[str, Any], out_json: Path) -> None:
     out_json.parent.mkdir(parents=True, exist_ok=True)
+    payload = dict(payload)
+    payload["jobs"] = filter_recent_jobs([enrich_button_links(job) for job in (payload.get("jobs") or [])])
     payload = sanitize_public_payload(payload)
     out_json.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"[OK] Updated {out_json} with {len(payload.get('jobs') or [])} faculty jobs")
@@ -1564,7 +2032,28 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=150)
     parser.add_argument("--max-sources", type=int, default=30)
     parser.add_argument("--max-links-per-source", type=int, default=100)
+    parser.add_argument("--mode", default="full", help="Use a number like --mode 10 for quick testing on only that many source URLs/posts.")
     args = parser.parse_args()
+
+    quick_limit = None
+    if str(args.mode).strip().isdigit():
+        quick_limit = max(1, int(str(args.mode).strip()))
+        args.limit = max(quick_limit, min(args.limit, quick_limit + 5))
+        args.max_sources = 2
+        args.max_links_per_source = quick_limit
+        print(f"[INFO] Quick faculty test mode enabled: scanning about {quick_limit} URLs/posts only")
+
+    if str(args.mode).strip().lower() in {"buttons-only", "links-only", "repair-buttons"}:
+        out_json = (REPO_ROOT / args.out_json).resolve() if not Path(args.out_json).is_absolute() else Path(args.out_json)
+        payload = json.loads(out_json.read_text(encoding="utf-8"))
+        write_json(payload, out_json)
+        payload = json.loads(out_json.read_text(encoding="utf-8"))
+        paths = generate_pages(payload)
+        cleanup_generated_dirs(paths)
+        write_faculty_sitemap(paths)
+        update_main_sitemap(paths)
+        print(f"[OK] Repaired Apply/Notice button links without re-scraping. URLs generated: {len(paths)}")
+        return
 
     manual_path = (REPO_ROOT / args.manual_json).resolve() if not Path(args.manual_json).is_absolute() else Path(args.manual_json)
     sources_path = (REPO_ROOT / args.sources).resolve() if not Path(args.sources).is_absolute() else Path(args.sources)
@@ -1587,13 +2076,13 @@ def main() -> None:
         else:
             auto_jobs.extend(scrape_source(source, max_links=args.max_links_per_source))
     print(f"[INFO] Auto rows before dedupe: {len(auto_jobs)}")
-    jobs = merge_jobs(manual_jobs, auto_jobs, args.limit)
-    print(f"[INFO] Rows after dedupe/limit: {len(jobs)}")
+    jobs = sort_jobs_by_last_date_desc(filter_recent_jobs(merge_jobs(manual_jobs, auto_jobs, args.limit)))
+    print(f"[INFO] Rows after dedupe/limit/date-sort: {len(jobs)}")
     now = dt.datetime.now(IST)
     payload = {
         "generated_at": now.isoformat(timespec="seconds"),
         "updated_label": now.strftime("Updated: %d %b %Y, %I:%M %p IST"),
-        "source": "manual verified faculty jobs + external listing discovery + enabled official-source scanner",
+        "source": "manual verified faculty jobs + external listing discovery + enabled official-source scanner + protected email decoder",
         "manual_count": len(manual_jobs),
         "auto_count": len(auto_jobs),
         "jobs": jobs,
