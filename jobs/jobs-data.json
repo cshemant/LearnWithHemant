@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T01:40:07+05:30",
+  "generated_at": "2026-07-03T09:04:46+05:30",
   "updated_label": "Updated: 03 Jul 2026",
   "source": "manual verified jobs + nightly government job scanner",
   "manual_count": 26,
@@ -653,6 +653,30 @@
       "apply_link": "https://www.tspsc.gov.in/website",
       "apply_label": "Check",
       "profile_tags": "Check Age"
+    },
+    {
+      "job": "Notice: Cut-off date for having completed Graduation by applicants under Advt. 01/2019 has b",
+      "subtitle": "BPSSC / Bihar",
+      "eligible_for": "Graduate/Bachelor degree appears eligible; subject needs manual check",
+      "fit_reason": null,
+      "why": null,
+      "verified_on": "03 Jul 2026",
+      "profile_tags": "B.Tech CSE",
+      "type": "General/Other",
+      "status": "Doubtful",
+      "status_label": "Doubtful",
+      "status_class": "caution",
+      "last_date_iso": "",
+      "last_date_display": "Check official notice",
+      "official_link": "https://bpssc.bihar.gov.in/Notices/Notice-01-25-08-2019.pdf",
+      "official_label": "Check",
+      "notification_link": "https://bpssc.bihar.gov.in/Notices/Notice-01-25-08-2019.pdf",
+      "notification_label": "Notification",
+      "apply_link": "https://bpssc.bihar.gov.in/Notices/Notice-01-25-08-2019.pdf",
+      "apply_label": "Check",
+      "state": "Bihar",
+      "agency": "BPSSC",
+      "match_score": 25
     }
   ]
 }
