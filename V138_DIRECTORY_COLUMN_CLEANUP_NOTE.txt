@@ -1,0 +1,1 @@
+Removed Last Verified Date column, made Career Contact phone-only/no links, updated Career Page link text with college name, and replaced generic Website text with domain-based website name.

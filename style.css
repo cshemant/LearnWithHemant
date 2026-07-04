@@ -4580,3 +4580,47 @@ body.home-v2-body .v2-demo-agenda-card h2{
   .faculty-jobs-table td strong,
   .faculty-jobs-table td span{display:block !important;overflow:visible !important;}
 }
+
+
+/* Footer college city links row */
+.v2-footer-city-row{
+  margin-top:24px;
+  padding:16px 0 14px;
+  border-top:1px solid rgba(255,255,255,.12);
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.v2-footer-city-title{
+  color:rgba(255,255,255,.72);
+  font-size:13px;
+  font-weight:800;
+  line-height:1.8;
+  white-space:nowrap;
+}
+.v2-footer-city-links{
+  display:flex;
+  gap:8px 12px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.v2-footer-city-links a{
+  color:rgba(255,255,255,.88);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.4;
+  text-decoration:none;
+}
+.v2-footer-city-links a:hover{
+  color:#fff;
+  text-decoration:underline;
+}
+.v2-footer-city-row + .v2-footer-bottom{
+  margin-top:0;
+}
+@media (max-width:640px){
+  .v2-footer-city-row{display:block;}
+  .v2-footer-city-title{display:block;margin-bottom:8px;}
+  .v2-footer-city-links{gap:8px 10px;}
+}

@@ -1,0 +1,5 @@
+College directory table update:
+- Admission Contact now displays visible phone/email details where verified in the local data.
+- Faculty Page now points to department/faculty-style pages instead of only homepage fallback.
+- Career Email displays clickable email when available; otherwise it clearly says not publicly listed.
+- Jaipur entries have been enriched with verified/publicly listed details where available.

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-03T22:06:11+05:30",
-  "updated_label": "Updated: 03 Jul 2026, 10:06 PM IST",
+  "generated_at": "2026-07-04T03:38:19+05:30",
+  "updated_label": "Updated: 04 Jul 2026, 03:38 AM IST",
   "source": "manual verified faculty jobs + source discovery + enabled official-source scanner + protected email decoder",
   "manual_count": 3,
   "auto_count": 87,
@@ -886,15 +886,15 @@
       "address": "Muvattupuzha, Kerala Apply Mode: Email Organization",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Applications / MCA / BCA, Associate Professor, Kerala",
       "job": "Assistant Professor Associate Professor Computer Applications / MCA / BCA",
-      "slug": "assistant-professor-associate-professor-computer-applications-mca-bca-2026"
+      "slug": "assistant-professor-associate-professor-computer-applications-mca-bca-2026-2"
     },
     {
       "college": "Assistant Professor",
@@ -913,9 +913,9 @@
       "address": "Rishi MS Institute of Engineering & Technology for Women Near JNTU Metro Station, Kukatpally Hyderabad – 500085 Reference Source: This job notification was received directly from the institution. Join source Community…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -940,9 +940,9 @@
       "address": "Thirumagal Polytechnic College 144, Vanchuvancherry Padappai, Chennai-601301 Contact Number: 8489419607 Reference Source: This job notification was received directly from the institution. Benefits of Joining Thirumagal…",
       "source_page": "",
       "verification_status": "Needs Official Verification",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -975,7 +975,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Applications / MCA / BCA, Associate Professor, Delhi",
       "job": "Assistant Professor Associate Professor Computer Applications / MCA / BCA",
-      "slug": "assistant-professor-associate-professor-computer-applications-mca-bca-2026-2"
+      "slug": "assistant-professor-associate-professor-computer-applications-mca-bca-2026"
     },
     {
       "college": "Assistant Professor in MBA (Finance)",
