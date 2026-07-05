@@ -1,0 +1,6 @@
+Home page tuning update:
+- Reduced main hero heading size slightly.
+- Removed the Practical Course badge from the hero area.
+- Removed the 7+ Years Experience / Beginner Friendly / Live Project Based trust line from the hero area.
+- Shifted the right profile card slightly upward on desktop.
+- Changed Real Projects text to Live Projects on the home page.

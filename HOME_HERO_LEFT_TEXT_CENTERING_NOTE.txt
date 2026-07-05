@@ -1,0 +1,4 @@
+V144 update:
+- Centered the homepage left hero text/action/pills block vertically against the right profile card on desktop.
+- Kept the right profile card positioning unchanged.
+- No text, links, buttons, or page structure changed.
