@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-04T21:38:50+05:30",
-  "updated_label": "Updated: 04 Jul 2026, 09:38 PM IST",
+  "generated_at": "2026-07-05T08:50:20+05:30",
+  "updated_label": "Updated: 05 Jul 2026, 08:50 AM IST",
   "source": "manual verified faculty jobs + source discovery + enabled official-source scanner + protected email decoder",
   "manual_count": 3,
   "auto_count": 95,
@@ -219,7 +219,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Telangana",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-4"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-3"
     },
     {
       "college": "Faculty and Non-Teaching",
@@ -300,7 +300,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-3"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-2"
     },
     {
       "college": "Faculty & Professor of Practice",
@@ -651,7 +651,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Tamil Nadu",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-2"
+      "slug": "faculty-associate-professor-computer-science-cse-2026"
     },
     {
       "college": "Junior Research Fellow",
@@ -967,9 +967,9 @@
       "address": "Shree Devi Institute of Technology, Airport Road, Kenjar, Mangalore – 574142, Karnataka State, India. Organization",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -994,9 +994,9 @@
       "address": "AMC Engineering College Bannerghatta Road Bengaluru – 560083 Karnataka Reference Source: This job notification was received directly from the institution. Join source Community Join WhatsApp Join Telegram Follow…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1021,9 +1021,9 @@
       "address": "Valia Koonambaikulathamma College of Engineering and Technology Chavarcode Parippally P.O Thiruvananthapuram, Kerala- 691574 Reference Source: This job notification was received directly from the institution. Benefits…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1048,9 +1048,9 @@
       "address": "FACEPREP, No. 12, Lakshmi Nagar, Thottipalayam Pirivu, Off, Avinashi Rd, Coimbatore, Tamil Nadu 641014 Reference Source: This job notification was received directly from the institution. Benefits of Joining FACE Prep…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1075,15 +1075,15 @@
       "address": "Sri Muthukumaran Institute of Technology Chikkarayapuram Near Mangadu Chennai – 600 069 Tamil Nadu Reference Source: This job notification was received directly from the institution. Benefits of Joining Sri…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-7"
     },
     {
       "college": "Lecturer, Lab Assistant & Physical Director Posts. Sri Venkatachalapathy Polytechnic…",
@@ -1102,9 +1102,9 @@
       "address": "Sri Venkatachalapathy Polytechnic College Vadakuchipalayam Kappiyampuliyur (Post) Villupuram- 605601 Contact Number: 9943218375 (WhatsApp) Reference Source: This job notification was received directly from the…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1129,9 +1129,9 @@
       "address": "The Principal SNMV College of Arts and Science Malumachampatti, Coimbatore – 641050 Tamilnadu, India Reference Source: This job notification was received directly from the institution. Benefits of Joining SNMV College…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1156,9 +1156,9 @@
       "address": "M.A.M. College of Engineering Chennai-Trichy Trunk Road Siruganur , Tiruchirapalli – 621105 Reference Source: This job notification was received directly from the institution. Benefits of Joining M.A.M. College of…",
       "source_page": "",
       "verification_status": "Needs Official Verification",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1488,7 +1488,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Andhra Pradesh",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-7"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-6"
     },
     {
       "college": "Faculty",
@@ -1515,7 +1515,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Goa",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-6"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-5"
     },
     {
       "college": "Humanities View All Departments Polytechnic Arts and Science Nursing Research",
@@ -1785,7 +1785,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-5"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-4"
     },
     {
       "college": "Faculty Development Program at New Prince Shri Bhavani College",
