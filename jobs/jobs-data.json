@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T01:27:30+05:30",
+  "generated_at": "2026-07-06T04:01:43+05:30",
   "updated_label": "Updated: 06 Jul 2026",
   "source": "manual verified jobs + nightly government job scanner",
   "manual_count": 26,
@@ -27,7 +27,9 @@
       "notification_label": "Notice",
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Apply",
-      "profile_tags": "M.Tech CSE"
+      "profile_tags": "M.Tech CSE",
+      "slug": "set-2026-computer-science-and-applications-rajasthan-teaching-2026",
+      "detail_url": "/jobs/set-2026-computer-science-and-applications-rajasthan-teaching-2026/"
     },
     {
       "job": "CET Senior Secondary Level 2026",
@@ -52,7 +54,9 @@
       "notification_label": "Notice",
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Apply",
-      "profile_tags": ""
+      "profile_tags": "",
+      "slug": "cet-senior-secondary-level-2026-rajasthan-office-2026",
+      "detail_url": "/jobs/cet-senior-secondary-level-2026-rajasthan-office-2026/"
     },
     {
       "job": "Raj. State and Sub. Services Comb. Comp Exam 2026",
@@ -77,7 +81,9 @@
       "notification_label": "Notice",
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Apply",
-      "profile_tags": "B.Tech CSE"
+      "profile_tags": "B.Tech CSE",
+      "slug": "raj-state-and-sub-services-comb-comp-exam-2026-rajasthan-office-2026",
+      "detail_url": "/jobs/raj-state-and-sub-services-comb-comp-exam-2026-rajasthan-office-2026/"
     },
     {
       "job": "Senior Scientific Officer 2026",
@@ -102,7 +108,9 @@
       "notification_label": "Notice",
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Check",
-      "profile_tags": "Experience Needed"
+      "profile_tags": "Experience Needed",
+      "slug": "senior-scientific-officer-2026-rajasthan-technical-2026",
+      "detail_url": "/jobs/senior-scientific-officer-2026-rajasthan-technical-2026/"
     },
     {
       "job": "Assistant Prosecution Officer Exam 2026",
@@ -127,7 +135,9 @@
       "notification_label": "Notice",
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Verify",
-      "profile_tags": ""
+      "profile_tags": "",
+      "slug": "assistant-prosecution-officer-exam-2026-rajasthan-non-cse-2026",
+      "detail_url": "/jobs/assistant-prosecution-officer-exam-2026-rajasthan-non-cse-2026/"
     },
     {
       "job": "SSC CGL / CHSL / Selection Post",
@@ -152,7 +162,9 @@
       "notification_label": "Notice",
       "apply_link": "https://ssc.gov.in/",
       "apply_label": "SSC",
-      "profile_tags": "B.Tech CSE, Check Age"
+      "profile_tags": "B.Tech CSE, Check Age",
+      "slug": "ssc-cgl-chsl-selection-post-central-office-2026",
+      "detail_url": "/jobs/ssc-cgl-chsl-selection-post-central-office-2026/"
     },
     {
       "job": "NIELIT / NIC / IT Assistant / Programmer Roles",
@@ -177,7 +189,9 @@
       "notification_label": "Notice",
       "apply_link": "https://recruit-delhi.nielit.gov.in/",
       "apply_label": "NIELIT",
-      "profile_tags": "B.Tech CSE, M.Tech CSE, MCA/BCA"
+      "profile_tags": "B.Tech CSE, M.Tech CSE, MCA/BCA",
+      "slug": "nielit-nic-it-assistant-programmer-roles-central-computer-it-2026",
+      "detail_url": "/jobs/nielit-nic-it-assistant-programmer-roles-central-computer-it-2026/"
     },
     {
       "job": "Assistant Professor / Lecturer – CSE",
@@ -202,7 +216,9 @@
       "notification_label": "Notice",
       "apply_link": "https://www.ncs.gov.in/",
       "apply_label": "NCS",
-      "profile_tags": "M.Tech CSE"
+      "profile_tags": "M.Tech CSE",
+      "slug": "assistant-professor-lecturer-cse-teaching-2026",
+      "detail_url": "/jobs/assistant-professor-lecturer-cse-teaching-2026/"
     },
     {
       "job": "UPSC Recruitment Advertisements",
@@ -227,7 +243,9 @@
       "notification_label": "Notice",
       "apply_link": "https://upsc.gov.in/recruitment/recruitment-advertisement",
       "apply_label": "Check",
-      "profile_tags": "B.Tech CSE, Experience Needed, Check Age"
+      "profile_tags": "B.Tech CSE, Experience Needed, Check Age",
+      "slug": "upsc-recruitment-advertisements-central-central-2026",
+      "detail_url": "/jobs/upsc-recruitment-advertisements-central-central-2026/"
     },
     {
       "job": "SSC CGL / CHSL / Selection Post Latest Notices",
@@ -252,7 +270,9 @@
       "notification_label": "Notice",
       "apply_link": "https://ssc.gov.in/",
       "apply_label": "Check",
-      "profile_tags": "B.Tech CSE, Check Age"
+      "profile_tags": "B.Tech CSE, Check Age",
+      "slug": "ssc-cgl-chsl-selection-post-latest-notices-central-office-2026",
+      "detail_url": "/jobs/ssc-cgl-chsl-selection-post-latest-notices-central-office-2026/"
     },
     {
       "job": "NCS Government Jobs Portal",
@@ -277,7 +297,9 @@
       "notification_label": "Notice",
       "apply_link": "https://www.ncs.gov.in/job-seeker/Pages/GovtJob.aspx",
       "apply_label": "Check",
-      "profile_tags": ""
+      "profile_tags": "",
+      "slug": "ncs-government-jobs-portal-central-computer-it-2026",
+      "detail_url": "/jobs/ncs-government-jobs-portal-central-computer-it-2026/"
     },
     {
       "job": "NIELIT / NIC / IT Assistant / Programmer Recruitment",
@@ -302,7 +324,9 @@
       "notification_label": "Notice",
       "apply_link": "https://recruit-delhi.nielit.gov.in/",
       "apply_label": "Check",
-      "profile_tags": "B.Tech CSE, M.Tech CSE, MCA/BCA"
+      "profile_tags": "B.Tech CSE, M.Tech CSE, MCA/BCA",
+      "slug": "nielit-nic-it-assistant-programmer-recruitment-central-computer-it-2026",
+      "detail_url": "/jobs/nielit-nic-it-assistant-programmer-recruitment-central-computer-it-2026/"
     },
     {
       "job": "DSSSB Computer Teacher / Assistant / IT Roles",
@@ -327,7 +351,9 @@
       "notification_label": "Notice",
       "apply_link": "https://dsssb.delhi.gov.in/dsssb-vacancies",
       "apply_label": "Check",
-      "profile_tags": "Check Age"
+      "profile_tags": "Check Age",
+      "slug": "dsssb-computer-teacher-assistant-it-roles-delhi-teaching-2026",
+      "detail_url": "/jobs/dsssb-computer-teacher-assistant-it-roles-delhi-teaching-2026/"
     },
     {
       "job": "UPPSC / UPSSSC Computer & Assistant Roles",
@@ -352,7 +378,9 @@
       "notification_label": "Notice",
       "apply_link": "https://uppsc.up.nic.in/CandidatePages/Notifications.aspx",
       "apply_label": "Check",
-      "profile_tags": ""
+      "profile_tags": "",
+      "slug": "uppsc-upsssc-computer-and-assistant-roles-uttar-pradesh-office-2026",
+      "detail_url": "/jobs/uppsc-upsssc-computer-and-assistant-roles-uttar-pradesh-office-2026/"
     },
     {
       "job": "BPSC Assistant Professor / Computer Science Notices",
@@ -377,7 +405,9 @@
       "notification_label": "Notice",
       "apply_link": "https://bpsc.bihar.gov.in/advertisement/",
       "apply_label": "Check",
-      "profile_tags": "M.Tech CSE, Experience Needed"
+      "profile_tags": "M.Tech CSE, Experience Needed",
+      "slug": "bpsc-assistant-professor-computer-science-notices-bihar-teaching-2026",
+      "detail_url": "/jobs/bpsc-assistant-professor-computer-science-notices-bihar-teaching-2026/"
     },
     {
       "job": "MPESB Computer / IT / Assistant Recruitment",
@@ -402,7 +432,9 @@
       "notification_label": "Notice",
       "apply_link": "https://esb.mp.gov.in/e_default.html",
       "apply_label": "Check",
-      "profile_tags": "Check Age"
+      "profile_tags": "Check Age",
+      "slug": "mpesb-computer-it-assistant-recruitment-madhya-pradesh-computer-it-2026",
+      "detail_url": "/jobs/mpesb-computer-it-assistant-recruitment-madhya-pradesh-computer-it-2026/"
     },
     {
       "job": "HSSC Computer / IT / Assistant Vacancies",
@@ -427,7 +459,9 @@
       "notification_label": "Notice",
       "apply_link": "https://hssc.gov.in/",
       "apply_label": "Check",
-      "profile_tags": "Check Age"
+      "profile_tags": "Check Age",
+      "slug": "hssc-computer-it-assistant-vacancies-haryana-office-2026",
+      "detail_url": "/jobs/hssc-computer-it-assistant-vacancies-haryana-office-2026/"
     },
     {
       "job": "JSSC / JPSC Computer Science and Assistant Roles",
@@ -452,7 +486,9 @@
       "notification_label": "Notice",
       "apply_link": "https://jssc.jharkhand.gov.in/",
       "apply_label": "Check",
-      "profile_tags": "Check Age"
+      "profile_tags": "Check Age",
+      "slug": "jssc-jpsc-computer-science-and-assistant-roles-jharkhand-office-2026",
+      "detail_url": "/jobs/jssc-jpsc-computer-science-and-assistant-roles-jharkhand-office-2026/"
     },
     {
       "job": "MPSC Maharashtra Recruitment Notices",
@@ -477,7 +513,9 @@
       "notification_label": "Notice",
       "apply_link": "https://mpsc.gov.in/advertisements",
       "apply_label": "Check",
-      "profile_tags": "Check Age"
+      "profile_tags": "Check Age",
+      "slug": "mpsc-maharashtra-recruitment-notices-maharashtra-office-2026",
+      "detail_url": "/jobs/mpsc-maharashtra-recruitment-notices-maharashtra-office-2026/"
     },
     {
       "job": "GPSC / OJAS Gujarat Recruitment Notices",
@@ -502,7 +540,9 @@
       "notification_label": "Notice",
       "apply_link": "https://ojas.gujarat.gov.in/",
       "apply_label": "Check",
-      "profile_tags": "Check Age"
+      "profile_tags": "Check Age",
+      "slug": "gpsc-ojas-gujarat-recruitment-notices-gujarat-office-2026",
+      "detail_url": "/jobs/gpsc-ojas-gujarat-recruitment-notices-gujarat-office-2026/"
     },
     {
       "job": "KPSC Karnataka Recruitment Notices",
@@ -527,7 +567,9 @@
       "notification_label": "Notice",
       "apply_link": "https://kpsc.kar.nic.in/",
       "apply_label": "Check",
-      "profile_tags": "Check Age"
+      "profile_tags": "Check Age",
+      "slug": "kpsc-karnataka-recruitment-notices-karnataka-office-2026",
+      "detail_url": "/jobs/kpsc-karnataka-recruitment-notices-karnataka-office-2026/"
     },
     {
       "job": "TNPSC Tamil Nadu Recruitment Notices",
@@ -552,7 +594,9 @@
       "notification_label": "Notice",
       "apply_link": "https://www.tnpsc.gov.in/English/Notification.aspx",
       "apply_label": "Check",
-      "profile_tags": "Check Age"
+      "profile_tags": "Check Age",
+      "slug": "tnpsc-tamil-nadu-recruitment-notices-tamil-nadu-office-2026",
+      "detail_url": "/jobs/tnpsc-tamil-nadu-recruitment-notices-tamil-nadu-office-2026/"
     },
     {
       "job": "Kerala PSC Recruitment Notifications",
@@ -577,7 +621,9 @@
       "notification_label": "Notice",
       "apply_link": "https://www.keralapsc.gov.in/notifications",
       "apply_label": "Check",
-      "profile_tags": "Check Age"
+      "profile_tags": "Check Age",
+      "slug": "kerala-psc-recruitment-notifications-kerala-office-2026",
+      "detail_url": "/jobs/kerala-psc-recruitment-notifications-kerala-office-2026/"
     },
     {
       "job": "OPSC Odisha Recruitment Notices",
@@ -602,7 +648,9 @@
       "notification_label": "Notice",
       "apply_link": "https://www.opsc.gov.in/Public/OPSC/Default.aspx",
       "apply_label": "Check",
-      "profile_tags": "B.Tech CSE, Check Age"
+      "profile_tags": "B.Tech CSE, Check Age",
+      "slug": "opsc-odisha-recruitment-notices-odisha-office-2026",
+      "detail_url": "/jobs/opsc-odisha-recruitment-notices-odisha-office-2026/"
     },
     {
       "job": "WBPSC Recruitment Notices",
@@ -627,7 +675,9 @@
       "notification_label": "Notice",
       "apply_link": "https://psc.wb.gov.in/",
       "apply_label": "Check",
-      "profile_tags": "Check Age"
+      "profile_tags": "Check Age",
+      "slug": "wbpsc-recruitment-notices-west-bengal-office-2026",
+      "detail_url": "/jobs/wbpsc-recruitment-notices-west-bengal-office-2026/"
     },
     {
       "job": "TSPSC Telangana Recruitment Notices",
@@ -652,7 +702,35 @@
       "notification_label": "Notice",
       "apply_link": "https://www.tspsc.gov.in/website",
       "apply_label": "Check",
-      "profile_tags": "Check Age"
+      "profile_tags": "Check Age",
+      "slug": "tspsc-telangana-recruitment-notices-telangana-office-2026",
+      "detail_url": "/jobs/tspsc-telangana-recruitment-notices-telangana-office-2026/"
+    },
+    {
+      "job": "Notice: Cut-off date for having completed Graduation by applicants under Advt. 01/2019 has b",
+      "subtitle": "BPSSC / Bihar",
+      "eligible_for": "Graduate/Bachelor degree appears eligible; subject needs manual check",
+      "fit_reason": null,
+      "why": null,
+      "verified_on": "06 Jul 2026",
+      "profile_tags": "B.Tech CSE",
+      "type": "General/Other",
+      "status": "Doubtful",
+      "status_label": "Doubtful",
+      "status_class": "caution",
+      "last_date_iso": "",
+      "last_date_display": "Check official notice",
+      "official_link": "https://bpssc.bihar.gov.in/Notices/Notice-01-25-08-2019.pdf",
+      "official_label": "Check",
+      "notification_link": "https://bpssc.bihar.gov.in/Notices/Notice-01-25-08-2019.pdf",
+      "notification_label": "Notification",
+      "apply_link": "https://bpssc.bihar.gov.in/Notices/Notice-01-25-08-2019.pdf",
+      "apply_label": "Check",
+      "state": "Bihar",
+      "agency": "BPSSC",
+      "match_score": 25,
+      "slug": "notice-cut-off-date-for-having-completed-graduation-by-applicants-under-advt-01-2019-has",
+      "detail_url": "/jobs/notice-cut-off-date-for-having-completed-graduation-by-applicants-under-advt-01-2019-has/"
     }
   ]
 }

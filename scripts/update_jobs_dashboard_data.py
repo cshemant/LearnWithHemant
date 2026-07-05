@@ -409,6 +409,11 @@ def main() -> None:
     payload = build_json_from_excel(excel_path, args.limit, manual_jobs=manual_jobs)
     write_json_safely(payload, out_json)
 
+    # Keep government job titles clickable and generate one SEO detail page per row.
+    detail_generator = REPO_ROOT / "scripts" / "generate_govt_job_pages.py"
+    if detail_generator.exists():
+        subprocess.check_call([sys.executable, str(detail_generator)], cwd=str(REPO_ROOT))
+
 
 if __name__ == "__main__":
     main()

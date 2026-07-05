@@ -48,7 +48,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add jobs/jobs-data.json jobs/manual-jobs.json jobs/government_jobs_tracker.xlsx profile.json sources_gov_jobs.csv || true
+          git add jobs/ sitemap.xml sitemap-govt-jobs.xml robots.txt scripts/generate_govt_job_pages.py scripts/update_jobs_dashboard_data.py profile.json sources_gov_jobs.csv || true
           if git diff --staged --quiet; then
             echo "No job data changes to commit."
             exit 0
