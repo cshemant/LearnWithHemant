@@ -109,8 +109,7 @@ gtag('config', 'G-K9L9QVHWT2');
     <section class="section">
       <div class="container research-tool-layout">
         <form class="research-tool-card" id="phdTopicForm">
-          <div class="form-heading">
-            <span class="form-badge">Step-by-step</span>
+          <div class="form-heading clean-form-heading">
             <h2>Generate your research direction</h2>
             <p>Choose realistic options. The output is a starting point, not a final thesis title.</p>
           </div>
@@ -284,11 +283,9 @@ gtag('config', 'G-K9L9QVHWT2');
       }
 
       function renderPlan(plan) {
-        const sourceLabel = plan.source === 'openai-api' ? 'AI API: OpenAI' : plan.source === 'gemini-api' ? 'AI API: Gemini' : 'Built-in Expert Engine';
         const apiNote = plan.apiNote ? `<p class="tool-warning">${escapeHtml(plan.apiNote)}</p>` : '';
         out.innerHTML = `
-          <div class="output-head-row">
-            <span class="v2-badge">${escapeHtml(sourceLabel)}</span>
+          <div class="output-head-row output-head-row-clean">
             <span class="fit-score">Fit Score: ${escapeHtml(plan.fitScore || '--')}/100</span>
           </div>
           <h2>${escapeHtml(plan.selectedTitle || 'Customized CSE Research Plan')}</h2>

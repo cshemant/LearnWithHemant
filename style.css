@@ -5301,3 +5301,12 @@ body.home-v2-body .v2-profile-card{
     font-size:14px !important;
   }
 }
+
+/* V159: clean topic finder labels */
+.clean-form-heading {
+  padding-top: 0;
+}
+.output-head-row-clean {
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
