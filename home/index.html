@@ -40,7 +40,18 @@ gtag('config', 'G-K9L9QVHWT2');
         <a href="/projects/">Projects</a>
         <a href="/research/">Research</a>
         <a href="/guest-lecture/">Guest Lecture</a>
-        <a href="/tool/">Tool</a>
+        <div class="nav-dropdown tools-dropdown">
+          <a class="nav-dropdown-trigger" href="/tool/" aria-haspopup="true" aria-expanded="false">Tools <span aria-hidden="true">▾</span></a>
+          <div class="nav-dropdown-menu" role="menu" aria-label="Tools menu">
+            <div class="nav-dropdown-group" role="none">
+              <span class="nav-dropdown-label">Faculty Assistant</span>
+              <a class="nav-dropdown-child" role="menuitem" href="/tools/faculty-assistant/question-paper-generator/">
+                <span>Question Paper Generator</span>
+                <small>AI paper + answer key</small>
+              </a>
+            </div>
+          </div>
+        </div>
         <a href="/jobs/">Govt Jobs</a>
       </nav>
 
@@ -68,9 +79,14 @@ gtag('config', 'G-K9L9QVHWT2');
       <a href="/courses/web-development/">Courses</a>
       <a href="/projects/">Projects</a>
       <a href="/research/">Research</a>
-      <a href="/research/phd-topic-finder/">PhD Topic Finder</a>
       <a href="/guest-lecture/">Guest Lecture</a>
-      <a href="/tool/">Tool</a>
+      <details class="mobile-menu-tools">
+        <summary>Tools <span aria-hidden="true">▾</span></summary>
+        <div class="mobile-menu-tools-panel">
+          <span class="mobile-menu-section-label">Faculty Assistant</span>
+          <a class="mobile-sub-link" href="/tools/faculty-assistant/question-paper-generator/">Question Paper Generator</a>
+        </div>
+      </details>
       <a href="/jobs/">Govt Jobs</a>
       <a href="/apply/">Apply Now</a>
     </nav>

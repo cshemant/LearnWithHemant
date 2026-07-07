@@ -1,0 +1,8 @@
+# Copy this file to .dev.vars for local testing.
+# Never upload real keys to GitHub or share them in screenshots.
+
+RAZORPAY_KEY_ID=rzp_live_your_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_secret
+
+GEMINI_API_KEY=your_new_gemini_api_key
+GEMINI_MODEL=gemini-3-flash-preview

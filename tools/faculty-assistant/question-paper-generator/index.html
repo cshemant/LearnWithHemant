@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K9L9QVHWT2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-K9L9QVHWT2');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Question Paper Generator for Faculty | CO Mapping, Bloom Level & Answer Scheme</title>
+  <meta name="description" content="Generate university-style question papers for faculty with CO mapping, Bloom taxonomy, difficulty distribution, unit-wise weightage, answer scheme and internal moderation copy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/png" href="/brand-logo.png" />
+  <link rel="apple-touch-icon" href="/brand-logo.png" />
+</head>
+<body class="home-v2-body qpg-body">
+  <header class="site-header home-v2-header">
+    <div class="container nav home-v2-nav">
+      <a class="brand home-v2-brand" href="/home/">
+        <img class="brand-logo" src="/brand-logo.png" alt="Learn with Hemant logo" />
+        <div>
+          <span>Learn with Hemant</span>
+          <small>Build • Deploy • Grow</small>
+        </div>
+      </a>
+
+      <nav class="nav-links home-v2-links" aria-label="Main Navigation">
+        <a href="/about/">Mentor</a>
+        <a href="/courses/web-development/">Courses</a>
+        <a href="/projects/">Projects</a>
+        <a href="/research/">Research</a>
+        <a href="/guest-lecture/">Guest Lecture</a>
+        <div class="nav-dropdown tools-dropdown">
+          <a class="nav-dropdown-trigger" href="/tool/" aria-haspopup="true" aria-expanded="false">Tools <span aria-hidden="true">▾</span></a>
+          <div class="nav-dropdown-menu" role="menu" aria-label="Tools menu">
+            <div class="nav-dropdown-group" role="none">
+              <span class="nav-dropdown-label">Faculty Assistant</span>
+              <a class="nav-dropdown-child" role="menuitem" href="/tools/faculty-assistant/question-paper-generator/">
+                <span>Question Paper Generator</span>
+                <small>AI paper + answer key</small>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="/jobs/">Govt Jobs</a>
+      </nav>
+
+      <a class="nav-cta home-v2-cta" href="/apply/">Apply Now <span>→</span></a>
+
+      <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-controls="mobileSiteMenu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu-backdrop" data-mobile-menu-close></div>
+  <aside class="mobile-site-menu" id="mobileSiteMenu" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <a class="mobile-menu-brand" href="/home/">
+        <img src="/brand-logo.png" alt="Learn with Hemant logo" />
+      </a>
+      <button class="mobile-menu-close" type="button" aria-label="Close menu" data-mobile-menu-close>×</button>
+    </div>
+    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+      <a href="/home/">Home</a>
+      <a href="/about/">Mentor</a>
+      <a href="/courses/web-development/">Courses</a>
+      <a href="/projects/">Projects</a>
+      <a href="/research/">Research</a>
+      <a href="/guest-lecture/">Guest Lecture</a>
+      <details class="mobile-menu-tools">
+        <summary>Tools <span aria-hidden="true">▾</span></summary>
+        <div class="mobile-menu-tools-panel">
+          <span class="mobile-menu-section-label">Faculty Assistant</span>
+          <a class="mobile-sub-link" href="/tools/faculty-assistant/question-paper-generator/">Question Paper Generator</a>
+        </div>
+      </details>
+      <a href="/jobs/">Govt Jobs</a>
+      <a href="/apply/">Apply Now</a>
+    </nav>
+  </aside>
+  <main class="qpg-main">
+    <section class="qpg-hero">
+      <div class="container qpg-page-stack">
+        <div class="qpg-top-intro" aria-label="Question paper generator overview">
+          <h1>Question Paper Generator</h1>
+          <p>Generate university-style papers with CO mapping, Bloom level, difficulty distribution, unit-wise weightage, answer scheme and internal moderation copy.</p>
+          <p class="qpg-seo-line">Supports DBMS, 5th semester, AKTU / RTU / JNTU patterns, 70 marks, 3 hours and Easy:Medium:Hard = 30:40:30 distribution.</p>
+        </div>
+
+        <section class="qpg-panel qpg-form-panel" aria-label="Question paper form">
+          <h2>Generate Paper</h2>
+          <form id="qpgForm">
+            <div class="qpg-form-grid">
+              <div class="qpg-field">
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" value="DBMS" />
+              </div>
+              <div class="qpg-field">
+                <label for="semester">Semester</label>
+                <input id="semester" name="semester" value="5th" />
+              </div>
+              <div class="qpg-field qpg-university-field">
+                <label for="universitySearch">University</label>
+                <div class="qpg-university-combobox" id="universityCombobox">
+                  <input id="universitySearch" name="universitySearch" value="AKTU - Dr. A.P.J. Abdul Kalam Technical University" autocomplete="off" aria-autocomplete="list" aria-controls="universityResults" aria-expanded="false" placeholder="Search university name alphabetically..." />
+                  <input type="hidden" id="university" name="university" value="AKTU" />
+                  <div class="qpg-university-results" id="universityResults" role="listbox" aria-label="University suggestions"></div>
+                </div>
+                <small class="qpg-field-hint">Start typing to search major Indian state and private universities.</small>
+              </div>
+              <div class="qpg-field qpg-custom-university-field" id="customUniversityField" hidden>
+                <label for="customUniversityName">Custom University Name</label>
+                <input id="customUniversityName" name="customUniversityName" placeholder="Enter university name" />
+              </div>
+              <div class="qpg-field">
+                <label for="pattern">Pattern</label>
+                <select id="pattern" name="pattern">
+                  <option selected>AKTU 2026</option>
+                  <option>RTU 2026</option>
+                  <option>JNTU 2026</option>
+                  <option>Custom University Pattern</option>
+                </select>
+              </div>
+              <div class="qpg-field">
+                <label for="marks">Marks</label>
+                <input id="marks" name="marks" type="number" min="30" max="100" value="70" />
+              </div>
+              <div class="qpg-field">
+                <label for="duration">Time</label>
+                <input id="duration" name="duration" value="3 Hours" />
+              </div>
+              <div class="qpg-field full">
+                <label for="difficulty">Difficulty Distribution</label>
+                <input id="difficulty" name="difficulty" value="Easy:Medium:Hard = 30:40:30" />
+              </div>
+              <div class="qpg-field full">
+                <label for="unitTopics">Unit-wise Topics / Syllabus</label>
+                <textarea id="unitTopics" name="unitTopics" rows="4">Unit I: DBMS architecture, data models, ER model, keys
+Unit II: Relational model, functional dependency, normalization
+Unit III: SQL, views, indexing, query optimization
+Unit IV: Transactions, concurrency control, recovery, ACID</textarea>
+              </div>
+              <div class="qpg-field full">
+                <label for="previousQuestions">Previous 5-year Questions to Avoid (optional)</label>
+                <textarea id="previousQuestions" name="previousQuestions" rows="3" placeholder="Paste old questions here if available. The AI will avoid direct repetition."></textarea>
+              </div>
+            </div>
+
+            <input type="hidden" name="coMappingEnabled" value="true" />
+            <input type="hidden" name="bloomTaxonomyEnabled" value="true" />
+            <input type="hidden" name="unitWeightageEnabled" value="true" />
+            <input type="hidden" name="answerKeyEnabled" value="true" />
+
+            <button class="qpg-generate-btn" type="submit" id="qpgGenerateBtn">Generate</button>
+            <div class="qpg-progress" id="qpgProgress" aria-hidden="true"><div class="qpg-progress-bar" id="qpgProgressBar"></div></div>
+            <div class="qpg-progress-text" id="qpgProgressText">Building university pattern, CO mapping, Bloom level and answer scheme...</div>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <section class="qpg-section qpg-printable-section">
+      <div class="container">
+        <div class="qpg-output-section" id="qpgOutput">
+          <div class="qpg-ready-row">
+            <div>
+              <h2 style="margin-top:0;">Generated Faculty Documents</h2>
+            </div>
+            <div class="qpg-actions">
+              <button class="qpg-action-btn" type="button" id="printPaperBtn">Download PDF Question Paper</button>
+              <button class="qpg-action-btn secondary" type="button" id="printAnswerKeyBtn">Download Answer Key PDF</button>
+            </div>
+          </div>
+
+          <div class="qpg-tabs" role="tablist" aria-label="Generated document tabs">
+            <button class="qpg-tab active" type="button" data-tab="paper">PDF Question Paper</button>
+            <button class="qpg-tab" type="button" data-tab="co">CO Mapping Table</button>
+            <button class="qpg-tab" type="button" data-tab="bloom">Bloom Level</button>
+            <button class="qpg-tab" type="button" data-tab="scheme">Answer Scheme</button>
+            <button class="qpg-tab" type="button" data-tab="moderation">Internal Moderation Copy</button>
+          </div>
+
+          <article class="qpg-preview-card active" id="tab-paper">
+            <div class="qpg-print-title">Question Paper</div>
+            <div id="paperPreview"></div>
+          </article>
+          <article class="qpg-preview-card" id="tab-co">
+            <div class="qpg-print-title">CO Mapping Table</div>
+            <div id="coPreview"></div>
+          </article>
+          <article class="qpg-preview-card" id="tab-bloom">
+            <div class="qpg-print-title">Bloom Level Distribution</div>
+            <div id="bloomPreview"></div>
+          </article>
+          <article class="qpg-preview-card" id="tab-scheme">
+            <div class="qpg-print-title">Answer Scheme</div>
+            <div id="schemePreview"></div>
+          </article>
+          <article class="qpg-preview-card" id="tab-moderation">
+            <div class="qpg-print-title">Internal Moderation Copy</div>
+            <div id="moderationPreview"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer v2-footer">
+    <div class="container v2-footer-grid">
+      <div class="v2-footer-brand">
+        <div class="brand home-v2-brand footer-brand-row">
+          <img class="brand-logo" src="/brand-logo.png" alt="Learn with Hemant logo" />
+          <div>
+            <span>Learn with Hemant</span>
+            <small>Helping beginners become confident developers through practical training.</small>
+          </div>
+        </div>
+        <div class="v2-footer-socials">
+          <a href="https://www.youtube.com/@learnwithhemantsingh" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube" class="social-icon-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8ZM9.6 15.7V8.3l6.4 3.7-6.4 3.7Z" fill="currentColor"/></svg><span class="sr-only">YouTube</span></a>
+          <a href="https://www.facebook.com/learnwithhemantsingh/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" class="social-icon-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-8.2h2.8l.4-3.2h-3.2V8.6c0-.9.3-1.6 1.7-1.6h1.8V4.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5v2.5H7.5v3.2h2.8V22h3.4Z" fill="currentColor"/></svg><span class="sr-only">Facebook</span></a>
+          <a href="https://www.instagram.com/learnwithhemantsingh" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" class="social-icon-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.6 1.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6Z" fill="currentColor"/></svg><span class="sr-only">Instagram</span></a>
+          <a href="https://www.linkedin.com/company/learnwithhemant/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="social-icon-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.49 2.49 0 1 1 5 8.48 2.49 2.49 0 0 1 4.98 3.5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2.1 3.8-2.1 4 0 4.7 2.5 4.7 5.8V21h-4v-5.6c0-1.3 0-3.1-1.9-3.1s-2.2 1.5-2.2 3V21h-4V9Z" fill="currentColor"/></svg><span class="sr-only">LinkedIn</span></a>
+          <a href="https://x.com/LearnWithHK/" target="_blank" rel="noopener" aria-label="X / Twitter" title="X / Twitter" class="social-icon-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.2-8.2L1 2h6.3l4.4 5.8L18.9 2Zm-1.1 18h1.7L6.4 3.9H4.6L17.8 20Z" fill="currentColor"/></svg><span class="sr-only">X / Twitter</span></a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <div class="v2-footer-links">
+          <a href="/about/">Mentor</a>
+          <a href="/roadmap/">Roadmap</a>
+          <a href="/courses/web-development/">Courses</a>
+          <a href="/projects/">Projects</a>
+          <a href="/research/">Research</a>
+          <a href="/guest-lecture/">Guest Lecture</a>
+          <a href="/apply/">Free Demo</a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Popular Courses</h3>
+        <div class="v2-footer-links">
+          <a href="/courses/web-development/">WordPress Development</a>
+          <a href="/courses/web-development/">Magento E-commerce</a>
+          <a href="/courses/web-development/">APIs &amp; Payment Gateways</a>
+          <a href="/courses/web-development/">Deployment &amp; DevOps</a>
+          <a href="/courses/web-development/">AI Tools for Developers</a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Connect</h3>
+        <div class="v2-footer-links">
+          <a href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20want%20course%20details." target="_blank" rel="noopener">WhatsApp Support</a>
+          <a href="mailto:learnwithhemantsingh@gmail.com">learnwithhemantsingh@gmail.com</a>
+          <span>India (IST)</span>
+          <span>Mon - Sat: 9:00 AM - 8:00 PM</span>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="container v2-footer-city-row">
+      <span class="v2-footer-city-title">College city pages:</span>
+      <div class="v2-footer-city-links">
+        <a href="/college/">All Colleges</a>
+        <a href="/college/noida/">Noida</a>
+        <a href="/college/greater-noida/">Greater Noida</a>
+        <a href="/college/delhi/">Delhi</a>
+        <a href="/college/jaipur/">Jaipur</a>
+        <a href="/college/gurugram/">Gurugram</a>
+        <a href="/college/lucknow/">Lucknow</a>
+        <a href="/college/pune/">Pune</a>
+        <a href="/college/bengaluru/">Bengaluru</a>
+        <a href="/college/hyderabad/">Hyderabad</a>
+        <a href="/college/chennai/">Chennai</a>
+        <a href="/college/mumbai/">Mumbai</a>
+        <a href="/college/kolkata/">Kolkata</a>
+      </div>
+    </div>
+    <div class="container v2-footer-bottom">
+      <span>© 2026 Learn with Hemant. All rights reserved.</span>
+      <div class="v2-footer-bottom-links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+        <a href="/refund.html">Refund Policy</a>
+        <a href="/blog/government-job-vacancies-for-cse-it/">Govt Job Guide</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const menu = document.getElementById('mobileSiteMenu');
+      const backdrop = document.querySelector('.mobile-menu-backdrop');
+      const closeItems = document.querySelectorAll('[data-mobile-menu-close]');
+      const links = document.querySelectorAll('.mobile-menu-links a');
+
+      if (!toggle || !menu || !backdrop) return;
+
+      function openMenu() {
+        document.body.classList.add('mobile-menu-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeMenu() {
+        document.body.classList.remove('mobile-menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+      }
+
+      toggle.addEventListener('click', openMenu);
+      closeItems.forEach(item => item.addEventListener('click', closeMenu));
+      links.forEach(link => link.addEventListener('click', closeMenu));
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeMenu();
+      });
+    })();
+  </script>
+
+
+  <script>
+    (function () {
+      const form = document.getElementById('qpgForm');
+      const btn = document.getElementById('qpgGenerateBtn');
+      const progress = document.getElementById('qpgProgress');
+      const progressBar = document.getElementById('qpgProgressBar');
+      const progressText = document.getElementById('qpgProgressText');
+      const output = document.getElementById('qpgOutput');
+      let generatedPaper = null;
+
+      function escapeHtml(value) {
+        return String(value ?? '').replace(/[&<>"']/g, match => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[match]));
+      }
+
+      const UNIVERSITY_OPTIONS = [
+        {
+                "code": "AAFT University",
+                "name": "AAFT University of Media and Arts, Chhattisgarh"
+        },
+        {
+                "code": "Acharya Nagarjuna University",
+                "name": "Acharya Nagarjuna University, Andhra Pradesh"
+        },
+        {
+                "code": "Adamas University",
+                "name": "Adamas University, West Bengal"
+        },
+        {
+                "code": "AdiKavi Nannaya University",
+                "name": "Adikavi Nannaya University, Andhra Pradesh"
+        },
+        {
+                "code": "AKTU",
+                "name": "AKTU - Dr. A.P.J. Abdul Kalam Technical University, Uttar Pradesh"
+        },
+        {
+                "code": "Alagappa University",
+                "name": "Alagappa University, Tamil Nadu"
+        },
+        {
+                "code": "Alliance University",
+                "name": "Alliance University, Karnataka"
+        },
+        {
+                "code": "Amity University Chhattisgarh",
+                "name": "Amity University Chhattisgarh"
+        },
+        {
+                "code": "Amity University Haryana",
+                "name": "Amity University Haryana"
+        },
+        {
+                "code": "Amity University Jharkhand",
+                "name": "Amity University Jharkhand"
+        },
+        {
+                "code": "Amity University Madhya Pradesh",
+                "name": "Amity University Madhya Pradesh"
+        },
+        {
+                "code": "Amity University Mumbai",
+                "name": "Amity University Mumbai, Maharashtra"
+        },
+        {
+                "code": "Amity University Rajasthan",
+                "name": "Amity University Rajasthan"
+        },
+        {
+                "code": "Amity University",
+                "name": "Amity University, Noida, Uttar Pradesh"
+        },
+        {
+                "code": "Amrita Vishwa Vidyapeetham",
+                "name": "Amrita Vishwa Vidyapeetham"
+        },
+        {
+                "code": "Andhra Kesari University",
+                "name": "Andhra Kesari University, Andhra Pradesh"
+        },
+        {
+                "code": "Andhra University",
+                "name": "Andhra University, Andhra Pradesh"
+        },
+        {
+                "code": "Anna University",
+                "name": "Anna University, Tamil Nadu"
+        },
+        {
+                "code": "Annamalai University",
+                "name": "Annamalai University, Tamil Nadu"
+        },
+        {
+                "code": "Apex University",
+                "name": "Apex University, Rajasthan"
+        },
+        {
+                "code": "APJ Abdul Kalam Technological University Kerala",
+                "name": "APJ Abdul Kalam Technological University, Kerala"
+        },
+        {
+                "code": "Arka Jain University",
+                "name": "Arka Jain University, Jharkhand"
+        },
+        {
+                "code": "Aryabhatta Knowledge University",
+                "name": "Aryabhatta Knowledge University, Bihar"
+        },
+        {
+                "code": "Ashoka University",
+                "name": "Ashoka University, Haryana"
+        },
+        {
+                "code": "Assam Don Bosco University",
+                "name": "Assam Don Bosco University, Assam"
+        },
+        {
+                "code": "Assam Science and Technology University",
+                "name": "Assam Science and Technology University, Assam"
+        },
+        {
+                "code": "Atal Bihari Vajpayee Vishwavidyalaya",
+                "name": "Atal Bihari Vajpayee Vishwavidyalaya, Chhattisgarh"
+        },
+        {
+                "code": "APS University Rewa",
+                "name": "Awadhesh Pratap Singh University, Madhya Pradesh"
+        },
+        {
+                "code": "Azim Premji University",
+                "name": "Azim Premji University, Karnataka"
+        },
+        {
+                "code": "Bangalore University",
+                "name": "Bangalore University, Karnataka"
+        },
+        {
+                "code": "Barkatullah University",
+                "name": "Barkatullah University, Madhya Pradesh"
+        },
+        {
+                "code": "Bengaluru City University",
+                "name": "Bengaluru City University, Karnataka"
+        },
+        {
+                "code": "Bennett University",
+                "name": "Bennett University, Greater Noida, Uttar Pradesh"
+        },
+        {
+                "code": "Berhampur University",
+                "name": "Berhampur University, Odisha"
+        },
+        {
+                "code": "Bharath University",
+                "name": "Bharath Institute of Higher Education and Research, Tamil Nadu"
+        },
+        {
+                "code": "Bharathiar University",
+                "name": "Bharathiar University, Tamil Nadu"
+        },
+        {
+                "code": "Bharathidasan University",
+                "name": "Bharathidasan University, Tamil Nadu"
+        },
+        {
+                "code": "Bharati Vidyapeeth",
+                "name": "Bharati Vidyapeeth Deemed University, Maharashtra"
+        },
+        {
+                "code": "BPUT",
+                "name": "Biju Patnaik University of Technology (BPUT), Odisha"
+        },
+        {
+                "code": "Bikaner Technical University",
+                "name": "Bikaner Technical University, Rajasthan"
+        },
+        {
+                "code": "BML Munjal University",
+                "name": "BML Munjal University, Haryana"
+        },
+        {
+                "code": "Brainware University",
+                "name": "Brainware University, West Bengal"
+        },
+        {
+                "code": "Bundelkhand University",
+                "name": "Bundelkhand University, Uttar Pradesh"
+        },
+        {
+                "code": "Centurion University",
+                "name": "Centurion University of Technology and Management, Odisha"
+        },
+        {
+                "code": "Chandigarh University",
+                "name": "Chandigarh University, Punjab"
+        },
+        {
+                "code": "CCSU",
+                "name": "Chaudhary Charan Singh University (CCSU), Uttar Pradesh"
+        },
+        {
+                "code": "Chaudhary Devi Lal University",
+                "name": "Chaudhary Devi Lal University, Haryana"
+        },
+        {
+                "code": "Chaudhary Ranbir Singh University",
+                "name": "Chaudhary Ranbir Singh University, Haryana"
+        },
+        {
+                "code": "CSJMU",
+                "name": "Chhatrapati Shahu Ji Maharaj University, Uttar Pradesh"
+        },
+        {
+                "code": "CSVTU",
+                "name": "Chhattisgarh Swami Vivekanand Technical University (CSVTU), Chhattisgarh"
+        },
+        {
+                "code": "Chitkara University",
+                "name": "Chitkara University, Punjab"
+        },
+        {
+                "code": "Christ University",
+                "name": "Christ University, Karnataka"
+        },
+        {
+                "code": "Cluster University of Jammu",
+                "name": "Cluster University of Jammu, Jammu and Kashmir"
+        },
+        {
+                "code": "CMR University",
+                "name": "CMR University, Karnataka"
+        },
+        {
+                "code": "Cochin University of Science and Technology",
+                "name": "Cochin University of Science and Technology (CUSAT), Kerala"
+        },
+        {
+                "code": "Cotton University",
+                "name": "Cotton University, Assam"
+        },
+        {
+                "code": "Custom",
+                "name": "Custom University / Other"
+        },
+        {
+                "code": "DY Patil University",
+                "name": "D.Y. Patil University, Maharashtra"
+        },
+        {
+                "code": "Dayananda Sagar University",
+                "name": "Dayananda Sagar University, Karnataka"
+        },
+        {
+                "code": "DDU Gorakhpur University",
+                "name": "Deen Dayal Upadhyaya Gorakhpur University, Uttar Pradesh"
+        },
+        {
+                "code": "DTU",
+                "name": "Delhi Technological University (DTU), Delhi"
+        },
+        {
+                "code": "DAVV",
+                "name": "Devi Ahilya Vishwavidyalaya (DAVV), Madhya Pradesh"
+        },
+        {
+                "code": "Dibrugarh University",
+                "name": "Dibrugarh University, Assam"
+        },
+        {
+                "code": "DIT University",
+                "name": "DIT University, Uttarakhand"
+        },
+        {
+                "code": "Doon University",
+                "name": "Doon University, Uttarakhand"
+        },
+        {
+                "code": "Dr. Babasaheb Ambedkar Marathwada University",
+                "name": "Dr. Babasaheb Ambedkar Marathwada University, Maharashtra"
+        },
+        {
+                "code": "Dr. Bhimrao Ambedkar University",
+                "name": "Dr. Bhimrao Ambedkar University, Uttar Pradesh"
+        },
+        {
+                "code": "Dr. C.V. Raman University",
+                "name": "Dr. C.V. Raman University, Chhattisgarh"
+        },
+        {
+                "code": "Fakir Mohan University",
+                "name": "Fakir Mohan University, Odisha"
+        },
+        {
+                "code": "Flame University",
+                "name": "FLAME University, Maharashtra"
+        },
+        {
+                "code": "Galgotias University",
+                "name": "Galgotias University, Greater Noida, Uttar Pradesh"
+        },
+        {
+                "code": "Ganpat University",
+                "name": "Ganpat University, Gujarat"
+        },
+        {
+                "code": "Gauhati University",
+                "name": "Gauhati University, Assam"
+        },
+        {
+                "code": "GD Goenka University",
+                "name": "GD Goenka University, Haryana"
+        },
+        {
+                "code": "GITAM",
+                "name": "GITAM Deemed University, Andhra Pradesh / Telangana"
+        },
+        {
+                "code": "GLS University",
+                "name": "GLS University, Gujarat"
+        },
+        {
+                "code": "Goa University",
+                "name": "Goa University, Goa"
+        },
+        {
+                "code": "Graphic Era University",
+                "name": "Graphic Era Deemed University, Uttarakhand"
+        },
+        {
+                "code": "GTU",
+                "name": "Gujarat Technological University (GTU), Gujarat"
+        },
+        {
+                "code": "Gujarat University",
+                "name": "Gujarat University, Gujarat"
+        },
+        {
+                "code": "Gulbarga University",
+                "name": "Gulbarga University, Karnataka"
+        },
+        {
+                "code": "IP University",
+                "name": "Guru Gobind Singh Indraprastha University (GGSIPU), Delhi"
+        },
+        {
+                "code": "GJU",
+                "name": "Guru Jambheshwar University of Science and Technology, Haryana"
+        },
+        {
+                "code": "GNDU",
+                "name": "Guru Nanak Dev University, Punjab"
+        },
+        {
+                "code": "Hemchandracharya North Gujarat University",
+                "name": "Hemchandracharya North Gujarat University, Gujarat"
+        },
+        {
+                "code": "HPTU",
+                "name": "Himachal Pradesh Technical University, Himachal Pradesh"
+        },
+        {
+                "code": "HPU",
+                "name": "Himachal Pradesh University, Himachal Pradesh"
+        },
+        {
+                "code": "Hindustan University",
+                "name": "Hindustan Institute of Technology and Science, Tamil Nadu"
+        },
+        {
+                "code": "IKGPTU",
+                "name": "I.K. Gujral Punjab Technical University (IKGPTU), Punjab"
+        },
+        {
+                "code": "ICFAI University Hyderabad",
+                "name": "ICFAI Foundation for Higher Education, Hyderabad, Telangana"
+        },
+        {
+                "code": "IMS Unison University",
+                "name": "IMS Unison University, Uttarakhand"
+        },
+        {
+                "code": "ITM University Gwalior",
+                "name": "ITM University Gwalior, Madhya Pradesh"
+        },
+        {
+                "code": "Jadavpur University",
+                "name": "Jadavpur University, West Bengal"
+        },
+        {
+                "code": "JNVU",
+                "name": "Jai Narain Vyas University, Rajasthan"
+        },
+        {
+                "code": "Jain University",
+                "name": "Jain University, Karnataka"
+        },
+        {
+                "code": "JECRC University",
+                "name": "JECRC University, Rajasthan"
+        },
+        {
+                "code": "Jharkhand University of Technology",
+                "name": "Jharkhand University of Technology, Jharkhand"
+        },
+        {
+                "code": "Jiwaji University",
+                "name": "Jiwaji University, Madhya Pradesh"
+        },
+        {
+                "code": "JNTU",
+                "name": "JNTU - Jawaharlal Nehru Technological University, Hyderabad"
+        },
+        {
+                "code": "JNTU_ANANTAPUR",
+                "name": "JNTU Anantapur - Jawaharlal Nehru Technological University Anantapur",
+                "patternCode": "JNTU"
+        },
+        {
+                "code": "JNTU_KAKINADA",
+                "name": "JNTU Kakinada - Jawaharlal Nehru Technological University Kakinada",
+                "patternCode": "JNTU"
+        },
+        {
+                "code": "KR Mangalam University",
+                "name": "K.R. Mangalam University, Haryana"
+        },
+        {
+                "code": "Kakatiya University",
+                "name": "Kakatiya University, Telangana"
+        },
+        {
+                "code": "Kalasalingam University",
+                "name": "Kalasalingam Academy of Research and Education, Tamil Nadu"
+        },
+        {
+                "code": "KIIT",
+                "name": "Kalinga Institute of Industrial Technology (KIIT), Odisha"
+        },
+        {
+                "code": "Kalinga University",
+                "name": "Kalinga University, Chhattisgarh"
+        },
+        {
+                "code": "Kannur University",
+                "name": "Kannur University, Kerala"
+        },
+        {
+                "code": "North Maharashtra University",
+                "name": "Kavayitri Bahinabai Chaudhari North Maharashtra University, Maharashtra"
+        },
+        {
+                "code": "Kaziranga University",
+                "name": "Kaziranga University, Assam"
+        },
+        {
+                "code": "Kolhan University",
+                "name": "Kolhan University, Jharkhand"
+        },
+        {
+                "code": "KL University",
+                "name": "Koneru Lakshmaiah Education Foundation (KL University), Andhra Pradesh"
+        },
+        {
+                "code": "Krantiguru Shyamji Krishna Verma Kachchh University",
+                "name": "Krantiguru Shyamji Krishna Verma Kachchh University, Gujarat"
+        },
+        {
+                "code": "Kumaun University",
+                "name": "Kumaun University, Uttarakhand"
+        },
+        {
+                "code": "KUK",
+                "name": "Kurukshetra University, Haryana"
+        },
+        {
+                "code": "Kuvempu University",
+                "name": "Kuvempu University, Karnataka"
+        },
+        {
+                "code": "Lalit Narayan Mithila University",
+                "name": "Lalit Narayan Mithila University, Bihar"
+        },
+        {
+                "code": "LNCT University",
+                "name": "LNCT University, Madhya Pradesh"
+        },
+        {
+                "code": "Lovely Professional University",
+                "name": "Lovely Professional University (LPU), Punjab"
+        },
+        {
+                "code": "Madurai Kamaraj University",
+                "name": "Madurai Kamaraj University, Tamil Nadu"
+        },
+        {
+                "code": "Magadh University",
+                "name": "Magadh University, Bihar"
+        },
+        {
+                "code": "Maharishi Markandeshwar University",
+                "name": "Maharishi Markandeshwar University, Haryana"
+        },
+        {
+                "code": "MDSU",
+                "name": "Maharshi Dayanand Saraswati University, Rajasthan"
+        },
+        {
+                "code": "MDU",
+                "name": "Maharshi Dayanand University (MDU), Haryana"
+        },
+        {
+                "code": "Mahatma Gandhi University Kerala",
+                "name": "Mahatma Gandhi University, Kerala"
+        },
+        {
+                "code": "Mahatma Gandhi University Nalgonda",
+                "name": "Mahatma Gandhi University, Nalgonda, Telangana"
+        },
+        {
+                "code": "MJP Rohilkhand University",
+                "name": "Mahatma Jyotiba Phule Rohilkhand University, Uttar Pradesh"
+        },
+        {
+                "code": "Manav Rachna University",
+                "name": "Manav Rachna University, Haryana"
+        },
+        {
+                "code": "Mangalore University",
+                "name": "Mangalore University, Karnataka"
+        },
+        {
+                "code": "Manipal Academy of Higher Education",
+                "name": "Manipal Academy of Higher Education (MAHE), Karnataka"
+        },
+        {
+                "code": "Manipal University Jaipur",
+                "name": "Manipal University Jaipur, Rajasthan"
+        },
+        {
+                "code": "Manipur University",
+                "name": "Manipur University, Manipur"
+        },
+        {
+                "code": "Mansarovar Global University",
+                "name": "Mansarovar Global University, Madhya Pradesh"
+        },
+        {
+                "code": "Marwadi University",
+                "name": "Marwadi University, Gujarat"
+        },
+        {
+                "code": "MATS University",
+                "name": "MATS University, Chhattisgarh"
+        },
+        {
+                "code": "MAKAUT",
+                "name": "Maulana Abul Kalam Azad University of Technology (MAKAUT), West Bengal"
+        },
+        {
+                "code": "Medi-Caps University",
+                "name": "Medi-Caps University, Madhya Pradesh"
+        },
+        {
+                "code": "MIT World Peace University",
+                "name": "MIT World Peace University (MIT-WPU), Maharashtra"
+        },
+        {
+                "code": "Mizoram University",
+                "name": "Mizoram University, Mizoram"
+        },
+        {
+                "code": "Mody University",
+                "name": "Mody University, Rajasthan"
+        },
+        {
+                "code": "MLSU",
+                "name": "Mohanlal Sukhadia University, Rajasthan"
+        },
+        {
+                "code": "Mother Teresa Women’s University",
+                "name": "Mother Teresa Women’s University, Tamil Nadu"
+        },
+        {
+                "code": "Nagaland University",
+                "name": "Nagaland University, Nagaland"
+        },
+        {
+                "code": "NMIMS",
+                "name": "Narsee Monjee Institute of Management Studies (NMIMS), Maharashtra"
+        },
+        {
+                "code": "NSUT",
+                "name": "Netaji Subhas University of Technology (NSUT), Delhi"
+        },
+        {
+                "code": "Nirma University",
+                "name": "Nirma University, Gujarat"
+        },
+        {
+                "code": "OP Jindal Global University",
+                "name": "O.P. Jindal Global University, Haryana"
+        },
+        {
+                "code": "Oriental University",
+                "name": "Oriental University, Madhya Pradesh"
+        },
+        {
+                "code": "Osmania University",
+                "name": "Osmania University, Telangana"
+        },
+        {
+                "code": "Panjab University",
+                "name": "Panjab University, Chandigarh"
+        },
+        {
+                "code": "Parul University",
+                "name": "Parul University, Gujarat"
+        },
+        {
+                "code": "Patliputra University",
+                "name": "Patliputra University, Bihar"
+        },
+        {
+                "code": "Patna University",
+                "name": "Patna University, Bihar"
+        },
+        {
+                "code": "Periyar University",
+                "name": "Periyar University, Tamil Nadu"
+        },
+        {
+                "code": "PES University",
+                "name": "PES University, Karnataka"
+        },
+        {
+                "code": "Poornima University",
+                "name": "Poornima University, Rajasthan"
+        },
+        {
+                "code": "Presidency University Bangalore",
+                "name": "Presidency University, Bengaluru, Karnataka"
+        },
+        {
+                "code": "Pt. Ravishankar Shukla University",
+                "name": "Pt. Ravishankar Shukla University, Chhattisgarh"
+        },
+        {
+                "code": "Punjabi University",
+                "name": "Punjabi University Patiala, Punjab"
+        },
+        {
+                "code": "Rai University",
+                "name": "Rai University, Gujarat"
+        },
+        {
+                "code": "RGPV",
+                "name": "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Madhya Pradesh"
+        },
+        {
+                "code": "Ranchi University",
+                "name": "Ranchi University, Jharkhand"
+        },
+        {
+                "code": "Rani Channamma University",
+                "name": "Rani Channamma University, Karnataka"
+        },
+        {
+                "code": "RTM Nagpur University",
+                "name": "Rashtrasant Tukadoji Maharaj Nagpur University, Maharashtra"
+        },
+        {
+                "code": "REVA University",
+                "name": "REVA University, Karnataka"
+        },
+        {
+                "code": "RNB Global University",
+                "name": "RNB Global University, Rajasthan"
+        },
+        {
+                "code": "RTU",
+                "name": "RTU - Rajasthan Technical University, Rajasthan"
+        },
+        {
+                "code": "Rungta University",
+                "name": "Rungta University, Chhattisgarh"
+        },
+        {
+                "code": "RV University",
+                "name": "RV University, Karnataka"
+        },
+        {
+                "code": "SAGE University",
+                "name": "SAGE University, Madhya Pradesh"
+        },
+        {
+                "code": "Sambalpur University",
+                "name": "Sambalpur University, Odisha"
+        },
+        {
+                "code": "Sandip University",
+                "name": "Sandip University, Maharashtra / Bihar"
+        },
+        {
+                "code": "Sant Gadge Baba Amravati University",
+                "name": "Sant Gadge Baba Amravati University, Maharashtra"
+        },
+        {
+                "code": "Sardar Patel University",
+                "name": "Sardar Patel University, Gujarat"
+        },
+        {
+                "code": "SASTRA",
+                "name": "SASTRA Deemed University, Tamil Nadu"
+        },
+        {
+                "code": "SPPU",
+                "name": "Savitribai Phule Pune University, Maharashtra"
+        },
+        {
+                "code": "Sharda University",
+                "name": "Sharda University, Greater Noida, Uttar Pradesh"
+        },
+        {
+                "code": "Shiv Nadar University",
+                "name": "Shiv Nadar University, Delhi NCR"
+        },
+        {
+                "code": "Shivaji University",
+                "name": "Shivaji University, Maharashtra"
+        },
+        {
+                "code": "Sikkim Manipal University",
+                "name": "Sikkim Manipal University, Sikkim"
+        },
+        {
+                "code": "Sikkim University",
+                "name": "Sikkim University, Sikkim"
+        },
+        {
+                "code": "SOA University",
+                "name": "Siksha O Anusandhan (SOA) Deemed University, Odisha"
+        },
+        {
+                "code": "Silver Oak University",
+                "name": "Silver Oak University, Gujarat"
+        },
+        {
+                "code": "Sister Nivedita University",
+                "name": "Sister Nivedita University, West Bengal"
+        },
+        {
+                "code": "Sri Venkateswara University",
+                "name": "Sri Venkateswara University, Andhra Pradesh"
+        },
+        {
+                "code": "SRMIST",
+                "name": "SRM Institute of Science and Technology, Tamil Nadu"
+        },
+        {
+                "code": "Symbiosis International University",
+                "name": "Symbiosis International University, Maharashtra"
+        },
+        {
+                "code": "Techno India University",
+                "name": "Techno India University, West Bengal"
+        },
+        {
+                "code": "Telangana University",
+                "name": "Telangana University, Telangana"
+        },
+        {
+                "code": "Thapar Institute",
+                "name": "Thapar Institute of Engineering and Technology, Punjab"
+        },
+        {
+                "code": "Royal Global University",
+                "name": "The Assam Royal Global University, Assam"
+        },
+        {
+                "code": "The ICFAI University Jharkhand",
+                "name": "The ICFAI University, Jharkhand"
+        },
+        {
+                "code": "Maharaja Sayajirao University of Baroda",
+                "name": "The Maharaja Sayajirao University of Baroda, Gujarat"
+        },
+        {
+                "code": "Tilka Manjhi Bhagalpur University",
+                "name": "Tilka Manjhi Bhagalpur University, Bihar"
+        },
+        {
+                "code": "Tripura University",
+                "name": "Tripura University, Tripura"
+        },
+        {
+                "code": "University of Burdwan",
+                "name": "University of Burdwan, West Bengal"
+        },
+        {
+                "code": "University of Calcutta",
+                "name": "University of Calcutta, West Bengal"
+        },
+        {
+                "code": "University of Calicut",
+                "name": "University of Calicut, Kerala"
+        },
+        {
+                "code": "UEM Kolkata",
+                "name": "University of Engineering & Management (UEM), Kolkata"
+        },
+        {
+                "code": "University of Jammu",
+                "name": "University of Jammu, Jammu and Kashmir"
+        },
+        {
+                "code": "University of Kalyani",
+                "name": "University of Kalyani, West Bengal"
+        },
+        {
+                "code": "University of Kashmir",
+                "name": "University of Kashmir, Jammu and Kashmir"
+        },
+        {
+                "code": "University of Kerala",
+                "name": "University of Kerala, Kerala"
+        },
+        {
+                "code": "University of Kota",
+                "name": "University of Kota, Rajasthan"
+        },
+        {
+                "code": "Lucknow University",
+                "name": "University of Lucknow, Uttar Pradesh"
+        },
+        {
+                "code": "University of Mumbai",
+                "name": "University of Mumbai, Maharashtra"
+        },
+        {
+                "code": "Mysore University",
+                "name": "University of Mysore, Karnataka"
+        },
+        {
+                "code": "University of North Bengal",
+                "name": "University of North Bengal, West Bengal"
+        },
+        {
+                "code": "UPES",
+                "name": "University of Petroleum and Energy Studies (UPES), Uttarakhand"
+        },
+        {
+                "code": "University of Rajasthan",
+                "name": "University of Rajasthan, Rajasthan"
+        },
+        {
+                "code": "Usha Martin University",
+                "name": "Usha Martin University, Jharkhand"
+        },
+        {
+                "code": "Utkal University",
+                "name": "Utkal University, Odisha"
+        },
+        {
+                "code": "Uttarakhand Technical University",
+                "name": "Uttarakhand Technical University, Uttarakhand"
+        },
+        {
+                "code": "VBSPU",
+                "name": "Veer Bahadur Singh Purvanchal University, Uttar Pradesh"
+        },
+        {
+                "code": "VIT",
+                "name": "Vellore Institute of Technology (VIT), Tamil Nadu"
+        },
+        {
+                "code": "Vidyasagar University",
+                "name": "Vidyasagar University, West Bengal"
+        },
+        {
+                "code": "Vignan University",
+                "name": "Vignan’s Foundation for Science, Technology & Research, Andhra Pradesh"
+        },
+        {
+                "code": "Vikram University",
+                "name": "Vikram University, Madhya Pradesh"
+        },
+        {
+                "code": "Vinoba Bhave University",
+                "name": "Vinoba Bhave University, Jharkhand"
+        },
+        {
+                "code": "Vishwakarma University",
+                "name": "Vishwakarma University, Maharashtra"
+        },
+        {
+                "code": "VTU",
+                "name": "Visvesvaraya Technological University (VTU), Karnataka"
+        },
+        {
+                "code": "Vivekananda Global University",
+                "name": "Vivekananda Global University, Rajasthan"
+        },
+        {
+                "code": "Woxsen University",
+                "name": "Woxsen University, Telangana"
+        },
+        {
+                "code": "YBN University",
+                "name": "YBN University, Jharkhand"
+        },
+        {
+                "code": "Yogi Vemana University",
+                "name": "Yogi Vemana University, Andhra Pradesh"
+        }
+];
+      let selectedUniversityOption = UNIVERSITY_OPTIONS.find(item => item.code === 'AKTU') || UNIVERSITY_OPTIONS[0];
+
+      function normalizeUniversityText(value) {
+        return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+      }
+      function getUniversityByCode(code) {
+        return UNIVERSITY_OPTIONS.find(item => item.code === code) || null;
+      }
+      function getUniversityByName(name) {
+        const needle = normalizeUniversityText(name);
+        return UNIVERSITY_OPTIONS.find(item => normalizeUniversityText(item.name) === needle || normalizeUniversityText(item.code) === needle) || null;
+      }
+      function updateCustomUniversityVisibility() {
+        const customField = document.getElementById('customUniversityField');
+        if (!customField) return;
+        const isCustom = document.getElementById('university').value === 'Custom';
+        customField.hidden = !isCustom;
+      }
+      function setUniversitySelection(option, settings = {}) {
+        if (!option) return;
+        selectedUniversityOption = option;
+        const hidden = document.getElementById('university');
+        const searchInput = document.getElementById('universitySearch');
+        const customInput = document.getElementById('customUniversityName');
+        if (hidden) hidden.value = option.code;
+        if (searchInput && !settings.keepTypedValue) searchInput.value = option.name;
+        if (customInput && option.code !== 'Custom' && !settings.keepCustomName) customInput.value = '';
+        updateCustomUniversityVisibility();
+        if (!settings.skipPatternSync) syncPatternFromUniversity(option);
+      }
+      function renderUniversityResults(query = '') {
+        const results = document.getElementById('universityResults');
+        const searchInput = document.getElementById('universitySearch');
+        if (!results || !searchInput) return;
+        const normalizedQuery = normalizeUniversityText(query);
+        const tokens = normalizedQuery.split(' ').filter(Boolean);
+        let matches = UNIVERSITY_OPTIONS.filter(item => {
+          const haystack = normalizeUniversityText(item.name + ' ' + item.code);
+          return !tokens.length || tokens.every(token => haystack.includes(token));
+        }).slice(0, 50);
+        if (!matches.length) {
+          results.innerHTML = `<button type="button" class="qpg-university-option" data-code="Custom">Use custom university name</button>`;
+        } else {
+          results.innerHTML = matches.map(item => `<button type="button" class="qpg-university-option" data-code="${escapeHtml(item.code)}">${escapeHtml(item.name)}</button>`).join('');
+        }
+        results.classList.add('show');
+        searchInput.setAttribute('aria-expanded', 'true');
+      }
+      function hideUniversityResults() {
+        const results = document.getElementById('universityResults');
+        const searchInput = document.getElementById('universitySearch');
+        if (results) results.classList.remove('show');
+        if (searchInput) searchInput.setAttribute('aria-expanded', 'false');
+      }
+      function resolveTypedUniversity() {
+        const searchInput = document.getElementById('universitySearch');
+        const customInput = document.getElementById('customUniversityName');
+        if (!searchInput) return;
+        const typedValue = searchInput.value.trim();
+        const exact = getUniversityByName(typedValue);
+        if (exact) {
+          setUniversitySelection(exact);
+        } else if (typedValue) {
+          const customOption = getUniversityByCode('Custom') || { code: 'Custom', name: 'Custom University / Other' };
+          setUniversitySelection(customOption, { keepTypedValue: true, keepCustomName: true });
+          if (customInput && !customInput.value.trim()) customInput.value = typedValue;
+        } else {
+          setUniversitySelection(getUniversityByCode('AKTU'));
+        }
+      }
+      function setupUniversitySearch() {
+        const searchInput = document.getElementById('universitySearch');
+        const results = document.getElementById('universityResults');
+        if (!searchInput || !results) return;
+        searchInput.addEventListener('focus', () => renderUniversityResults(searchInput.value));
+        searchInput.addEventListener('input', () => renderUniversityResults(searchInput.value));
+        searchInput.addEventListener('change', resolveTypedUniversity);
+        searchInput.addEventListener('blur', () => setTimeout(() => { resolveTypedUniversity(); hideUniversityResults(); }, 160));
+        results.addEventListener('mousedown', event => event.preventDefault());
+        results.addEventListener('click', event => {
+          const button = event.target.closest('.qpg-university-option');
+          if (!button) return;
+          const option = getUniversityByCode(button.dataset.code) || getUniversityByName(button.textContent);
+          setUniversitySelection(option || getUniversityByCode('Custom'));
+          hideUniversityResults();
+        });
+        setUniversitySelection(getUniversityByCode('AKTU'), { skipPatternSync: true });
+      }
+      function getConfig() {
+        resolveTypedUniversity();
+        const selectedCode = document.getElementById('university').value;
+        const searchValue = document.getElementById('universitySearch').value.trim();
+        const customName = document.getElementById('customUniversityName').value.trim();
+        const selectedOption = getUniversityByCode(selectedCode) || selectedUniversityOption;
+        const universityName = selectedCode === 'Custom'
+          ? (customName || searchValue || 'Custom University')
+          : (selectedOption?.name || searchValue || selectedCode || 'AKTU');
+        return {
+          subject: document.getElementById('subject').value.trim() || 'DBMS',
+          semester: document.getElementById('semester').value.trim() || '5th',
+          university: universityName,
+          universityCode: selectedCode,
+          pattern: document.getElementById('pattern').value,
+          marks: document.getElementById('marks').value || '70',
+          duration: document.getElementById('duration').value.trim() || '3 Hours',
+          difficulty: document.getElementById('difficulty').value.trim() || 'Easy:Medium:Hard = 30:40:30',
+          unitTopics: document.getElementById('unitTopics').value.trim(),
+          previousQuestions: document.getElementById('previousQuestions').value.trim()
+        };
+      }
+      const patternDefaults = {
+        'AKTU 2026': {
+          university: 'AKTU',
+          marks: '70',
+          duration: '3 Hours',
+          difficulty: 'Easy:Medium:Hard = 30:40:30',
+          note: 'AKTU 2026 pattern loaded dynamically: 70 marks, 3 hours, CO-Bloom mapping and 30:40:30 difficulty distribution.',
+          unitTopics: `Unit I: DBMS architecture, data models, ER model, keys
+Unit II: Relational model, functional dependency, normalization
+Unit III: SQL, views, indexing, query optimization
+Unit IV: Transactions, concurrency control, recovery, ACID`
+        },
+        'RTU 2026': {
+          university: 'RTU',
+          marks: '70',
+          duration: '3 Hours',
+          difficulty: 'Easy:Medium:Hard = 30:40:30',
+          note: 'RTU 2026 pattern loaded dynamically: balanced unit-wise coverage, CO-Bloom mapping and answer scheme.',
+          unitTopics: `Unit I: Database system concepts, ER model, relational model
+Unit II: Relational algebra, SQL, constraints, joins
+Unit III: Normalization, indexing, query processing
+Unit IV: Transactions, concurrency control, recovery and security`
+        },
+        'JNTU 2026': {
+          university: 'JNTU',
+          marks: '70',
+          duration: '3 Hours',
+          difficulty: 'Easy:Medium:Hard = 30:40:30',
+          note: 'JNTU 2026 pattern loaded dynamically: university-style sections, CO-Bloom mapping and moderation copy.',
+          unitTopics: `Unit I: Database architecture, ER model, relational data model
+Unit II: SQL, relational algebra, integrity constraints
+Unit III: Functional dependencies, normalization, indexing
+Unit IV: Transaction management, concurrency, recovery and distributed databases`
+        },
+        'Custom University Pattern': {
+          university: 'Custom',
+          marks: '70',
+          duration: '3 Hours',
+          difficulty: 'Easy:Medium:Hard = 30:40:30',
+          note: 'Custom pattern selected. Edit marks, time, difficulty distribution and syllabus before generation.',
+          unitTopics: `Unit I: Add core concepts and fundamentals
+Unit II: Add theory and implementation topics
+Unit III: Add problem-solving and applied topics
+Unit IV: Add advanced topics and case studies`
+        }
+      };
+
+      function applyPatternDefaults(patternName, settings = {}) {
+        const preset = patternDefaults[patternName] || patternDefaults['Custom University Pattern'];
+        const marks = document.getElementById('marks');
+        const duration = document.getElementById('duration');
+        const difficulty = document.getElementById('difficulty');
+        const unitTopics = document.getElementById('unitTopics');
+        if (marks) marks.value = preset.marks;
+        if (duration) duration.value = preset.duration;
+        if (difficulty) difficulty.value = preset.difficulty;
+        if (unitTopics) unitTopics.value = preset.unitTopics;
+        if (settings.syncUniversity && preset.university) {
+          const match = getUniversityByCode(preset.university);
+          if (match) setUniversitySelection(match, { skipPatternSync: true });
+        }
+      }
+
+      function syncPatternFromUniversity(option) {
+        const patternSelect = document.getElementById('pattern');
+        if (!patternSelect || !option) return;
+        const mappedPattern = `${option.patternCode || option.code} 2026`;
+        if (patternDefaults[mappedPattern]) {
+          patternSelect.value = mappedPattern;
+          applyPatternDefaults(mappedPattern, { syncUniversity: false });
+        } else {
+          patternSelect.value = 'Custom University Pattern';
+          applyPatternDefaults('Custom University Pattern', { syncUniversity: false });
+        }
+      }
+
+      const patternSelect = document.getElementById('pattern');
+      if (patternSelect) {
+        patternSelect.addEventListener('change', function () {
+          applyPatternDefaults(patternSelect.value, { syncUniversity: true });
+        });
+      }
+      setupUniversitySearch();
+      if (patternSelect) applyPatternDefaults(patternSelect.value, { syncUniversity: true });
+
+      function normalizeQuestions(questions) {
+        return Array.isArray(questions) ? questions.map((q, index) => ({
+          section: String(q.section || 'A').toUpperCase().replace(/SECTION\s*/i, '').trim().slice(0, 1) || 'A',
+          text: String(q.text || q.question || `Question ${index + 1}`).trim(),
+          marks: Number(q.marks || 0),
+          unit: String(q.unit || 'Unit I'),
+          co: String(q.co || 'CO1'),
+          bloom: String(q.bloom || q.bloomLevel || 'K2 - Understand'),
+          difficulty: String(q.difficulty || 'Medium'),
+          answer: Array.isArray(q.answerScheme) ? q.answerScheme.join('; ') : String(q.answer || q.answerScheme || 'Expected answer points to be prepared by faculty.')
+        })) : [];
+      }
+      function questions() {
+        return generatedPaper ? normalizeQuestions(generatedPaper.questions) : [];
+      }
+      function groupQuestions(section) {
+        return questions().filter(q => q.section === section);
+      }
+      function sectionInstruction(section, fallback) {
+        const item = (generatedPaper?.sectionInstructions || []).find(row => String(row.section || '').toUpperCase().includes(section));
+        return item?.instruction || fallback;
+      }
+      function renderPaper(config) {
+        const sections = [
+          ['A', 'Section A', sectionInstruction('A', 'Attempt all questions. Each question carries short-answer marks.')],
+          ['B', 'Section B', sectionInstruction('B', 'Attempt all questions. Each question carries medium-answer marks.')],
+          ['C', 'Section C', sectionInstruction('C', 'Attempt both analytical questions. Each question carries long-answer marks.')]
+        ];
+        return `
+          <div class="qpg-document-header">
+            <div><h3>${escapeHtml(config.university)} University - ${escapeHtml(config.pattern)} Question Paper</h3></div>
+            <div><p><strong>Total Marks:</strong> ${escapeHtml(config.marks)}</p><p><strong>Time:</strong> ${escapeHtml(config.duration)}</p></div>
+          </div>
+          <div class="qpg-paper-meta">
+            <div><strong>Subject</strong>${escapeHtml(config.subject)}</div>
+            <div><strong>Semester</strong>${escapeHtml(config.semester)}</div>
+            <div><strong>Pattern</strong>${escapeHtml(config.pattern)}</div>
+            <div><strong>Difficulty</strong>${escapeHtml(config.difficulty)}</div>
+          </div>
+          ${sections.map(([key, title, instruction]) => {
+            const rows = groupQuestions(key);
+            if (!rows.length) return '';
+            return `
+              <h3 style="margin:18px 0 8px;color:#111827;">${title}</h3>
+              <p style="margin:0 0 10px;color:#64748b;font-weight:800;">${escapeHtml(instruction)}</p>
+              <div class="qpg-question-list">
+                ${rows.map((q, index) => `
+                  <div class="qpg-question">
+                    <p>Q${index + 1}. ${escapeHtml(q.text)} <span class="qpg-pill">${escapeHtml(q.marks)} Marks</span></p>
+                    <small><span class="qpg-pill">${escapeHtml(q.unit)}</span><span class="qpg-pill">${escapeHtml(q.co)}</span><span class="qpg-pill">${escapeHtml(q.bloom)}</span><span class="qpg-pill">${escapeHtml(q.difficulty)}</span></small>
+                  </div>`).join('')}
+              </div>`;
+          }).join('')}
+        `;
+      }
+      function tableRows() {
+        return questions().map((q, i) => `<tr><td>Q${i+1}</td><td>${escapeHtml(q.unit)}</td><td>${escapeHtml(q.co)}</td><td>${escapeHtml(q.bloom)}</td><td>${escapeHtml(q.difficulty)}</td><td>${escapeHtml(q.marks)}</td><td>${escapeHtml(q.text)}</td></tr>`).join('');
+      }
+      function renderCo(config) {
+        const coSummary = Array.isArray(generatedPaper?.coSummary) && generatedPaper.coSummary.length
+          ? generatedPaper.coSummary.map(row => `<li>${escapeHtml(row.co || row.courseOutcome || '')}: ${escapeHtml(row.coverage || row.description || '')}</li>`).join('')
+          : '<li>CO1 to CO5 coverage generated based on the supplied subject and unit topics.</li>';
+        return `
+          <div class="qpg-document-header"><div><h3>CO Mapping Table</h3><p>${escapeHtml(config.subject)} • ${escapeHtml(config.semester)} Semester • ${escapeHtml(config.university)}</p></div></div>
+          <div class="qpg-table-wrap"><table class="qpg-table"><thead><tr><th>Question</th><th>Unit</th><th>CO</th><th>Bloom Level</th><th>Difficulty</th><th>Marks</th><th>Question Text</th></tr></thead><tbody>${tableRows()}</tbody></table></div>
+          <div class="qpg-note-box"><strong>CO Coverage:</strong><ul>${coSummary}</ul></div>`;
+      }
+      function renderBloom(config) {
+        const rows = Array.isArray(generatedPaper?.bloomSummary) && generatedPaper.bloomSummary.length
+          ? generatedPaper.bloomSummary.map(row => [row.bloomLevel || row.level || '', row.purpose || row.description || '', row.marks || row.approxMarks || ''])
+          : [['K1 - Remember','Recall-based questions',''],['K2 - Understand','Concept clarity questions',''],['K3 - Apply','Applied problems',''],['K4 - Analyze','Analysis questions',''],['K5 - Evaluate','Judgement/design questions','']];
+        return `<div class="qpg-document-header"><div><h3>Bloom Level Distribution</h3><p>Aligned with ${escapeHtml(config.pattern)} and ${escapeHtml(config.difficulty)}.</p></div></div>
+          <div class="qpg-table-wrap"><table class="qpg-table"><thead><tr><th>Bloom Level</th><th>Purpose</th><th>Approx. Marks</th></tr></thead><tbody>${rows.map(r => `<tr><td>${escapeHtml(r[0])}</td><td>${escapeHtml(r[1])}</td><td>${escapeHtml(r[2])}</td></tr>`).join('')}</tbody></table></div>
+          <div class="qpg-note-box"><strong>Difficulty Blueprint:</strong> ${escapeHtml(config.difficulty)} for a balanced university-level paper.</div>`;
+      }
+      function renderScheme() {
+        return `<div class="qpg-document-header"><div><h3>Answer Scheme</h3><p>Suggested marking points for internal and external evaluation.</p></div></div>
+          <div class="qpg-table-wrap"><table class="qpg-table"><thead><tr><th>Question</th><th>Marks</th><th>Expected Answer Points</th></tr></thead><tbody>${questions().map((q, i) => `<tr><td>Q${i+1}</td><td>${escapeHtml(q.marks)}</td><td>${escapeHtml(q.answer)}</td></tr>`).join('')}</tbody></table></div>`;
+      }
+      function renderModeration(config) {
+        const checklist = Array.isArray(generatedPaper?.moderationChecklist) && generatedPaper.moderationChecklist.length
+          ? generatedPaper.moderationChecklist
+          : [
+              { checkPoint: 'University Pattern', status: 'Completed', remarks: `${config.pattern} format used with ${config.marks} marks and ${config.duration} duration.` },
+              { checkPoint: 'CO Mapping', status: 'Completed', remarks: 'Every question is mapped with a course outcome.' },
+              { checkPoint: 'Bloom Mapping', status: 'Completed', remarks: 'Bloom levels included for cognitive balance.' },
+              { checkPoint: 'Difficulty Distribution', status: 'Completed', remarks: config.difficulty },
+              { checkPoint: 'Unit-wise Weightage', status: 'Completed', remarks: 'Unit coverage generated from supplied unit topics.' },
+              { checkPoint: 'No Repetition', status: 'AI Checked', remarks: 'AI instructed to avoid direct repetition from supplied previous-year questions.' },
+              { checkPoint: 'Answer Key', status: 'Completed', remarks: 'Answer scheme generated for all questions.' }
+            ];
+        return `<div class="qpg-document-header"><div><h3>Internal Moderation Copy</h3><p>Faculty verification copy for ${escapeHtml(config.subject)} question paper.</p></div></div>
+          <div class="qpg-table-wrap"><table class="qpg-table"><thead><tr><th>Check Point</th><th>Status</th><th>Remarks</th></tr></thead><tbody>
+            ${checklist.map(item => `<tr><td>${escapeHtml(item.checkPoint || item.point || '')}</td><td>${escapeHtml(item.status || 'Completed')}</td><td>${escapeHtml(item.remarks || item.remark || '')}</td></tr>`).join('')}
+          </tbody></table></div>
+          <div class="qpg-note-box"><strong>Moderator Note:</strong> ${escapeHtml(generatedPaper?.noRepetitionNote || 'For strict no-repetition, paste previous five-year questions in the input box before generation.')}</div>`;
+      }
+      function activateQpgTab(tabName) {
+        document.querySelectorAll('.qpg-tab').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.qpg-preview-card').forEach(card => card.classList.remove('active'));
+        const tab = document.querySelector(`.qpg-tab[data-tab="${tabName}"]`);
+        const card = document.getElementById('tab-' + tabName);
+        if (tab) tab.classList.add('active');
+        if (card) card.classList.add('active');
+      }
+      function scrollToGeneratedPaper() {
+        const headerOffset = 96;
+        const targetTop = output.getBoundingClientRect().top + window.scrollY - headerOffset;
+        window.scrollTo({ top: Math.max(targetTop, 0), behavior: 'smooth' });
+      }
+      function renderAll() {
+        const config = getConfig();
+        document.getElementById('paperPreview').innerHTML = renderPaper(config);
+        document.getElementById('coPreview').innerHTML = renderCo(config);
+        document.getElementById('bloomPreview').innerHTML = renderBloom(config);
+        document.getElementById('schemePreview').innerHTML = renderScheme(config);
+        document.getElementById('moderationPreview').innerHTML = renderModeration(config);
+        activateQpgTab('paper');
+        output.classList.add('show');
+        requestAnimationFrame(scrollToGeneratedPaper);
+      }
+      function csvContent() {
+        const header = ['Question','Section','Unit','CO','Bloom Level','Difficulty','Marks','Question Text'];
+        const rows = questions().map((q, i) => [`Q${i+1}`, q.section, q.unit, q.co, q.bloom, q.difficulty, q.marks, q.text]);
+        return [header, ...rows].map(row => row.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(',')).join('\n');
+      }
+      function textContent(type) {
+        const config = getConfig();
+        if (type === 'scheme') return questions().map((q, i) => `Q${i+1} (${q.marks} marks): ${q.answer}`).join('\n\n');
+        return `Internal Moderation Copy\nSubject: ${config.subject}\nSemester: ${config.semester}\nUniversity: ${config.university}\nPattern: ${config.pattern}\nMarks: ${config.marks}\nTime: ${config.duration}\nDifficulty: ${config.difficulty}\n\n${questions().map((q, i) => `Q${i+1}: ${q.text} [${q.co}, ${q.bloom}, ${q.difficulty}, ${q.marks} marks]`).join('\n')}\n\nChecklist:\n${(generatedPaper?.moderationChecklist || []).map(item => `- ${item.checkPoint || item.point}: ${item.status || 'Completed'} - ${item.remarks || ''}`).join('\n')}`;
+      }
+      function downloadFile(filename, content, type) {
+        const blob = new Blob([content], { type });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        const url = link.href;
+        link.remove();
+        URL.revokeObjectURL(url);
+      }
+      function setProgress(message, width) {
+        progress.classList.add('show');
+        progressText.classList.add('show');
+        progressBar.style.width = `${width}%`;
+        progressText.textContent = message;
+      }
+      function questionPaperApiEndpoints() {
+        const endpoints = ['/api/question-paper-generate'];
+        const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+        if (isLocal && window.location.port !== '8787') {
+          endpoints.push('http://localhost:8787/api/question-paper-generate');
+        }
+        return endpoints;
+      }
+      async function generateWithApi(config) {
+        let lastError = null;
+        for (const endpoint of questionPaperApiEndpoints()) {
+          try {
+            const response = await fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(config)
+            });
+            const data = await response.json().catch(() => ({}));
+            if (response.ok && data.ok) return data;
+            lastError = new Error(data.error || 'Question paper API failed.');
+          } catch (error) {
+            lastError = error;
+          }
+        }
+        const message = lastError && lastError.message ? lastError.message : 'Question paper API failed.';
+        if (message.includes('GEMINI_API_KEY') || message.includes('Failed to fetch') || message.includes('Not found')) {
+          throw new Error(message + ' For local testing, keep .dev.vars in the project root and run: python local_razorpay_api.py, then open the site on localhost:8000.');
+        }
+        throw lastError || new Error('Question paper API failed.');
+      }
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        btn.disabled = true;
+        output.classList.remove('show');
+        setProgress('Calling Gemini API and reading university pattern...', 18);
+        try {
+          const config = getConfig();
+          setTimeout(() => { if (btn.disabled) setProgress('Balancing unit-wise weightage, CO mapping and Bloom level...', 45); }, 1400);
+          setTimeout(() => { if (btn.disabled) setProgress('Preparing answer scheme and internal moderation copy...', 72); }, 3200);
+          generatedPaper = await generateWithApi(config);
+          setProgress('Ready: question paper, CO mapping, Bloom level, answer scheme and moderation copy generated dynamically.', 100);
+          renderAll();
+        } catch (error) {
+          progressBar.style.width = '100%';
+          progressText.innerHTML = `<span class="qpg-error-text">${escapeHtml(error.message)}</span>`;
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      document.querySelectorAll('.qpg-tab').forEach(tab => {
+        tab.addEventListener('click', function () {
+          activateQpgTab(tab.dataset.tab);
+        });
+      });
+      function printQpgTab(tabName, printTitle) {
+        if (!generatedPaper) return;
+        activateQpgTab(tabName);
+        const originalTitle = document.title;
+        document.title = printTitle || '';
+        setTimeout(() => window.print(), 80);
+        setTimeout(() => { document.title = originalTitle; }, 800);
+      }
+      const printPaperBtn = document.getElementById('printPaperBtn');
+      const printAnswerKeyBtn = document.getElementById('printAnswerKeyBtn');
+      if (printPaperBtn) {
+        printPaperBtn.addEventListener('click', function () {
+          printQpgTab('paper', 'Question Paper');
+        });
+      }
+      if (printAnswerKeyBtn) {
+        printAnswerKeyBtn.addEventListener('click', function () {
+          printQpgTab('scheme', 'Answer Key');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
