@@ -103,7 +103,32 @@ gtag('config', 'G-K9L9QVHWT2');
             <div class="qpg-form-grid">
               <div class="qpg-field">
                 <label for="subject">Subject</label>
-                <input id="subject" name="subject" value="DBMS" />
+                <select id="subject" name="subject">
+                  <option value="DBMS" selected>DBMS</option>
+                  <option value="Cloud Computing">Cloud Computing</option>
+                  <option value="Operating System">Operating System</option>
+                  <option value="Computer Networks">Computer Networks</option>
+                  <option value="Data Structures">Data Structures / DSA</option>
+                  <option value="Software Engineering">Software Engineering</option>
+                  <option value="OOP">Object Oriented Programming</option>
+                  <option value="Java">Java</option>
+                  <option value="Python">Python</option>
+                  <option value="Web Technology">Web Technology</option>
+                  <option value="Artificial Intelligence">Artificial Intelligence</option>
+                  <option value="Machine Learning">Machine Learning</option>
+                  <option value="Cyber Security">Cyber Security</option>
+                  <option value="Compiler Design">Compiler Design</option>
+                  <option value="Computer Organization and Architecture">Computer Organization and Architecture</option>
+                  <option value="Data Mining">Data Mining</option>
+                  <option value="Big Data">Big Data</option>
+                  <option value="IoT">IoT</option>
+                  <option value="Mobile App Development">Mobile App Development</option>
+                  <option value="Custom Subject">Custom Subject / Other</option>
+                </select>
+              </div>
+              <div class="qpg-field qpg-custom-subject-field" id="customSubjectField" hidden>
+                <label for="customSubjectName">Custom Subject Name</label>
+                <input id="customSubjectName" name="customSubjectName" placeholder="Enter subject name" />
               </div>
               <div class="qpg-field">
                 <label for="semester">Semester</label>
@@ -1335,6 +1360,31 @@ Unit IV: Transactions, concurrency control, recovery, ACID</textarea>
         });
         setUniversitySelection(getUniversityByCode('AKTU'), { skipPatternSync: true });
       }
+
+      function getSelectedSubjectName() {
+        const subjectSelect = document.getElementById('subject');
+        const customSubjectName = document.getElementById('customSubjectName');
+        const selectedSubject = subjectSelect?.value || 'DBMS';
+        if (selectedSubject === 'Custom Subject') {
+          return customSubjectName?.value.trim() || 'Custom Subject';
+        }
+        return selectedSubject;
+      }
+
+      function updateCustomSubjectVisibility() {
+        const subjectSelect = document.getElementById('subject');
+        const customSubjectField = document.getElementById('customSubjectField');
+        if (!subjectSelect || !customSubjectField) return;
+        const isCustomSubject = subjectSelect.value === 'Custom Subject';
+        customSubjectField.hidden = !isCustomSubject;
+        if (isCustomSubject) {
+          const customSubjectName = document.getElementById('customSubjectName');
+          if (customSubjectName && !customSubjectName.value.trim()) {
+            customSubjectName.value = '';
+          }
+        }
+      }
+
       function getConfig() {
         resolveTypedUniversity();
         const selectedCode = document.getElementById('university').value;
@@ -1345,7 +1395,7 @@ Unit IV: Transactions, concurrency control, recovery, ACID</textarea>
           ? (customName || searchValue || 'Custom University')
           : (selectedOption?.name || searchValue || selectedCode || 'AKTU');
         return {
-          subject: document.getElementById('subject').value.trim() || 'DBMS',
+          subject: getSelectedSubjectName(),
           semester: document.getElementById('semester').value.trim() || '5th',
           university: universityName,
           universityCode: selectedCode,
@@ -1357,6 +1407,193 @@ Unit IV: Transactions, concurrency control, recovery, ACID</textarea>
           previousQuestions: document.getElementById('previousQuestions').value.trim()
         };
       }
+
+      const subjectSyllabusPresets = [
+        {
+          keys: ['dbms', 'database', 'database management system', 'rdbms'],
+          topics: `Unit I: DBMS architecture, data models, ER model, keys
+Unit II: Relational model, functional dependency, normalization
+Unit III: SQL, views, indexing, query optimization
+Unit IV: Transactions, concurrency control, recovery, ACID`
+        },
+        {
+          keys: ['cloud computing', 'cloud'],
+          topics: `Unit I: Cloud computing fundamentals, service models, deployment models and virtualization
+Unit II: Cloud architecture, storage, networking, load balancing and resource management
+Unit III: Cloud platforms, security, IAM, SLA, compliance and cost management
+Unit IV: Containers, serverless computing, DevOps automation, monitoring and cloud case studies`
+        },
+        {
+          keys: ['operating system', 'operating systems', 'os'],
+          topics: `Unit I: Operating system concepts, process management, threads and CPU scheduling
+Unit II: Synchronization, deadlock handling, memory management and virtual memory
+Unit III: File systems, I/O management, disk scheduling and protection
+Unit IV: Linux/Unix basics, distributed operating systems, security and case studies`
+        },
+        {
+          keys: ['computer network', 'computer networks', 'networking', 'cn'],
+          topics: `Unit I: Network models, transmission media, switching and data communication fundamentals
+Unit II: Data link layer, error control, flow control, LAN, Ethernet and wireless networks
+Unit III: Network layer, IP addressing, routing protocols and congestion control
+Unit IV: Transport/application layers, TCP/UDP, DNS, HTTP, security and network management`
+        },
+        {
+          keys: ['data structure', 'data structures', 'dsa', 'algorithms'],
+          topics: `Unit I: Algorithm analysis, arrays, linked lists, stacks and queues
+Unit II: Trees, binary search trees, heaps and graph representations
+Unit III: Searching, sorting, hashing and algorithm design techniques
+Unit IV: Graph algorithms, dynamic programming, greedy methods and complexity analysis`
+        },
+        {
+          keys: ['software engineering', 'se'],
+          topics: `Unit I: Software process models, requirement engineering and feasibility analysis
+Unit II: Software design, architecture, UML modelling and user interface design
+Unit III: Coding standards, testing strategies, verification, validation and debugging
+Unit IV: Software project management, quality assurance, maintenance and agile practices`
+        },
+        {
+          keys: ['object oriented', 'oops', 'oop', 'object oriented programming'],
+          topics: `Unit I: OOP principles, classes, objects, abstraction and encapsulation
+Unit II: Inheritance, polymorphism, interfaces, packages and exception handling
+Unit III: Collections, generics, file handling, streams and GUI/event handling basics
+Unit IV: Design patterns, database connectivity, testing and object-oriented case studies`
+        },
+        {
+          keys: ['java', 'java programming', 'advance java', 'advanced java'],
+          topics: `Unit I: Java fundamentals, classes, objects, inheritance and interfaces
+Unit II: Exception handling, multithreading, collections, generics and file handling
+Unit III: JDBC, servlets, JSP, MVC basics and web application development
+Unit IV: Spring basics, REST APIs, security, testing and deployment case studies`
+        },
+        {
+          keys: ['python', 'python programming'],
+          topics: `Unit I: Python basics, control structures, functions, modules and packages
+Unit II: Data structures, file handling, exceptions and object-oriented programming
+Unit III: NumPy, Pandas, visualization basics and database connectivity
+Unit IV: Web/API basics, automation, testing and mini project implementation`
+        },
+        {
+          keys: ['web technology', 'web technologies', 'web development', 'internet technology'],
+          topics: `Unit I: Internet fundamentals, HTML5, CSS3, responsive design and accessibility
+Unit II: JavaScript, DOM, events, forms, validation and client-side storage
+Unit III: Server-side scripting, databases, REST APIs and authentication basics
+Unit IV: Web security, deployment, performance optimization and project case studies`
+        },
+        {
+          keys: ['artificial intelligence', 'ai'],
+          topics: `Unit I: AI fundamentals, intelligent agents, problem solving and search strategies
+Unit II: Knowledge representation, reasoning, logic and expert systems
+Unit III: Machine learning basics, neural networks and natural language processing
+Unit IV: AI applications, ethics, explainability and real-world case studies`
+        },
+        {
+          keys: ['machine learning', 'ml'],
+          topics: `Unit I: Machine learning fundamentals, data preprocessing and model evaluation
+Unit II: Regression, classification, decision trees, SVM and ensemble methods
+Unit III: Clustering, dimensionality reduction, recommender systems and neural networks
+Unit IV: Model deployment, bias, explainability and applied ML case studies`
+        },
+        {
+          keys: ['cyber security', 'cybersecurity', 'information security', 'network security'],
+          topics: `Unit I: Security fundamentals, threats, vulnerabilities, attacks and risk management
+Unit II: Cryptography, authentication, access control and secure protocols
+Unit III: Network security, web security, malware, firewalls and intrusion detection
+Unit IV: Digital forensics, cyber laws, incident response and security case studies`
+        },
+        {
+          keys: ['compiler design', 'compiler'],
+          topics: `Unit I: Compiler phases, lexical analysis, regular expressions and finite automata
+Unit II: Syntax analysis, parsing techniques, CFG and error handling
+Unit III: Semantic analysis, intermediate code generation and symbol tables
+Unit IV: Code optimization, code generation, runtime environments and compiler tools`
+        },
+        {
+          keys: ['computer organization', 'computer architecture', 'coa'],
+          topics: `Unit I: Digital logic basics, data representation, instruction formats and addressing modes
+Unit II: CPU organization, ALU, control unit, pipelining and instruction cycle
+Unit III: Memory hierarchy, cache memory, virtual memory and storage systems
+Unit IV: I/O organization, parallel processing, multiprocessors and performance evaluation`
+        },
+        {
+          keys: ['data mining', 'data warehouse', 'data warehousing'],
+          topics: `Unit I: Data warehouse concepts, ETL, OLAP and multidimensional modelling
+Unit II: Data preprocessing, association rule mining and frequent pattern analysis
+Unit III: Classification, clustering, prediction and outlier analysis
+Unit IV: Web mining, text mining, big data analytics and business intelligence case studies`
+        },
+        {
+          keys: ['big data', 'big data analytics'],
+          topics: `Unit I: Big data concepts, characteristics, ecosystem and distributed file systems
+Unit II: Hadoop, HDFS, MapReduce and YARN architecture
+Unit III: Spark, NoSQL databases, stream processing and data pipelines
+Unit IV: Big data security, analytics workflows, visualization and industry case studies`
+        },
+        {
+          keys: ['internet of things', 'iot'],
+          topics: `Unit I: IoT fundamentals, architecture, sensors, actuators and embedded systems
+Unit II: IoT communication protocols, networking, gateways and cloud integration
+Unit III: Data processing, security, privacy and IoT platform services
+Unit IV: Smart applications, industrial IoT, edge computing and case studies`
+        },
+        {
+          keys: ['mobile application', 'mobile app', 'android'],
+          topics: `Unit I: Mobile computing basics, Android architecture, UI components and activity lifecycle
+Unit II: Intents, fragments, layouts, storage and SQLite/database connectivity
+Unit III: Networking, REST APIs, location services, notifications and background tasks
+Unit IV: Security, testing, publishing, performance and mobile app case studies`
+        }
+      ];
+
+      function normalizeSubject(value) {
+        return String(value || '').toLowerCase().replace(/[^a-z0-9+#. ]+/g, ' ').replace(/\s+/g, ' ').trim();
+      }
+
+      function buildGenericUnitTopics(subjectName) {
+        const cleanSubject = String(subjectName || '').trim() || 'Selected subject';
+        return `Unit I: ${cleanSubject} fundamentals, terminology, scope and core concepts
+Unit II: ${cleanSubject} architecture, models, methods, tools and implementation basics
+Unit III: ${cleanSubject} problem solving, algorithms, design issues and applied techniques
+Unit IV: ${cleanSubject} advanced topics, security/quality issues, trends and case studies`;
+      }
+
+      function subjectKeyMatches(normalized, key) {
+        const cleanKey = normalizeSubject(key);
+        if (!cleanKey) return false;
+        if (normalized === cleanKey) return true;
+        if (cleanKey.length <= 3) {
+          return normalized.split(' ').includes(cleanKey);
+        }
+        return normalized.includes(cleanKey);
+      }
+
+
+      function getSubjectUnitTopics(subjectName) {
+        const normalized = normalizeSubject(subjectName);
+        const match = subjectSyllabusPresets.find(item => item.keys.some(key => subjectKeyMatches(normalized, key)));
+        return match ? match.topics : buildGenericUnitTopics(subjectName);
+      }
+
+      let isAutoSyllabusUpdate = false;
+      function setAutoUnitTopics(value) {
+        const unitTopics = document.getElementById('unitTopics');
+        if (!unitTopics) return;
+        isAutoSyllabusUpdate = true;
+        unitTopics.value = value;
+        unitTopics.dataset.autoGenerated = 'true';
+        window.setTimeout(() => { isAutoSyllabusUpdate = false; }, 0);
+      }
+
+      function shouldAutoUpdateUnitTopics() {
+        const unitTopics = document.getElementById('unitTopics');
+        if (!unitTopics) return false;
+        return unitTopics.dataset.autoGenerated !== 'false' || unitTopics.value.trim() === '';
+      }
+
+      function refreshUnitTopicsForSubject(force = false) {
+        if (!force && !shouldAutoUpdateUnitTopics()) return;
+        setAutoUnitTopics(getSubjectUnitTopics(getSelectedSubjectName()));
+      }
+
       const patternDefaults = {
         'AKTU 2026': {
           university: 'AKTU',
@@ -1413,7 +1650,7 @@ Unit IV: Add advanced topics and case studies`
         if (marks) marks.value = preset.marks;
         if (duration) duration.value = preset.duration;
         if (difficulty) difficulty.value = preset.difficulty;
-        if (unitTopics) unitTopics.value = preset.unitTopics;
+        if (unitTopics) refreshUnitTopicsForSubject(true);
         if (settings.syncUniversity && preset.university) {
           const match = getUniversityByCode(preset.university);
           if (match) setUniversitySelection(match, { skipPatternSync: true });
@@ -1439,7 +1676,39 @@ Unit IV: Add advanced topics and case studies`
           applyPatternDefaults(patternSelect.value, { syncUniversity: true });
         });
       }
+
+      const unitTopicsInput = document.getElementById('unitTopics');
+      if (unitTopicsInput) {
+        unitTopicsInput.addEventListener('input', function () {
+          if (!isAutoSyllabusUpdate) unitTopicsInput.dataset.autoGenerated = 'false';
+        });
+      }
+
+      const subjectSelect = document.getElementById('subject');
+      const customSubjectName = document.getElementById('customSubjectName');
+      let subjectSyllabusTimer = null;
+      if (subjectSelect) {
+        subjectSelect.addEventListener('change', function () {
+          updateCustomSubjectVisibility();
+          refreshUnitTopicsForSubject(true);
+          if (subjectSelect.value === 'Custom Subject' && customSubjectName) {
+            window.setTimeout(() => customSubjectName.focus(), 0);
+          }
+        });
+      }
+      if (customSubjectName) {
+        customSubjectName.addEventListener('input', function () {
+          window.clearTimeout(subjectSyllabusTimer);
+          subjectSyllabusTimer = window.setTimeout(() => refreshUnitTopicsForSubject(false), 250);
+        });
+        customSubjectName.addEventListener('change', function () {
+          refreshUnitTopicsForSubject(false);
+        });
+      }
+
       setupUniversitySearch();
+      updateCustomSubjectVisibility();
+      refreshUnitTopicsForSubject(true);
       if (patternSelect) applyPatternDefaults(patternSelect.value, { syncUniversity: true });
 
       function normalizeQuestions(questions) {

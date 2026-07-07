@@ -5982,10 +5982,12 @@ body.qpg-body .qpg-top-intro h1{font-size:clamp(1.1rem,1.8vw,1.45rem);}
   color:#1d4ed8;
   outline:none;
 }
-.qpg-custom-university-field[hidden]{
+.qpg-custom-university-field[hidden],
+.qpg-custom-subject-field[hidden]{
   display:none!important;
 }
-.qpg-custom-university-field:not([hidden]){
+.qpg-custom-university-field:not([hidden]),
+.qpg-custom-subject-field:not([hidden]){
   display:grid;
 }
 @media(max-width:720px){
