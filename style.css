@@ -5126,3 +5126,95 @@ body.home-v2-body .v2-profile-card{
     margin:3px 0 0 !important;
   }
 }
+
+/* =========================================================
+   V155: Submission-ready print/PDF proposal cleanup
+   Removes AI/tool/template indicators from PDF and prints a clean academic document.
+   ========================================================= */
+.proposal-print-title{
+  display:none;
+}
+
+@media print{
+  @page{
+    size:A4;
+    margin:16mm 15mm 16mm 15mm;
+  }
+
+  body.proposal-template-page,
+  body.proposal-template-page *{
+    font-family:"Times New Roman", Times, serif !important;
+  }
+
+  body.proposal-template-page .proposal-template-head,
+  body.proposal-template-page .v2-badge,
+  body.proposal-template-page .proposal-customized-note,
+  body.proposal-template-page .proposal-meta-grid,
+  body.proposal-template-page .proposal-head-actions{
+    display:none !important;
+  }
+
+  body.proposal-template-page .proposal-print-title{
+    display:block !important;
+    text-align:center !important;
+    font-size:16pt !important;
+    line-height:1.2 !important;
+    font-weight:700 !important;
+    color:#000 !important;
+    margin:0 0 9mm !important;
+  }
+
+  body.proposal-template-page .proposal-blocks{
+    display:block !important;
+    gap:0 !important;
+  }
+
+  body.proposal-template-page .proposal-blocks section{
+    border:0 !important;
+    background:#fff !important;
+    border-radius:0 !important;
+    padding:0 !important;
+    margin:0 0 6.5mm !important;
+    break-inside:auto !important;
+    page-break-inside:auto !important;
+  }
+
+  body.proposal-template-page .proposal-blocks h3{
+    font-size:12pt !important;
+    line-height:1.25 !important;
+    font-weight:700 !important;
+    color:#000 !important;
+    margin:0 0 2mm !important;
+    letter-spacing:0 !important;
+  }
+
+  body.proposal-template-page .proposal-blocks h4{
+    font-size:11pt !important;
+    line-height:1.25 !important;
+    font-weight:700 !important;
+    color:#000 !important;
+    margin:3mm 0 1.5mm !important;
+  }
+
+  body.proposal-template-page .proposal-blocks p,
+  body.proposal-template-page .proposal-blocks li{
+    font-size:11pt !important;
+    line-height:1.45 !important;
+    font-weight:400 !important;
+    color:#000 !important;
+    text-align:justify !important;
+  }
+
+  body.proposal-template-page .proposal-blocks p{
+    margin:0 !important;
+  }
+
+  body.proposal-template-page .proposal-blocks ul{
+    margin:0 0 0 5mm !important;
+    padding-left:5mm !important;
+  }
+
+  body.proposal-template-page .proposal-blocks li{
+    margin:0 0 1mm !important;
+  }
+}

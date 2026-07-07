@@ -91,6 +91,7 @@ gtag('config', 'G-K9L9QVHWT2');
       <div class="container">
         <article class="proposal-template-card">
           <div class="proposal-template-head"><span class="v2-badge" id="proposalModeBadge">Copy Format</span><h2 id="proposalTemplateHeading">2-page research proposal structure</h2><div class="proposal-head-actions"><button class="btn secondary" id="copyProposalBtn" type="button">Copy Template</button><button class="btn secondary subtle-btn" id="clearCustomizedProposalBtn" type="button" hidden>Clear Custom Plan</button></div></div>
+          <div class="proposal-print-title" id="proposalPrintTitle">PhD Research Proposal</div>
           <div id="proposalTemplateText" class="proposal-blocks">
             <section><h3>1. Proposed Title</h3><p>Write a narrow title. Example: “An Explainable Machine Learning Framework for Predicting Employability and Skill Gaps among Computer Science Students.”</p></section>
             <section><h3>2. Background / Motivation</h3><p>Explain why this problem matters in CSE, education, industry, placement, security, cloud, software engineering or data-driven decision-making.</p></section>
@@ -196,7 +197,7 @@ gtag('config', 'G-K9L9QVHWT2');
         const methodologyFromAi = findOutline(plan, ['methodology']);
         const expectedOutcome = findOutline(plan, ['expected outcome', 'outcome']) || plan.expectedContribution;
         const objectiveList = [
-          objectiveFromAi || 'Develop a focused research framework based on the generated topic and target user group.',
+          objectiveFromAi || 'Develop a focused research framework for the selected problem domain and target user group.',
           'Prepare or collect the required dataset and define measurable features for the study.',
           'Implement the proposed model/method stack and compare it with suitable baseline approaches.',
           'Evaluate the result using the selected metrics and convert the findings into a proposal or research paper.'
@@ -204,10 +205,13 @@ gtag('config', 'G-K9L9QVHWT2');
         const generatedDate = saved.generatedAt ? new Date(saved.generatedAt).toLocaleString() : 'recently';
 
         if (titleEl) titleEl.textContent = 'Customized CSE PhD Research Proposal';
-        if (introEl) introEl.textContent = 'This proposal is generated from your PhD Topic Finder output, so the title, gap, methodology, dataset plan and metrics now match the customized research plan.';
+        document.title = 'PhD Research Proposal';
+        const printTitleEl = document.getElementById('proposalPrintTitle');
+        if (printTitleEl) printTitleEl.textContent = 'PhD Research Proposal';
+        if (introEl) introEl.textContent = 'Review the proposal draft, refine it with recent references, and export it as a clean PDF for academic submission.';
         if (badgeEl) badgeEl.textContent = 'Customized Proposal';
-        if (heroBadge) heroBadge.textContent = 'Generated From Topic Finder';
-        if (headingEl) headingEl.textContent = 'Matching proposal draft based on your generated research plan';
+        if (heroBadge) heroBadge.textContent = 'Customized Proposal';
+        if (headingEl) headingEl.textContent = 'Research proposal draft';
         if (btn) btn.textContent = 'Copy Customized Proposal';
         if (clearBtn) clearBtn.hidden = false;
         if (statusCard) {
@@ -215,12 +219,12 @@ gtag('config', 'G-K9L9QVHWT2');
         }
 
         block.innerHTML =
-          '<div class="proposal-customized-note"><strong>Customized draft:</strong> This is a structured starting draft. Before submission, add 8–12 recent references and refine the final methodology with your supervisor.</div>' +
+          '<div class="proposal-customized-note"><strong>Submission note:</strong> Add recent references and verify the methodology with your supervisor before final submission.</div>' +
           profileRows(saved) +
           section(1, 'Proposed Title', para(selectedTitle)) +
           section(2, 'Background / Motivation', para((plan.summary || '') + specificProblem + cityContext, 'Explain why the selected problem matters for the chosen CSE domain and target users.')) +
           section(3, 'Problem Statement', para(problem, 'Define the exact problem and explain what current systems fail to solve.')) +
-          section(4, 'Research Gap', para(plan.researchGap, 'Mention the missing point found in recent literature and connect it with the generated topic.')) +
+          section(4, 'Research Gap', para(plan.researchGap, 'Mention the missing point found in recent literature and connect it with the selected research problem.')) +
           section(5, 'Research Objectives', list(objectiveList)) +
           section(6, 'Proposed Methodology',
             para(methodologyFromAi, 'Methodology will be refined after literature review.') +
@@ -241,7 +245,7 @@ gtag('config', 'G-K9L9QVHWT2');
           ) +
           section(10, 'Interview Pitch and References Strategy',
             '<h4>Interview pitch</h4>' + para(plan.interviewPitch, 'Prepare a 60-second explanation of the problem, gap, method and expected contribution.') +
-            '<h4>References</h4><p>Add 8–12 recent papers from IEEE, ACM, Springer, Elsevier, arXiv or reputed conferences/journals. Use this generated plan to search papers around: ' + escapeHtml(plan.area || selectedTitle) + '.</p>'
+            '<h4>References</h4><p>Add 8–12 recent papers from IEEE, ACM, Springer, Elsevier, arXiv or reputed conferences/journals. Search and cite recent papers related to: ' + escapeHtml(plan.area || selectedTitle) + '.</p>'
           );
       }
 
