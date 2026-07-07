@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-07T22:44:19+05:30",
-  "updated_label": "Updated: 07 Jul 2026, 10:44 PM IST",
+  "generated_at": "2026-07-08T05:23:24+05:30",
+  "updated_label": "Updated: 08 Jul 2026, 05:23 AM IST",
   "source": "manual verified faculty jobs + source discovery + enabled official-source scanner + protected email decoder",
   "manual_count": 3,
   "auto_count": 89,
@@ -246,7 +246,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-7"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-4"
     },
     {
       "college": "National Institute of Technology Silchar (NIT Silchar)",
@@ -327,7 +327,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Tamil Nadu",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-6"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-3"
     },
     {
       "college": "Faculty",
@@ -354,7 +354,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Tamil Nadu",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-5"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-2"
     },
     {
       "college": "Annai Violet Arts & Science College",
@@ -624,7 +624,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Tamil Nadu",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-4"
+      "slug": "faculty-associate-professor-computer-science-cse-2026"
     },
     {
       "college": "Faculty and Staff",
@@ -886,9 +886,9 @@
       "address": "Akshaya College of Engineering and Technology, Kinathukadavu, Coimbatore – 642109, Tamil Nadu, Reference Source: This job notification was received directly from the institution. Benefits of Joining Akshaya College of…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -913,9 +913,9 @@
       "address": "Annai College of Engineering and Technology, Kovilacheri, Kumbakonam, Thanjavur, Tamil Nadu, India – 612503, Reference Source: This job notification was received directly from the institution. Join source Community…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -940,15 +940,15 @@
       "address": "A1 Global Institute of Engineering & Technology Markapur Markapuram(Dt.) Andhra Pradesh-523316 India Reference Source: This job notification was received directly from the institution. Join source Community Join…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Andhra Pradesh",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-8"
     },
     {
       "college": "Faculty",
@@ -967,15 +967,15 @@
       "address": "Bonam Venkata Chalamayya Engineering College (A), Odalarevu – 533 210, Allavaram (M), Dr. B.R. Ambedkar Konaseema Dist. Reference Source: This job notification was received directly from the institution. Benefits of…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Andhra Pradesh",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-2"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-9"
     },
     {
       "college": "Faculty",
@@ -994,15 +994,15 @@
       "address": "PSG Institute of Management, PB No. 1668, Peelamedu, Coimbatore – 641004, Tamil Nadu, India, Reference Source: This job notification was received directly from the institution. Benefits of Joining PSG Institute of…",
       "source_page": "",
       "verification_status": "Needs Official Verification",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Information Technology / Software, Associate Professor, Tamil Nadu",
       "job": "Faculty Associate Professor Information Technology / Software",
-      "slug": "faculty-associate-professor-information-technology-software-2026"
+      "slug": "faculty-associate-professor-information-technology-software-2026-2"
     },
     {
       "college": "Faculty",
@@ -1021,15 +1021,15 @@
       "address": "Good Shepherd College of Engineering and Technology, Maruthamparai, Kaliyal, Kadayal- Arukani Road, Kanyakumari District, Tamil Nadu – 629101, Reference Source: This job notification was received directly from the…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-3"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-10"
     },
     {
       "college": "Faculty",
@@ -1048,9 +1048,9 @@
       "address": "No. 13, Semmozhi Salai, Sholinganallur, Chennai – 600119, Tamil Nadu, India, Join source Community Join WhatsApp Join Telegram Follow LinkedIn Follow Instagram Contact Number: 044-2450 1115 Reference Source: This job…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1075,9 +1075,9 @@
       "address": "The Principal Jai Shriram Engineering College Dharapuram Road, Avinashipalayam Tirupur District, Tamil Nadu PIN: 638660 Reference Source: This job notification was received directly from the institution. Benefits of…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1102,9 +1102,9 @@
       "address": "KIT – Kalaignarkarunanidhi Institute of Technology, Kannampalayam, Coimbatore, Tamil Nadu – 641402, Contact Number: +91 73050 99067 Reference Source: This job notification was received directly from the institution.…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1129,9 +1129,9 @@
       "address": "The Principal, Al-Ameen Polytechnic College, Karundevan Palayam, (Erode- Modakurichi Main Road), Nanjai Uthukuli Post, , Erode – 638 104, Tamil Nadu. Reference Source: This job notification was received directly from…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1156,9 +1156,9 @@
       "address": "The Principal, Sri Venkateswara College of Pharmacy (Autonomous), RVS Knowledge District, Chittoor-517127, Contact Number: +91-9581993335 / +91-7729999180 Reference Source: This job notification was received directly…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1326,7 +1326,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-10"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-7"
     },
     {
       "college": "Lecturer, Lab Assistant & Physical Director Posts. Sri Venkatachalapathy Polytechnic…",
@@ -1461,7 +1461,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Information Technology / Software, Associate Professor, Arunachal Pradesh",
       "job": "Faculty Associate Professor Information Technology / Software",
-      "slug": "faculty-associate-professor-information-technology-software-2026-2"
+      "slug": "faculty-associate-professor-information-technology-software-2026"
     },
     {
       "college": "Faculty",
@@ -1596,7 +1596,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Andhra Pradesh",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-9"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-6"
     },
     {
       "college": "Faculty",
@@ -1623,7 +1623,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Goa",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-8"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-5"
     },
     {
       "college": "Indian Institute of Technology Kharagpur (IIT KGP)",
