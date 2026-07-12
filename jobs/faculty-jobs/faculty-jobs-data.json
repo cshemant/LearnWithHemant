@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-11T21:28:17+05:30",
-  "updated_label": "Updated: 11 Jul 2026, 09:28 PM IST",
+  "generated_at": "2026-07-12T11:42:10+05:30",
+  "updated_label": "Updated: 12 Jul 2026, 11:42 AM IST",
   "source": "manual verified faculty jobs + source discovery + enabled official-source scanner + protected email decoder",
   "manual_count": 3,
   "auto_count": 84,
@@ -516,7 +516,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-4"
+      "slug": "faculty-associate-professor-computer-science-cse-2026"
     },
     {
       "college": "Sports Coaches, Gym Instructor, Fitness Trainer and Yoga Instructor Posts. Indian…",
@@ -940,9 +940,9 @@
       "address": "Andhra Pradesh Apply Mode: Email Last Date to",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -967,9 +967,9 @@
       "address": "For Teacher: Doddakallasandra location: Kanakapura Main Road, near Vasanthpura / Gokulam Apartments, Konanakunte, Bengaluru, Karnataka 560062 Jayanagar location: 2nd Main Rd, 27/2, 33rd Cross Rd, 7th Block, Jayanagar…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -994,9 +994,9 @@
       "address": "Dr. D. Y. Patil Vidyapeeth Sant Tukaram Nagar Pimpri Pune – 411018 Maharashtra Reference Source: This advertisement was published in the newspaper dated 8th July 2026 Join source Community Join WhatsApp Join Telegram…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1021,15 +1021,15 @@
       "address": "The Principal, Sri Venkateswara College of Engineering and Technology (Autonomous), RVS Nagar, Chittoor – 517127. Reference Source: This job notification was received directly from the institution. Join source…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Andhra Pradesh",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-6"
     },
     {
       "college": "Faculty",
@@ -1048,15 +1048,15 @@
       "address": "Lords Institute of Engineering and Technology Sy. No. 32, Himayathsagar Near TSPA Junction , Hyderabad – 500 091 Reference Source: This job notification was received directly from the institution. Benefits of Joining…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Andhra Pradesh",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-2"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-7"
     },
     {
       "college": "Faculty",
@@ -1075,15 +1075,15 @@
       "address": "173, Agaram Road, Selaiyur, Tambaram, Chennai – 600 073, Tamil Nadu. Reference Source: This job notification was received directly from the institution. Benefits of Joining Bharath Institute of Higher Education and…",
       "source_page": "",
       "verification_status": "Needs Official Verification",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Tamil Nadu",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-3"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-8"
     },
     {
       "college": "Mother Terasa Group of Institutions",
@@ -1102,9 +1102,9 @@
       "address": "Mother Terasa Group of Institutions Mettusalai Illuppur Pudukkottai – 622102 Tamil Nadu Reference Source: This job notification was received directly from the institution. Benefits of Joining Mother Terasa Group of…",
       "source_page": "",
       "verification_status": "Needs Official Verification",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1129,9 +1129,9 @@
       "address": "Rathinam Techzone Campus Pollachi Main Road Eachanari Coimbatore, Tamil Nadu, India 641021 Reference Source: This job notification was received directly from the institution. Benefits of Joining Rathinam Technical…",
       "source_page": "",
       "verification_status": "Official Link Found",
-      "status": "Active",
+      "status": "Closed",
       "status_label": "Source Verified",
-      "status_class": "good",
+      "status_class": "avoid",
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
@@ -1272,7 +1272,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-7"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-4"
     },
     {
       "college": "Faculty",
@@ -1299,7 +1299,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Goa",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-8"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-5"
     },
     {
       "college": "Faculty and Staff",
@@ -1596,7 +1596,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Andhra Pradesh",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-6"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-3"
     },
     {
       "college": "Lecturer",
@@ -1812,7 +1812,7 @@
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
       "profile_tags": "Computer Science / CSE, Associate Professor, Goa",
       "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-5"
+      "slug": "faculty-associate-professor-computer-science-cse-2026-2"
     },
     {
       "college": "Indian Institute of Technology Kharagpur (IIT KGP)",
