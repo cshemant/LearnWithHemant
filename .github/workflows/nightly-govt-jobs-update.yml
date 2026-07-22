@@ -1,6 +1,14 @@
 name: Nightly Govt Jobs Dashboard Update
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/govt_job_finder.py"
+      - "scripts/update_jobs_dashboard_data.py"
+      - "sources_gov_jobs.csv"
+      - "jobs/manual-jobs.json"
+      - "requirements-govt-jobs.txt"
   schedule:
     # Runs around midnight IST every night. GitHub cron uses UTC.
     # 18:35 UTC = 12:05 AM IST.
@@ -42,7 +50,7 @@ jobs:
 
       - name: Run nightly govt job scanner
         run: |
-          python scripts/update_jobs_dashboard_data.py --sources sources_gov_jobs.csv --out-json jobs/jobs-data.json --excel-out jobs/government_jobs_tracker.xlsx --max-pdfs 3 --limit 60
+          python scripts/update_jobs_dashboard_data.py --sources sources_gov_jobs.csv --out-json jobs/jobs-data.json --excel-out jobs/government_jobs_tracker.xlsx --max-pdfs 10 --max-detail-pages 8 --limit 120
 
       - name: Commit and push updated job data
         run: |

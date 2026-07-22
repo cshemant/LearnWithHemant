@@ -40,16 +40,43 @@ import sys
 import time
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin, urlparse, urldefrag
 
 import pandas as pd
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from bs4 import BeautifulSoup
 
 try:
     import pdfplumber
 except Exception:
     pdfplumber = None
+
+
+# Excel/openpyxl rejects ASCII control characters that sometimes appear when
+# a government portal returns an image/binary file instead of an HTML/PDF page.
+# Example failure: "JFIF ... cannot be used in worksheets."
+EXCEL_ILLEGAL_CHAR_RE = re.compile(r"[\x00-\x08\x0B\x0C\x0E-\x1F]")
+IMAGE_MAGIC_PREFIXES = (b"\xff\xd8\xff", b"\x89PNG\r\n\x1a\n", b"GIF87a", b"GIF89a", b"RIFF")
+
+
+def is_image_response(content: bytes, content_type: str = "") -> bool:
+    ctype = (content_type or "").lower()
+    return ctype.startswith("image/") or any(content.startswith(prefix) for prefix in IMAGE_MAGIC_PREFIXES)
+
+
+def excel_safe_value(value):
+    if not isinstance(value, str):
+        return value
+    return EXCEL_ILLEGAL_CHAR_RE.sub(" ", value)
+
+
+def excel_safe_dataframe(frame: pd.DataFrame) -> pd.DataFrame:
+    safe = frame.copy()
+    for column in safe.select_dtypes(include=["object"]).columns:
+        safe[column] = safe[column].map(excel_safe_value)
+    return safe
 
 
 # -----------------------------
@@ -177,13 +204,33 @@ APPLY_KEYWORDS = [
     "advertisement", "notification", "recruitment", "vacancy", "vacancies", "advt"
 ]
 
+# Links on many official portals are generic (for example "Advertisement 06/2026")
+# and the CSE/IT keywords are only inside the linked detail page or PDF.  These
+# terms are therefore used for one-level discovery before eligibility filtering.
+NOTICE_LINK_KEYWORDS = [
+    "advertisement", "notification", "recruitment", "vacancy", "vacancies",
+    "current opening", "current openings", "career opportunity", "career opportunities",
+    "job opening", "job openings", "apply online", "view details", "read more",
+    "download advertisement", "advt", "employment notice", "walk-in"
+]
+
+NON_VACANCY_LINK_KEYWORDS = [
+    "result", "answer key", "admit card", "shortlist", "merit list", "syllabus",
+    "interview schedule", "exam schedule", "archive", "archives", "old advertisement",
+    "corrigendum only", "faq", "tender", "procurement"
+]
+
+PDF_HINTS = [".pdf", " pdf", "pdf ", "download", "document", "attachment", "getfile", "viewfile"]
+
 DATE_PATTERNS = [
     # 23-07-2026, 23/07/2026, 23.07.2026
     r"\b([0-3]?\d[-/.][01]?\d[-/.](?:20)?\d{2})\b",
     # 2026-07-23
     r"\b((?:20)\d{2}[-/.][01]?\d[-/.][0-3]?\d)\b",
-    # 23 Jul 2026 / 23 July 2026
-    r"\b([0-3]?\d\s+(?:Jan|January|Feb|February|Mar|March|Apr|April|May|Jun|June|Jul|July|Aug|August|Sep|Sept|September|Oct|October|Nov|November|Dec|December)\s+(?:20)?\d{2})\b",
+    # 23 Jul 2026 / 23rd July 2026
+    r"\b([0-3]?\d(?:st|nd|rd|th)?\s+(?:Jan|January|Feb|February|Mar|March|Apr|April|May|Jun|June|Jul|July|Aug|August|Sep|Sept|September|Oct|October|Nov|November|Dec|December)\s+(?:20)?\d{2})\b",
+    # July 23, 2026 / Jul 23 2026
+    r"\b((?:Jan|January|Feb|February|Mar|March|Apr|April|May|Jun|June|Jul|July|Aug|August|Sep|Sept|September|Oct|October|Nov|November|Dec|December)\s+[0-3]?\d,?\s+(?:20)?\d{2})\b",
 ]
 
 AGE_PATTERNS = [
@@ -234,11 +281,36 @@ def parse_profile_age(profile: Dict) -> Optional[int]:
     return t.year - d.year - ((t.month, t.day) < (d.month, d.day))
 
 
-def safe_request(session: requests.Session, url: str, timeout: int = 20) -> Tuple[Optional[bytes], str, Optional[int]]:
+def build_session() -> requests.Session:
+    session = requests.Session()
+    retry = Retry(
+        total=3,
+        connect=3,
+        read=3,
+        backoff_factor=0.8,
+        status_forcelist=(429, 500, 502, 503, 504),
+        allowed_methods=frozenset(["GET", "HEAD"]),
+        raise_on_status=False,
+    )
+    adapter = HTTPAdapter(max_retries=retry, pool_connections=20, pool_maxsize=20)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    session.headers.update({
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                      "(KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-IN,en;q=0.9,hi;q=0.7",
+        "Cache-Control": "no-cache",
+    })
+    return session
+
+
+def safe_request(session: requests.Session, url: str, timeout: int = 25) -> Tuple[Optional[bytes], str, Optional[int]]:
     try:
         resp = session.get(url, timeout=timeout, allow_redirects=True)
         ctype = resp.headers.get("Content-Type", "")
         if resp.status_code >= 400:
+            print(f"[WARN] HTTP {resp.status_code} for {url}", file=sys.stderr)
             return None, ctype, resp.status_code
         return resp.content, ctype, resp.status_code
     except Exception as e:
@@ -246,17 +318,63 @@ def safe_request(session: requests.Session, url: str, timeout: int = 20) -> Tupl
         return None, "", None
 
 
+def _host(value: str) -> str:
+    host = (urlparse(value).hostname or "").lower().strip(".")
+    return host[4:] if host.startswith("www.") else host
+
+
 def is_same_or_safe_domain(base_url: str, link: str) -> bool:
     try:
-        base = urlparse(base_url)
-        target = urlparse(link)
-        if not target.netloc:
+        base_host = _host(base_url)
+        target_host = _host(link)
+        if not target_host:
             return True
-        # allow same host or direct government domains
-        govish = (".gov.in" in target.netloc) or (".nic.in" in target.netloc) or ("rajasthan.gov.in" in target.netloc)
-        return target.netloc == base.netloc or govish
+        if target_host == base_host or target_host.endswith("." + base_host) or base_host.endswith("." + target_host):
+            return True
+        # Government notices are sometimes served from another official NIC/GOV host.
+        return target_host.endswith(".gov.in") or target_host.endswith(".nic.in") or target_host in {"gov.in", "nic.in"}
     except Exception:
         return False
+
+
+def normalize_link(base_url: str, raw: str) -> str:
+    raw = (raw or "").strip().strip("'\"")
+    if not raw or raw.startswith(("#", "javascript:", "mailto:", "tel:")):
+        return ""
+    absolute = urljoin(base_url, raw)
+    absolute, _ = urldefrag(absolute)
+    return absolute
+
+
+def anchor_targets(anchor, base_url: str) -> List[str]:
+    targets: List[str] = []
+    for attr in ("href", "data-href", "data-url", "data-link", "data-download"):
+        value = anchor.get(attr)
+        link = normalize_link(base_url, value)
+        if link:
+            targets.append(link)
+    scriptish = " ".join(str(anchor.get(attr) or "") for attr in ("onclick", "data-onclick"))
+    for raw in re.findall(r"['\"]([^'\"]{4,500})['\"]", scriptish):
+        if any(hint in raw.lower() for hint in PDF_HINTS + NOTICE_LINK_KEYWORDS):
+            link = normalize_link(base_url, raw)
+            if link:
+                targets.append(link)
+    return list(dict.fromkeys(targets))
+
+
+def looks_like_notice(label: str, href: str) -> bool:
+    blob = text_lower(f"{label} {href}")
+    if any(bad in blob for bad in NON_VACANCY_LINK_KEYWORDS):
+        return False
+    return bool(keyword_hits(blob, NOTICE_LINK_KEYWORDS) or keyword_hits(blob, APPLY_KEYWORDS) or keyword_hits(blob, COMPUTER_KEYWORDS))
+
+
+def looks_like_pdf(label: str, href: str) -> bool:
+    label_l = text_lower(label)
+    href_l = (href or "").lower()
+    if ".pdf" in href_l or re.search(r"\bpdf\b", label_l):
+        return True
+    return any(hint in href_l for hint in ["download", "attachment", "getfile", "viewfile", "document"])
 
 
 def extract_dates(text: str) -> List[str]:
@@ -277,13 +395,13 @@ def extract_dates(text: str) -> List[str]:
 def parse_date_flexible(s: str) -> Optional[dt.date]:
     if not s:
         return None
-    s = s.strip()
+    s = re.sub(r"(?<=\d)(st|nd|rd|th)\b", "", s.strip(), flags=re.I).replace(",", "")
     formats = [
         "%d-%m-%Y", "%d/%m/%Y", "%d.%m.%Y",
         "%d-%m-%y", "%d/%m/%y", "%d.%m.%y",
         "%Y-%m-%d", "%Y/%m/%d", "%Y.%m.%d",
-        "%d %b %Y", "%d %B %Y",
-        "%d %b %y", "%d %B %y"
+        "%d %b %Y", "%d %B %Y", "%b %d %Y", "%B %d %Y",
+        "%d %b %y", "%d %B %y", "%b %d %y", "%B %d %y"
     ]
     for fmt in formats:
         try:
@@ -339,7 +457,13 @@ def keyword_hits(text: str, keywords: Iterable[str]) -> List[str]:
     hits = []
     for k in keywords:
         kk = k.lower().strip()
-        if kk and kk in lowered:
+        if not kk:
+            continue
+        if len(kk) <= 3 and kk.replace("-", "").isalnum():
+            matched = re.search(r"\b" + re.escape(kk) + r"\b", lowered) is not None
+        else:
+            matched = kk in lowered
+        if matched:
             hits.append(k)
     return hits
 
@@ -496,82 +620,186 @@ def vacancy_from_text(
     )
 
 
-def scrape_html_source(session: requests.Session, source: Dict, profile: Dict, max_pdfs: int = 8) -> List[Vacancy]:
-    url = source["url"]
+def _extract_page_candidates(
+    soup: BeautifulSoup,
+    page_url: str,
+    source: Dict,
+    profile: Dict,
+) -> Tuple[List[Vacancy], List[Tuple[str, str]]]:
     state = source.get("state", "")
     agency = source.get("agency", "")
-
-    content, ctype, status_code = safe_request(session, url)
-    if not content:
-        return []
-
-    html = content.decode("utf-8", errors="ignore")
-    soup = BeautifulSoup(html, "html.parser")
     vacancies: List[Vacancy] = []
+    links: List[Tuple[str, str]] = []
 
-    # 1) Extract HTML table rows
+    # Structured table rows are the most reliable source of title/date/link data.
     for tr in soup.find_all("tr"):
         cells = [normalize_text(c.get_text(" ")) for c in tr.find_all(["td", "th"])]
         if not cells or len(" ".join(cells)) < 10:
             continue
         row_text = " | ".join(cells)
-        row_links = []
-        for a in tr.find_all("a", href=True):
-            row_links.append(urljoin(url, a["href"]))
-        row_link = row_links[0] if row_links else url
-        v = vacancy_from_text(state, agency, row_text, row_link, url, profile)
+        row_links: List[str] = []
+        for a in tr.find_all("a"):
+            row_links.extend(anchor_targets(a, page_url))
+        row_link = row_links[0] if row_links else page_url
+        v = vacancy_from_text(state, agency, row_text, row_link, source.get("url", page_url), profile)
         if v:
             vacancies.append(v)
 
-    # 2) Extract relevant links/notices from anchors
-    links: List[Tuple[str, str]] = []
-    for a in soup.find_all("a", href=True):
-        label = normalize_text(a.get_text(" "))
-        href = urljoin(url, a["href"])
-        if not is_same_or_safe_domain(url, href):
-            continue
-        joined = f"{label} {href}"
-        if keyword_hits(joined, APPLY_KEYWORDS) or keyword_hits(joined, COMPUTER_KEYWORDS):
-            links.append((label, href))
+    for a in soup.find_all("a"):
+        label = normalize_text(a.get_text(" ") or a.get("title") or a.get("aria-label") or "")
+        for href in anchor_targets(a, page_url):
+            if not is_same_or_safe_domain(source.get("url", page_url), href):
+                continue
+            if looks_like_notice(label, href) or looks_like_pdf(label, href):
+                links.append((label, href))
+                # Add immediately only when the visible text itself contains enough signal.
+                if keyword_hits(label, COMPUTER_KEYWORDS) or keyword_hits(label, profile.get("preferred_roles", [])):
+                    v = vacancy_from_text(state, agency, label, href, source.get("url", page_url), profile)
+                    if v:
+                        vacancies.append(v)
 
-    # de-duplicate links
-    seen_links = set()
-    unique_links = []
+    # Some portals expose download paths only inside scripts/onclick blocks.
+    raw_html = str(soup)
+    for raw in re.findall(r"(?:https?://[^\"'<>\s]+|[A-Za-z0-9_./?=&%-]{4,}\.pdf(?:\?[^\"'<>\s]*)?)", raw_html, flags=re.I):
+        href = normalize_link(page_url, raw)
+        if href and is_same_or_safe_domain(source.get("url", page_url), href) and looks_like_pdf("", href):
+            links.append(("Advertisement PDF", href))
+
+    unique_links: List[Tuple[str, str]] = []
+    seen = set()
     for label, href in links:
-        if href not in seen_links:
-            unique_links.append((label, href))
-            seen_links.add(href)
+        if href in seen:
+            continue
+        seen.add(href)
+        unique_links.append((label, href))
+    return vacancies, unique_links
 
-    for label, href in unique_links:
-        v = vacancy_from_text(state, agency, label, href, url, profile)
-        if v:
-            vacancies.append(v)
 
-    # 3) Read selected PDFs
+def scrape_html_source(
+    session: requests.Session,
+    source: Dict,
+    profile: Dict,
+    max_pdfs: int = 8,
+    max_detail_pages: int = 6,
+) -> Tuple[List[Vacancy], Dict[str, object]]:
+    url = source["url"]
+    state = source.get("state", "")
+    agency = source.get("agency", "")
+    stats: Dict[str, object] = {
+        "state": state,
+        "agency": agency,
+        "url": url,
+        "landing_status": None,
+        "detail_pages_fetched": 0,
+        "pdfs_fetched": 0,
+        "candidates": 0,
+        "errors": [],
+    }
+
+    content, ctype, status_code = safe_request(session, url)
+    stats["landing_status"] = status_code
+    if not content:
+        stats["errors"] = [f"landing page unavailable ({status_code or 'network error'})"]
+        return [], stats
+
+    if is_image_response(content, ctype):
+        stats["errors"] = ["landing URL returned an image instead of a recruitment page"]
+        return [], stats
+
+    # A configured source itself may be a PDF.
+    if b"%PDF" in content[:20] or "pdf" in (ctype or "").lower():
+        text = extract_pdf_text(content, max_pages=10)
+        vacancies = []
+        if text:
+            v = vacancy_from_text(state, agency, text, url, url, profile)
+            if v:
+                vacancies.append(v)
+        stats["pdfs_fetched"] = 1
+        stats["candidates"] = len(vacancies)
+        return vacancies, stats
+
+    soup = BeautifulSoup(content.decode("utf-8", errors="ignore"), "html.parser")
+    vacancies, discovered_links = _extract_page_candidates(soup, url, source, profile)
+
+    fetched = {url}
+    pdf_queue: List[Tuple[str, str]] = [(label, href) for label, href in discovered_links if looks_like_pdf(label, href)]
+    detail_queue: List[Tuple[str, str]] = [
+        (label, href) for label, href in discovered_links
+        if not looks_like_pdf(label, href) and href != url and looks_like_notice(label, href)
+    ]
+
+    # Follow a small number of notice/detail pages. This is the missing step on
+    # portals whose landing page only says "Advertisement 07/2026".
+    detail_count = 0
+    while detail_queue and detail_count < max_detail_pages:
+        label, href = detail_queue.pop(0)
+        if href in fetched:
+            continue
+        fetched.add(href)
+        page_bytes, page_ctype, page_status = safe_request(session, href, timeout=30)
+        if not page_bytes:
+            continue
+        if is_image_response(page_bytes, page_ctype):
+            continue
+        if b"%PDF" in page_bytes[:20] or "pdf" in (page_ctype or "").lower():
+            pdf_queue.append((label, href))
+            # Reuse already downloaded bytes below through a tiny local cache.
+            continue
+        detail_count += 1
+        stats["detail_pages_fetched"] = detail_count
+        detail_soup = BeautifulSoup(page_bytes.decode("utf-8", errors="ignore"), "html.parser")
+        page_text = normalize_text(detail_soup.get_text(" "))
+        if keyword_hits(page_text, COMPUTER_KEYWORDS) or keyword_hits(page_text, profile.get("preferred_roles", [])):
+            v = vacancy_from_text(state, agency, page_text, href, url, profile)
+            if v:
+                vacancies.append(v)
+        page_vacancies, page_links = _extract_page_candidates(detail_soup, href, source, profile)
+        vacancies.extend(page_vacancies)
+        for child_label, child_href in page_links:
+            if child_href in fetched:
+                continue
+            if looks_like_pdf(child_label, child_href):
+                pdf_queue.append((child_label, child_href))
+            elif len(detail_queue) < max_detail_pages * 3 and looks_like_notice(child_label, child_href):
+                detail_queue.append((child_label, child_href))
+
+    # Parse more than the first three PDFs and detect PDFs by response content,
+    # not only by a .pdf suffix.
+    seen_pdf = set()
     pdf_count = 0
-    for label, href in unique_links:
-        if pdf_count >= max_pdfs:
-            break
-        if ".pdf" not in href.lower():
+    for label, href in pdf_queue:
+        if pdf_count >= max_pdfs or href in seen_pdf:
             continue
-        # Fetch only likely relevant PDFs
-        if not (keyword_hits(label, APPLY_KEYWORDS) or keyword_hits(label, COMPUTER_KEYWORDS)):
-            continue
-        pdf_bytes, pdf_ctype, pdf_status = safe_request(session, href, timeout=30)
+        seen_pdf.add(href)
+        pdf_bytes, pdf_ctype, pdf_status = safe_request(session, href, timeout=40)
         if not pdf_bytes:
             continue
-        if b"%PDF" not in pdf_bytes[:20] and "pdf" not in pdf_ctype.lower():
+        if is_image_response(pdf_bytes, pdf_ctype):
             continue
-        pdf_text = extract_pdf_text(pdf_bytes)
+        if b"%PDF" not in pdf_bytes[:20] and "pdf" not in (pdf_ctype or "").lower():
+            # A supposed PDF can actually be an HTML notice page; inspect it once.
+            try:
+                extra_soup = BeautifulSoup(pdf_bytes.decode("utf-8", errors="ignore"), "html.parser")
+                extra_text = normalize_text(extra_soup.get_text(" "))
+                if keyword_hits(extra_text, COMPUTER_KEYWORDS) or keyword_hits(extra_text, profile.get("preferred_roles", [])):
+                    v = vacancy_from_text(state, agency, extra_text, href, url, profile)
+                    if v:
+                        vacancies.append(v)
+            except Exception:
+                pass
+            continue
+        pdf_text = extract_pdf_text(pdf_bytes, max_pages=10)
         if pdf_text:
             combined = f"{label} {pdf_text}"
             v = vacancy_from_text(state, agency, combined, href, url, profile)
             if v:
                 vacancies.append(v)
         pdf_count += 1
-        time.sleep(0.5)
+        stats["pdfs_fetched"] = pdf_count
+        time.sleep(0.25)
 
-    return vacancies
+    stats["candidates"] = len(vacancies)
+    return vacancies, stats
 
 
 def dedupe_vacancies(vacancies: List[Vacancy]) -> List[Vacancy]:
@@ -675,6 +903,16 @@ def export_excel(vacancies: List[Vacancy], sources: List[Dict], profile: Dict, o
         [{"Field": k, "Value": ", ".join(v) if isinstance(v, list) else v} for k, v in profile.items()]
     )
 
+    # Remove control characters before openpyxl writes any worksheet. Some
+    # official sites return JPEG/image bytes for download links, and decoding
+    # those bytes can inject characters that Excel refuses to store.
+    df = excel_safe_dataframe(df)
+    eligible = excel_safe_dataframe(eligible)
+    doubtful = excel_safe_dataframe(doubtful)
+    avoid = excel_safe_dataframe(avoid)
+    sources_df = excel_safe_dataframe(sources_df)
+    profile_df = excel_safe_dataframe(profile_df)
+
     with pd.ExcelWriter(out_path, engine="openpyxl") as writer:
         eligible.to_excel(writer, sheet_name="Eligible Apply Now", index=False)
         doubtful.to_excel(writer, sheet_name="Doubtful Manual Check", index=False)
@@ -713,19 +951,21 @@ def export_excel(vacancies: List[Vacancy], sources: List[Dict], profile: Dict, o
     print(f"[OK] Excel created: {out_path}")
 
 
-def run(profile_path: Optional[str], sources_path: Optional[str], out_path: str, max_pdfs: int) -> None:
+def run(
+    profile_path: Optional[str],
+    sources_path: Optional[str],
+    out_path: str,
+    max_pdfs: int,
+    max_detail_pages: int = 6,
+) -> Dict[str, object]:
     base_dir = Path(".")
     save_default_files(base_dir)
 
     profile = load_profile(profile_path)
     sources = load_sources(sources_path)
-
-    session = requests.Session()
-    session.headers.update({
-        "User-Agent": "Mozilla/5.0 GovtJobFinder/1.0 (+manual verification required)"
-    })
-
+    session = build_session()
     all_vacancies: List[Vacancy] = []
+    source_results: List[Dict[str, object]] = []
 
     print(f"[INFO] Profile: {profile.get('name')} | DOB: {profile.get('dob')} | Category: {profile.get('category')}")
     print(f"[INFO] Scanning {len(sources)} sources...")
@@ -734,19 +974,58 @@ def run(profile_path: Optional[str], sources_path: Optional[str], out_path: str,
         print(f"[{idx}/{len(sources)}] {source.get('state')} - {source.get('agency')} - {source.get('url')}")
         try:
             if source.get("source_type", "html").lower() == "html":
-                found = scrape_html_source(session, source, profile, max_pdfs=max_pdfs)
+                found, stats = scrape_html_source(
+                    session,
+                    source,
+                    profile,
+                    max_pdfs=max_pdfs,
+                    max_detail_pages=max_detail_pages,
+                )
             else:
                 found = []
-            print(f"   found candidates: {len(found)}")
+                stats = {
+                    "state": source.get("state", ""),
+                    "agency": source.get("agency", ""),
+                    "url": source.get("url", ""),
+                    "landing_status": None,
+                    "detail_pages_fetched": 0,
+                    "pdfs_fetched": 0,
+                    "candidates": 0,
+                    "errors": [f"unsupported source_type={source.get('source_type')}"]
+                }
+            print(
+                f"   found candidates: {len(found)} | landing={stats.get('landing_status')} "
+                f"| detail_pages={stats.get('detail_pages_fetched')} | pdfs={stats.get('pdfs_fetched')}"
+            )
+            source_results.append(stats)
             all_vacancies.extend(found)
         except Exception as e:
             print(f"[ERROR] Source failed: {source.get('url')} -> {e}", file=sys.stderr)
-        time.sleep(0.7)
+            source_results.append({
+                "state": source.get("state", ""),
+                "agency": source.get("agency", ""),
+                "url": source.get("url", ""),
+                "landing_status": None,
+                "detail_pages_fetched": 0,
+                "pdfs_fetched": 0,
+                "candidates": 0,
+                "errors": [str(e)],
+            })
+        time.sleep(0.35)
 
     all_vacancies = dedupe_vacancies(all_vacancies)
     print(f"[INFO] Total unique candidate vacancies/notices: {len(all_vacancies)}")
-
     export_excel(all_vacancies, sources, profile, out_path)
+
+    reached = sum(1 for item in source_results if isinstance(item.get("landing_status"), int) and int(item["landing_status"]) < 400)
+    failed = len(source_results) - reached
+    return {
+        "sources_total": len(sources),
+        "sources_reached": reached,
+        "sources_failed": failed,
+        "candidate_count": len(all_vacancies),
+        "source_results": source_results,
+    }
 
 
 def main() -> None:
@@ -755,9 +1034,10 @@ def main() -> None:
     parser.add_argument("--sources", default=None, help="Path to sources_gov_jobs.csv")
     parser.add_argument("--out", default="government_jobs_tracker.xlsx", help="Output Excel file path")
     parser.add_argument("--max-pdfs", type=int, default=8, help="Max PDFs to parse per source")
+    parser.add_argument("--max-detail-pages", type=int, default=6, help="Max recruitment/detail HTML pages to follow per source")
     args = parser.parse_args()
 
-    run(args.profile, args.sources, args.out, args.max_pdfs)
+    run(args.profile, args.sources, args.out, args.max_pdfs, args.max_detail_pages)
 
 
 if __name__ == "__main__":

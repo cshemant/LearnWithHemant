@@ -1,0 +1,16 @@
+V172 Government Jobs Update Fix
+
+Problem
+-------
+The scanner reached all sources and found candidate notices, but the update stopped while writing government_jobs_tracker.xlsx. One official link returned JPEG/JFIF binary content. After that content was decoded, ASCII control characters reached openpyxl, which raised: "JFIF ... cannot be used in worksheets."
+
+Because update_jobs_dashboard_data.py is intentionally fail-safe, it kept the previous jobs/jobs-data.json unchanged. Therefore the dashboard continued to display Updated: 05 Jul 2026.
+
+Fixes
+-----
+1. Skip image/JPEG/PNG/GIF responses during landing-page, detail-page and PDF processing.
+2. Sanitize all text DataFrames before openpyxl writes worksheets.
+3. Preserve the existing fail-safe behavior for genuine scan failures.
+
+Run from the project root:
+py scripts\update_jobs_dashboard_data.py --sources sources_gov_jobs.csv --out-json jobs\jobs-data.json --excel-out jobs\government_jobs_tracker.xlsx --max-pdfs 10 --max-detail-pages 8 --limit 120

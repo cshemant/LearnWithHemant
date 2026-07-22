@@ -1,0 +1,17 @@
+V166 Question Paper Generator fixes
+
+Updated page:
+- tools/faculty-assistant/question-paper-generator/index.html
+
+Changes:
+- Removed the circled/crossed download buttons from the generated output action row:
+  - Download CO Mapping CSV
+  - Download Moderation Copy
+- Added a PDF print/download option for the answer key:
+  - Download Answer Key PDF
+- Kept CO Mapping, Bloom Level, Answer Scheme and Internal Moderation Copy as viewable tabs.
+- After successful generation, the page now resets to the PDF Question Paper tab and automatically scrolls to the generated paper output with header offset.
+- Fixed the Tools menu text vertical alignment in the top header through CSS.
+
+Updated style:
+- style.css

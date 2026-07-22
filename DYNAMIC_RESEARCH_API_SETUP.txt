@@ -1,0 +1,61 @@
+DYNAMIC RESEARCH / CSE PHD TOPIC FINDER - V147
+================================================
+
+What changed
+------------
+1. The PhD Topic Finder is now dynamic instead of only static JavaScript.
+2. Frontend page updated:
+   /research/phd-topic-finder/index.html
+3. New Cloudflare Pages Function endpoint added:
+   /api/research-plan
+4. New backend files added:
+   functions/api/research-plan.js
+   functions/_utils/research-planner.js
+5. CSS updated in style.css for dynamic output cards, loading state, fit score, lists and extra input fields.
+
+How it works
+------------
+The frontend sends the user's profile to /api/research-plan.
+The backend then works in this order:
+
+1. If OPENAI_API_KEY is configured, it uses OpenAI Responses API.
+2. Else, if GEMINI_API_KEY is configured, it uses Gemini API.
+3. Else, it uses the built-in expert research engine.
+
+This means the tool still works even without a paid API key, but when an AI key is configured the output becomes more customized.
+
+Environment variables / secrets
+-------------------------------
+Set these in Cloudflare Pages / Workers environment settings. Never paste API keys in HTML or JavaScript files.
+
+For OpenAI:
+OPENAI_API_KEY = your OpenAI API key
+OPENAI_MODEL = gpt-4.1-mini   (optional; change if you prefer another available model)
+
+For Gemini:
+GEMINI_API_KEY = your Gemini API key
+GEMINI_MODEL = gemini-3-flash-preview   (optional; chosen because Gemini 3 Flash preview has a free API tier according to current Google docs)
+
+Recommended first setup
+-----------------------
+Use Gemini first if you want to test with a free API tier. Add:
+GEMINI_API_KEY
+GEMINI_MODEL=gemini-3-flash-preview
+
+Then deploy the full folder to Cloudflare Pages.
+
+Important security note
+-----------------------
+Do not call OpenAI/Gemini directly from browser JavaScript because that exposes your API key. This implementation calls the API from Cloudflare Pages Functions, so the key remains server-side.
+
+Local testing note
+------------------
+If you open the HTML through a normal static local server, the page will load but /api/research-plan will not run.
+Use Cloudflare Pages local dev or deploy to Cloudflare Pages to test the API endpoint.
+
+USP positioning
+---------------
+This should not be promoted as a chatbot. Position it as:
+"CSE Research Plan Generator: topic + gap + dataset + method + proposal + interview pitch."
+
+That is stronger than a generic chatbot because the output is structured, profile-based and directly useful for students, research scholars and colleges.

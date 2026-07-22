@@ -1,0 +1,2 @@
+Removed the Step-by-step form badge and the AI API provider badge from the PhD Topic Finder output. Adjusted the output header row so the fit score aligns cleanly on the right.
+Changed files: research/phd-topic-finder/index.html, style.css

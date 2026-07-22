@@ -1,0 +1,15 @@
+Gemini Interactions REST Response Parse Fix
+
+Problem:
+The API call was successful, but the backend was reading only output_text/outputText. For raw REST Interactions API responses, output_text is an SDK convenience property and may not exist. REST responses return model text inside steps[].content[].text.
+
+Fix:
+functions/api/research-plan.js now reads:
+- SDK convenience fields: output_text / outputText
+- New REST schema: steps[].content[].text
+- Legacy REST schema: outputs[].text
+
+It also sends Api-Revision: 2026-05-20 to match the new Interactions response schema.
+
+Security:
+The real .dev.vars file was removed from this zip. Keep real API keys only locally or in Cloudflare encrypted environment variables/secrets.

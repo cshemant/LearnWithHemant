@@ -1,0 +1,25 @@
+V148 Matching Proposal Template Fix
+
+Problem fixed:
+- The dynamic AI-generated PhD research plan and the proposal template were not connected.
+- Earlier, the Topic Finder produced a customized plan, but the Proposal Template page still showed a generic static format.
+
+What changed:
+1. /research/phd-topic-finder/
+   - Stores the latest generated research plan safely in browser storage.
+   - Replaced "Use Proposal Template" with "Create Matching Proposal".
+   - Clicking this button opens the proposal template with the generated plan attached.
+
+2. /research/research-proposal-template/
+   - If opened after generating a plan, it now becomes a customized proposal draft.
+   - Title, background, problem statement, research gap, methodology, dataset plan, metrics, expected contribution, roadmap, publication path and interview pitch now come from the generated plan.
+   - Print / Save as PDF now prints the customized proposal, not only the generic template.
+   - Copy button now copies the customized proposal text.
+   - Added "Clear Custom Plan" to return to the generic static template.
+
+3. /style.css
+   - Added styles for the customized proposal note, metadata grid, proposal action buttons and print layout.
+
+Important:
+- No API key is exposed in the frontend.
+- The generated research plan is stored only in the visitor browser so it can be transferred from Topic Finder to Proposal Template.

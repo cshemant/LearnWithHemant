@@ -1,0 +1,31 @@
+V165 Question Paper Generator local API fix
+
+What was causing the error:
+- The Question Paper Generator now calls a server API so that the Gemini key stays server-side.
+- When the site is opened on localhost:8000 with a normal static server, .dev.vars is not automatically injected into Cloudflare Pages Functions.
+- Therefore the browser could show: GEMINI_API_KEY is not configured.
+
+What changed:
+1. local_razorpay_api.py now also supports:
+   POST http://localhost:8787/api/question-paper-generate
+2. The Question Paper Generator page now tries:
+   - /api/question-paper-generate first
+   - http://localhost:8787/api/question-paper-generate as local fallback
+3. The Cloudflare Pages Function now trims GEMINI_API_KEY / GEMINI_MODEL to avoid whitespace issues.
+
+Local testing steps:
+1. Keep .dev.vars in the project root with:
+   GEMINI_API_KEY=your_key_here
+   GEMINI_MODEL=gemini-3-flash-preview
+2. Terminal 1:
+   cd E:\LearnwithHemant\V165
+   python local_razorpay_api.py
+3. Terminal 2:
+   cd E:\LearnwithHemant\V165
+   python -m http.server 8000
+4. Open:
+   http://localhost:8000/tools/faculty-assistant/question-paper-generator/
+
+Production:
+- Add GEMINI_API_KEY and GEMINI_MODEL in Cloudflare Pages environment variables.
+- Do not upload your real .dev.vars file to GitHub.

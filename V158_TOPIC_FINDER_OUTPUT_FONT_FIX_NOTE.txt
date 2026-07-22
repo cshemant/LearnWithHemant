@@ -1,0 +1,11 @@
+V158 update:
+Reduced and sharpened the generated Research Topic Finder output typography.
+Changed file: style.css
+
+What changed:
+- Smaller generated output title.
+- Smaller summary paragraph.
+- Smaller section headings and list text.
+- Slightly tighter spacing inside the output card.
+- Smaller sticky action buttons.
+- Mobile font handling adjusted.

@@ -1,0 +1,16 @@
+Research section implemented.
+
+Added pages:
+- /research/
+- /research/phd-topic-finder/
+- /research/cse-research-topics/
+- /research/research-proposal-template/
+- /research/phd-interview-questions/
+- /guest-lecture/phd-research-topic-selection/
+
+Updated:
+- Main desktop and mobile navigation includes Research.
+- Homepage includes a compact PhD/CSE research guidance card.
+- Guest lecture page includes a research-topic-selection workshop card.
+- style.css includes research page styling and responsive CSS.
+- sitemap.xml includes the new research/guest lecture URLs.

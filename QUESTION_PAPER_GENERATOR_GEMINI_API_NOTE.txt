@@ -1,0 +1,23 @@
+V161 Question Paper Generator update
+
+What changed:
+1. Removed the fixed front-end baseQuestions array.
+2. Added Cloudflare Pages Function:
+   functions/api/question-paper-generate.js
+3. The page now POSTs to:
+   /api/question-paper-generate
+4. The API uses:
+   GEMINI_API_KEY
+   GEMINI_MODEL=gemini-3-flash-preview
+5. Added fields for Unit-wise Topics / Syllabus and optional Previous 5-year Questions to Avoid.
+6. The Tools dropdown has been restructured so Question Paper Generator appears inside Faculty Assistant.
+
+Local testing:
+- Keep your real key in .dev.vars, not in GitHub.
+- Example:
+  GEMINI_API_KEY=your_key
+  GEMINI_MODEL=gemini-3-flash-preview
+
+Production:
+- Add GEMINI_API_KEY and GEMINI_MODEL in Cloudflare Pages environment variables.
+- Without GEMINI_API_KEY, the tool will show an API configuration error instead of generating repeated static questions.

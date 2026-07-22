@@ -1,0 +1,25 @@
+Gemini API 400 Fix
+==================
+
+Issue:
+The earlier backend called the legacy generateContent endpoint with generationConfig.responseFormat.
+For the configured Gemini model, the API returned:
+Invalid value at generation_config.response_format.text.mime_type: "application/json".
+
+Fix:
+functions/api/research-plan.js now calls the Gemini Interactions API:
+POST https://generativelanguage.googleapis.com/v1beta/interactions
+
+It sends structured output using:
+response_format: {
+  type: 'text',
+  mime_type: 'application/json',
+  schema: RESEARCH_PLAN_SCHEMA
+}
+
+This matches Google's current structured-output format for the Interactions API and is better suited for Gemini 3 models.
+
+Local testing:
+Use Cloudflare Pages/Wrangler so Functions can read .dev.vars. Do not test this API through plain python -m http.server.
+
+Do not upload .dev.vars or real API keys to GitHub.

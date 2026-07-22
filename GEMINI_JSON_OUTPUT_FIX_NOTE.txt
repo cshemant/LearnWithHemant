@@ -1,0 +1,27 @@
+GEMINI JSON OUTPUT FIX - V149
+============================
+
+Problem fixed
+-------------
+The PhD Topic Finder was showing:
+"AI API failed, so expert fallback was used. AI response did not contain JSON."
+
+Reason
+------
+The backend asked Gemini for JSON using only responseMimeType. Gemini sometimes returned normal text or a response that was not strict JSON, so the parser failed and the built-in expert engine was used.
+
+Fix applied
+-----------
+1. functions/api/research-plan.js now sends an explicit JSON schema using generationConfig.responseFormat.text.schema.
+2. Gemini API key is sent via x-goog-api-key header instead of placing it in the URL.
+3. maxOutputTokens increased to reduce incomplete JSON risk.
+4. Empty Gemini responses now show a clearer error.
+5. Real .dev.vars was removed from the zip for safety. Use .dev.vars.example as a template.
+
+Security action required
+------------------------
+Because keys were visible in screenshots and inside the uploaded .dev.vars file, rotate/regenerate:
+- Gemini API key
+- Razorpay key secret
+
+Then create a local .dev.vars file again using the new keys.

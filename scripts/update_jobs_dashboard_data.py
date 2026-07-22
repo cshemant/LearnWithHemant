@@ -15,6 +15,7 @@ import datetime as dt
 import importlib.util
 import json
 import os
+import re
 import sys
 import subprocess
 from pathlib import Path
@@ -57,15 +58,15 @@ def clean(value: Any) -> str:
 
 
 def parse_date(value: str) -> Optional[dt.date]:
-    value = clean(value)
+    value = re.sub(r"(?<=\d)(st|nd|rd|th)\b", "", clean(value), flags=re.I).replace(",", "")
     if not value or value.lower().startswith("check"):
         return None
     formats = [
         "%d-%m-%Y", "%d/%m/%Y", "%d.%m.%Y",
         "%d-%m-%y", "%d/%m/%y", "%d.%m.%y",
         "%Y-%m-%d", "%Y/%m/%d", "%Y.%m.%d",
-        "%d %b %Y", "%d %B %Y",
-        "%d %b %y", "%d %B %y",
+        "%d %b %Y", "%d %B %Y", "%b %d %Y", "%B %d %Y",
+        "%d %b %y", "%d %B %y", "%b %d %y", "%B %d %y",
     ]
     for fmt in formats:
         try:
@@ -131,6 +132,17 @@ def infer_fit_reason(status: str, role: str, eligibility: str, reason: str) -> s
     blob = f"{role} {eligibility} {reason}".lower()
     if status == "Good Match":
         return "Good Match: Your CSE/IT/graduate profile appears relevant. Still verify the official notification PDF before final submission."
+    if status == "Avoid":
+        return "Avoid: This appears outside the usual CSE/IT background or may be closed. Verify only if you have the required subject, degree and documents."
+    if "experience" in blob:
+        return "Doubtful: CSE/IT qualification may be relevant, but experience or specialization must be verified in the official notification."
+    if "age" in blob:
+        return "Doubtful: Qualification may be relevant, but age/category relaxation must be verified before applying."
+    if "teach" in blob or "professor" in blob or "lecturer" in blob:
+        return "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules."
+    if "programmer" in blob or "computer" in blob or "it" in blob or "software" in blob:
+        return "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements."
+    return "Watch: Potential government vacancy source. Verify qualification, age, subject and deadline from the official notification."
 
 
 def shorten_eligibility(status: str, role: str, eligibility: str, reason: str) -> str:
@@ -150,17 +162,6 @@ def shorten_eligibility(status: str, role: str, eligibility: str, reason: str) -
     if base:
         return (base[:82].rstrip(" ,.;") + "...") if len(base) > 85 else base
     return "Check official notification before applying."
-    if status == "Avoid":
-        return "Avoid: This appears outside the usual CSE/IT background or may be closed. Verify only if you have the required subject, degree and documents."
-    if "experience" in blob:
-        return "Doubtful: CSE/IT qualification may be relevant, but experience or specialization must be verified in the official notification."
-    if "age" in blob:
-        return "Doubtful: Qualification may be relevant, but age/category relaxation must be verified before applying."
-    if "teach" in blob or "professor" in blob or "lecturer" in blob:
-        return "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules."
-    if "programmer" in blob or "computer" in blob or "it" in blob or "software" in blob:
-        return "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements."
-    return "Watch: Potential government vacancy source. Verify qualification, age, subject and deadline from the official notification."
 
 
 def infer_profile_tags(text: str) -> str:
@@ -223,6 +224,8 @@ def row_to_job(row: Dict[str, Any]) -> Dict[str, Any]:
         "state": state,
         "agency": agency,
         "match_score": score,
+        "source": "auto_scanner",
+        "source_url": clean(row.get("Source URL")),
     }
 
 
@@ -244,6 +247,52 @@ def load_manual_jobs(path: Path = MANUAL_JOBS_PATH) -> List[Dict[str, Any]]:
     except Exception as exc:
         print(f"[WARN] Could not load manual jobs from {path}: {exc}")
         return []
+
+
+def split_manual_jobs(manual_jobs: List[Dict[str, Any]]) -> tuple[List[Dict[str, Any]], List[Dict[str, Any]], int]:
+    """Return active vacancies, broad watch sources, and expired count.
+
+    The old dashboard counted portal shortcuts as if they were live vacancies.  That
+    is why the total stayed at 26 even when no new vacancy had been discovered.
+    """
+    active: List[Dict[str, Any]] = []
+    watch_sources: List[Dict[str, Any]] = []
+    expired = 0
+    for job in manual_jobs:
+        source = clean(job.get("source"))
+        no_deadline_watch = not clean(job.get("last_date_iso")) and clean(job.get("status")) == "Watch"
+        if source == "manual_all_india_watchlist" or no_deadline_watch:
+            watch_sources.append(job)
+            continue
+        if is_closed_job(job):
+            expired += 1
+            continue
+        active.append(job)
+    return active, watch_sources, expired
+
+
+def load_previous_payload(path: Path) -> Dict[str, Any]:
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        return payload if isinstance(payload, dict) else {}
+    except Exception:
+        return {}
+
+
+def previous_active_auto_jobs(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
+    jobs = payload.get("jobs") if isinstance(payload, dict) else []
+    if not isinstance(jobs, list):
+        return []
+    out: List[Dict[str, Any]] = []
+    for job in jobs:
+        if not isinstance(job, dict) or is_closed_job(job):
+            continue
+        source = clean(job.get("source"))
+        if source == "auto_scanner" or (source not in {"manual_curated", "manual_all_india_watchlist"} and source != ""):
+            out.append(dict(job))
+    return out
 
 
 def is_closed_job(job: Dict[str, Any]) -> bool:
@@ -313,45 +362,88 @@ def merge_manual_and_auto_jobs(manual_jobs: List[Dict[str, Any]], auto_jobs: Lis
     return merged[:limit]
 
 
-def build_json_from_excel(excel_path: Path, limit: int, manual_jobs: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
+def build_json_from_excel(
+    excel_path: Path,
+    limit: int,
+    manual_jobs: Optional[List[Dict[str, Any]]] = None,
+    previous_payload: Optional[Dict[str, Any]] = None,
+    scan_report: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
     df = pd.read_excel(excel_path, sheet_name="All Raw Matches")
-    if df.empty:
-        return {"jobs": []}
-
     jobs: List[Dict[str, Any]] = []
     seen = set()
-    for _, row in df.iterrows():
-        job = row_to_job(row.to_dict())
-        key = (job["job"].lower(), job["official_link"].lower())
-        if key in seen or not job["official_link"]:
-            continue
-        seen.add(key)
-        jobs.append(job)
+    if not df.empty:
+        for _, row in df.iterrows():
+            job = row_to_job(row.to_dict())
+            key = (job["job"].lower(), job["official_link"].lower())
+            if key in seen or not job["official_link"]:
+                continue
+            seen.add(key)
+            jobs.append(job)
 
-    # Keep dashboard useful and not too noisy.
     priority = {"Good Match": 0, "Doubtful": 1, "Watch": 2, "Avoid": 3}
     jobs.sort(key=lambda j: (priority.get(j["status"], 9), -(j.get("match_score") or 0), j.get("last_date_iso") or "9999-12-31"))
-    manual_jobs = manual_jobs or []
-    useful_auto_count = sum(1 for job in jobs if is_useful_auto_job(job))
-    print(f"[INFO] Excel rows converted: {len(jobs)} | useful auto rows after filter: {useful_auto_count} | manual rows: {len(manual_jobs)}")
-    jobs = merge_manual_and_auto_jobs(manual_jobs, jobs, limit)
-    print(f"[INFO] Final dashboard rows: {len(jobs)}")
+    current_auto_jobs = [job for job in jobs if is_useful_auto_job(job)]
 
+    manual_jobs = manual_jobs or []
+    active_manual, watch_sources, expired_manual_count = split_manual_jobs(manual_jobs)
+    previous_payload = previous_payload or {}
+    carried_auto_jobs: List[Dict[str, Any]] = []
+    scan_degraded = False
+    if not current_auto_jobs:
+        carried_auto_jobs = previous_active_auto_jobs(previous_payload)
+        if carried_auto_jobs:
+            scan_degraded = True
+            print(f"[WARN] Current scan produced no useful auto vacancy; carrying {len(carried_auto_jobs)} previous active auto rows.")
+
+    auto_for_merge = current_auto_jobs or carried_auto_jobs
+    merged = merge_manual_and_auto_jobs(active_manual, auto_for_merge, limit)
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=5, minutes=30)))
+    last_success = now.isoformat(timespec="seconds") if current_auto_jobs else clean(previous_payload.get("last_successful_auto_update"))
+
+    if current_auto_jobs:
+        updated_label = f"Updated: {now.strftime('%d %b %Y')} • {len(merged)} current vacancies"
+        scan_status = "ok"
+    elif carried_auto_jobs:
+        updated_label = f"Scanned: {now.strftime('%d %b %Y')} • showing last successful vacancy data"
+        scan_status = "degraded_carried_forward"
+    else:
+        updated_label = f"Scanned: {now.strftime('%d %b %Y')} • no live auto vacancy found"
+        scan_status = "no_auto_matches"
+
+    report = dict(scan_report or {})
+    report.update({
+        "useful_auto_count": len(current_auto_jobs),
+        "carried_auto_count": len(carried_auto_jobs),
+        "active_manual_count": len(active_manual),
+        "watch_source_count": len(watch_sources),
+        "expired_manual_count": expired_manual_count,
+        "final_dashboard_count": len(merged),
+        "scan_status": scan_status,
+    })
+    print(
+        f"[INFO] useful auto={len(current_auto_jobs)} | carried auto={len(carried_auto_jobs)} | "
+        f"active manual={len(active_manual)} | source shortcuts={len(watch_sources)} | expired manual={expired_manual_count}"
+    )
+    print(f"[INFO] Final dashboard rows: {len(merged)}")
+
     return {
         "generated_at": now.isoformat(timespec="seconds"),
-        "updated_label": now.strftime("Updated: %d %b %Y"),
-        "source": "manual verified jobs + nightly government job scanner",
-        "manual_count": len(manual_jobs),
-        "jobs": jobs,
+        "last_scan_at": now.isoformat(timespec="seconds"),
+        "last_successful_auto_update": last_success,
+        "updated_label": updated_label,
+        "source": "active verified jobs + official all-India scanner",
+        "manual_count": len(active_manual),
+        "auto_count": len(current_auto_jobs),
+        "scan_status": scan_status,
+        "scan_report": report,
+        "watch_sources": watch_sources,
+        "jobs": merged,
     }
 
 
 def write_json_safely(payload: Dict[str, Any], out_json: Path) -> None:
     jobs = payload.get("jobs") or []
-    if not jobs and out_json.exists():
-        print(f"[WARN] No jobs found. Keeping existing {out_json} unchanged.")
-        return
     out_json.parent.mkdir(parents=True, exist_ok=True)
     temp_path = out_json.with_suffix(".json.tmp")
     temp_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -380,8 +472,9 @@ def main() -> None:
     parser.add_argument("--excel-out", default="jobs/government_jobs_tracker.xlsx", help="Temporary / committed Excel output path.")
     parser.add_argument("--out-json", default="jobs/jobs-data.json", help="Dashboard JSON output path.")
     parser.add_argument("--manual-json", default="jobs/manual-jobs.json", help="Manual verified dashboard jobs that must always remain visible.")
-    parser.add_argument("--max-pdfs", type=int, default=int(os.getenv("MAX_PDFS", "4")), help="Max PDFs to parse per source.")
-    parser.add_argument("--limit", type=int, default=int(os.getenv("MAX_DASHBOARD_JOBS", "60")), help="Max dashboard jobs to keep.")
+    parser.add_argument("--max-pdfs", type=int, default=int(os.getenv("MAX_PDFS", "10")), help="Max PDFs to parse per source.")
+    parser.add_argument("--max-detail-pages", type=int, default=int(os.getenv("MAX_DETAIL_PAGES", "8")), help="Max recruitment/detail pages to follow per source.")
+    parser.add_argument("--limit", type=int, default=int(os.getenv("MAX_DASHBOARD_JOBS", "120")), help="Max dashboard jobs to keep.")
     parser.add_argument("--mode", default="full", help="Compatibility: use --mode 10 to quick-test the faculty-jobs scraper on only 10 URLs/posts.")
     args = parser.parse_args()
 
@@ -394,11 +487,12 @@ def main() -> None:
     out_json = REPO_ROOT / args.out_json
     manual_json = REPO_ROOT / args.manual_json
     manual_jobs = load_manual_jobs(manual_json)
-    print(f"[INFO] Loaded {len(manual_jobs)} manual verified dashboard jobs from {manual_json}")
+    previous_payload = load_previous_payload(out_json)
+    print(f"[INFO] Loaded {len(manual_jobs)} manual entries from {manual_json}")
 
     finder = load_finder_module()
     try:
-        finder.run(args.profile, args.sources, str(excel_path), args.max_pdfs)
+        scan_report = finder.run(args.profile, args.sources, str(excel_path), args.max_pdfs, args.max_detail_pages)
     except Exception as exc:
         print(f"[ERROR] Finder failed: {exc}")
         if out_json.exists():
@@ -406,8 +500,17 @@ def main() -> None:
             return
         raise
 
-    payload = build_json_from_excel(excel_path, args.limit, manual_jobs=manual_jobs)
+    payload = build_json_from_excel(
+        excel_path,
+        args.limit,
+        manual_jobs=manual_jobs,
+        previous_payload=previous_payload,
+        scan_report=scan_report,
+    )
     write_json_safely(payload, out_json)
+    scan_report_path = REPO_ROOT / "jobs" / "jobs-scan-report.json"
+    scan_report_path.write_text(json.dumps(payload.get("scan_report", {}), indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"[OK] Wrote scan diagnostics to {scan_report_path}")
 
     # Keep government job titles clickable and generate one SEO detail page per row.
     detail_generator = REPO_ROOT / "scripts" / "generate_govt_job_pages.py"

@@ -1,0 +1,20 @@
+V152 function syntax fix
+
+Issue:
+Wrangler failed before starting the Functions runtime because functions/api/research-plan.js contained broken JavaScript string literals:
+
+.join('
+')
+
+had accidentally been written across two physical lines. That creates an unterminated string literal in JavaScript.
+
+Fix:
+Changed the broken join calls to valid escaped newline strings:
+
+.join('\\n')
+
+Validation:
+node --check functions/api/research-plan.js passes.
+
+Note:
+The compatibility_date warning shown by Wrangler is not the blocking error. It is only a warning. The blocking error was the unterminated string literal.

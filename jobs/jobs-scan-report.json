@@ -1,0 +1,219 @@
+{
+  "sources_total": 19,
+  "sources_reached": 12,
+  "sources_failed": 7,
+  "candidate_count": 1130,
+  "source_results": [
+    {
+      "state": "Rajasthan",
+      "agency": "State Recruitment Portal",
+      "url": "https://recruitment.rajasthan.gov.in/",
+      "landing_status": 200,
+      "detail_pages_fetched": 1,
+      "pdfs_fetched": 4,
+      "candidates": 5,
+      "errors": []
+    },
+    {
+      "state": "Rajasthan",
+      "agency": "RPSC",
+      "url": "https://rpsc.rajasthan.gov.in/advertisements",
+      "landing_status": 200,
+      "detail_pages_fetched": 6,
+      "pdfs_fetched": 10,
+      "candidates": 409,
+      "errors": []
+    },
+    {
+      "state": "Rajasthan",
+      "agency": "RSSB",
+      "url": "https://rssb.rajasthan.gov.in/",
+      "landing_status": null,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
+    },
+    {
+      "state": "Bihar",
+      "agency": "BPSC",
+      "url": "https://bpsc.bihar.gov.in/advertisement/",
+      "landing_status": null,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
+    },
+    {
+      "state": "Bihar",
+      "agency": "BSSC",
+      "url": "https://bssc.bihar.gov.in/",
+      "landing_status": null,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
+    },
+    {
+      "state": "Bihar",
+      "agency": "BTSC",
+      "url": "https://btsc.bihar.gov.in/recruitment",
+      "landing_status": 200,
+      "detail_pages_fetched": 8,
+      "pdfs_fetched": 10,
+      "candidates": 179,
+      "errors": []
+    },
+    {
+      "state": "Bihar",
+      "agency": "CSBC",
+      "url": "https://csbc.bihar.gov.in/",
+      "landing_status": 200,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 10,
+      "candidates": 210,
+      "errors": []
+    },
+    {
+      "state": "Bihar",
+      "agency": "BPSSC",
+      "url": "https://bpssc.bihar.gov.in/",
+      "landing_status": 200,
+      "detail_pages_fetched": 1,
+      "pdfs_fetched": 10,
+      "candidates": 195,
+      "errors": []
+    },
+    {
+      "state": "Uttar Pradesh",
+      "agency": "UPPSC",
+      "url": "https://uppsc.up.nic.in/CandidatePages/Notifications.aspx",
+      "landing_status": 200,
+      "detail_pages_fetched": 8,
+      "pdfs_fetched": 6,
+      "candidates": 22,
+      "errors": []
+    },
+    {
+      "state": "Uttar Pradesh",
+      "agency": "UPSSSC",
+      "url": "https://upsssc.gov.in/",
+      "landing_status": null,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
+    },
+    {
+      "state": "Delhi",
+      "agency": "DSSSB",
+      "url": "https://dsssb.delhi.gov.in/dsssb-vacancies",
+      "landing_status": 200,
+      "detail_pages_fetched": 8,
+      "pdfs_fetched": 10,
+      "candidates": 17,
+      "errors": []
+    },
+    {
+      "state": "Central",
+      "agency": "SSC",
+      "url": "https://ssc.gov.in/",
+      "landing_status": 200,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": []
+    },
+    {
+      "state": "Central",
+      "agency": "UPSC",
+      "url": "https://upsc.gov.in/recruitment/recruitment-advertisement",
+      "landing_status": 200,
+      "detail_pages_fetched": 8,
+      "pdfs_fetched": 0,
+      "candidates": 31,
+      "errors": []
+    },
+    {
+      "state": "Central",
+      "agency": "NIELIT Delhi Recruitment",
+      "url": "https://recruit-delhi.nielit.gov.in/",
+      "landing_status": 200,
+      "detail_pages_fetched": 6,
+      "pdfs_fetched": 10,
+      "candidates": 72,
+      "errors": []
+    },
+    {
+      "state": "Central",
+      "agency": "NCS Govt Jobs",
+      "url": "https://www.ncs.gov.in/job-seeker/Pages/GovtJob.aspx",
+      "landing_status": 404,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (404)"
+      ]
+    },
+    {
+      "state": "Madhya Pradesh",
+      "agency": "MPESB",
+      "url": "https://esb.mp.gov.in/e_default.html",
+      "landing_status": null,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
+    },
+    {
+      "state": "Haryana",
+      "agency": "HSSC",
+      "url": "https://hssc.gov.in/",
+      "landing_status": 200,
+      "detail_pages_fetched": 3,
+      "pdfs_fetched": 10,
+      "candidates": 18,
+      "errors": []
+    },
+    {
+      "state": "Jharkhand",
+      "agency": "JSSC",
+      "url": "https://jssc.jharkhand.gov.in/",
+      "landing_status": null,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
+    },
+    {
+      "state": "Jharkhand",
+      "agency": "JPSC",
+      "url": "https://www.jpsc.gov.in/",
+      "landing_status": 200,
+      "detail_pages_fetched": 7,
+      "pdfs_fetched": 0,
+      "candidates": 36,
+      "errors": []
+    }
+  ],
+  "useful_auto_count": 2,
+  "carried_auto_count": 0,
+  "active_manual_count": 1,
+  "watch_source_count": 21,
+  "expired_manual_count": 4,
+  "final_dashboard_count": 3,
+  "scan_status": "ok"
+}

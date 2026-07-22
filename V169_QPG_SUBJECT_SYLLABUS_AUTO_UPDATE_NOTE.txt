@@ -1,0 +1,8 @@
+V169 update: Question Paper Generator subject-to-syllabus sync
+
+Changes:
+- Added automatic Unit-wise Topics / Syllabus refresh when the Subject field changes.
+- Added subject-aware syllabus presets for DBMS, Cloud Computing, OS, CN, DSA, Software Engineering, OOP, Java, Python, Web Technology, AI, ML, Cyber Security, Compiler Design, COA, Data Mining, Big Data, IoT and Mobile App Development.
+- Unknown subjects now get a clean generic 4-unit syllabus using the typed subject name.
+- Pattern and university changes now keep the selected subject in mind instead of forcing DBMS topics.
+- Manual edits to Unit-wise Topics / Syllabus are preserved. If the teacher edits the syllabus manually, subject typing will not overwrite it.

@@ -1,0 +1,29 @@
+V171 – Government Jobs all-India live-data fix
+================================================
+
+Root cause found
+----------------
+The 26 shown on the dashboard were mostly fixed entries from jobs/manual-jobs.json.
+The nightly workflow refreshed the date even when the scraper discovered zero useful
+live vacancies, so the page looked updated while the rows remained unchanged.
+
+Changes made
+------------
+1. Portal shortcuts/watchlist links are no longer counted as live vacancies.
+2. Expired manually curated vacancies are excluded from the current dashboard.
+3. The scraper now follows recruitment/detail pages before filtering CSE/IT roles.
+4. PDF detection now uses response content type/signature, not only a .pdf URL.
+5. PDF limit increased from 3 to 10 and detail-page crawl added (8 per source).
+6. Retries, browser-like headers and per-source diagnostics were added.
+7. If one nightly scan fails, previous active auto-discovered jobs are carried forward.
+8. The dashboard label now distinguishes scan date from a successful vacancy update.
+9. Added high-yield official technology sources: ISRO, DRDO RAC, MeitY, BEL,
+   C-DAC, Digital India Corporation, C-DOT and ECIL, plus additional state PSC pages.
+10. The workflow runs immediately when scanner/source files are pushed to main.
+11. jobs/jobs-scan-report.json records source reach/failure and candidate counts.
+
+After pushing
+-------------
+Open GitHub Actions -> Nightly Govt Jobs Dashboard Update and run it once from main.
+In the log, check useful_auto_count, sources_reached and sources_failed.
+Then verify /jobs/jobs-data.json and /jobs/jobs-scan-report.json on the live site.
