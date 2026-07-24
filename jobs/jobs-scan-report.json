@@ -1,8 +1,8 @@
 {
   "sources_total": 44,
-  "sources_reached": 17,
-  "sources_failed": 27,
-  "candidate_count": 631,
+  "sources_reached": 18,
+  "sources_failed": 26,
+  "candidate_count": 1040,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -69,7 +69,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 10,
-      "candidates": 179,
+      "candidates": 183,
       "errors": []
     },
     {
@@ -468,13 +468,11 @@
       "state": "Arunachal Pradesh",
       "agency": "Arunachal Pradesh PSC Advertisements",
       "url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
+      "landing_status": 200,
+      "detail_pages_fetched": 1,
+      "pdfs_fetched": 10,
+      "candidates": 405,
+      "errors": []
     },
     {
       "state": "Meghalaya",
@@ -499,11 +497,11 @@
       ]
     }
   ],
-  "useful_auto_count": 9,
+  "useful_auto_count": 24,
   "carried_auto_count": 0,
-  "active_manual_count": 1,
+  "active_manual_count": 0,
   "watch_source_count": 21,
-  "expired_manual_count": 4,
-  "final_dashboard_count": 10,
+  "expired_manual_count": 5,
+  "final_dashboard_count": 24,
   "scan_status": "ok"
 }
