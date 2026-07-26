@@ -1,8 +1,8 @@
 {
   "sources_total": 44,
-  "sources_reached": 17,
-  "sources_failed": 27,
-  "candidate_count": 1004,
+  "sources_reached": 18,
+  "sources_failed": 26,
+  "candidate_count": 1036,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -186,13 +186,11 @@
       "state": "Jharkhand",
       "agency": "JPSC",
       "url": "https://www.jpsc.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
+      "landing_status": 200,
+      "detail_pages_fetched": 7,
       "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
+      "candidates": 36,
+      "errors": []
     },
     {
       "state": "Maharashtra",
@@ -481,9 +479,9 @@
       "agency": "Meghalaya PSC Advertisements",
       "url": "https://mpsc.meghalaya.gov.in/advertisements.html",
       "landing_status": 200,
-      "detail_pages_fetched": 8,
+      "detail_pages_fetched": 4,
       "pdfs_fetched": 10,
-      "candidates": 158,
+      "candidates": 154,
       "errors": []
     },
     {
