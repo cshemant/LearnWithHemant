@@ -1,8 +1,8 @@
 {
   "sources_total": 44,
-  "sources_reached": 18,
-  "sources_failed": 26,
-  "candidate_count": 1036,
+  "sources_reached": 17,
+  "sources_failed": 27,
+  "candidate_count": 967,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -130,11 +130,13 @@
       "state": "Central",
       "agency": "NIELIT Delhi Recruitment",
       "url": "https://recruit-delhi.nielit.gov.in/",
-      "landing_status": 200,
-      "detail_pages_fetched": 6,
-      "pdfs_fetched": 10,
-      "candidates": 72,
-      "errors": []
+      "landing_status": null,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
     },
     {
       "state": "Central",
@@ -373,7 +375,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 10,
-      "candidates": 66,
+      "candidates": 68,
       "errors": []
     },
     {
@@ -497,11 +499,11 @@
       ]
     }
   ],
-  "useful_auto_count": 22,
+  "useful_auto_count": 24,
   "carried_auto_count": 0,
   "active_manual_count": 0,
   "watch_source_count": 21,
   "expired_manual_count": 5,
-  "final_dashboard_count": 22,
+  "final_dashboard_count": 24,
   "scan_status": "ok"
 }
