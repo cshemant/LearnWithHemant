@@ -1,8 +1,8 @@
 {
   "sources_total": 44,
-  "sources_reached": 17,
-  "sources_failed": 27,
-  "candidate_count": 1013,
+  "sources_reached": 18,
+  "sources_failed": 26,
+  "candidate_count": 1055,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -79,7 +79,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 6,
-      "candidates": 28,
+      "candidates": 26,
       "errors": []
     },
     {
@@ -186,13 +186,11 @@
       "state": "Jharkhand",
       "agency": "JPSC",
       "url": "https://www.jpsc.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
+      "landing_status": 200,
+      "detail_pages_fetched": 7,
       "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
+      "candidates": 36,
+      "errors": []
     },
     {
       "state": "Maharashtra",
@@ -473,7 +471,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 1,
       "pdfs_fetched": 10,
-      "candidates": 413,
+      "candidates": 419,
       "errors": []
     },
     {
@@ -483,7 +481,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 4,
       "pdfs_fetched": 10,
-      "candidates": 154,
+      "candidates": 156,
       "errors": []
     },
     {
