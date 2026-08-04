@@ -1,0 +1,18 @@
+V173 - Question Paper Generator top intro removal (SEO-safe)
+
+Changed files:
+1. tools/faculty-assistant/question-paper-generator/index.html
+2. style.css
+3. sitemap.xml
+
+What changed:
+- Removed the complete qpg-top-intro block from the rendered page.
+- Did not hide keyword text with display:none or off-screen CSS.
+- Changed the tool card heading from H2 “Generate Paper” to the page’s visible H1 “Question Paper Generator”.
+- Retained and strengthened page-level SEO through the title, meta description, canonical URL, robots directives, Open Graph tags, Twitter tags and WebApplication JSON-LD.
+- Updated this URL’s sitemap lastmod to 2026-07-25.
+
+Why this is SEO-safe:
+- Search engines still get a clear title, description, canonical URL and structured data.
+- The primary page topic remains visible to users in the first H1.
+- No search-engine-only hidden content has been introduced.

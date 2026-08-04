@@ -28,10 +28,14 @@ from urllib.parse import parse_qs, quote_plus, unquote, urljoin, urlparse
 import requests
 from bs4 import BeautifulSoup
 
+from job_archive_utils import archive_sitemap_jobs, load_json_payload, reconcile_jobs
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 FACULTY_ROOT = REPO_ROOT / "jobs" / "faculty-jobs"
 DEFAULT_MANUAL_PATH = FACULTY_ROOT / "manual-faculty-jobs.json"
 DEFAULT_OUT_JSON = FACULTY_ROOT / "faculty-jobs-data.json"
+DEFAULT_ARCHIVE_JSON = FACULTY_ROOT / "faculty-jobs-archive.json"
+ARCHIVE_RETENTION_DAYS = 365
 DEFAULT_SOURCES = REPO_ROOT / "sources_faculty_jobs.csv"
 BASE_URL = "https://learnwithhemant.com"
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
@@ -1684,7 +1688,12 @@ def table_rows(jobs: Sequence[Dict[str, Any]]) -> str:
         eligibility = shorten(job.get("eligibility"), 135)
         college_html = f'<a class="faculty-job-title-link" href="{esc(detail_url)}"><strong>{esc(college_name)}</strong></a>'
         email_value = clean(job.get("email"))
-        email_html = f'<a href="mailto:{esc(email_value)}">{esc(email_value)}</a>' if email_value else '<span class="muted-link-text">Check notice</span>'
+        if email_value and not is_archived_job(job):
+            email_html = f'<a href="mailto:{esc(email_value)}">{esc(email_value)}</a>'
+        elif email_value:
+            email_html = f'<span class="muted-link-text">{esc(email_value)}</span>'
+        else:
+            email_html = '<span class="muted-link-text">Check notice</span>'
         contact_value = clean(job.get("contact_number") or job.get("contact") or job.get("phone") or "")
         contact_html = esc(contact_value) if contact_value else '<span class="muted-link-text">Check notice</span>'
         notice_href = resolve_single_notice_link(job)
@@ -1712,10 +1721,13 @@ def dashboard_page(jobs: Sequence[Dict[str, Any]], payload: Dict[str, Any], titl
         ("Lecturer", "Lecturer"), ("Rajasthan", "Rajasthan"), ("Closing Soon", "Closing Soon"), ("Active", "Active")
     ]
     chip_html = "".join(f'<button class="{"active" if key == active_filter else ""}" data-filter="{esc(key)}" type="button">{esc(label)}</button>' for key, label in chips)
+    archive_view = canonical_path.rstrip("/").endswith("/archive")
+    archive_href = "/jobs/faculty-jobs/" if archive_view else "/jobs/faculty-jobs/archive/"
+    archive_label = "Active Faculty Jobs" if archive_view else "Closed Jobs Archive"
     return page_head(title, description, canonical_path) + site_header() + f'''
 <main class="jobs-dashboard-main faculty-jobs-main">
 <section class="jobs-summary-section">
-<div class="container faculty-jobs-topbar"><a href="/jobs/">← Govt Jobs</a><a href="/jobs/faculty-jobs/all-india/">All India</a><a href="/jobs/faculty-jobs/cse/">CSE Faculty</a><a href="/jobs/faculty-jobs/rajasthan/">Rajasthan</a><a href="/jobs/faculty-jobs/assistant-professor/">Assistant Professor</a></div>
+<div class="container faculty-jobs-topbar"><a href="/jobs/">← Govt Jobs</a><a href="/jobs/faculty-jobs/all-india/">All India</a><a href="/jobs/faculty-jobs/cse/">CSE Faculty</a><a href="/jobs/faculty-jobs/rajasthan/">Rajasthan</a><a href="/jobs/faculty-jobs/assistant-professor/">Assistant Professor</a><a href="{archive_href}">{archive_label}</a></div>
 <div class="container jobs-summary-grid">
 <article class="jobs-summary-card"><strong>{counts['total']}</strong><span>Total Faculty Rows</span></article>
 <article class="jobs-summary-card good"><strong>{counts['cse']}</strong><span>CSE/IT Focus</span></article>
@@ -1725,7 +1737,7 @@ def dashboard_page(jobs: Sequence[Dict[str, Any]], payload: Dict[str, Any], titl
 </section>
 <section class="jobs-table-section">
 <div class="container"><div class="jobs-panel">
-<div class="jobs-panel-head"><div><span class="jobs-mini-eyebrow">{esc(payload.get('updated_label') or 'Updated')}</span><h1>{esc(heading)}</h1><p>{esc(subheading)}</p></div><a class="jobs-suggest-btn" href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20found%20a%20faculty%20job%20to%20add." target="_blank" rel="noopener">Suggest Faculty Job</a></div>
+<div class="jobs-panel-head"><div><span class="jobs-mini-eyebrow">{esc(payload.get('updated_label') or 'Updated')}</span><h1>{esc(heading)}</h1><p>{esc(subheading)}</p></div><div class="jobs-panel-actions"><a class="jobs-suggest-btn" href="{archive_href}">{archive_label}</a><a class="jobs-suggest-btn" href="https://wa.me/918197565002?text=Hi%20Hemant%2C%20I%20found%20a%20faculty%20job%20to%20add." target="_blank" rel="noopener">Suggest Faculty Job</a></div></div>
 <div aria-label="Faculty job filters" class="jobs-controls"><div class="jobs-search-wrap"><input id="facultyJobsSearch" aria-label="Search faculty jobs" placeholder="Search college, eligibility, state, department..." type="search"/></div><div class="jobs-filter-chips" role="group">{chip_html}</div></div>
 <div class="jobs-table-wrap"><table class="jobs-table faculty-jobs-table"><thead><tr><th>College Name</th><th>Eligibility</th><th>Last Date</th><th>Email</th><th>Contact</th><th>Official Notice</th></tr></thead><tbody id="facultyJobsTableBody">{table_rows(jobs)}</tbody></table></div>
 <p class="jobs-table-note">This page is generated from verified manual rows plus optional official-source scanning. Always verify the official PDF/notice before applying or emailing your CV.</p>
@@ -1831,34 +1843,85 @@ def is_actual_job_posting(job: Dict[str, Any]) -> bool:
     return clean(job.get("source")) == "auto_source" and clean(job.get("status")).lower() not in {"watch", "closed"}
 
 
-def detail_page(job: Dict[str, Any]) -> str:
+def is_archived_job(job: Dict[str, Any]) -> bool:
+    return bool(job.get("is_archived")) or clean(job.get("status")).lower() in {"closed", "archived"}
+
+
+def faculty_related_active(job: Dict[str, Any], active_jobs: Sequence[Dict[str, Any]], limit: int = 3) -> List[Dict[str, Any]]:
+    current_slug = clean(job.get("slug"))
+    state = clean(job.get("state")).lower()
+    dept_words = set(re.findall(r"[a-z0-9]+", f"{job.get('department')} {job.get('profile_tags')}".lower()))
+    post_words = set(re.findall(r"[a-z0-9]+", clean(job.get("post")).lower()))
+    ranked = []
+    for candidate in active_jobs:
+        if clean(candidate.get("slug")) == current_slug:
+            continue
+        score = 0
+        if state and state == clean(candidate.get("state")).lower():
+            score += 4
+        candidate_dept = set(re.findall(r"[a-z0-9]+", f"{candidate.get('department')} {candidate.get('profile_tags')}".lower()))
+        candidate_post = set(re.findall(r"[a-z0-9]+", clean(candidate.get("post")).lower()))
+        score += min(4, len(dept_words & candidate_dept))
+        score += min(2, len(post_words & candidate_post))
+        ranked.append((score, clean(candidate.get("last_date_iso")) or "9999-12-31", candidate))
+    ranked.sort(key=lambda item: (-item[0], item[1], clean(item[2].get("college")).lower()))
+    return [item[2] for item in ranked[:limit]]
+
+
+def faculty_related_html(job: Dict[str, Any], active_jobs: Sequence[Dict[str, Any]]) -> str:
+    related = faculty_related_active(job, active_jobs)
+    if not related:
+        return '<p>No related active faculty vacancy is currently available. Check the main faculty jobs page for new listings.</p>'
+    cards = []
+    for item in related:
+        cards.append(f'''<a class="job-related-card" href="/jobs/faculty-jobs/{esc(item.get('slug'))}/"><strong>{esc(item.get('college'))} - {esc(item.get('post'))}</strong><span>{esc(item.get('department'))} - {esc(item.get('state') or 'India')}</span><small>{esc(item.get('last_date_display') or 'Check official notice')}</small></a>''')
+    return '<div class="job-related-grid">' + ''.join(cards) + '</div>'
+
+
+def detail_page(job: Dict[str, Any], active_jobs: Sequence[Dict[str, Any]]) -> str:
     slug = clean(job.get("slug"))
     canonical = f"/jobs/faculty-jobs/{slug}/"
     college = clean_college_name(job.get("college"))
     post = clean_post_name(job.get("post"), f"{job.get('job')} {job.get('department')}")
     dept = clean_department_name(job.get("department"), f"{job.get('job')} {job.get('eligibility')}")
-    title = f"{college} {post} {dept} | Faculty Job"
-    desc = f"Check {college} {post} details: eligibility, last date, email, contact and official notice."
-    schema = jobposting_schema(job, canonical) if is_actual_job_posting(job) else ""
+    archived = is_archived_job(job)
+    title = f"{college} {post} {dept} | {'Application Closed' if archived else 'Faculty Job'}"
+    desc = f"{'Archived faculty vacancy record' if archived else 'Check faculty vacancy details'} for {college}: eligibility, last date, contact, official notice and related active openings."
+    schema = ""
+    if not archived and is_actual_job_posting(job):
+        schema = jobposting_schema(job, canonical)
+    else:
+        web_page = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": title,
+            "description": desc,
+            "url": url_for(canonical),
+        }
+        schema = '<script type="application/ld+json">' + json.dumps(web_page, ensure_ascii=False) + '</script>'
     email_value = clean(job.get("email"))
-    email_html = f'<a href="mailto:{esc(email_value)}">{esc(email_value)}</a>' if email_value else 'Check official notice'
+    email_html = f'<a href="mailto:{esc(email_value)}">{esc(email_value)}</a>' if email_value and not archived else (esc(email_value) if email_value else 'Check official notice')
     notice = resolve_single_notice_link(job)
     contact_value = clean(job.get("contact_number") or job.get("contact") or job.get("phone") or "")
     actions = []
     if notice:
-        actions.append(f'<a class="official-link notice-link" href="{esc(notice)}" target="_blank" rel="noopener">Open Official Notice</a>')
-    else:
-        actions.append(f'<a class="official-link notice-link" href="{esc(canonical)}">View Notice Details</a>')
-    if email_value:
+        label = "View Archived Official Notice" if archived else "Open Official Notice"
+        actions.append(f'<a class="official-link notice-link" href="{esc(notice)}" target="_blank" rel="noopener">{label}</a>')
+    if email_value and not archived:
         actions.append(f'<a class="official-link" href="mailto:{esc(email_value.replace(" ", ""))}">Email CV</a>')
-    actions_html = "".join(actions) if actions else '<span class="muted-link-text">Check the official notice before applying.</span>'
+    actions_html = "".join(actions) if actions else '<a class="official-link muted-link" href="/jobs/faculty-jobs/">View Active Faculty Jobs</a>'
+    status_label = "Application Closed" if archived and clean(job.get("status")).lower() == "closed" else clean(job.get("status_label") or job.get("status"))
+    closed_banner = '<div class="job-closed-banner"><strong>Application Closed</strong><span>This URL is retained as a historical record and is no longer shown on the active faculty-jobs dashboard.</span></div>' if archived else ''
+    generated_content = faculty_generated_content(job) if not archived else f'''
+<section class="faculty-auto-content"><h2>About this archived opening</h2><p>{esc(college)} was listed for {esc(post)} hiring in {esc(dept)}. The application window is no longer treated as active, but this URL remains available for historical reference.</p><h2>What to do now</h2><p>Do not send a fresh application based only on this archived page. Review the related active faculty vacancies below or confirm whether the institution has published a new notification.</p></section>'''
     return page_head(title, desc, canonical, schema) + site_header() + f'''
 <main class="jobs-dashboard-main faculty-jobs-main">
 <section class="jobs-table-section"><div class="container"><article class="jobs-panel faculty-detail-card">
-<a class="faculty-back-link" href="/jobs/faculty-jobs/">← Back to Faculty Jobs</a>
-<span class="jobs-mini-eyebrow">{esc(job.get('status_label'))}</span>
+<a class="faculty-back-link" href="{'/jobs/faculty-jobs/archive/' if archived else '/jobs/faculty-jobs/'}">Back to {'Closed' if archived else 'Active'} Faculty Jobs</a>
+{closed_banner}
+<span class="jobs-mini-eyebrow">{esc(status_label)}</span>
 <h1>{esc(college)} {esc(post)}</h1>
-<p class="faculty-detail-subtitle">{esc(dept)} • {esc(job.get('city'))} {esc(job.get('state'))}</p>
+<p class="faculty-detail-subtitle">{esc(dept)} - {esc(job.get('city'))} {esc(job.get('state'))}</p>
 <div class="faculty-detail-grid">
 <div><span>College Name</span><strong>{esc(college)}</strong></div>
 <div><span>Post</span><strong>{esc(post)}</strong></div>
@@ -1871,8 +1934,9 @@ def detail_page(job: Dict[str, Any]) -> str:
 <h2>Eligibility</h2><p>{esc(job.get('eligibility'))}</p>
 <h2>Important note</h2><p>{esc(job.get('fit_reason'))}</p>
 <div class="faculty-detail-actions">{actions_html}</div>
-{faculty_generated_content(job)}
-<div class="faculty-related-links"><a href="/jobs/faculty-jobs/cse/">CSE Faculty Jobs</a><a href="/jobs/faculty-jobs/assistant-professor/">Assistant Professor Jobs</a><a href="/jobs/faculty-jobs/rajasthan/">Rajasthan Faculty Jobs</a></div>
+{generated_content}
+<section class="related-active-jobs"><h2>Related Active Faculty Vacancies</h2>{faculty_related_html(job, active_jobs)}</section>
+<div class="faculty-related-links"><a href="/jobs/faculty-jobs/">Active Faculty Jobs</a><a href="/jobs/faculty-jobs/archive/">Closed Faculty Jobs</a><a href="/jobs/faculty-jobs/cse/">CSE Faculty Jobs</a></div>
 </article></div></section>
 </main>
 ''' + site_footer()
@@ -1899,26 +1963,28 @@ def filter_jobs(jobs: Sequence[Dict[str, Any]], kind: str) -> List[Dict[str, Any
     return list(jobs)
 
 
-def generate_pages(payload: Dict[str, Any]) -> List[str]:
-    jobs = filter_recent_jobs([enrich_button_links(job) for job in (payload.get("jobs") or [])])
+def generate_pages(payload: Dict[str, Any], archived_jobs: Optional[Sequence[Dict[str, Any]]] = None) -> tuple[List[str], List[str]]:
+    jobs = [enrich_button_links(job) for job in (payload.get("jobs") or []) if not is_archived_job(job)]
+    archived = [enrich_button_links(job) for job in (archived_jobs or [])]
     payload = dict(payload)
     payload["jobs"] = jobs
     generated_paths: List[str] = []
+    archive_paths: List[str] = []
     write_file(FACULTY_ROOT / "index.html", dashboard_page(
         jobs, payload,
         "Faculty Jobs for CSE/IT | College Teaching Vacancies | Learn with Hemant",
-        "Find faculty jobs for CSE, IT, MCA and Computer Science teaching roles. Check college name, eligibility, last date, email, contact and official notice.",
+        "Find active faculty jobs for CSE, IT, MCA and Computer Science teaching roles. Check college name, eligibility, last date, email, contact and official notice.",
         "/jobs/faculty-jobs/",
         "Faculty Jobs for CSE / IT",
-        "Automated teaching-job dashboard with clean eligibility, last date, email, contact and official notice links.",
+        "Active teaching-job dashboard with clean eligibility, last date, email, contact and official notice links.",
     ))
     generated_paths.append("/jobs/faculty-jobs/")
     categories = {
-        "all-india": ("All India Faculty Jobs", "All-India teaching vacancies discovered from enabled official pages and search queries.", "All India Faculty Jobs | CSE / IT Teaching Vacancies"),
-        "cse": ("CSE / IT Faculty Jobs", "CSE, IT, MCA, BCA, AI and Data Science focused teaching jobs.", "CSE Faculty Jobs | Computer Science Teaching Vacancies"),
-        "rajasthan": ("Rajasthan Faculty Jobs", "Rajasthan college and university teaching jobs for CSE/IT candidates.", "Rajasthan Faculty Jobs | Assistant Professor / Lecturer"),
-        "assistant-professor": ("Assistant Professor Jobs", "Assistant Professor openings in CSE/IT and related teaching departments.", "Assistant Professor Jobs for CSE/IT"),
-        "closing-soon": ("Faculty Jobs Closing Soon", "Teaching vacancies whose last date is within the next seven days.", "Faculty Jobs Closing Soon"),
+        "all-india": ("All India Faculty Jobs", "All-India active teaching vacancies discovered from enabled official pages and search queries.", "All India Faculty Jobs | CSE / IT Teaching Vacancies"),
+        "cse": ("CSE / IT Faculty Jobs", "Active CSE, IT, MCA, BCA, AI and Data Science focused teaching jobs.", "CSE Faculty Jobs | Computer Science Teaching Vacancies"),
+        "rajasthan": ("Rajasthan Faculty Jobs", "Active Rajasthan college and university teaching jobs for CSE/IT candidates.", "Rajasthan Faculty Jobs | Assistant Professor / Lecturer"),
+        "assistant-professor": ("Assistant Professor Jobs", "Active Assistant Professor openings in CSE/IT and related teaching departments.", "Assistant Professor Jobs for CSE/IT"),
+        "closing-soon": ("Faculty Jobs Closing Soon", "Active teaching vacancies whose last date is within the next seven days.", "Faculty Jobs Closing Soon"),
     }
     for slug, (heading, subheading, title) in categories.items():
         filtered = filter_jobs(jobs, slug)
@@ -1928,13 +1994,34 @@ def generate_pages(payload: Dict[str, Any]) -> List[str]:
             "All India" if slug == "all-india" else "Rajasthan" if slug == "rajasthan" else "Assistant Professor" if slug == "assistant-professor" else "CSE" if slug == "cse" else "Closing Soon"
         ))
         generated_paths.append(f"/jobs/faculty-jobs/{slug}/")
+
+    archive_payload = dict(payload)
+    archive_payload["updated_label"] = f"Archive updated: {dt.datetime.now(IST).strftime('%d %b %Y')}"
+    archive_payload["jobs"] = archived
+    write_file(FACULTY_ROOT / "archive" / "index.html", dashboard_page(
+        archived,
+        archive_payload,
+        "Closed Faculty Jobs Archive | Learn with Hemant",
+        "Historical faculty vacancy URLs retained after their application deadlines. Use the active faculty jobs page before applying.",
+        "/jobs/faculty-jobs/archive/",
+        "Closed Faculty Jobs Archive",
+        "Expired and retired faculty job pages are preserved here for historical reference and SEO continuity.",
+    ))
+    archive_paths.append("/jobs/faculty-jobs/archive/")
+
     for job in jobs:
         slug = clean(job.get("slug"))
         if not slug:
             continue
-        write_file(FACULTY_ROOT / slug / "index.html", detail_page(job))
+        write_file(FACULTY_ROOT / slug / "index.html", detail_page(job, jobs))
         generated_paths.append(f"/jobs/faculty-jobs/{slug}/")
-    return generated_paths
+    for job in archived:
+        slug = clean(job.get("slug"))
+        if not slug:
+            continue
+        write_file(FACULTY_ROOT / slug / "index.html", detail_page(job, jobs))
+        archive_paths.append(f"/jobs/faculty-jobs/{slug}/")
+    return generated_paths, archive_paths
 
 
 def sanitize_public_payload(value: Any) -> Any:
@@ -1960,32 +2047,30 @@ def sanitize_public_payload(value: Any) -> Any:
 def write_json(payload: Dict[str, Any], out_json: Path) -> None:
     out_json.parent.mkdir(parents=True, exist_ok=True)
     payload = dict(payload)
-    payload["jobs"] = filter_recent_jobs([enrich_button_links(job) for job in (payload.get("jobs") or [])])
+    payload["jobs"] = [enrich_button_links(job) for job in (payload.get("jobs") or []) if not is_archived_job(job)]
     payload = sanitize_public_payload(payload)
     out_json.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"[OK] Updated {out_json} with {len(payload.get('jobs') or [])} faculty jobs")
+    print(f"[OK] Updated {out_json} with {len(payload.get('jobs') or [])} active faculty jobs")
 
 
+def write_archive_json(jobs: Sequence[Dict[str, Any]], archive_json: Path) -> None:
+    payload = {
+        "generated_at": dt.datetime.now(IST).isoformat(timespec="seconds"),
+        "retention_days_in_sitemap": ARCHIVE_RETENTION_DAYS,
+        "jobs": sanitize_public_payload([enrich_button_links(job) for job in jobs]),
+    }
+    archive_json.parent.mkdir(parents=True, exist_ok=True)
+    archive_json.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"[OK] Updated {archive_json} with {len(jobs)} archived faculty jobs")
 
 
 def cleanup_generated_dirs(valid_paths: Sequence[str]) -> None:
-    """Remove stale generated faculty detail/category directories when slugs change."""
-    protected = {"all-india", "cse", "rajasthan", "assistant-professor", "closing-soon"}
-    valid_slugs = set()
-    for path in valid_paths:
-        parts = [p for p in path.strip("/").split("/") if p]
-        if len(parts) >= 3 and parts[0] == "jobs" and parts[1] == "faculty-jobs":
-            valid_slugs.add(parts[2])
-    for child in FACULTY_ROOT.iterdir() if FACULTY_ROOT.exists() else []:
-        if not child.is_dir():
-            continue
-        if child.name in protected or child.name in valid_slugs:
-            continue
-        index_file = child / "index.html"
-        if index_file.exists():
-            import shutil
-            shutil.rmtree(child)
-            print(f"[INFO] Removed stale generated faculty page: {child}")
+    """Preserve historical faculty URLs instead of deleting generated detail directories.
+
+    Invalid or duplicate URLs can be retired explicitly through jobs/invalid-job-urls.json,
+    which is handled by the Cloudflare Pages 410 middleware.
+    """
+    print("[INFO] Historical faculty detail directories preserved; automatic destructive cleanup is disabled.")
 
 
 def write_faculty_sitemap(paths: Sequence[str]) -> None:
@@ -2002,26 +2087,51 @@ def write_faculty_sitemap(paths: Sequence[str]) -> None:
     write_file(REPO_ROOT / "sitemap-faculty-jobs.xml", "\n".join(body) + "\n")
 
 
+def write_faculty_archive_sitemap(archived_jobs: Sequence[Dict[str, Any]]) -> List[str]:
+    today = dt.datetime.now(IST).date()
+    recent = archive_sitemap_jobs(archived_jobs, ARCHIVE_RETENTION_DAYS, today)
+    paths = ["/jobs/faculty-jobs/archive/"] + [f"/jobs/faculty-jobs/{clean(job.get('slug'))}/" for job in recent if clean(job.get('slug'))]
+    body = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for path in sorted(set(paths)):
+        body.extend([
+            "  <url>",
+            f"    <loc>{url_for(path)}</loc>",
+            f"    <lastmod>{today.isoformat()}</lastmod>",
+            "    <changefreq>monthly</changefreq>",
+            "    <priority>0.55</priority>",
+            "  </url>",
+        ])
+    body.append("</urlset>")
+    write_file(REPO_ROOT / "sitemap-faculty-job-archive.xml", "\n".join(body) + "\n")
+    robots_path = REPO_ROOT / "robots.txt"
+    robots = robots_path.read_text(encoding="utf-8") if robots_path.exists() else ""
+    line = f"Sitemap: {BASE_URL}/sitemap-faculty-job-archive.xml"
+    if line not in robots:
+        robots_path.write_text(robots.rstrip() + "\n" + line + "\n", encoding="utf-8")
+    return paths
+
+
 def update_main_sitemap(paths: Sequence[str]) -> None:
     sitemap_path = REPO_ROOT / "sitemap.xml"
     if not sitemap_path.exists():
         return
     text = sitemap_path.read_text(encoding="utf-8")
-    # Remove older faculty-job entries before inserting fresh ones.
     text = re.sub(r"\s*<url>\s*<loc>https://learnwithhemant\.com/jobs/faculty-jobs/.*?</url>", "", text, flags=re.S)
     today = dt.datetime.now(IST).date().isoformat()
+    wanted = list(paths) + ["/jobs/faculty-jobs/archive/"]
     entries = []
-    for path in sorted(set(paths)):
+    for path in sorted(set(wanted)):
         entries.append(f"""
   <url>
     <loc>{url_for(path)}</loc>
     <lastmod>{today}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.78</priority>
+    <changefreq>{'weekly' if path.endswith('/archive/') else 'daily'}</changefreq>
+    <priority>{'0.65' if path.endswith('/archive/') else '0.78'}</priority>
   </url>""")
     if "</urlset>" in text:
         text = text.replace("</urlset>", "".join(entries) + "\n</urlset>")
         sitemap_path.write_text(text, encoding="utf-8")
+
 
 
 def main() -> None:
@@ -2029,6 +2139,7 @@ def main() -> None:
     parser.add_argument("--manual-json", default=str(DEFAULT_MANUAL_PATH))
     parser.add_argument("--sources", default=str(DEFAULT_SOURCES))
     parser.add_argument("--out-json", default=str(DEFAULT_OUT_JSON))
+    parser.add_argument("--archive-json", default=str(DEFAULT_ARCHIVE_JSON))
     parser.add_argument("--limit", type=int, default=150)
     parser.add_argument("--max-sources", type=int, default=30)
     parser.add_argument("--max-links-per-source", type=int, default=100)
@@ -2045,19 +2156,35 @@ def main() -> None:
 
     if str(args.mode).strip().lower() in {"buttons-only", "links-only", "repair-buttons"}:
         out_json = (REPO_ROOT / args.out_json).resolve() if not Path(args.out_json).is_absolute() else Path(args.out_json)
-        payload = json.loads(out_json.read_text(encoding="utf-8"))
+        archive_json = (REPO_ROOT / args.archive_json).resolve() if not Path(args.archive_json).is_absolute() else Path(args.archive_json)
+        payload = load_json_payload(out_json)
+        existing_archive = load_json_payload(archive_json)
+        active_jobs, archived_jobs = reconcile_jobs(
+            payload.get("jobs") or [],
+            [],
+            existing_archive.get("jobs") or [],
+            kind="faculty",
+            missing_grace_days=14,
+        )
+        payload["jobs"] = sort_jobs_by_last_date_desc(active_jobs)
+        payload["active_count"] = len(active_jobs)
+        payload["archive_count"] = len(archived_jobs)
         write_json(payload, out_json)
-        payload = json.loads(out_json.read_text(encoding="utf-8"))
-        paths = generate_pages(payload)
-        cleanup_generated_dirs(paths)
-        write_faculty_sitemap(paths)
-        update_main_sitemap(paths)
-        print(f"[OK] Repaired Apply/Notice button links without re-scraping. URLs generated: {len(paths)}")
+        write_archive_json(archived_jobs, archive_json)
+        active_paths, archive_paths = generate_pages(payload, archived_jobs)
+        cleanup_generated_dirs(active_paths + archive_paths)
+        write_faculty_sitemap(active_paths)
+        write_faculty_archive_sitemap(archived_jobs)
+        update_main_sitemap(active_paths)
+        print(f"[OK] Repaired faculty pages: {len(active_paths)} active URLs and {len(archive_paths)} archived URLs")
         return
 
     manual_path = (REPO_ROOT / args.manual_json).resolve() if not Path(args.manual_json).is_absolute() else Path(args.manual_json)
     sources_path = (REPO_ROOT / args.sources).resolve() if not Path(args.sources).is_absolute() else Path(args.sources)
     out_json = (REPO_ROOT / args.out_json).resolve() if not Path(args.out_json).is_absolute() else Path(args.out_json)
+    archive_json = (REPO_ROOT / args.archive_json).resolve() if not Path(args.archive_json).is_absolute() else Path(args.archive_json)
+    previous_payload = load_json_payload(out_json)
+    existing_archive = load_json_payload(archive_json)
 
     manual_jobs = load_manual_jobs(manual_path)
     print(f"[INFO] Loaded {len(manual_jobs)} manual faculty rows")
@@ -2087,12 +2214,25 @@ def main() -> None:
         "auto_count": len(auto_jobs),
         "jobs": jobs,
     }
+    active_jobs, archived_jobs = reconcile_jobs(
+        payload.get("jobs") or [],
+        previous_payload.get("jobs") or [],
+        existing_archive.get("jobs") or [],
+        kind="faculty",
+        missing_grace_days=14,
+    )
+    payload["jobs"] = sort_jobs_by_last_date_desc(active_jobs)
+    payload["active_count"] = len(active_jobs)
+    payload["archive_count"] = len(archived_jobs)
+    payload["updated_label"] = now.strftime(f"Updated: %d %b %Y, %I:%M %p IST • {len(active_jobs)} active jobs")
     write_json(payload, out_json)
-    paths = generate_pages(payload)
-    cleanup_generated_dirs(paths)
-    write_faculty_sitemap(paths)
-    update_main_sitemap(paths)
-    print(f"[OK] Generated {len(paths)} faculty job/category URLs")
+    write_archive_json(archived_jobs, archive_json)
+    active_paths, archive_paths = generate_pages(payload, archived_jobs)
+    cleanup_generated_dirs(active_paths + archive_paths)
+    write_faculty_sitemap(active_paths)
+    write_faculty_archive_sitemap(archived_jobs)
+    update_main_sitemap(active_paths)
+    print(f"[OK] Generated {len(active_paths)} active and {len(archive_paths)} archived faculty URLs")
 
 
 if __name__ == "__main__":

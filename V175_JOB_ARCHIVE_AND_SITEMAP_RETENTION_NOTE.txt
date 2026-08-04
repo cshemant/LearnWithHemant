@@ -1,0 +1,45 @@
+V175 — Permanent Job URL Archive + Sitemap Retention
+=====================================================
+
+Implemented for both Government Jobs and Faculty Jobs:
+
+1. Active dashboards now show only active/current vacancies.
+2. Expired vacancies are moved to persistent archive JSON files:
+   - jobs/job-archive.json
+   - jobs/faculty-jobs/faculty-jobs-archive.json
+3. Existing legitimate detail URLs are retained and regenerated with:
+   - "Application Closed" status/banner
+   - application buttons disabled
+   - archived official notice retained when available
+   - links to related active vacancies
+4. Public archive pages added:
+   - /jobs/archive/
+   - /jobs/faculty-jobs/archive/
+5. Separate 365-day archive sitemaps added:
+   - sitemap-job-archive.xml
+   - sitemap-faculty-job-archive.xml
+6. Active sitemaps now contain active pages only:
+   - sitemap-govt-jobs.xml
+   - sitemap-faculty-jobs.xml
+7. The main sitemap contains active job URLs plus archive landing pages. Archived detail URLs remain in the separate archive sitemaps for up to 365 days.
+8. Faculty automatic destructive cleanup has been disabled, so expired legitimate pages are no longer deleted.
+9. Missing jobs are carried forward for a 14-day grace period before being archived, reducing accidental URL loss when a source temporarily fails.
+10. A Cloudflare Pages 410 system has been added for confirmed invalid/duplicate URLs only:
+    - Add paths to jobs/invalid-job-urls.json
+    - Run: python scripts/sync_invalid_job_urls.py
+    - functions/jobs/[[path]].js returns HTTP 410 for only those confirmed paths.
+    - Do not add normal expired vacancies to this registry.
+11. GitHub Actions now commits all archive JSON files, archive sitemaps, scripts and Cloudflare function changes.
+
+Current migrated V175 data (as of 04-Aug-2026):
+- Government jobs: 22 active, 5 archived
+- Faculty jobs: 4 active, 88 archived
+
+Useful no-network rebuild commands:
+- Government pages/archive migration:
+  python scripts/update_jobs_dashboard_data.py --mode archive-only
+
+- Faculty pages/archive migration:
+  python scripts/update_faculty_jobs_data.py --mode repair-buttons
+
+Normal scheduled commands remain unchanged; the archive reconciliation runs automatically during each scheduled update.

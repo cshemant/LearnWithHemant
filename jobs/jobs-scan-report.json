@@ -1,8 +1,8 @@
 {
-  "sources_total": 44,
-  "sources_reached": 18,
-  "sources_failed": 26,
-  "candidate_count": 1054,
+  "sources_total": 19,
+  "sources_reached": 12,
+  "sources_failed": 7,
+  "candidate_count": 1143,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -18,13 +18,11 @@
       "state": "Rajasthan",
       "agency": "RPSC",
       "url": "https://rpsc.rajasthan.gov.in/advertisements",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
+      "landing_status": 200,
+      "detail_pages_fetched": 8,
+      "pdfs_fetched": 10,
+      "candidates": 408,
+      "errors": []
     },
     {
       "state": "Rajasthan",
@@ -73,13 +71,33 @@
       "errors": []
     },
     {
+      "state": "Bihar",
+      "agency": "CSBC",
+      "url": "https://csbc.bihar.gov.in/",
+      "landing_status": 200,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 10,
+      "candidates": 210,
+      "errors": []
+    },
+    {
+      "state": "Bihar",
+      "agency": "BPSSC",
+      "url": "https://bpssc.bihar.gov.in/",
+      "landing_status": 200,
+      "detail_pages_fetched": 1,
+      "pdfs_fetched": 10,
+      "candidates": 198,
+      "errors": []
+    },
+    {
       "state": "Uttar Pradesh",
       "agency": "UPPSC",
       "url": "https://uppsc.up.nic.in/CandidatePages/Notifications.aspx",
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 4,
-      "candidates": 35,
+      "candidates": 39,
       "errors": []
     },
     {
@@ -101,7 +119,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 10,
-      "candidates": 17,
+      "candidates": 18,
       "errors": []
     },
     {
@@ -118,13 +136,11 @@
       "state": "Central",
       "agency": "UPSC",
       "url": "https://upsc.gov.in/recruitment/recruitment-advertisement",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
+      "landing_status": 200,
+      "detail_pages_fetched": 8,
+      "pdfs_fetched": 3,
+      "candidates": 29,
+      "errors": []
     },
     {
       "state": "Central",
@@ -191,317 +207,13 @@
       "pdfs_fetched": 0,
       "candidates": 36,
       "errors": []
-    },
-    {
-      "state": "Maharashtra",
-      "agency": "MPSC",
-      "url": "https://mpsc.gov.in/advertisements",
-      "landing_status": 200,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": []
-    },
-    {
-      "state": "Gujarat",
-      "agency": "GPSC",
-      "url": "https://gpsc.gujarat.gov.in/Advertisement",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Gujarat",
-      "agency": "OJAS",
-      "url": "https://ojas.gujarat.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Karnataka",
-      "agency": "KPSC",
-      "url": "https://kpsc.kar.nic.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Tamil Nadu",
-      "agency": "TNPSC",
-      "url": "https://www.tnpsc.gov.in/English/Notification.aspx",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Kerala",
-      "agency": "Kerala PSC",
-      "url": "https://www.keralapsc.gov.in/notifications",
-      "landing_status": 200,
-      "detail_pages_fetched": 8,
-      "pdfs_fetched": 1,
-      "candidates": 23,
-      "errors": []
-    },
-    {
-      "state": "Odisha",
-      "agency": "OPSC",
-      "url": "https://www.opsc.gov.in/Public/OPSC/Default.aspx",
-      "landing_status": 200,
-      "detail_pages_fetched": 4,
-      "pdfs_fetched": 0,
-      "candidates": 9,
-      "errors": []
-    },
-    {
-      "state": "West Bengal",
-      "agency": "WBPSC",
-      "url": "https://psc.wb.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Telangana",
-      "agency": "TSPSC",
-      "url": "https://www.tspsc.gov.in/website",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Andhra Pradesh",
-      "agency": "APPSC",
-      "url": "https://psc.ap.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Punjab",
-      "agency": "PPSC",
-      "url": "https://ppsc.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Himachal Pradesh",
-      "agency": "HPPSC",
-      "url": "https://www.hppsc.hp.gov.in/hppsc/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Uttarakhand",
-      "agency": "UKPSC",
-      "url": "https://psc.uk.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Chhattisgarh",
-      "agency": "CGPSC",
-      "url": "https://psc.cg.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Assam",
-      "agency": "APSC",
-      "url": "https://apsc.nic.in/advt_2025.asp",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Central",
-      "agency": "ISRO Current Opportunities",
-      "url": "https://www.isro.gov.in/CurrentOpportunities.html",
-      "landing_status": 200,
-      "detail_pages_fetched": 8,
-      "pdfs_fetched": 10,
-      "candidates": 65,
-      "errors": []
-    },
-    {
-      "state": "Central",
-      "agency": "DRDO RAC Career Opportunities",
-      "url": "https://rac.gov.in/index.php?id=0&lang=en",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Central",
-      "agency": "MeitY Vacancies",
-      "url": "https://www.meity.gov.in/offerings/vacancies?persona=It-professional",
-      "landing_status": 200,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": []
-    },
-    {
-      "state": "Central",
-      "agency": "BEL Job Notifications",
-      "url": "https://bel-india.in/job-notifications/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Central",
-      "agency": "C-DAC Current Opportunities",
-      "url": "https://careers.cdac.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
-    },
-    {
-      "state": "Central",
-      "agency": "Digital India Corporation Careers",
-      "url": "https://dic.gov.in/careers/",
-      "landing_status": 403,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (403)"
-      ]
-    },
-    {
-      "state": "Central",
-      "agency": "C-DOT Current Openings",
-      "url": "https://www.cdot.in/cdotweb/web/current_openings.php",
-      "landing_status": 200,
-      "detail_pages_fetched": 8,
-      "pdfs_fetched": 9,
-      "candidates": 47,
-      "errors": []
-    },
-    {
-      "state": "Central",
-      "agency": "ECIL Current Job Openings",
-      "url": "https://www.ecil.co.in/jobopenings",
-      "landing_status": 200,
-      "detail_pages_fetched": 8,
-      "pdfs_fetched": 10,
-      "candidates": 159,
-      "errors": []
-    },
-    {
-      "state": "Goa",
-      "agency": "Goa PSC Advertisements",
-      "url": "https://gpsc.goa.gov.in/advertisements/",
-      "landing_status": 200,
-      "detail_pages_fetched": 8,
-      "pdfs_fetched": 10,
-      "candidates": 15,
-      "errors": []
-    },
-    {
-      "state": "Arunachal Pradesh",
-      "agency": "Arunachal Pradesh PSC Advertisements",
-      "url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
-      "landing_status": 200,
-      "detail_pages_fetched": 1,
-      "pdfs_fetched": 10,
-      "candidates": 419,
-      "errors": []
-    },
-    {
-      "state": "Meghalaya",
-      "agency": "Meghalaya PSC Advertisements",
-      "url": "https://mpsc.meghalaya.gov.in/advertisements.html",
-      "landing_status": 200,
-      "detail_pages_fetched": 4,
-      "pdfs_fetched": 10,
-      "candidates": 156,
-      "errors": []
-    },
-    {
-      "state": "Tripura",
-      "agency": "Tripura PSC",
-      "url": "https://tpsc.tripura.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
     }
   ],
-  "useful_auto_count": 25,
+  "useful_auto_count": 6,
   "carried_auto_count": 0,
   "active_manual_count": 0,
   "watch_source_count": 21,
   "expired_manual_count": 5,
-  "final_dashboard_count": 25,
+  "final_dashboard_count": 6,
   "scan_status": "ok"
 }

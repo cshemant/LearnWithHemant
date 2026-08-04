@@ -1,0 +1,12 @@
+All-India visibility fix
+
+The previous curated merge was too conservative, so only the 8 verified/manual rows were shown.
+
+This version keeps the current dashboard layout, but:
+1. Keeps curated Rajasthan rows at top.
+2. Adds an all-India official watchlist so the page is not Rajasthan-only.
+3. Uses sources_gov_jobs.csv in the nightly workflow for broader state/central scanning.
+4. Relaxes auto-scan filtering so useful all-India rows are not hidden.
+5. Prints row-count diagnostics in GitHub Action logs.
+
+After upload, run the workflow from latest main. Do not rerun an old failed job.

@@ -1,0 +1,4 @@
+{
+  "description": "Add only confirmed invalid, duplicate or incorrectly generated job URL paths here. Normal expired jobs must remain archived and must not be added.",
+  "paths": []
+}

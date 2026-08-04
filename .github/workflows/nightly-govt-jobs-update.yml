@@ -52,11 +52,15 @@ jobs:
         run: |
           python scripts/update_jobs_dashboard_data.py --sources sources_gov_jobs.csv --out-json jobs/jobs-data.json --excel-out jobs/government_jobs_tracker.xlsx --max-pdfs 10 --max-detail-pages 8 --limit 120
 
+      - name: Sync confirmed invalid job URL registry
+        run: |
+          python scripts/sync_invalid_job_urls.py
+
       - name: Commit and push updated job data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add jobs/ sitemap.xml sitemap-govt-jobs.xml robots.txt scripts/generate_govt_job_pages.py scripts/update_jobs_dashboard_data.py profile.json sources_gov_jobs.csv || true
+          git add jobs/ sitemap*.xml robots.txt scripts/ functions/ style.css sources_gov_jobs.csv sources_faculty_jobs.csv profile.json || true
           if git diff --staged --quiet; then
             echo "No job data changes to commit."
             exit 0

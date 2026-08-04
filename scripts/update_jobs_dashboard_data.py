@@ -23,6 +23,8 @@ from typing import Any, Dict, List, Optional
 
 import pandas as pd
 
+from job_archive_utils import load_json_payload, reconcile_jobs
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 FINDER_PATH = Path(__file__).with_name("govt_job_finder.py")
 MANUAL_JOBS_PATH = REPO_ROOT / "jobs" / "manual-jobs.json"
@@ -472,6 +474,7 @@ def main() -> None:
     parser.add_argument("--excel-out", default="jobs/government_jobs_tracker.xlsx", help="Temporary / committed Excel output path.")
     parser.add_argument("--out-json", default="jobs/jobs-data.json", help="Dashboard JSON output path.")
     parser.add_argument("--manual-json", default="jobs/manual-jobs.json", help="Manual verified dashboard jobs that must always remain visible.")
+    parser.add_argument("--archive-json", default="jobs/job-archive.json", help="Persistent archive for expired or retired government jobs.")
     parser.add_argument("--max-pdfs", type=int, default=int(os.getenv("MAX_PDFS", "10")), help="Max PDFs to parse per source.")
     parser.add_argument("--max-detail-pages", type=int, default=int(os.getenv("MAX_DETAIL_PAGES", "8")), help="Max recruitment/detail pages to follow per source.")
     parser.add_argument("--limit", type=int, default=int(os.getenv("MAX_DASHBOARD_JOBS", "120")), help="Max dashboard jobs to keep.")
@@ -483,9 +486,37 @@ def main() -> None:
         return
 
     os.chdir(REPO_ROOT)
+
+    if str(args.mode).strip().lower() in {"archive-only", "rebuild-pages", "repair-pages"}:
+        out_json = REPO_ROOT / args.out_json
+        archive_json = REPO_ROOT / args.archive_json
+        payload = load_json_payload(out_json)
+        existing_archive = load_json_payload(archive_json)
+        active_jobs, archived_jobs = reconcile_jobs(
+            payload.get("jobs") or [],
+            [],
+            existing_archive.get("jobs") or [],
+            kind="government",
+            missing_grace_days=14,
+        )
+        payload["jobs"] = active_jobs
+        payload["active_count"] = len(active_jobs)
+        payload["archive_count"] = len(archived_jobs)
+        write_json_safely(payload, out_json)
+        archive_json.parent.mkdir(parents=True, exist_ok=True)
+        archive_json.write_text(json.dumps({
+            "generated_at": dt.datetime.now(dt.timezone(dt.timedelta(hours=5, minutes=30))).isoformat(timespec="seconds"),
+            "retention_days_in_sitemap": 365,
+            "jobs": archived_jobs,
+        }, indent=2, ensure_ascii=False), encoding="utf-8")
+        detail_generator = REPO_ROOT / "scripts" / "generate_govt_job_pages.py"
+        subprocess.check_call([sys.executable, str(detail_generator)], cwd=str(REPO_ROOT))
+        print(f"[OK] Rebuilt government pages with {len(active_jobs)} active and {len(archived_jobs)} archived jobs")
+        return
     excel_path = REPO_ROOT / args.excel_out
     out_json = REPO_ROOT / args.out_json
     manual_json = REPO_ROOT / args.manual_json
+    archive_json = REPO_ROOT / args.archive_json
     manual_jobs = load_manual_jobs(manual_json)
     previous_payload = load_previous_payload(out_json)
     print(f"[INFO] Loaded {len(manual_jobs)} manual entries from {manual_json}")
@@ -507,7 +538,30 @@ def main() -> None:
         previous_payload=previous_payload,
         scan_report=scan_report,
     )
+
+    existing_archive = load_json_payload(archive_json)
+    active_jobs, archived_jobs = reconcile_jobs(
+        payload.get("jobs") or [],
+        previous_payload.get("jobs") or [],
+        existing_archive.get("jobs") or [],
+        kind="government",
+        missing_grace_days=14,
+    )
+    payload["jobs"] = active_jobs
+    payload["active_count"] = len(active_jobs)
+    payload["archive_count"] = len(archived_jobs)
+    payload["updated_label"] = f"Updated: {dt.datetime.now(dt.timezone(dt.timedelta(hours=5, minutes=30))).strftime('%d %b %Y')} • {len(active_jobs)} active vacancies"
     write_json_safely(payload, out_json)
+
+    archive_payload = {
+        "generated_at": dt.datetime.now(dt.timezone(dt.timedelta(hours=5, minutes=30))).isoformat(timespec="seconds"),
+        "retention_days_in_sitemap": 365,
+        "jobs": archived_jobs,
+    }
+    archive_json.parent.mkdir(parents=True, exist_ok=True)
+    archive_json.write_text(json.dumps(archive_payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"[OK] Updated {archive_json} with {len(archived_jobs)} archived government jobs.")
+
     scan_report_path = REPO_ROOT / "jobs" / "jobs-scan-report.json"
     scan_report_path.write_text(json.dumps(payload.get("scan_report", {}), indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"[OK] Wrote scan diagnostics to {scan_report_path}")

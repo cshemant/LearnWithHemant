@@ -32,3 +32,5 @@ Disallow: /
 Sitemap: https://learnwithhemant.com/sitemap.xml
 Sitemap: https://learnwithhemant.com/sitemap-faculty-jobs.xml
 Sitemap: https://learnwithhemant.com/sitemap-govt-jobs.xml
+Sitemap: https://learnwithhemant.com/sitemap-job-archive.xml
+Sitemap: https://learnwithhemant.com/sitemap-faculty-job-archive.xml
