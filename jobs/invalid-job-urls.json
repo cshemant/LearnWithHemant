@@ -1,4 +1,9 @@
 {
-  "description": "Add only confirmed invalid, duplicate or incorrectly generated job URL paths here. Normal expired jobs must remain archived and must not be added.",
-  "paths": []
+  "description": "Confirmed invalid, duplicate or incorrectly generated job URL paths. Legitimate expired jobs remain archived.",
+  "paths": [
+    "/jobs/247-rajasthan-single-sign-on-rajasthan-single-sign-on-v33-6-one-digital-identity-for-all-a/",
+    "/jobs/doit-universal-content-2/",
+    "/jobs/doit-universal-content/",
+    "/jobs/notice-cut-off-date-for-having-completed-graduation-by-applicants-under-advt-01-2019-has/"
+  ]
 }

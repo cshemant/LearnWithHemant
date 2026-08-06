@@ -36,6 +36,8 @@ import datetime as dt
 import io
 import json
 import re
+import html as html_lib
+import unicodedata
 import sys
 import time
 from pathlib import Path
@@ -256,13 +258,151 @@ class Vacancy:
     extracted_text: str
 
 
+DISPLAY_NOISE_PATTERNS = [
+    r"\bskip\s+to\s+main\s+content\b",
+    r"\bscreen\s+reader\s+access\b",
+    r"\bfont\s+size\b",
+    r"\bawards?\s*(?:and|&)\s*accolades?\b",
+    r"\bbusiness\s+model\b",
+    r"\bcorporate\s+profile\b",
+    r"\bprivacy\s+policy\b",
+    r"\bterms\s+(?:of\s+use|and\s+conditions)\b",
+    r"\bsitemap\b",
+    r"\bhome\s+about\s+contact\b",
+]
+
+NAVIGATION_LABEL_PHRASES = [
+    "awards and accolades", "awards accolades", "business model", "corporate profile",
+    "skip to main content", "screen reader access", "font size", "universal content",
+    "single sign on", "one digital identity", "question bank", "photo gallery",
+    "video gallery", "site map", "privacy policy", "terms and conditions",
+]
+
+GENERIC_ACTION_LABELS = {
+    "", "view", "view details", "details", "read more", "click here", "download",
+    "download pdf", "notification", "advertisement", "apply", "apply online",
+}
+
+TITLE_SIGNAL_KEYWORDS = [
+    "recruitment", "vacancy", "vacancies", "notification", "notice", "advertisement",
+    "advt", "job opening", "current opening", "apply online", "assistant professor",
+    "lecturer", "teacher", "faculty", "programmer", "developer", "scientist",
+    "technical assistant", "computer operator", "data entry operator", "junior assistant",
+    "office assistant", "clerk", "stenographer", "instructor", "engineer", "officer",
+]
+
+
+def english_only_text(text: str) -> str:
+    """Return clean English/ASCII display text without emoji, Hindi or UI symbols.
+
+    Government portals often mix Hindi, accessibility controls, emoji and icon-font
+    characters into link labels.  The dashboard intentionally stays English-only so
+    these fragments can never leak into generated job titles.
+    """
+    value = html_lib.unescape(str(text or ""))
+    replacements = {
+        "–": "-", "—": "-", "−": "-", "•": " ", "·": " ",
+        "“": '"', "”": '"', "‘": "'", "’": "'", "…": "...",
+        "×": " ", "→": " ", "←": " ", "©": " ", "®": " ",
+        "​": "", "‌": "", "‍": "", "﻿": "",
+    }
+    for source, target in replacements.items():
+        value = value.replace(source, target)
+    value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
+    value = re.sub(r"[A-Za-z0-9._%+\-]+\s*(?:\[at\]|\(at\)|@)\s*[A-Za-z0-9.\-]+\s*(?:\[dot\]|\(dot\)|\.)\s*[A-Za-z]{2,}", " ", value, flags=re.I)
+    value = re.sub(r"[^A-Za-z0-9\s&/(),.:'+%#\-]", " ", value)
+    value = re.sub(r"\(\s*cid\s*:\s*\d+\s*\)", " ", value, flags=re.I)
+    value = re.sub(r"\bA\+\s*A-\s*(?:U)?\b", " ", value, flags=re.I)
+    value = re.sub(r"(?:\s*[.:]\s*){3,}", " ", value)
+    value = re.sub(r"\(\s*[.\-:]+\s*\)", " ", value)
+    for pattern in DISPLAY_NOISE_PATTERNS:
+        value = re.sub(pattern, " ", value, flags=re.I)
+    value = re.sub(r"\s+", " ", value).strip(" -|,.;:")
+    return value
+
+
 def normalize_text(text: str) -> str:
-    text = re.sub(r"\s+", " ", text or "").strip()
-    return text
+    return english_only_text(text)
 
 
 def text_lower(text: str) -> str:
     return normalize_text(text).lower()
+
+
+def is_navigation_label(label: str) -> bool:
+    cleaned = text_lower(label)
+    if not cleaned:
+        return False
+    if any(phrase in cleaned for phrase in NAVIGATION_LABEL_PHRASES):
+        return not any(signal in cleaned for signal in TITLE_SIGNAL_KEYWORDS)
+    return False
+
+
+def extract_page_text(soup: BeautifulSoup) -> str:
+    """Extract the content area while excluding menus, accessibility bars and footers."""
+    clone = BeautifulSoup(str(soup), "html.parser")
+    for tag in clone.find_all(["script", "style", "noscript", "svg", "nav", "header", "footer", "aside", "form"]):
+        tag.decompose()
+    for tag in clone.find_all(True):
+        if tag.name is None or tag.attrs is None:
+            continue
+        marker = " ".join([str(tag.get("id") or ""), " ".join(tag.get("class") or [])]).lower()
+        if any(token in marker for token in ("menu", "navbar", "breadcrumb", "social", "accessibility", "language-switch", "topbar")):
+            tag.decompose()
+    main = clone.find("main") or clone.find("article") or clone.body or clone
+    return normalize_text(main.get_text(" "))
+
+
+def extract_page_title_hint(soup: BeautifulSoup) -> str:
+    for selector in ("h1", "h2", "title"):
+        for node in soup.find_all(selector):
+            candidate = normalize_text(node.get_text(" "))
+            if candidate and not is_navigation_label(candidate):
+                return candidate
+    return ""
+
+
+def candidate_title(title_hint: str, text: str, agency: str) -> str:
+    candidates = []
+    hint = normalize_text(title_hint)
+    if hint:
+        candidates.append(hint)
+    normalized = normalize_text(text)
+    for part in re.split(r"\s*[|]\s*|(?<=[.!?])\s+", normalized):
+        part = normalize_text(part)
+        if part:
+            candidates.append(part)
+        if len(candidates) >= 12:
+            break
+
+    def score(value: str) -> int:
+        lower = value.lower()
+        if not value or is_navigation_label(value):
+            return -100
+        total = sum(6 for signal in TITLE_SIGNAL_KEYWORDS if signal in lower)
+        total += 2 if re.search(r"\b(?:20\d{2}|advt|no\.?\s*[a-z0-9/-]+)\b", lower) else 0
+        total += 1 if 3 <= len(value.split()) <= 22 else 0
+        total -= 5 if len(value) > 220 else 0
+        return total
+
+    ranked = sorted(
+        ((score(value) + (3 if hint and value == hint else 0), -index, value) for index, value in enumerate(candidates)),
+        reverse=True,
+    )
+    if ranked and ranked[0][0] > 0:
+        chosen = ranked[0][2]
+    elif hint and not is_navigation_label(hint) and len(hint.split()) >= 3:
+        chosen = hint
+    else:
+        role_present = any(signal in normalized.lower() for signal in TITLE_SIGNAL_KEYWORDS[10:])
+        chosen = f"{normalize_text(agency)} Recruitment Notice" if role_present and normalize_text(agency) else ""
+
+    chosen = re.sub(r"\s+", " ", chosen).strip(" -|,.;:")
+    chosen = re.sub(r"\ben\s*$", "", chosen, flags=re.I).strip()
+    lower_chosen = chosen.lower().replace("&", "and")
+    if lower_chosen.startswith("bilingual advertisement") and not any(signal in lower_chosen for signal in TITLE_SIGNAL_KEYWORDS[10:]):
+        return ""
+    return chosen[:180].rstrip(" -|,.;:")
 
 
 def today() -> dt.date:
@@ -299,7 +439,7 @@ def build_session() -> requests.Session:
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36",
         "Accept": "text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8",
-        "Accept-Language": "en-IN,en;q=0.9,hi;q=0.7",
+        "Accept-Language": "en-IN,en;q=0.9",
         "Cache-Control": "no-cache",
     })
     return session
@@ -363,10 +503,32 @@ def anchor_targets(anchor, base_url: str) -> List[str]:
 
 
 def looks_like_notice(label: str, href: str) -> bool:
-    blob = text_lower(f"{label} {href}")
+    raw_label_present = bool(str(label or "").strip())
+    clean_label = normalize_text(label)
+    if raw_label_present and not clean_label:
+        return False
+    label_lower = clean_label.lower()
+    href_lower = text_lower(href)
+    blob = f"{label_lower} {href_lower}"
     if any(bad in blob for bad in NON_VACANCY_LINK_KEYWORDS):
         return False
-    return bool(keyword_hits(blob, NOTICE_LINK_KEYWORDS) or keyword_hits(blob, APPLY_KEYWORDS) or keyword_hits(blob, COMPUTER_KEYWORDS))
+    if clean_label and is_navigation_label(clean_label):
+        return False
+
+    label_has_signal = bool(
+        keyword_hits(clean_label, NOTICE_LINK_KEYWORDS)
+        or keyword_hits(clean_label, APPLY_KEYWORDS)
+        or keyword_hits(clean_label, COMPUTER_KEYWORDS)
+        or any(signal in label_lower for signal in TITLE_SIGNAL_KEYWORDS)
+    )
+    if label_has_signal:
+        return True
+
+    # A recruitment-looking URL is not enough when its visible label is an
+    # unrelated menu item (the source of the C-DOT symbols/navigation bug).
+    if label_lower not in GENERIC_ACTION_LABELS:
+        return False
+    return bool(keyword_hits(href_lower, NOTICE_LINK_KEYWORDS) or keyword_hits(href_lower, APPLY_KEYWORDS))
 
 
 def looks_like_pdf(label: str, href: str) -> bool:
@@ -581,7 +743,8 @@ def vacancy_from_text(
     text: str,
     link: str,
     source_url: str,
-    profile: Dict
+    profile: Dict,
+    title_hint: str = "",
 ) -> Optional[Vacancy]:
     cleaned = normalize_text(text)
     if len(cleaned) < 10:
@@ -598,9 +761,12 @@ def vacancy_from_text(
     start_date, apply_date = guess_start_last_dates(cleaned)
     score, status, reason = compute_match_status(cleaned, profile, apply_date)
 
-    # Generate compact name
-    name = cleaned[:180]
-    name = re.sub(r"\s+", " ", name)
+    # Generate a compact English-only title from the row/anchor heading rather
+    # than the first 180 characters of the entire page (which often starts with
+    # menus, Hindi labels and accessibility symbols).
+    name = candidate_title(title_hint, cleaned, agency)
+    if not name or is_navigation_label(name):
+        return None
     role_type = detect_role_type(cleaned)
 
     return Vacancy(
@@ -638,10 +804,16 @@ def _extract_page_candidates(
             continue
         row_text = " | ".join(cells)
         row_links: List[str] = []
+        anchor_labels: List[str] = []
         for a in tr.find_all("a"):
             row_links.extend(anchor_targets(a, page_url))
+            anchor_label = normalize_text(a.get_text(" ") or a.get("title") or "")
+            if anchor_label and not is_navigation_label(anchor_label):
+                anchor_labels.append(anchor_label)
         row_link = row_links[0] if row_links else page_url
-        v = vacancy_from_text(state, agency, row_text, row_link, source.get("url", page_url), profile)
+        row_title = next((label for label in anchor_labels if any(signal in label.lower() for signal in TITLE_SIGNAL_KEYWORDS)), "")
+        row_title = row_title or (cells[0] if cells else "")
+        v = vacancy_from_text(state, agency, row_text, row_link, source.get("url", page_url), profile, title_hint=row_title)
         if v:
             vacancies.append(v)
 
@@ -654,7 +826,7 @@ def _extract_page_candidates(
                 links.append((label, href))
                 # Add immediately only when the visible text itself contains enough signal.
                 if keyword_hits(label, COMPUTER_KEYWORDS) or keyword_hits(label, profile.get("preferred_roles", [])):
-                    v = vacancy_from_text(state, agency, label, href, source.get("url", page_url), profile)
+                    v = vacancy_from_text(state, agency, label, href, source.get("url", page_url), profile, title_hint=label)
                     if v:
                         vacancies.append(v)
 
@@ -748,9 +920,10 @@ def scrape_html_source(
         detail_count += 1
         stats["detail_pages_fetched"] = detail_count
         detail_soup = BeautifulSoup(page_bytes.decode("utf-8", errors="ignore"), "html.parser")
-        page_text = normalize_text(detail_soup.get_text(" "))
+        page_text = extract_page_text(detail_soup)
+        page_title = extract_page_title_hint(detail_soup) or label
         if keyword_hits(page_text, COMPUTER_KEYWORDS) or keyword_hits(page_text, profile.get("preferred_roles", [])):
-            v = vacancy_from_text(state, agency, page_text, href, url, profile)
+            v = vacancy_from_text(state, agency, page_text, href, url, profile, title_hint=page_title)
             if v:
                 vacancies.append(v)
         page_vacancies, page_links = _extract_page_candidates(detail_soup, href, source, profile)
@@ -780,9 +953,10 @@ def scrape_html_source(
             # A supposed PDF can actually be an HTML notice page; inspect it once.
             try:
                 extra_soup = BeautifulSoup(pdf_bytes.decode("utf-8", errors="ignore"), "html.parser")
-                extra_text = normalize_text(extra_soup.get_text(" "))
+                extra_text = extract_page_text(extra_soup)
+                extra_title = extract_page_title_hint(extra_soup) or label
                 if keyword_hits(extra_text, COMPUTER_KEYWORDS) or keyword_hits(extra_text, profile.get("preferred_roles", [])):
-                    v = vacancy_from_text(state, agency, extra_text, href, url, profile)
+                    v = vacancy_from_text(state, agency, extra_text, href, url, profile, title_hint=extra_title)
                     if v:
                         vacancies.append(v)
             except Exception:
@@ -791,7 +965,7 @@ def scrape_html_source(
         pdf_text = extract_pdf_text(pdf_bytes, max_pages=10)
         if pdf_text:
             combined = f"{label} {pdf_text}"
-            v = vacancy_from_text(state, agency, combined, href, url, profile)
+            v = vacancy_from_text(state, agency, combined, href, url, profile, title_hint=label)
             if v:
                 vacancies.append(v)
         pdf_count += 1

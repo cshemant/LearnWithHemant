@@ -1,0 +1,16 @@
+V176 - Government Jobs English-only title cleanup
+
+Changes:
+1. Government job titles and display fields are normalized to clean English/ASCII text.
+2. Hindi fragments, emoji, icon-font symbols, accessibility controls and obfuscated email text are removed.
+3. Menu/navigation items such as Awards & Accolades, Business Model, Corporate Profile, Universal Content and Single Sign On are rejected as false job listings.
+4. Recruitment page extraction now prefers H1/H2/table/anchor titles and excludes header, menu, footer and accessibility content.
+5. The scanner requests English pages only through Accept-Language.
+6. Confirmed scanner false positives are placed in the existing 410 URL registry.
+7. Orphan generated government-job folders are removed only when they are absent from both active jobs and the permanent archive. Legitimate expired jobs remain preserved.
+8. No new package dependency was added; the cleanup uses Python standard-library modules.
+
+Automatic behavior:
+- The nightly GitHub Actions workflow uses these rules on every scan.
+- Expired legitimate jobs still move to the archive.
+- Incorrectly generated pages are removed from listings/sitemaps and return 410.

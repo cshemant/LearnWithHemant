@@ -16,6 +16,8 @@ import importlib.util
 import json
 import os
 import re
+import html as html_lib
+import unicodedata
 import sys
 import subprocess
 from pathlib import Path
@@ -28,6 +30,7 @@ from job_archive_utils import load_json_payload, reconcile_jobs
 REPO_ROOT = Path(__file__).resolve().parents[1]
 FINDER_PATH = Path(__file__).with_name("govt_job_finder.py")
 MANUAL_JOBS_PATH = REPO_ROOT / "jobs" / "manual-jobs.json"
+INVALID_JOB_URLS_PATH = REPO_ROOT / "jobs" / "invalid-job-urls.json"
 
 # Auto-scraped government portals often contain FAQ, old notices, cut-off PDFs,
 # results, answer keys and other non-vacancy pages. These should not replace the
@@ -40,6 +43,110 @@ AUTO_EXCLUDE_TITLE_KEYWORDS = [
     "old advertisement", "archive", "archives",
 ]
 
+
+
+DISPLAY_FIELDS = {
+    "job", "subtitle", "eligible_for", "fit_reason", "why", "profile_tags",
+    "type", "status", "status_label", "last_date_display", "state", "agency",
+    "official_label", "notification_label", "apply_label",
+}
+
+FALSE_POSITIVE_TITLE_PHRASES = [
+    "awards and accolades", "awards & accolades", "awards accolades", "business model", "corporate profile",
+    "skip to main content", "screen reader access", "universal content",
+    "single sign on", "one digital identity", "question bank", "photo gallery",
+    "video gallery", "font size", "cut-off date for having completed graduation",
+]
+
+ROLE_TITLE_SIGNALS = [
+    "recruitment", "vacancy", "vacancies", "notification", "notice", "advertisement",
+    "advt", "job", "opening", "assistant professor", "lecturer", "teacher", "faculty",
+    "programmer", "developer", "scientist", "technical assistant", "computer operator",
+    "data entry operator", "junior assistant", "office assistant", "clerk", "stenographer",
+    "instructor", "engineer", "officer", "exam",
+]
+
+
+def english_display_text(value: Any) -> str:
+    text = html_lib.unescape(str(value or ""))
+    replacements = {
+        "–": "-", "—": "-", "−": "-", "•": " ", "·": " ",
+        "“": '"', "”": '"', "‘": "'", "’": "'", "…": "...",
+        "×": " ", "→": " ", "←": " ", "©": " ", "®": " ",
+        "\u200b": "", "\u200c": "", "\u200d": "", "\ufeff": "",
+    }
+    for source, target in replacements.items():
+        text = text.replace(source, target)
+    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("ascii")
+    text = re.sub(r"[A-Za-z0-9._%+\-]+\s*(?:\[at\]|\(at\)|@)\s*[A-Za-z0-9.\-]+\s*(?:\[dot\]|\(dot\)|\.)\s*[A-Za-z]{2,}", " ", text, flags=re.I)
+    text = re.sub(r"[^A-Za-z0-9\s&/(),.:'+%#\-]", " ", text)
+    text = re.sub(r"\(\s*cid\s*:\s*\d+\s*\)", " ", text, flags=re.I)
+    text = re.sub(r"\bA\+\s*A-\s*(?:U)?\b", " ", text, flags=re.I)
+    text = re.sub(r"(?:\s*[.:]\s*){3,}", " ", text)
+    text = re.sub(r"\(\s*[.\-:]+\s*\)", " ", text)
+    text = re.sub(r"\bskip\s+to\s+main\s+content\b", " ", text, flags=re.I)
+    text = re.sub(r"\s+", " ", text).strip(" -|,.;:")
+    return text
+
+
+def sanitize_job_record(job: Dict[str, Any]) -> Dict[str, Any]:
+    out = dict(job)
+    for field in DISPLAY_FIELDS:
+        if field in out:
+            out[field] = english_display_text(out.get(field))
+    if out.get("job"):
+        out["job"] = safe_job_title(out["job"])
+    return out
+
+
+def is_false_positive_title(title: str) -> bool:
+    normalized = english_display_text(title).lower()
+    normalized_words = normalized.replace("&", "and")
+    if not normalized or len(normalized) < 8:
+        return True
+    if any(phrase.replace("&", "and") in normalized_words for phrase in FALSE_POSITIVE_TITLE_PHRASES):
+        return True
+    if normalized.startswith("bilingual advertisement") and not any(
+        role in normalized for role in ROLE_TITLE_SIGNALS[8:]
+    ):
+        return True
+    return False
+
+
+def keep_historical_job(job: Dict[str, Any]) -> bool:
+    source = clean(job.get("source"))
+    if source in {"manual_curated", "manual_all_india_watchlist"}:
+        return True
+    return is_useful_auto_job(sanitize_job_record(job))
+
+
+def register_invalid_generated_jobs(jobs: List[Dict[str, Any]]) -> None:
+    """Send confirmed scanner false positives to the existing 410 registry.
+
+    This applies only to auto-generated rows rejected by the new quality filters;
+    legitimate expired jobs continue to move to the archive and are never added here.
+    """
+    new_paths = set()
+    for job in jobs:
+        source = clean(job.get("source"))
+        slug = clean(job.get("slug"))
+        if source == "auto_scanner" and slug and not keep_historical_job(job):
+            new_paths.add(f"/jobs/{slug}/")
+    if not new_paths:
+        return
+    try:
+        payload = json.loads(INVALID_JOB_URLS_PATH.read_text(encoding="utf-8")) if INVALID_JOB_URLS_PATH.exists() else {}
+    except Exception:
+        payload = {}
+    paths = {str(path).strip() for path in payload.get("paths", []) if str(path).strip()}
+    before = len(paths)
+    paths.update(new_paths)
+    payload["description"] = "Confirmed invalid, duplicate or incorrectly generated job URL paths. Legitimate expired jobs remain archived."
+    payload["paths"] = sorted(paths)
+    INVALID_JOB_URLS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    INVALID_JOB_URLS_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    if len(paths) > before:
+        print(f"[INFO] Added {len(paths) - before} scanner false-positive URL(s) to the 410 registry.")
 
 def load_finder_module():
     spec = importlib.util.spec_from_file_location("govt_job_finder", FINDER_PATH)
@@ -86,13 +193,14 @@ def display_date(raw: str, parsed: Optional[dt.date]) -> str:
 
 
 def safe_job_title(name: str) -> str:
-    name = clean(name)
-    for sep in [" | ", " - ", " – "]:
-        if sep in name:
-            first = clean(name.split(sep)[0])
-            if len(first) >= 12:
-                name = first
-                break
+    name = english_display_text(name)
+    # A pipe commonly separates portal metadata; a hyphen is often part of the
+    # real role name (for example "Assistant Professor / Lecturer - CSE").
+    if " | " in name:
+        first = english_display_text(name.split(" | ")[0])
+        if len(first) >= 12:
+            name = first
+    name = re.sub(r"\ben\s*$", "", name, flags=re.I).strip()
     return name[:92].rstrip(" -|,.;") or "Government Job Notice"
 
 
@@ -183,11 +291,11 @@ def infer_profile_tags(text: str) -> str:
 
 
 def row_to_job(row: Dict[str, Any]) -> Dict[str, Any]:
-    name = clean(row.get("Name"))
-    eligibility = clean(row.get("Eligibility")).replace("Auto-extracted:", "").strip()
-    reason = clean(row.get("Reason"))
-    agency = clean(row.get("Agency"))
-    state = clean(row.get("State"))
+    name = english_display_text(row.get("Name"))
+    eligibility = english_display_text(row.get("Eligibility")).replace("Auto-extracted:", "").strip()
+    reason = english_display_text(row.get("Reason"))
+    agency = english_display_text(row.get("Agency"))
+    state = english_display_text(row.get("State"))
     role = role_type(clean(row.get("Role Type")), f"{name} {eligibility} {reason}")
     raw_apply_date = clean(row.get("Apply Date"))
     parsed_apply_date = parse_date(raw_apply_date)
@@ -242,7 +350,7 @@ def load_manual_jobs(path: Path = MANUAL_JOBS_PATH) -> List[Dict[str, Any]]:
         clean_jobs: List[Dict[str, Any]] = []
         for job in jobs:
             if isinstance(job, dict) and clean(job.get("job")) and clean(job.get("official_link")):
-                job = dict(job)
+                job = sanitize_job_record(dict(job))
                 job["source"] = job.get("source") or "manual_curated"
                 clean_jobs.append(job)
         return clean_jobs
@@ -292,8 +400,9 @@ def previous_active_auto_jobs(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
         if not isinstance(job, dict) or is_closed_job(job):
             continue
         source = clean(job.get("source"))
-        if source == "auto_scanner" or (source not in {"manual_curated", "manual_all_india_watchlist"} and source != ""):
-            out.append(dict(job))
+        cleaned_job = sanitize_job_record(job)
+        if (source == "auto_scanner" or (source not in {"manual_curated", "manual_all_india_watchlist"} and source != "")) and is_useful_auto_job(cleaned_job):
+            out.append(cleaned_job)
     return out
 
 
@@ -309,13 +418,15 @@ def is_closed_job(job: Dict[str, Any]) -> bool:
 
 
 def is_useful_auto_job(job: Dict[str, Any]) -> bool:
+    job = sanitize_job_record(job)
     title = clean(job.get("job")).lower()
     subtitle = clean(job.get("subtitle")).lower()
     eligible = clean(job.get("eligible_for")).lower()
     agency = clean(job.get("agency")).lower()
     blob = f"{title} {subtitle} {eligible} {agency}"
 
-    # Remove obvious non-vacancy pages, but do not over-filter.
+    if is_false_positive_title(title):
+        return False
     if any(bad in blob for bad in AUTO_EXCLUDE_TITLE_KEYWORDS):
         return False
     if is_closed_job(job):
@@ -323,19 +434,16 @@ def is_useful_auto_job(job: Dict[str, Any]) -> bool:
     if job.get("status") == "Avoid":
         return False
 
-    score = int(job.get("match_score") or 0)
-    useful_words = [
-        "recruit", "vacancy", "advertisement", "notification", "apply",
-        "assistant professor", "lecturer", "faculty", "computer", "it",
-        "programmer", "software", "scientist", "assistant", "clerk", "operator"
-    ]
+    # A score alone must not promote a navigation/menu fragment. The visible
+    # title itself needs to look like a real notice, role or recruitment item.
+    has_title_signal = any(signal in title for signal in ROLE_TITLE_SIGNALS)
+    if not has_title_signal:
+        return False
 
-    # Keep more all-India scanner output as Manual Check/Watch, instead of hiding it.
+    score = int(job.get("match_score") or 0)
     if score >= 20:
         return True
-    if any(word in blob for word in useful_words):
-        return True
-    return False
+    return any(signal in blob for signal in ROLE_TITLE_SIGNALS)
 
 
 def merge_manual_and_auto_jobs(manual_jobs: List[Dict[str, Any]], auto_jobs: List[Dict[str, Any]], limit: int) -> List[Dict[str, Any]]:
@@ -343,6 +451,7 @@ def merge_manual_and_auto_jobs(manual_jobs: List[Dict[str, Any]], auto_jobs: Lis
     seen = set()
 
     def add(job: Dict[str, Any]) -> None:
+        job = sanitize_job_record(job)
         key = (clean(job.get("job")).lower(), clean(job.get("official_link")).lower())
         if key in seen or not key[0] or not key[1]:
             return
@@ -492,10 +601,13 @@ def main() -> None:
         archive_json = REPO_ROOT / args.archive_json
         payload = load_json_payload(out_json)
         existing_archive = load_json_payload(archive_json)
+        register_invalid_generated_jobs(list(payload.get("jobs") or []) + list(existing_archive.get("jobs") or []))
+        current_clean = [sanitize_job_record(job) for job in (payload.get("jobs") or []) if keep_historical_job(job)]
+        archive_clean = [sanitize_job_record(job) for job in (existing_archive.get("jobs") or []) if keep_historical_job(job)]
         active_jobs, archived_jobs = reconcile_jobs(
-            payload.get("jobs") or [],
+            current_clean,
             [],
-            existing_archive.get("jobs") or [],
+            archive_clean,
             kind="government",
             missing_grace_days=14,
         )
@@ -540,10 +652,14 @@ def main() -> None:
     )
 
     existing_archive = load_json_payload(archive_json)
+    register_invalid_generated_jobs(list(previous_payload.get("jobs") or []) + list(existing_archive.get("jobs") or []))
+    current_clean = [sanitize_job_record(job) for job in (payload.get("jobs") or []) if keep_historical_job(job)]
+    previous_clean = [sanitize_job_record(job) for job in (previous_payload.get("jobs") or []) if keep_historical_job(job)]
+    archive_clean = [sanitize_job_record(job) for job in (existing_archive.get("jobs") or []) if keep_historical_job(job)]
     active_jobs, archived_jobs = reconcile_jobs(
-        payload.get("jobs") or [],
-        previous_payload.get("jobs") or [],
-        existing_archive.get("jobs") or [],
+        current_clean,
+        previous_clean,
+        archive_clean,
         kind="government",
         missing_grace_days=14,
     )

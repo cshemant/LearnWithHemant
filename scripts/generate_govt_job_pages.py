@@ -4,6 +4,7 @@ import datetime as dt
 import html
 import json
 import re
+import shutil
 from typing import Any, Dict, Iterable, List
 
 from job_archive_utils import archive_sitemap_jobs, clean, load_json_payload, slugify
@@ -11,6 +12,7 @@ from job_archive_utils import archive_sitemap_jobs, clean, load_json_payload, sl
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "jobs" / "jobs-data.json"
 ARCHIVE_DATA = ROOT / "jobs" / "job-archive.json"
+INVALID_URLS_DATA = ROOT / "jobs" / "invalid-job-urls.json"
 BASE = "https://learnwithhemant.com"
 TODAY = dt.date.today()
 RETENTION_DAYS = 365
@@ -18,6 +20,56 @@ RETENTION_DAYS = 365
 
 def esc(value: Any) -> str:
     return html.escape(clean(value), quote=True)
+
+
+def register_invalid_paths(paths: Iterable[str]) -> None:
+    normalized = {"/" + clean(path).strip("/") + "/" for path in paths if clean(path)}
+    if not normalized:
+        return
+    try:
+        payload = json.loads(INVALID_URLS_DATA.read_text(encoding="utf-8")) if INVALID_URLS_DATA.exists() else {}
+    except Exception:
+        payload = {}
+    existing = {str(path).strip() for path in payload.get("paths", []) if str(path).strip()}
+    before = len(existing)
+    existing.update(normalized)
+    payload["description"] = "Confirmed invalid, duplicate or incorrectly generated job URL paths. Legitimate expired jobs remain archived."
+    payload["paths"] = sorted(existing)
+    INVALID_URLS_DATA.parent.mkdir(parents=True, exist_ok=True)
+    INVALID_URLS_DATA.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    if len(existing) > before:
+        print(f"[INFO] Added {len(existing) - before} orphan government job URL(s) to the 410 registry")
+
+
+def cleanup_orphan_generated_dirs(valid_slugs: Iterable[str]) -> None:
+    """Remove only generated govt-job folders absent from active and archive data.
+
+    Legitimate expired posts are safe because their slugs remain in job-archive.json.
+    This targets stale scanner mistakes that may still exist in Git after their rows
+    are removed from JSON, including the C-DOT navigation/symbol pages.
+    """
+    jobs_root = ROOT / "jobs"
+    valid = {clean(slug) for slug in valid_slugs if clean(slug)}
+    reserved = {"archive", "faculty-jobs"}
+    removed_paths = []
+    if not jobs_root.exists():
+        return
+    for child in jobs_root.iterdir():
+        if not child.is_dir() or child.name in reserved or child.name in valid:
+            continue
+        index = child / "index.html"
+        if not index.exists():
+            continue
+        try:
+            sample = index.read_text(encoding="utf-8", errors="ignore")[:12000]
+        except Exception:
+            continue
+        if "govt-job-detail-body" not in sample:
+            continue
+        removed_paths.append(f"/jobs/{child.name}/")
+        shutil.rmtree(child)
+        print(f"[INFO] Removed orphan generated government job folder: {child.name}")
+    register_invalid_paths(removed_paths)
 
 
 def ensure_slugs(jobs: List[Dict[str, Any]], used=None) -> None:
@@ -261,6 +313,7 @@ def main() -> None:
     used = set()
     ensure_slugs(active_jobs, used)
     ensure_slugs(archived_jobs, used)
+    cleanup_orphan_generated_dirs([job.get("slug") for job in active_jobs + archived_jobs])
     payload['jobs'] = active_jobs
     archive_payload['jobs'] = archived_jobs
     DATA.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding='utf-8')
