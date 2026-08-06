@@ -42,23 +42,28 @@ def register_invalid_paths(paths: Iterable[str]) -> None:
 
 
 def cleanup_orphan_generated_dirs(valid_slugs: Iterable[str]) -> None:
-    """Remove only generated govt-job folders absent from active and archive data.
+    """Never delete an old generated URL merely because it is absent today.
 
-    Legitimate expired posts are safe because their slugs remain in job-archive.json.
-    This targets stale scanner mistakes that may still exist in Git after their rows
-    are removed from JSON, including the C-DOT navigation/symbol pages.
+    Local release ZIPs can contain a smaller/stale jobs-data.json. In older
+    versions, that caused this function to delete valid historical folders.
+    V177 only removes folders that are explicitly listed in
+    jobs/invalid-job-urls.json. All other orphan folders are preserved so an
+    already-indexed URL cannot become a 404.
     """
     jobs_root = ROOT / "jobs"
-    valid = {clean(slug) for slug in valid_slugs if clean(slug)}
-    reserved = {"archive", "faculty-jobs"}
-    removed_paths = []
+    invalid_payload = load_json_payload(INVALID_URLS_DATA)
+    invalid_slugs = set()
+    for raw_path in invalid_payload.get("paths", []):
+        match = re.fullmatch(r"/jobs/([^/]+)/?", clean(raw_path))
+        if match:
+            invalid_slugs.add(match.group(1))
     if not jobs_root.exists():
         return
-    for child in jobs_root.iterdir():
-        if not child.is_dir() or child.name in reserved or child.name in valid:
-            continue
+    removed = 0
+    for slug in sorted(invalid_slugs):
+        child = jobs_root / slug
         index = child / "index.html"
-        if not index.exists():
+        if not child.is_dir() or not index.exists():
             continue
         try:
             sample = index.read_text(encoding="utf-8", errors="ignore")[:12000]
@@ -66,10 +71,10 @@ def cleanup_orphan_generated_dirs(valid_slugs: Iterable[str]) -> None:
             continue
         if "govt-job-detail-body" not in sample:
             continue
-        removed_paths.append(f"/jobs/{child.name}/")
         shutil.rmtree(child)
-        print(f"[INFO] Removed orphan generated government job folder: {child.name}")
-    register_invalid_paths(removed_paths)
+        removed += 1
+        print(f"[INFO] Removed explicitly invalid government job folder: {slug}")
+    print(f"[INFO] Historical government URL cleanup is non-destructive; removed {removed} explicitly invalid folder(s).")
 
 
 def ensure_slugs(jobs: List[Dict[str, Any]], used=None) -> None:

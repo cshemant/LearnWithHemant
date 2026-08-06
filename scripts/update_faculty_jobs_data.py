@@ -20,6 +20,7 @@ import hashlib
 import html
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence
@@ -2145,6 +2146,13 @@ def main() -> None:
     parser.add_argument("--max-links-per-source", type=int, default=100)
     parser.add_argument("--mode", default="full", help="Use a number like --mode 10 for quick testing on only that many source URLs/posts.")
     args = parser.parse_args()
+
+    # Restore faculty URL history before any new scrape or page rebuild.
+    # This makes normal Git pushes non-destructive even when the uploaded ZIP
+    # contains an older/smaller data snapshot.
+    history_guard = REPO_ROOT / "scripts" / "preserve_job_history.py"
+    if history_guard.exists():
+        subprocess.check_call([sys.executable, str(history_guard), "--kind", "faculty"], cwd=str(REPO_ROOT))
 
     quick_limit = None
     if str(args.mode).strip().isdigit():

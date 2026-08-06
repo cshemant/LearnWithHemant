@@ -1,0 +1,45 @@
+V177 - Permanent Job URL Protection
+===================================
+
+Why the count dropped after a local push
+----------------------------------------
+The local ZIP contained only its own jobs-data.json and job-archive.json snapshot.
+When that smaller snapshot was committed, Git treated it as the new source of truth.
+The previous page generator also removed government-job folders absent from those two
+files. Therefore a normal code release could temporarily replace 60+ live records
+with the 26 records packaged locally.
+
+What V177 changes
+-----------------
+1. scripts/preserve_job_history.py reads prior Git commits and rebuilds a permanent
+   URL ledger for both government and faculty jobs.
+2. Recently visible, still-open jobs lost by a stale local push are restored to the
+   active list for a 14-day verification window.
+3. Expired or older records are moved to the archive instead of being deleted.
+4. Every valid historical slug is stored in:
+      jobs/job-url-ledger.json
+      jobs/faculty-jobs/faculty-job-url-ledger.json
+5. Government page cleanup is non-destructive. A folder is removed only when its
+   exact URL is explicitly listed in jobs/invalid-job-urls.json.
+6. Every nightly/twice-daily cron run restores history before scraping.
+7. A new push workflow repairs a stale local push before publishing the protected
+   snapshot to a separate production branch.
+
+One-time deployment setup
+-------------------------
+1. Push V177 normally to main. Do not force-push or rewrite Git history.
+2. Open GitHub > Actions > Preserve Job URLs and Publish Safely.
+3. Confirm that the workflow succeeds. It will create/update a branch named:
+      production
+4. In Cloudflare Pages, change the Production branch from main to production.
+5. Keep doing development and local pushes on main.
+
+After this setup, Cloudflare receives only the repaired production branch. A smaller
+local snapshot on main cannot be deployed to visitors before the archive is merged.
+
+Recovery limitation
+-------------------
+The 60+ earlier jobs can be restored automatically only when a commit containing
+them still exists in GitHub history (or in the production branch). If the repository
+was force-pushed and that history is no longer reachable, Git cannot reconstruct the
+missing records from filenames alone; restore that earlier commit or local clone once.

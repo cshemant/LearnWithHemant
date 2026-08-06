@@ -596,6 +596,13 @@ def main() -> None:
 
     os.chdir(REPO_ROOT)
 
+    # Recover any richer job history from earlier Git commits before reading the
+    # current JSON. This prevents a stale local release push from shrinking the
+    # active list or erasing already-indexed URLs.
+    history_guard = REPO_ROOT / "scripts" / "preserve_job_history.py"
+    if history_guard.exists():
+        subprocess.check_call([sys.executable, str(history_guard), "--kind", "government"], cwd=str(REPO_ROOT))
+
     if str(args.mode).strip().lower() in {"archive-only", "rebuild-pages", "repair-pages"}:
         out_json = REPO_ROOT / args.out_json
         archive_json = REPO_ROOT / args.archive_json

@@ -1,14 +1,6 @@
 name: Nightly Govt Jobs Dashboard Update
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "scripts/govt_job_finder.py"
-      - "scripts/update_jobs_dashboard_data.py"
-      - "sources_gov_jobs.csv"
-      - "jobs/manual-jobs.json"
-      - "requirements-govt-jobs.txt"
   schedule:
     # Runs around midnight IST every night. GitHub cron uses UTC.
     # 18:35 UTC = 12:05 AM IST.
@@ -19,8 +11,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: nightly-govt-jobs-dashboard-update
-  cancel-in-progress: true
+  group: job-data-writes-main
+  cancel-in-progress: false
 
 jobs:
   update-govt-jobs:
@@ -47,6 +39,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-govt-jobs.txt
+
+      - name: Recover permanent job URL history
+        run: |
+          python scripts/preserve_job_history.py --kind government
 
       - name: Run nightly govt job scanner
         run: |

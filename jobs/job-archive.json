@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T00:32:45+05:30",
+  "generated_at": "2026-08-07T01:02:20+05:30",
   "retention_days_in_sitemap": 365,
   "jobs": [
     {
@@ -25,7 +25,6 @@
       "notification_label": "Notice",
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Apply",
-      "profile_tags": "",
       "slug": "cet-senior-secondary-level-2026-rajasthan-office-2026",
       "detail_url": "/jobs/cet-senior-secondary-level-2026-rajasthan-office-2026/",
       "first_seen_at": "2026-08-04",
@@ -121,7 +120,6 @@
       "notification_label": "Notice",
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Verify",
-      "profile_tags": "",
       "slug": "assistant-prosecution-officer-exam-2026-rajasthan-non-cse-2026",
       "detail_url": "/jobs/assistant-prosecution-officer-exam-2026-rajasthan-non-cse-2026/",
       "first_seen_at": "2026-08-04",
@@ -162,5 +160,6 @@
       "archived_at": "2026-08-04",
       "archive_reason": "deadline_expired"
     }
-  ]
+  ],
+  "history_protected": true
 }

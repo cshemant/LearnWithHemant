@@ -11,8 +11,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: twice-daily-faculty-jobs-update
-  cancel-in-progress: true
+  group: job-data-writes-main
+  cancel-in-progress: false
 
 jobs:
   update-faculty-jobs:
@@ -39,6 +39,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-govt-jobs.txt
+
+      - name: Recover permanent faculty URL history
+        run: |
+          python scripts/preserve_job_history.py --kind faculty
 
       - name: Generate faculty jobs pages
         run: |
