@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T06:39:13+05:30",
+  "generated_at": "2026-08-08T01:43:16+05:30",
   "retention_days_in_sitemap": 365,
   "jobs": [
     {
@@ -1694,11 +1694,13 @@
       "notification_label": "Notice",
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Apply",
-      "slug": "cet-senior-secondary-level-2026-rajasthan-office",
-      "detail_url": "/jobs/cet-senior-secondary-level-2026-rajasthan-office/",
+      "slug": "cet-senior-secondary-level-2026-rajasthan-office-2026",
+      "detail_url": "/jobs/cet-senior-secondary-level-2026-rajasthan-office-2026/",
+      "first_seen_at": "2026-08-04",
+      "last_seen_at": "2026-08-04",
       "is_archived": true,
       "archived_at": "2026-08-04",
-      "archive_reason": "permanent_url_ledger"
+      "archive_reason": "deadline_expired"
     },
     {
       "job": "SET 2026 - Computer Science and Applications",
@@ -1724,11 +1726,13 @@
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Apply",
       "profile_tags": "M.Tech CSE",
-      "slug": "set-2026-computer-science-and-applications-rajasthan-teaching",
-      "detail_url": "/jobs/set-2026-computer-science-and-applications-rajasthan-teaching/",
+      "slug": "set-2026-computer-science-and-applications-rajasthan-teaching-2026",
+      "detail_url": "/jobs/set-2026-computer-science-and-applications-rajasthan-teaching-2026/",
+      "first_seen_at": "2026-08-04",
+      "last_seen_at": "2026-08-04",
       "is_archived": true,
       "archived_at": "2026-08-04",
-      "archive_reason": "permanent_url_ledger"
+      "archive_reason": "deadline_expired"
     },
     {
       "job": "Senior Scientific Officer 2026",
@@ -1754,11 +1758,13 @@
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Check",
       "profile_tags": "Experience Needed",
-      "slug": "senior-scientific-officer-2026-rajasthan-technical",
-      "detail_url": "/jobs/senior-scientific-officer-2026-rajasthan-technical/",
+      "slug": "senior-scientific-officer-2026-rajasthan-technical-2026",
+      "detail_url": "/jobs/senior-scientific-officer-2026-rajasthan-technical-2026/",
+      "first_seen_at": "2026-08-04",
+      "last_seen_at": "2026-08-04",
       "is_archived": true,
       "archived_at": "2026-08-04",
-      "archive_reason": "permanent_url_ledger"
+      "archive_reason": "deadline_expired"
     },
     {
       "job": "Assistant Prosecution Officer Exam 2026",
@@ -1783,11 +1789,13 @@
       "notification_label": "Notice",
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Verify",
-      "slug": "assistant-prosecution-officer-exam-2026-rajasthan-non-cse",
-      "detail_url": "/jobs/assistant-prosecution-officer-exam-2026-rajasthan-non-cse/",
+      "slug": "assistant-prosecution-officer-exam-2026-rajasthan-non-cse-2026",
+      "detail_url": "/jobs/assistant-prosecution-officer-exam-2026-rajasthan-non-cse-2026/",
+      "first_seen_at": "2026-08-04",
+      "last_seen_at": "2026-08-04",
       "is_archived": true,
       "archived_at": "2026-08-04",
-      "archive_reason": "permanent_url_ledger"
+      "archive_reason": "deadline_expired"
     },
     {
       "job": "Raj. State and Sub. Services Comb. Comp Exam 2026",
@@ -1813,11 +1821,13 @@
       "apply_link": "https://recruitment.rajasthan.gov.in/",
       "apply_label": "Apply",
       "profile_tags": "B.Tech CSE",
-      "slug": "raj-state-and-sub-services-comb-comp-exam-2026-rajasthan-office",
-      "detail_url": "/jobs/raj-state-and-sub-services-comb-comp-exam-2026-rajasthan-office/",
+      "slug": "raj-state-and-sub-services-comb-comp-exam-2026-rajasthan-office-2026",
+      "detail_url": "/jobs/raj-state-and-sub-services-comb-comp-exam-2026-rajasthan-office-2026/",
+      "first_seen_at": "2026-08-04",
+      "last_seen_at": "2026-08-04",
       "is_archived": true,
       "archived_at": "2026-08-04",
-      "archive_reason": "permanent_url_ledger"
+      "archive_reason": "deadline_expired"
     }
   ]
 }
