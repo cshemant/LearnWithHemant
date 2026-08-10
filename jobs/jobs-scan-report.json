@@ -1,8 +1,8 @@
 {
   "sources_total": 44,
-  "sources_reached": 18,
-  "sources_failed": 26,
-  "candidate_count": 851,
+  "sources_reached": 19,
+  "sources_failed": 25,
+  "candidate_count": 885,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -79,7 +79,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 1,
-      "candidates": 52,
+      "candidates": 70,
       "errors": []
     },
     {
@@ -140,12 +140,12 @@
       "state": "Central",
       "agency": "NCS Govt Jobs",
       "url": "https://www.ncs.gov.in/job-seeker/Pages/GovtJob.aspx",
-      "landing_status": 404,
+      "landing_status": null,
       "detail_pages_fetched": 0,
       "pdfs_fetched": 0,
       "candidates": 0,
       "errors": [
-        "landing page unavailable (404)"
+        "landing page unavailable (network error)"
       ]
     },
     {
@@ -186,13 +186,11 @@
       "state": "Jharkhand",
       "agency": "JPSC",
       "url": "https://www.jpsc.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
+      "landing_status": 200,
+      "detail_pages_fetched": 8,
+      "pdfs_fetched": 10,
+      "candidates": 31,
+      "errors": []
     },
     {
       "state": "Maharashtra",
@@ -257,9 +255,9 @@
       "agency": "Kerala PSC",
       "url": "https://www.keralapsc.gov.in/notifications",
       "landing_status": 200,
-      "detail_pages_fetched": 6,
+      "detail_pages_fetched": 8,
       "pdfs_fetched": 2,
-      "candidates": 11,
+      "candidates": 14,
       "errors": []
     },
     {
@@ -279,7 +277,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 3,
       "pdfs_fetched": 0,
-      "candidates": 87,
+      "candidates": 86,
       "errors": []
     },
     {
@@ -471,7 +469,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 1,
       "pdfs_fetched": 10,
-      "candidates": 425,
+      "candidates": 426,
       "errors": []
     },
     {
