@@ -1,8 +1,8 @@
 {
   "sources_total": 44,
-  "sources_reached": 19,
-  "sources_failed": 25,
-  "candidate_count": 884,
+  "sources_reached": 20,
+  "sources_failed": 24,
+  "candidate_count": 890,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -67,9 +67,9 @@
       "agency": "BTSC",
       "url": "https://btsc.bihar.gov.in/recruitment",
       "landing_status": 200,
-      "detail_pages_fetched": 1,
+      "detail_pages_fetched": 3,
       "pdfs_fetched": 10,
-      "candidates": 46,
+      "candidates": 93,
       "errors": []
     },
     {
@@ -79,7 +79,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 1,
-      "candidates": 70,
+      "candidates": 58,
       "errors": []
     },
     {
@@ -140,13 +140,11 @@
       "state": "Central",
       "agency": "NCS Govt Jobs",
       "url": "https://www.ncs.gov.in/job-seeker/Pages/GovtJob.aspx",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
+      "landing_status": 200,
+      "detail_pages_fetched": 2,
       "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
+      "candidates": 8,
+      "errors": []
     },
     {
       "state": "Madhya Pradesh",
@@ -255,9 +253,9 @@
       "agency": "Kerala PSC",
       "url": "https://www.keralapsc.gov.in/notifications",
       "landing_status": 200,
-      "detail_pages_fetched": 8,
+      "detail_pages_fetched": 6,
       "pdfs_fetched": 2,
-      "candidates": 14,
+      "candidates": 11,
       "errors": []
     },
     {
