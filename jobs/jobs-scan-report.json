@@ -2,7 +2,7 @@
   "sources_total": 44,
   "sources_reached": 19,
   "sources_failed": 25,
-  "candidate_count": 884,
+  "candidate_count": 882,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -253,9 +253,9 @@
       "agency": "Kerala PSC",
       "url": "https://www.keralapsc.gov.in/notifications",
       "landing_status": 200,
-      "detail_pages_fetched": 8,
+      "detail_pages_fetched": 6,
       "pdfs_fetched": 2,
-      "candidates": 15,
+      "candidates": 11,
       "errors": []
     },
     {
