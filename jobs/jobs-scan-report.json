@@ -2,7 +2,7 @@
   "sources_total": 44,
   "sources_reached": 18,
   "sources_failed": 26,
-  "candidate_count": 850,
+  "candidate_count": 528,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -141,7 +141,7 @@
       "agency": "NCS Govt Jobs",
       "url": "https://www.ncs.gov.in/job-seeker/Pages/GovtJob.aspx",
       "landing_status": 200,
-      "detail_pages_fetched": 2,
+      "detail_pages_fetched": 3,
       "pdfs_fetched": 0,
       "candidates": 8,
       "errors": []
@@ -184,13 +184,11 @@
       "state": "Jharkhand",
       "agency": "JPSC",
       "url": "https://www.jpsc.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
+      "landing_status": 200,
+      "detail_pages_fetched": 8,
+      "pdfs_fetched": 10,
+      "candidates": 31,
+      "errors": []
     },
     {
       "state": "Maharashtra",
@@ -255,9 +253,9 @@
       "agency": "Kerala PSC",
       "url": "https://www.keralapsc.gov.in/notifications",
       "landing_status": 200,
-      "detail_pages_fetched": 8,
+      "detail_pages_fetched": 6,
       "pdfs_fetched": 2,
-      "candidates": 14,
+      "candidates": 11,
       "errors": []
     },
     {
@@ -468,11 +466,13 @@
       "state": "Arunachal Pradesh",
       "agency": "Arunachal Pradesh PSC Advertisements",
       "url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
-      "landing_status": 200,
-      "detail_pages_fetched": 1,
-      "pdfs_fetched": 10,
-      "candidates": 426,
-      "errors": []
+      "landing_status": 503,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (503)"
+      ]
     },
     {
       "state": "Meghalaya",
@@ -481,7 +481,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 4,
       "pdfs_fetched": 10,
-      "candidates": 155,
+      "candidates": 157,
       "errors": []
     },
     {
@@ -497,11 +497,11 @@
       ]
     }
   ],
-  "useful_auto_count": 21,
+  "useful_auto_count": 8,
   "carried_auto_count": 0,
   "active_manual_count": 0,
   "watch_source_count": 21,
   "expired_manual_count": 5,
-  "final_dashboard_count": 21,
+  "final_dashboard_count": 8,
   "scan_status": "ok"
 }
