@@ -1,7 +1,7 @@
 {
   "sources_total": 44,
-  "sources_reached": 19,
-  "sources_failed": 25,
+  "sources_reached": 18,
+  "sources_failed": 26,
   "candidate_count": 875,
   "source_results": [
     {
@@ -79,7 +79,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 1,
-      "candidates": 28,
+      "candidates": 34,
       "errors": []
     },
     {
@@ -98,11 +98,13 @@
       "state": "Delhi",
       "agency": "DSSSB",
       "url": "https://dsssb.delhi.gov.in/dsssb-vacancies",
-      "landing_status": 200,
-      "detail_pages_fetched": 4,
-      "pdfs_fetched": 10,
-      "candidates": 6,
-      "errors": []
+      "landing_status": null,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
     },
     {
       "state": "Central",
@@ -255,7 +257,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 2,
-      "candidates": 15,
+      "candidates": 17,
       "errors": []
     },
     {
@@ -468,8 +470,8 @@
       "url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "landing_status": 200,
       "detail_pages_fetched": 1,
-      "pdfs_fetched": 10,
-      "candidates": 426,
+      "pdfs_fetched": 0,
+      "candidates": 418,
       "errors": []
     },
     {
@@ -495,11 +497,11 @@
       ]
     }
   ],
-  "useful_auto_count": 27,
+  "useful_auto_count": 26,
   "carried_auto_count": 0,
   "active_manual_count": 0,
   "watch_source_count": 21,
   "expired_manual_count": 5,
-  "final_dashboard_count": 27,
+  "final_dashboard_count": 26,
   "scan_status": "ok"
 }
