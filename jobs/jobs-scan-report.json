@@ -2,7 +2,7 @@
   "sources_total": 44,
   "sources_reached": 18,
   "sources_failed": 26,
-  "candidate_count": 875,
+  "candidate_count": 873,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -470,8 +470,8 @@
       "url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "landing_status": 200,
       "detail_pages_fetched": 1,
-      "pdfs_fetched": 0,
-      "candidates": 418,
+      "pdfs_fetched": 10,
+      "candidates": 426,
       "errors": []
     },
     {
