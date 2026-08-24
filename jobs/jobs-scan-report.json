@@ -1,8 +1,8 @@
 {
   "sources_total": 44,
-  "sources_reached": 18,
-  "sources_failed": 26,
-  "candidate_count": 873,
+  "sources_reached": 17,
+  "sources_failed": 27,
+  "candidate_count": 869,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -78,7 +78,7 @@
       "url": "https://uppsc.up.nic.in/CandidatePages/Notifications.aspx",
       "landing_status": 200,
       "detail_pages_fetched": 8,
-      "pdfs_fetched": 1,
+      "pdfs_fetched": 0,
       "candidates": 34,
       "errors": []
     },
@@ -264,11 +264,13 @@
       "state": "Odisha",
       "agency": "OPSC",
       "url": "https://www.opsc.gov.in/Public/OPSC/Default.aspx",
-      "landing_status": 200,
-      "detail_pages_fetched": 5,
+      "landing_status": null,
+      "detail_pages_fetched": 0,
       "pdfs_fetched": 0,
-      "candidates": 6,
-      "errors": []
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
     },
     {
       "state": "West Bengal",
@@ -438,8 +440,8 @@
       "url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "landing_status": 200,
       "detail_pages_fetched": 7,
-      "pdfs_fetched": 6,
-      "candidates": 42,
+      "pdfs_fetched": 4,
+      "candidates": 36,
       "errors": []
     },
     {
@@ -471,7 +473,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 1,
       "pdfs_fetched": 10,
-      "candidates": 426,
+      "candidates": 427,
       "errors": []
     },
     {
