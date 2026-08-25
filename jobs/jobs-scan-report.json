@@ -78,7 +78,7 @@
       "url": "https://uppsc.up.nic.in/CandidatePages/Notifications.aspx",
       "landing_status": 200,
       "detail_pages_fetched": 8,
-      "pdfs_fetched": 0,
+      "pdfs_fetched": 1,
       "candidates": 34,
       "errors": []
     },
@@ -110,11 +110,13 @@
       "state": "Central",
       "agency": "SSC",
       "url": "https://ssc.gov.in/",
-      "landing_status": 200,
+      "landing_status": null,
       "detail_pages_fetched": 0,
       "pdfs_fetched": 0,
       "candidates": 0,
-      "errors": []
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
     },
     {
       "state": "Central",
@@ -264,13 +266,11 @@
       "state": "Odisha",
       "agency": "OPSC",
       "url": "https://www.opsc.gov.in/Public/OPSC/Default.aspx",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
+      "landing_status": 200,
+      "detail_pages_fetched": 5,
       "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
+      "candidates": 6,
+      "errors": []
     },
     {
       "state": "West Bengal",
@@ -440,8 +440,8 @@
       "url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "landing_status": 200,
       "detail_pages_fetched": 7,
-      "pdfs_fetched": 4,
-      "candidates": 36,
+      "pdfs_fetched": 3,
+      "candidates": 35,
       "errors": []
     },
     {
