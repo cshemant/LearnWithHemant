@@ -1,8 +1,8 @@
 {
   "sources_total": 44,
-  "sources_reached": 17,
-  "sources_failed": 27,
-  "candidate_count": 868,
+  "sources_reached": 18,
+  "sources_failed": 26,
+  "candidate_count": 862,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -69,7 +69,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 1,
       "pdfs_fetched": 10,
-      "candidates": 47,
+      "candidates": 48,
       "errors": []
     },
     {
@@ -110,13 +110,11 @@
       "state": "Central",
       "agency": "SSC",
       "url": "https://ssc.gov.in/",
-      "landing_status": null,
+      "landing_status": 200,
       "detail_pages_fetched": 0,
       "pdfs_fetched": 0,
       "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
+      "errors": []
     },
     {
       "state": "Central",
@@ -257,9 +255,9 @@
       "agency": "Kerala PSC",
       "url": "https://www.keralapsc.gov.in/notifications",
       "landing_status": 200,
-      "detail_pages_fetched": 8,
+      "detail_pages_fetched": 6,
       "pdfs_fetched": 2,
-      "candidates": 16,
+      "candidates": 13,
       "errors": []
     },
     {
@@ -373,7 +371,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 10,
-      "candidates": 58,
+      "candidates": 50,
       "errors": []
     },
     {
@@ -440,8 +438,8 @@
       "url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "landing_status": 200,
       "detail_pages_fetched": 7,
-      "pdfs_fetched": 3,
-      "candidates": 35,
+      "pdfs_fetched": 4,
+      "candidates": 36,
       "errors": []
     },
     {
@@ -483,7 +481,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 4,
       "pdfs_fetched": 10,
-      "candidates": 157,
+      "candidates": 159,
       "errors": []
     },
     {
