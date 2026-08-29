@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-29T15:01:53+05:30",
-  "updated_label": "Updated: 29 Aug 2026, 03:01 PM IST • 104 active jobs",
+  "generated_at": "2026-08-29T23:33:01+05:30",
+  "updated_label": "Updated: 29 Aug 2026, 11:33 PM IST • 105 active jobs",
   "source": "manual verified faculty jobs + source discovery + enabled official-source scanner + protected email decoder",
   "manual_count": 3,
   "auto_count": 83,
@@ -3003,6 +3003,36 @@
       "is_archived": false
     },
     {
+      "college": "Sree Sakthi Engineering College",
+      "post": "Associate Professor",
+      "department": "Computer Science / CSE",
+      "eligibility": "Candidates should hold a Ph.D. or a relevant postgraduate qualification (M.E./M.Tech.) in their respective engineering discipline, with Ph.D. holders being preferred for the Professor, Associate Professor, and Assistant Professor posts. Candidate Profile…",
+      "last_date_iso": "2026-08-29",
+      "last_date_display": "29-Aug-2026",
+      "email": "ceo@sreesakthi.edu.in",
+      "contact_number": "",
+      "apply_link": "https://www.sreesakthi.edu.in",
+      "notification_link": "https://www.sreesakthi.edu.in",
+      "website_link": "https://www.sreesakthi.edu.in/",
+      "city": "",
+      "state": "Goa",
+      "address": "Sree Sakthi Engineering College, Ooty Main Road, Karamadai, Coimbatore – 641104 Reference Source: This job notification was received directly from the institution. Benefits of Joining Sree Sakthi Engineering College…",
+      "source_page": "",
+      "verification_status": "Official Link Found",
+      "status": "Active",
+      "status_label": "Source Verified",
+      "status_class": "good",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Associate Professor, Goa",
+      "job": "Sree Sakthi Engineering College Associate Professor Computer Science / CSE",
+      "slug": "sree-sakthi-engineering-college-associate-professor-computer-science-cse-2026",
+      "first_seen_at": "2026-08-29",
+      "last_seen_at": "2026-08-29",
+      "is_archived": false
+    },
+    {
       "college": "Private Engineering Colleges",
       "post": "Faculty / Trainer / Assistant Professor",
       "department": "CSE / IT / AI / Data Science",
@@ -3093,6 +3123,6 @@
       "is_archived": false
     }
   ],
-  "active_count": 104,
-  "archive_count": 1020
+  "active_count": 105,
+  "archive_count": 1017
 }
