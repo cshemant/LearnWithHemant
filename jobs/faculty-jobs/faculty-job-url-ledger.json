@@ -1,7 +1,424 @@
 {
-  "generated_at": "2026-09-01T01:44:19+05:30",
+  "generated_at": "2026-09-01T02:04:10+05:30",
   "description": "Permanent ledger of every valid generated job URL. Do not replace this file with a smaller local snapshot.",
   "jobs": [
+    {
+      "college": "Walk-In Interview 2026 at Jeppiaar Institute",
+      "post": "Associate Professor",
+      "department": "Computer Science and Engineering, Information Technology, Artificial Intelligence and Data Science",
+      "eligibility": "Ph.D. (CSE/IT/AIDS/CSBS); M.E. Freshers and Experienced candidates are also invited Experience: Professor requires a minimum of 10 years of experience in teaching/research/industry, of which at least 3 years shall be at a post equivalent to Associate…",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "email": "hr@jeppiaarinstitute.org",
+      "apply_link": "https://www.jeppiaarinstitute.org",
+      "notification_link": "https://www.jeppiaarinstitute.org",
+      "website_link": "https://www.jeppiaarinstitute.org/",
+      "state": "Tamil Nadu",
+      "address": "Jeppiaar Institute of Technology, Kunnam, Sunguvarchatram, Sriperumbudur, Chennai – 631604, Tamil Nadu, India General Instructions for the candidates to apply for the Jeppiaar Institute of Technology jobs: Teaching…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science and Engineering, Information Technology, Artificial Intelligence and Data Science, Associate Professor, Tamil Nadu",
+      "job": "Walk-In Interview 2026 at Jeppiaar Institute Associate Professor Computer Science and Engineering, Information Technology, Artificial Intelligence and Data Science",
+      "slug": "walk-in-interview-2026-at-jeppiaar-institute-associate-professor-computer-science-and-engi",
+      "first_seen_at": "2026-08-31",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/walk-in-interview-2026-at-jeppiaar-institute-associate-professor-computer-science-and-engi/"
+    },
+    {
+      "college": "Sembodai R.V. Arts and Science College",
+      "post": "Assistant Professor",
+      "department": "Computer Science / CSE",
+      "eligibility": "For Assistant Professor in Computer Science, candidates must hold an M.Sc., M.Phil., Ph.D., or SET/NET with first class in the appropriate branch. For Physical Education Director for Women, candidates must hold a PG degree with M.P.Ed., M.Phil., Ph.D., or…",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "email": "hrd.careers@srvgroups.in",
+      "apply_link": "https://www.srvgroups.in",
+      "notification_link": "https://www.srvgroups.in",
+      "website_link": "https://www.srvgroups.in/",
+      "state": "Delhi",
+      "address": "Sembodai R.V. Arts and Science College, Sembodai – 614809, Vedaranyam (Tk), Nagapattinam (Dt), Tamil Nadu. General Instructions for the candidates to apply for the Sembodai R.V. Arts and Science College jobs…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Assistant Professor, Delhi",
+      "job": "Sembodai R.V. Arts and Science College Assistant Professor Computer Science / CSE",
+      "slug": "sembodai-r-v-arts-and-science-college-assistant-professor-computer-science-cse-2026",
+      "first_seen_at": "2026-08-29",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/sembodai-r-v-arts-and-science-college-assistant-professor-computer-science-cse-2026/"
+    },
+    {
+      "college": "Research Associate",
+      "post": "Faculty / Teaching Role",
+      "department": "Information Technology / Software",
+      "eligibility": "Project Associate B.E./ B.Tech., or M.E. / M.Tech. equivalent degree in Electronics & Communication Engineering (ECE) / Electronics Engineering / Telecommunication Engineering or M.Sc. in Electronics / Physics GATE/ NET qualified, Strong foundational…",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "apply_link": "http://www.nitdelhi.ac.in/",
+      "notification_link": "http://www.nitdelhi.ac.in/",
+      "website_link": "http://www.nitdelhi.ac.in/",
+      "state": "Delhi",
+      "address": "Department of Applied Sciences National Institute of Technology Delhi, Delhi–110036, India For Detailed Faculty job Advertisement ( Read Carefully ): Click Here Join source Community WhatsApp Group WhatsApp Channel…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Information Technology / Software, Faculty / Teaching Role, Delhi",
+      "job": "Research Associate Faculty / Teaching Role Information Technology / Software",
+      "slug": "research-associate-faculty-teaching-role-information-technology-software-2026",
+      "first_seen_at": "2026-08-31",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/research-associate-faculty-teaching-role-information-technology-software-2026/"
+    },
+    {
+      "college": "Research Assistant (RA) in Indian Institute",
+      "post": "Associate Professor",
+      "department": "Information Technology / Software",
+      "eligibility": "B.Tech/BE in Mechanical/Automobile/Industrial & Production/Manufacturing M.Tech /Two years of experience in the Design/Manufacturing industry. Knowledge of ANSYS/LS-Dyna software etc. Desirable",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "email": "kksingh@iitism.ac.in",
+      "apply_link": "https://www.iitism.ac.in/",
+      "notification_link": "https://www.iitism.ac.in/",
+      "website_link": "https://www.iitism.ac.in/",
+      "state": "Jharkhand",
+      "address": "Indian Institute of Technology (Indian School of Mines), Dhanbad-826004, Jharkhand For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Join source Community WhatsApp Group WhatsApp Channel Join…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Information Technology / Software, Associate Professor, Jharkhand",
+      "job": "Research Assistant (RA) in Indian Institute Associate Professor Information Technology / Software",
+      "slug": "research-assistant-ra-in-indian-institute-associate-professor-information-technology-softw",
+      "first_seen_at": "2026-08-29",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/research-assistant-ra-in-indian-institute-associate-professor-information-technology-softw/"
+    },
+    {
+      "college": "National Institute of Technology Delhi. National Institute of Technology, Delhi…",
+      "post": "Assistant Professor",
+      "department": "Information Technology / Software",
+      "eligibility": "PG Degree in Basic Science OR Graduate/Post Graduate Degree in Professional Course selected through a process described through any one of the following: (a) Scholars who are selected through National Eligibility Tests – CSIR-UGC NET including lectureship…",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "apply_link": "http://www.nitdelhi.ac.in/",
+      "notification_link": "http://www.nitdelhi.ac.in/",
+      "website_link": "http://www.nitdelhi.ac.in/",
+      "state": "Delhi",
+      "address": "Department of Applied Sciences National Institute of Technology Delhi, Delhi–110036, India For Detailed Faculty job Advertisement ( Read Carefully ): Click Here Join source Community WhatsApp Group WhatsApp Channel…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Information Technology / Software, Assistant Professor, Delhi",
+      "job": "National Institute of Technology Delhi. National Institute of Technology, Delhi… Assistant Professor Information Technology / Software",
+      "slug": "national-institute-of-technology-delhi-national-institute-of-technology-delhi-assistant-pr",
+      "first_seen_at": "2026-08-31",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/national-institute-of-technology-delhi-national-institute-of-technology-delhi-assistant-pr/"
+    },
+    {
+      "college": "National Institute",
+      "post": "Assistant Professor",
+      "department": "Computer Science / CSE",
+      "eligibility": "JRF- Post Graduate Degree in Basic Science or Graduate / Post Graduate Degree in Professional Course selected through a process described through any one of the following: a. Scholars who are selected through National Eligibility Tests – CSIR-UGC NET…",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "email": "ranjita.cse@faculty.nita.ac.in",
+      "apply_link": "https://www.nita.ac.in/",
+      "notification_link": "https://www.nita.ac.in/",
+      "website_link": "https://www.nita.ac.in/",
+      "state": "Tripura",
+      "address": "National Institute of Technology Agartala Barjala, Jirania, Tripura- 799046 For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Join source Community WhatsApp Group WhatsApp Channel Join Telegram…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Assistant Professor, Tripura",
+      "job": "National Institute Assistant Professor Computer Science / CSE",
+      "slug": "national-institute-assistant-professor-computer-science-cse-2026",
+      "first_seen_at": "2026-08-31",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/national-institute-assistant-professor-computer-science-cse-2026/"
+    },
+    {
+      "college": "Maulana Azad National Institute of Technology, Bhopal. Maulana Azad National Institute…",
+      "post": "Faculty / Teaching Role",
+      "department": "Department of Mechanical Engineering",
+      "eligibility": "B.E./B.Tech in Any field of Engineering with valid Gate Score. M.E./M.Tech/M.Sc in any field of Engineering or Science. Preference will be given to candidates who have Knowledge of CAD/CAM, MATLAB, Mathematical Modeling, and Robotics. Duration: 3 years",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "email": "deepakkumaromre@manit.ac.in",
+      "apply_link": "http://www.manit.ac.in",
+      "notification_link": "http://www.manit.ac.in",
+      "website_link": "http://www.manit.ac.in/",
+      "state": "Madhya Pradesh",
+      "address": "Maulana Azad National Institute of Technology Bhopal Bhopal, Madhya Pradesh, 462003 For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Join source Community WhatsApp Group WhatsApp Channel Join…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Department of Mechanical Engineering, Faculty / Teaching Role, Madhya Pradesh",
+      "job": "Maulana Azad National Institute of Technology, Bhopal. Maulana Azad National Institute… Faculty / Teaching Role Department of Mechanical Engineering",
+      "slug": "maulana-azad-national-institute-of-technology-bhopal-maulana-azad-national-institute-facul",
+      "first_seen_at": "2026-08-31",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/maulana-azad-national-institute-of-technology-bhopal-maulana-azad-national-institute-facul/"
+    },
+    {
+      "college": "Karpagam Academy of Higher Education",
+      "post": "Associate Professor",
+      "department": "Computer Science / CSE",
+      "eligibility": "B Arch, M Arch is mandatory & B Plan, M Plan is mandatory Exp – 1 -7yrs, Freshers can apply Karpagam College of Nursing Designation: Assistant Professor",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "email": "hrd@karpagam.com",
+      "apply_link": "https://karpagam.com/",
+      "notification_link": "https://karpagam.com/",
+      "website_link": "https://karpagam.com/",
+      "state": "Tamil Nadu",
+      "address": "Coimbatore, Tamil Nadu Apply Mode: Email/Whatsapp How to",
+      "verification_status": "Needs Official Verification",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Associate Professor, Tamil Nadu",
+      "job": "Karpagam Academy of Higher Education Associate Professor Computer Science / CSE",
+      "slug": "karpagam-academy-of-higher-education-associate-professor-computer-science-cse-2026",
+      "first_seen_at": "2026-08-31",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/karpagam-academy-of-higher-education-associate-professor-computer-science-cse-2026/"
+    },
+    {
+      "college": "Indian Institute",
+      "post": "Faculty / Teaching Role",
+      "department": "Information Technology / Software",
+      "eligibility": "M.E./M. Tech. in Biomedical Engineering/Biotechnology/Materials Science/ Bioengineering/Nanotechnology / Chemical Engineering with specializations related to sensor devices, electrochemistry or equivalent/Electronics Engineering with Microelectronics…",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "email": "chirashree@telecom.iiests.ac.in",
+      "apply_link": "https://www.nfsu.ac.in/",
+      "notification_link": "https://www.nfsu.ac.in/",
+      "website_link": "https://www.nfsu.ac.in/",
+      "state": "West Bengal",
+      "address": "Indian Institute of Engineering Science & Technology (IIEST), Shibpur Howrah-711 103 West Bengal For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Join source Community WhatsApp Group WhatsApp…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Information Technology / Software, Faculty / Teaching Role, West Bengal",
+      "job": "Indian Institute Faculty / Teaching Role Information Technology / Software",
+      "slug": "indian-institute-faculty-teaching-role-information-technology-software-2026",
+      "first_seen_at": "2026-08-31",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/indian-institute-faculty-teaching-role-information-technology-software-2026/"
+    },
+    {
+      "college": "Gayatri Vidya Parishad, Rushikonda Campus Position Open: Assistant Professor Department",
+      "post": "Associate Professor",
+      "department": "AI / Data Science",
+      "eligibility": "PhD/NET/SET/M.Tech as per official notice.",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "email": "hodmba@gvpcdpgc.edu.in",
+      "apply_link": "https://drive.google.com/file/d/1KTUKIApmmuqN3jSyJkqWFzAgI3QT7FU-/view?usp=drive_link",
+      "notification_link": "https://drive.google.com/file/d/1KTUKIApmmuqN3jSyJkqWFzAgI3QT7FU-/view?usp=drive_link",
+      "website_link": "https://www.gvpcdpgc.edu.in/",
+      "state": "Andhra Pradesh",
+      "address": "www.gvpcdpgc.edu.in Getting Your Application In: Eligible candidates are requested to submit their application online, uploading a recent CV and all relevant certificates, on or before 31st August 2026. Apply Online…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "AI / Data Science, Associate Professor, Andhra Pradesh",
+      "job": "Gayatri Vidya Parishad, Rushikonda Campus Position Open: Assistant Professor Department Associate Professor AI / Data Science",
+      "slug": "gayatri-vidya-parishad-rushikonda-campus-position-open-assistant-professor-department-asso",
+      "first_seen_at": "2026-08-29",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/gayatri-vidya-parishad-rushikonda-campus-position-open-assistant-professor-department-asso/"
+    },
+    {
+      "college": "Faculty",
+      "post": "Associate Professor",
+      "department": "Computer Science / CSE",
+      "eligibility": "For Mathematics, Chemistry, and Physics, candidates must hold an M.Sc. with Ph.D./NET/SLET. For English and Tamil, candidates must hold an M.A. For Engineering Faculty, candidates must hold an M.E./M.Tech. For Lab Assistant and System Admin, candidates must…",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "email": "srgengghr@gmail.com",
+      "apply_link": "https://www.srg.ac.in",
+      "notification_link": "https://www.srg.ac.in",
+      "website_link": "https://www.srg.ac.in/",
+      "state": "Delhi",
+      "address": "SRG Engineering College, SH-95, Mohanur Road, Aniyapuram, Namakkal – 637017, Tamil Nadu Official Notification for Reference: SRG Engineering College – Job Opening Notification General Instructions for the candidates to…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
+      "job": "Faculty Associate Professor Computer Science / CSE",
+      "slug": "faculty-associate-professor-computer-science-cse-2026-2",
+      "first_seen_at": "2026-08-31",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-2/"
+    },
+    {
+      "college": "Faculty",
+      "post": "Associate Professor",
+      "department": "Computer Science / CSE",
+      "eligibility": "For Assistant Professor in Engineering, candidates must hold a First Class in Bachelor’s and Master’s degree in the relevant discipline, with candidates pursuing a Ph.D. preferred. For Associate Professor and Professor in Engineering, candidates with a Ph.D.…",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "email": "career@acetcbe.edu.in",
+      "apply_link": "https://www.acetcbe.edu.in",
+      "notification_link": "https://www.acetcbe.edu.in",
+      "website_link": "https://www.acetcbe.edu.in/",
+      "state": "Delhi",
+      "address": "Akshaya College of Engineering and Technology, Kinathukadavu, Coimbatore – 642109, Tamil Nadu General Instructions for the candidates to apply for the Akshaya College of Engineering and Technology jobs: Assistant…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
+      "job": "Faculty Associate Professor Computer Science / CSE",
+      "slug": "faculty-associate-professor-computer-science-cse-2026",
+      "first_seen_at": "2026-08-31",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026/"
+    },
+    {
+      "college": "Apply Online for Various Departments, Guwahati. Indian Institute",
+      "post": "Associate Professor",
+      "department": "Computer Science / CSE",
+      "eligibility": "Candidates should hold a Ph.D. with first class or equivalent in the preceding degree, in an appropriate branch, with a very good academic record throughout. The required Bachelor’s, Master’s, or integrated degree varies by department; for instance, Computer…",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "apply_link": "https://online.iitg.ac.in/faonline/",
+      "notification_link": "https://online.iitg.ac.in/faonline/",
+      "website_link": "https://www.iitg.ac.in/",
+      "state": "Assam",
+      "address": "Head of the Section Faculty Affairs Section Indian Institute of Technology Guwahati Guwahati – 781039 Assam, India Official Notification for Reference: Indian Institute of Technology Guwahati- Job Opening Notification…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Associate Professor, Assam",
+      "job": "Apply Online for Various Departments, Guwahati. Indian Institute Associate Professor Computer Science / CSE",
+      "slug": "apply-online-for-various-departments-guwahati-indian-institute-associate-professor-compute",
+      "first_seen_at": "2026-08-14",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/apply-online-for-various-departments-guwahati-indian-institute-associate-professor-compute/"
+    },
+    {
+      "college": "Aalim Muhammed Salegh College",
+      "post": "Associate Professor",
+      "department": "EEE",
+      "eligibility": "M.E./M.Tech./Ph.D. Candidate Profile: Candidates should have strong programming knowledge in C, C++, Java, Python, OOPS, and Data Structures, good communication skills, commitment to the profession, and a good research publication record. Job…",
+      "last_date_iso": "2026-08-31",
+      "last_date_display": "31-Aug-2026",
+      "email": "office@aalimec.ac.in",
+      "apply_link": "https://www.aalimec.ac.in",
+      "notification_link": "https://www.aalimec.ac.in",
+      "website_link": "https://www.aalimec.ac.in/",
+      "state": "Tamil Nadu",
+      "address": "Aalim Muhammed Salegh College of Engineering, “Nizara Educational Campus,” Muthapudupet, Avadi I.A.F., Chennai – 600055, Tamil Nadu General Instructions for the candidates to apply for the Aalim Muhammed Salegh College…",
+      "verification_status": "Official Link Found",
+      "status": "Closed",
+      "status_label": "Application Closed",
+      "status_class": "closed",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "EEE, Associate Professor, Tamil Nadu",
+      "job": "Aalim Muhammed Salegh College Associate Professor EEE",
+      "slug": "aalim-muhammed-salegh-college-associate-professor-eee-2026",
+      "first_seen_at": "2026-08-31",
+      "last_seen_at": "2026-08-31",
+      "is_archived": true,
+      "archived_at": "2026-08-31",
+      "archive_reason": "deadline_expired",
+      "detail_url": "/jobs/faculty-jobs/aalim-muhammed-salegh-college-associate-professor-eee-2026/"
+    },
     {
       "college": "VPMM Matriculation Higher Secondary School",
       "post": "Faculty / Teaching Role",
@@ -30540,7 +30957,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/the-mahatma-phule-krishi-vidyapeeth-mpkv-rahuri-is-the-premier-agricultural-university-ass/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Kurukshetra University, Kurukshetra",
@@ -30569,7 +30987,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/kurukshetra-university-kurukshetra-assistant-professor-information-technology-software-202/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Walk-in Interview at Tadepalligudem, West Godavari District. National Institute",
@@ -30597,7 +31016,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "data_state": "carried_forward",
-      "detail_url": "/jobs/faculty-jobs/walk-in-interview-at-tadepalligudem-west-godavari-district-national-institute-assistant-pr/"
+      "detail_url": "/jobs/faculty-jobs/walk-in-interview-at-tadepalligudem-west-godavari-district-national-institute-assistant-pr/",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Ad hoc Faculty",
@@ -30625,7 +31045,8 @@
       "is_archived": false,
       "data_state": "carried_forward",
       "first_seen_at": "2026-08-18",
-      "last_seen_at": "2026-08-31"
+      "last_seen_at": "2026-08-31",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Himachal Pradesh University",
@@ -30653,7 +31074,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/himachal-pradesh-university-assistant-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Ramakrishna Mission Vivekananda College",
@@ -30764,7 +31186,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-assistant-professor-grade-ii-no-of-post-25-the-applications-required-in-t/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Faculty",
@@ -30793,7 +31216,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-3/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Cochin University",
@@ -30821,7 +31245,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/cochin-university-associate-professor-assistant-professor-information-technology-software/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Assistant Professor at Nalanda University",
@@ -30850,7 +31275,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/assistant-professor-at-nalanda-university-professor-associate-professor-assistant-professo/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "SVNIT Surat Assistant Professor",
@@ -30878,7 +31304,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/svnit-surat-assistant-professor-assistant-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Faculty",
@@ -30908,7 +31335,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-3-2/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Punjab University, Guru College About",
@@ -30936,7 +31364,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/punjab-university-guru-college-about-assistant-professors-employment-type-regular-basis-ma/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Professor, Associate Professor, Assistant Professor & Clinical Instructor Posts. AJK…",
@@ -30965,7 +31394,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/professor-associate-professor-assistant-professor-and-clinical-instructor-posts-ajk-associ/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Non-Teaching",
@@ -30993,7 +31423,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/non-teaching-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Indian Institute",
@@ -31022,7 +31453,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-associate-professor-information-technology-software-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Indian Institute",
@@ -31051,7 +31483,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Faculty",
@@ -31081,7 +31514,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-assistant-professor-computer-science-cse-2026-3/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Professor, Associate Professor & Assistant Professor Posts. PPG Institute",
@@ -31110,7 +31544,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/professor-associate-professor-and-assistant-professor-posts-ppg-institute-associate-profes/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "The Centre for Management Development (CMD) About",
@@ -31138,7 +31573,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/the-centre-for-management-development-cmd-about-assistant-professor-cse-it-multiple-depart/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Indian Institute",
@@ -31167,7 +31603,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-assistant-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Faculty",
@@ -31195,7 +31632,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-information-technology-software-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "National Institute",
@@ -31252,7 +31690,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/manipal-academy-associate-professor-cse-it-multiple-departments-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "K.C. College",
@@ -31281,7 +31720,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/k-c-college-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Central Agricultural University",
@@ -31309,7 +31749,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/central-agricultural-university-assistant-professor-cse-it-multiple-departments-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "St. Lourdes Engineering College",
@@ -31365,7 +31806,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/navodaya-shikshan-sanstha-s-shankarrao-dhawad-polytechnic-associate-professor-master-of-bu/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Faculty LGTCO",
@@ -31394,7 +31836,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-lgtco-assistant-professor-information-technology-software-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Professor & Associate Professor",
@@ -31423,7 +31866,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/professor-and-associate-professor-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Manuscriptpedia. Manuscriptpedia Event Type",
@@ -31480,7 +31924,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/guest-faculty-openings-at-bharathiar-university-guest-faculty-job-type-temporary-cse-it-mu/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Assistant Professor",
@@ -31536,7 +31981,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/atal-bihari-vajpayee-indian-institute-assistant-professor-computer-applications-mca-bca-20/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "The National University",
@@ -31565,7 +32011,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/the-national-university-associate-professor-information-technology-software-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Project Associate-I in Indian Institute",
@@ -31648,7 +32095,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-junior-coaching-assistant-information-technology-software-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Workshop (Offline) on Solar Thermal Energy, Storage and Its Industrial Applications. PSN…",
@@ -31705,7 +32153,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/sharad-institute-of-technology-college-of-engineering-kolhapur-associate-professor-compute/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Professor, Associate Professor & Assistant Professor",
@@ -31790,7 +32239,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-and-non-teaching-staff-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Call for Award Nominations by Xavier Institute",
@@ -31820,7 +32270,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/call-for-award-nominations-by-xavier-institute-faculty-teaching-role-information-technolog/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Call for Award Nominations by Xavier Institute",
@@ -31877,7 +32328,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-faculty-teaching-role-information-technology-software-2026-2/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Associate Professor & Assistant Professor",
@@ -31906,35 +32358,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/associate-professor-and-assistant-professor-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
-    },
-    {
-      "college": "Walk-In Interview 2026 at Jeppiaar Institute",
-      "post": "Associate Professor",
-      "department": "Computer Science and Engineering, Information Technology, Artificial Intelligence and Data Science",
-      "eligibility": "Ph.D. (CSE/IT/AIDS/CSBS); M.E. Freshers and Experienced candidates are also invited Experience: Professor requires a minimum of 10 years of experience in teaching/research/industry, of which at least 3 years shall be at a post equivalent to Associate…",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "email": "hr@jeppiaarinstitute.org",
-      "apply_link": "https://www.jeppiaarinstitute.org",
-      "notification_link": "https://www.jeppiaarinstitute.org",
-      "website_link": "https://www.jeppiaarinstitute.org/",
-      "state": "Tamil Nadu",
-      "address": "Jeppiaar Institute of Technology, Kunnam, Sunguvarchatram, Sriperumbudur, Chennai – 631604, Tamil Nadu, India General Instructions for the candidates to apply for the Jeppiaar Institute of Technology jobs: Teaching…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Computer Science and Engineering, Information Technology, Artificial Intelligence and Data Science, Associate Professor, Tamil Nadu",
-      "job": "Walk-In Interview 2026 at Jeppiaar Institute Associate Professor Computer Science and Engineering, Information Technology, Artificial Intelligence and Data Science",
-      "slug": "walk-in-interview-2026-at-jeppiaar-institute-associate-professor-computer-science-and-engi",
-      "first_seen_at": "2026-08-31",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/walk-in-interview-2026-at-jeppiaar-institute-associate-professor-computer-science-and-engi/"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "VPMM Group of Educational Institutions, Krishnankoil. VPMM Group of Educational…",
@@ -31961,7 +32386,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/vpmm-group-of-educational-institutions-krishnankoil-vpmm-group-of-educational-faculty-teac/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "VPMM Group of Educational Institutions",
@@ -31988,7 +32414,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/vpmm-group-of-educational-institutions-faculty-teaching-role-m-sc-obg-pediatric-community/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Vice Principal",
@@ -32016,7 +32443,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/vice-principal-associate-professor-cse-it-multiple-departments-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "University of Delhi, Delhi",
@@ -32044,7 +32472,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/university-of-delhi-delhi-part-time-language-teacher-employment-type-temporary-chinese-jap/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "SRM Group of Institutions – Directorate of Research (Chennai – Ramapuram & Trichy)",
@@ -32072,7 +32501,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/srm-group-of-institutions-directorate-of-research-chennai-ramapuram-and-trichy-assistant-p/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Sri Venkateswara Institute",
@@ -32101,35 +32531,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/sri-venkateswara-institute-ph-d-experience-salary-details-as-per-norms-computer-science-cs/",
-      "data_state": "carried_forward"
-    },
-    {
-      "college": "Sembodai R.V. Arts and Science College",
-      "post": "Assistant Professor",
-      "department": "Computer Science / CSE",
-      "eligibility": "For Assistant Professor in Computer Science, candidates must hold an M.Sc., M.Phil., Ph.D., or SET/NET with first class in the appropriate branch. For Physical Education Director for Women, candidates must hold a PG degree with M.P.Ed., M.Phil., Ph.D., or…",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "email": "hrd.careers@srvgroups.in",
-      "apply_link": "https://www.srvgroups.in",
-      "notification_link": "https://www.srvgroups.in",
-      "website_link": "https://www.srvgroups.in/",
-      "state": "Delhi",
-      "address": "Sembodai R.V. Arts and Science College, Sembodai – 614809, Vedaranyam (Tk), Nagapattinam (Dt), Tamil Nadu. General Instructions for the candidates to apply for the Sembodai R.V. Arts and Science College jobs…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Computer Science / CSE, Assistant Professor, Delhi",
-      "job": "Sembodai R.V. Arts and Science College Assistant Professor Computer Science / CSE",
-      "slug": "sembodai-r-v-arts-and-science-college-assistant-professor-computer-science-cse-2026",
-      "first_seen_at": "2026-08-29",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/sembodai-r-v-arts-and-science-college-assistant-professor-computer-science-cse-2026/"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Sardar Vallabhbhai National Institute of Technology, Surat (SVNIT Surat)",
@@ -32158,62 +32561,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/sardar-vallabhbhai-national-institute-of-technology-surat-svnit-surat-assistant-professor/",
-      "data_state": "carried_forward"
-    },
-    {
-      "college": "Research Associate",
-      "post": "Faculty / Teaching Role",
-      "department": "Information Technology / Software",
-      "eligibility": "Project Associate B.E./ B.Tech., or M.E. / M.Tech. equivalent degree in Electronics & Communication Engineering (ECE) / Electronics Engineering / Telecommunication Engineering or M.Sc. in Electronics / Physics GATE/ NET qualified, Strong foundational…",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "apply_link": "http://www.nitdelhi.ac.in/",
-      "notification_link": "http://www.nitdelhi.ac.in/",
-      "website_link": "http://www.nitdelhi.ac.in/",
-      "state": "Delhi",
-      "address": "Department of Applied Sciences National Institute of Technology Delhi, Delhi–110036, India For Detailed Faculty job Advertisement ( Read Carefully ): Click Here Join source Community WhatsApp Group WhatsApp Channel…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Information Technology / Software, Faculty / Teaching Role, Delhi",
-      "job": "Research Associate Faculty / Teaching Role Information Technology / Software",
-      "slug": "research-associate-faculty-teaching-role-information-technology-software-2026",
-      "first_seen_at": "2026-08-31",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/research-associate-faculty-teaching-role-information-technology-software-2026/"
-    },
-    {
-      "college": "Research Assistant (RA) in Indian Institute",
-      "post": "Associate Professor",
-      "department": "Information Technology / Software",
-      "eligibility": "B.Tech/BE in Mechanical/Automobile/Industrial & Production/Manufacturing M.Tech /Two years of experience in the Design/Manufacturing industry. Knowledge of ANSYS/LS-Dyna software etc. Desirable",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "email": "kksingh@iitism.ac.in",
-      "apply_link": "https://www.iitism.ac.in/",
-      "notification_link": "https://www.iitism.ac.in/",
-      "website_link": "https://www.iitism.ac.in/",
-      "state": "Jharkhand",
-      "address": "Indian Institute of Technology (Indian School of Mines), Dhanbad-826004, Jharkhand For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Join source Community WhatsApp Group WhatsApp Channel Join…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Information Technology / Software, Associate Professor, Jharkhand",
-      "job": "Research Assistant (RA) in Indian Institute Associate Professor Information Technology / Software",
-      "slug": "research-assistant-ra-in-indian-institute-associate-professor-information-technology-softw",
-      "first_seen_at": "2026-08-29",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/research-assistant-ra-in-indian-institute-associate-professor-information-technology-softw/"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Rashtriya Raksha University",
@@ -32241,62 +32590,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/rashtriya-raksha-university-assistant-professor-information-technology-software-2026/",
-      "data_state": "carried_forward"
-    },
-    {
-      "college": "National Institute of Technology Delhi. National Institute of Technology, Delhi…",
-      "post": "Assistant Professor",
-      "department": "Information Technology / Software",
-      "eligibility": "PG Degree in Basic Science OR Graduate/Post Graduate Degree in Professional Course selected through a process described through any one of the following: (a) Scholars who are selected through National Eligibility Tests – CSIR-UGC NET including lectureship…",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "apply_link": "http://www.nitdelhi.ac.in/",
-      "notification_link": "http://www.nitdelhi.ac.in/",
-      "website_link": "http://www.nitdelhi.ac.in/",
-      "state": "Delhi",
-      "address": "Department of Applied Sciences National Institute of Technology Delhi, Delhi–110036, India For Detailed Faculty job Advertisement ( Read Carefully ): Click Here Join source Community WhatsApp Group WhatsApp Channel…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Information Technology / Software, Assistant Professor, Delhi",
-      "job": "National Institute of Technology Delhi. National Institute of Technology, Delhi… Assistant Professor Information Technology / Software",
-      "slug": "national-institute-of-technology-delhi-national-institute-of-technology-delhi-assistant-pr",
-      "first_seen_at": "2026-08-31",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/national-institute-of-technology-delhi-national-institute-of-technology-delhi-assistant-pr/"
-    },
-    {
-      "college": "National Institute",
-      "post": "Assistant Professor",
-      "department": "Computer Science / CSE",
-      "eligibility": "JRF- Post Graduate Degree in Basic Science or Graduate / Post Graduate Degree in Professional Course selected through a process described through any one of the following: a. Scholars who are selected through National Eligibility Tests – CSIR-UGC NET…",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "email": "ranjita.cse@faculty.nita.ac.in",
-      "apply_link": "https://www.nita.ac.in/",
-      "notification_link": "https://www.nita.ac.in/",
-      "website_link": "https://www.nita.ac.in/",
-      "state": "Tripura",
-      "address": "National Institute of Technology Agartala Barjala, Jirania, Tripura- 799046 For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Join source Community WhatsApp Group WhatsApp Channel Join Telegram…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Computer Science / CSE, Assistant Professor, Tripura",
-      "job": "National Institute Assistant Professor Computer Science / CSE",
-      "slug": "national-institute-assistant-professor-computer-science-cse-2026",
-      "first_seen_at": "2026-08-31",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/national-institute-assistant-professor-computer-science-cse-2026/"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Nalanda University",
@@ -32324,35 +32619,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/nalanda-university-assistant-professor-librarian-1-post-deputy-librarian-1-post-library-as/",
-      "data_state": "carried_forward"
-    },
-    {
-      "college": "Maulana Azad National Institute of Technology, Bhopal. Maulana Azad National Institute…",
-      "post": "Faculty / Teaching Role",
-      "department": "Department of Mechanical Engineering",
-      "eligibility": "B.E./B.Tech in Any field of Engineering with valid Gate Score. M.E./M.Tech/M.Sc in any field of Engineering or Science. Preference will be given to candidates who have Knowledge of CAD/CAM, MATLAB, Mathematical Modeling, and Robotics. Duration: 3 years",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "email": "deepakkumaromre@manit.ac.in",
-      "apply_link": "http://www.manit.ac.in",
-      "notification_link": "http://www.manit.ac.in",
-      "website_link": "http://www.manit.ac.in/",
-      "state": "Madhya Pradesh",
-      "address": "Maulana Azad National Institute of Technology Bhopal Bhopal, Madhya Pradesh, 462003 For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Join source Community WhatsApp Group WhatsApp Channel Join…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Department of Mechanical Engineering, Faculty / Teaching Role, Madhya Pradesh",
-      "job": "Maulana Azad National Institute of Technology, Bhopal. Maulana Azad National Institute… Faculty / Teaching Role Department of Mechanical Engineering",
-      "slug": "maulana-azad-national-institute-of-technology-bhopal-maulana-azad-national-institute-facul",
-      "first_seen_at": "2026-08-31",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/maulana-azad-national-institute-of-technology-bhopal-maulana-azad-national-institute-facul/"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "M Institute of Science and Technology Assistant Professor",
@@ -32381,35 +32649,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/m-institute-of-science-and-technology-assistant-professor-assistant-professor-computer-sci/",
-      "data_state": "carried_forward"
-    },
-    {
-      "college": "Karpagam Academy of Higher Education",
-      "post": "Associate Professor",
-      "department": "Computer Science / CSE",
-      "eligibility": "B Arch, M Arch is mandatory & B Plan, M Plan is mandatory Exp – 1 -7yrs, Freshers can apply Karpagam College of Nursing Designation: Assistant Professor",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "email": "hrd@karpagam.com",
-      "apply_link": "https://karpagam.com/",
-      "notification_link": "https://karpagam.com/",
-      "website_link": "https://karpagam.com/",
-      "state": "Tamil Nadu",
-      "address": "Coimbatore, Tamil Nadu Apply Mode: Email/Whatsapp How to",
-      "verification_status": "Needs Official Verification",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Computer Science / CSE, Associate Professor, Tamil Nadu",
-      "job": "Karpagam Academy of Higher Education Associate Professor Computer Science / CSE",
-      "slug": "karpagam-academy-of-higher-education-associate-professor-computer-science-cse-2026",
-      "first_seen_at": "2026-08-31",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/karpagam-academy-of-higher-education-associate-professor-computer-science-cse-2026/"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Instructor",
@@ -32439,7 +32680,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/instructor-faculty-teaching-role-computer-applications-mca-bca-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Indian Institute of Technology Kharagpur (IIT Kharagpur)",
@@ -32467,35 +32709,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-of-technology-kharagpur-iit-kharagpur-faculty-teaching-role-computer-scie/",
-      "data_state": "carried_forward"
-    },
-    {
-      "college": "Indian Institute",
-      "post": "Faculty / Teaching Role",
-      "department": "Information Technology / Software",
-      "eligibility": "M.E./M. Tech. in Biomedical Engineering/Biotechnology/Materials Science/ Bioengineering/Nanotechnology / Chemical Engineering with specializations related to sensor devices, electrochemistry or equivalent/Electronics Engineering with Microelectronics…",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "email": "chirashree@telecom.iiests.ac.in",
-      "apply_link": "https://www.nfsu.ac.in/",
-      "notification_link": "https://www.nfsu.ac.in/",
-      "website_link": "https://www.nfsu.ac.in/",
-      "state": "West Bengal",
-      "address": "Indian Institute of Engineering Science & Technology (IIEST), Shibpur Howrah-711 103 West Bengal For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Join source Community WhatsApp Group WhatsApp…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Information Technology / Software, Faculty / Teaching Role, West Bengal",
-      "job": "Indian Institute Faculty / Teaching Role Information Technology / Software",
-      "slug": "indian-institute-faculty-teaching-role-information-technology-software-2026",
-      "first_seen_at": "2026-08-31",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/indian-institute-faculty-teaching-role-information-technology-software-2026/"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "II Posts Across 17 Departments. Indian Institute",
@@ -32523,7 +32738,8 @@
       "is_archived": false,
       "data_state": "carried_forward",
       "first_seen_at": "2026-08-18",
-      "last_seen_at": "2026-08-31"
+      "last_seen_at": "2026-08-31",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "HR Executive, Civil Supervisor & Website Executive",
@@ -32553,7 +32769,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/hr-executive-civil-supervisor-and-website-executive-faculty-teaching-role-computer-applica/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Hindusthan College",
@@ -32583,7 +32800,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/hindusthan-college-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Himachal Pradesh. All India Institute",
@@ -32611,7 +32829,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/himachal-pradesh-all-india-institute-associate-professor-information-technology-software-2/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Gokhale Institute",
@@ -32639,35 +32858,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/gokhale-institute-faculty-teaching-role-information-technology-software-2026/",
-      "data_state": "carried_forward"
-    },
-    {
-      "college": "Gayatri Vidya Parishad, Rushikonda Campus Position Open: Assistant Professor Department",
-      "post": "Associate Professor",
-      "department": "AI / Data Science",
-      "eligibility": "PhD/NET/SET/M.Tech as per official notice.",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "email": "hodmba@gvpcdpgc.edu.in",
-      "apply_link": "https://drive.google.com/file/d/1KTUKIApmmuqN3jSyJkqWFzAgI3QT7FU-/view?usp=drive_link",
-      "notification_link": "https://drive.google.com/file/d/1KTUKIApmmuqN3jSyJkqWFzAgI3QT7FU-/view?usp=drive_link",
-      "website_link": "https://www.gvpcdpgc.edu.in/",
-      "state": "Andhra Pradesh",
-      "address": "www.gvpcdpgc.edu.in Getting Your Application In: Eligible candidates are requested to submit their application online, uploading a recent CV and all relevant certificates, on or before 31st August 2026. Apply Online…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "AI / Data Science, Associate Professor, Andhra Pradesh",
-      "job": "Gayatri Vidya Parishad, Rushikonda Campus Position Open: Assistant Professor Department Associate Professor AI / Data Science",
-      "slug": "gayatri-vidya-parishad-rushikonda-campus-position-open-assistant-professor-department-asso",
-      "first_seen_at": "2026-08-29",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/gayatri-vidya-parishad-rushikonda-campus-position-open-assistant-professor-department-asso/"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "G.B. Pant University",
@@ -32695,7 +32887,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/g-b-pant-university-associate-professor-agronomy-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Faculty",
@@ -32725,7 +32918,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-6/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Faculty",
@@ -32751,63 +32945,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-4/",
-      "data_state": "carried_forward"
-    },
-    {
-      "college": "Faculty",
-      "post": "Associate Professor",
-      "department": "Computer Science / CSE",
-      "eligibility": "For Mathematics, Chemistry, and Physics, candidates must hold an M.Sc. with Ph.D./NET/SLET. For English and Tamil, candidates must hold an M.A. For Engineering Faculty, candidates must hold an M.E./M.Tech. For Lab Assistant and System Admin, candidates must…",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "email": "srgengghr@gmail.com",
-      "apply_link": "https://www.srg.ac.in",
-      "notification_link": "https://www.srg.ac.in",
-      "website_link": "https://www.srg.ac.in/",
-      "state": "Delhi",
-      "address": "SRG Engineering College, SH-95, Mohanur Road, Aniyapuram, Namakkal – 637017, Tamil Nadu Official Notification for Reference: SRG Engineering College – Job Opening Notification General Instructions for the candidates to…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
-      "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026-2",
-      "first_seen_at": "2026-08-31",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-2/"
-    },
-    {
-      "college": "Faculty",
-      "post": "Associate Professor",
-      "department": "Computer Science / CSE",
-      "eligibility": "For Assistant Professor in Engineering, candidates must hold a First Class in Bachelor’s and Master’s degree in the relevant discipline, with candidates pursuing a Ph.D. preferred. For Associate Professor and Professor in Engineering, candidates with a Ph.D.…",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "email": "career@acetcbe.edu.in",
-      "apply_link": "https://www.acetcbe.edu.in",
-      "notification_link": "https://www.acetcbe.edu.in",
-      "website_link": "https://www.acetcbe.edu.in/",
-      "state": "Delhi",
-      "address": "Akshaya College of Engineering and Technology, Kinathukadavu, Coimbatore – 642109, Tamil Nadu General Instructions for the candidates to apply for the Akshaya College of Engineering and Technology jobs: Assistant…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Computer Science / CSE, Associate Professor, Delhi",
-      "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026",
-      "first_seen_at": "2026-08-31",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026/"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Faculty",
@@ -32835,7 +32974,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-assistant-professor-computer-science-cse-2026-2/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Faculty and Non-Teaching",
@@ -32864,7 +33004,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-and-non-teaching-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Central University of Odisha",
@@ -32893,7 +33034,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/central-university-of-odisha-assistant-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Central University",
@@ -32922,7 +33064,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/central-university-faculty-teaching-role-information-technology-software-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Birla Institute",
@@ -32950,7 +33093,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/birla-institute-faculty-teaching-role-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Birla Institute",
@@ -32978,7 +33122,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/birla-institute-assistant-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Associate Professor, Assistant Professor and Trainer Posts. Ghani Khan Choudhury Institute",
@@ -33006,7 +33151,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/associate-professor-assistant-professor-and-trainer-posts-ghani-khan-choudhury-institute-a/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Assistant Professor & Associate Professor",
@@ -33035,34 +33181,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/assistant-professor-and-associate-professor-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward"
-    },
-    {
-      "college": "Apply Online for Various Departments, Guwahati. Indian Institute",
-      "post": "Associate Professor",
-      "department": "Computer Science / CSE",
-      "eligibility": "Candidates should hold a Ph.D. with first class or equivalent in the preceding degree, in an appropriate branch, with a very good academic record throughout. The required Bachelor’s, Master’s, or integrated degree varies by department; for instance, Computer…",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "apply_link": "https://online.iitg.ac.in/faonline/",
-      "notification_link": "https://online.iitg.ac.in/faonline/",
-      "website_link": "https://www.iitg.ac.in/",
-      "state": "Assam",
-      "address": "Head of the Section Faculty Affairs Section Indian Institute of Technology Guwahati Guwahati – 781039 Assam, India Official Notification for Reference: Indian Institute of Technology Guwahati- Job Opening Notification…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Computer Science / CSE, Associate Professor, Assam",
-      "job": "Apply Online for Various Departments, Guwahati. Indian Institute Associate Professor Computer Science / CSE",
-      "slug": "apply-online-for-various-departments-guwahati-indian-institute-associate-professor-compute",
-      "first_seen_at": "2026-08-14",
-      "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/apply-online-for-various-departments-guwahati-indian-institute-associate-professor-compute/"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Apply Online for Various Departments, Guwahati. Indian Institute",
@@ -33090,7 +33210,8 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/apply-online-for-various-departments-guwahati-indian-institute-assistant-professor-compute/",
-      "data_state": "carried_forward"
+      "data_state": "carried_forward",
+      "missing_since": "2026-08-31"
     },
     {
       "college": "Apply for Registrar, Engineer & More Posts, Jote. National Institute",
@@ -33118,35 +33239,8 @@
       "is_archived": false,
       "data_state": "carried_forward",
       "first_seen_at": "2026-08-18",
-      "last_seen_at": "2026-08-31"
-    },
-    {
-      "college": "Aalim Muhammed Salegh College",
-      "post": "Associate Professor",
-      "department": "EEE",
-      "eligibility": "M.E./M.Tech./Ph.D. Candidate Profile: Candidates should have strong programming knowledge in C, C++, Java, Python, OOPS, and Data Structures, good communication skills, commitment to the profession, and a good research publication record. Job…",
-      "last_date_iso": "2026-08-31",
-      "last_date_display": "31-Aug-2026",
-      "email": "office@aalimec.ac.in",
-      "apply_link": "https://www.aalimec.ac.in",
-      "notification_link": "https://www.aalimec.ac.in",
-      "website_link": "https://www.aalimec.ac.in/",
-      "state": "Tamil Nadu",
-      "address": "Aalim Muhammed Salegh College of Engineering, “Nizara Educational Campus,” Muthapudupet, Avadi I.A.F., Chennai – 600055, Tamil Nadu General Instructions for the candidates to apply for the Aalim Muhammed Salegh College…",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "EEE, Associate Professor, Tamil Nadu",
-      "job": "Aalim Muhammed Salegh College Associate Professor EEE",
-      "slug": "aalim-muhammed-salegh-college-associate-professor-eee-2026",
-      "first_seen_at": "2026-08-31",
       "last_seen_at": "2026-08-31",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/aalim-muhammed-salegh-college-associate-professor-eee-2026/"
+      "missing_since": "2026-08-31"
     },
     {
       "college": "State Universities / Engineering Colleges",
