@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T02:04:10+05:30",
+  "generated_at": "2026-09-01T13:24:56+05:30",
   "description": "Permanent ledger of every valid generated job URL. Do not replace this file with a smaller local snapshot.",
   "jobs": [
     {
@@ -30957,8 +30957,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/the-mahatma-phule-krishi-vidyapeeth-mpkv-rahuri-is-the-premier-agricultural-university-ass/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Kurukshetra University, Kurukshetra",
@@ -30987,8 +30986,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/kurukshetra-university-kurukshetra-assistant-professor-information-technology-software-202/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Walk-in Interview at Tadepalligudem, West Godavari District. National Institute",
@@ -31016,8 +31014,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "data_state": "carried_forward",
-      "detail_url": "/jobs/faculty-jobs/walk-in-interview-at-tadepalligudem-west-godavari-district-national-institute-assistant-pr/",
-      "missing_since": "2026-08-31"
+      "detail_url": "/jobs/faculty-jobs/walk-in-interview-at-tadepalligudem-west-godavari-district-national-institute-assistant-pr/"
     },
     {
       "college": "Ad hoc Faculty",
@@ -31045,8 +31042,7 @@
       "is_archived": false,
       "data_state": "carried_forward",
       "first_seen_at": "2026-08-18",
-      "last_seen_at": "2026-08-31",
-      "missing_since": "2026-08-31"
+      "last_seen_at": "2026-08-31"
     },
     {
       "college": "Himachal Pradesh University",
@@ -31074,8 +31070,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/himachal-pradesh-university-assistant-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Ramakrishna Mission Vivekananda College",
@@ -31186,8 +31181,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-assistant-professor-grade-ii-no-of-post-25-the-applications-required-in-t/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty",
@@ -31216,8 +31210,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-3/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Cochin University",
@@ -31245,8 +31238,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/cochin-university-associate-professor-assistant-professor-information-technology-software/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Assistant Professor at Nalanda University",
@@ -31275,8 +31267,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/assistant-professor-at-nalanda-university-professor-associate-professor-assistant-professo/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "SVNIT Surat Assistant Professor",
@@ -31304,8 +31295,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/svnit-surat-assistant-professor-assistant-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty",
@@ -31335,8 +31325,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-3-2/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Punjab University, Guru College About",
@@ -31364,8 +31353,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/punjab-university-guru-college-about-assistant-professors-employment-type-regular-basis-ma/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Professor, Associate Professor, Assistant Professor & Clinical Instructor Posts. AJK…",
@@ -31394,8 +31382,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/professor-associate-professor-assistant-professor-and-clinical-instructor-posts-ajk-associ/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Non-Teaching",
@@ -31423,8 +31410,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/non-teaching-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Indian Institute",
@@ -31453,8 +31439,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-associate-professor-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Indian Institute",
@@ -31483,8 +31468,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty",
@@ -31514,8 +31498,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-assistant-professor-computer-science-cse-2026-3/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Professor, Associate Professor & Assistant Professor Posts. PPG Institute",
@@ -31544,8 +31527,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/professor-associate-professor-and-assistant-professor-posts-ppg-institute-associate-profes/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "The Centre for Management Development (CMD) About",
@@ -31573,8 +31555,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/the-centre-for-management-development-cmd-about-assistant-professor-cse-it-multiple-depart/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Indian Institute",
@@ -31603,8 +31584,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-assistant-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty",
@@ -31632,8 +31612,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "National Institute",
@@ -31690,8 +31669,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/manipal-academy-associate-professor-cse-it-multiple-departments-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "K.C. College",
@@ -31720,8 +31698,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/k-c-college-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Central Agricultural University",
@@ -31749,8 +31726,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/central-agricultural-university-assistant-professor-cse-it-multiple-departments-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "St. Lourdes Engineering College",
@@ -31806,8 +31782,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/navodaya-shikshan-sanstha-s-shankarrao-dhawad-polytechnic-associate-professor-master-of-bu/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty LGTCO",
@@ -31836,8 +31811,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-lgtco-assistant-professor-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Professor & Associate Professor",
@@ -31866,8 +31840,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/professor-and-associate-professor-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Manuscriptpedia. Manuscriptpedia Event Type",
@@ -31924,8 +31897,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/guest-faculty-openings-at-bharathiar-university-guest-faculty-job-type-temporary-cse-it-mu/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Assistant Professor",
@@ -31981,8 +31953,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/atal-bihari-vajpayee-indian-institute-assistant-professor-computer-applications-mca-bca-20/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "The National University",
@@ -32011,8 +31982,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/the-national-university-associate-professor-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Project Associate-I in Indian Institute",
@@ -32095,8 +32065,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-junior-coaching-assistant-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Workshop (Offline) on Solar Thermal Energy, Storage and Its Industrial Applications. PSN…",
@@ -32153,8 +32122,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/sharad-institute-of-technology-college-of-engineering-kolhapur-associate-professor-compute/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Professor, Associate Professor & Assistant Professor",
@@ -32239,8 +32207,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-and-non-teaching-staff-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Call for Award Nominations by Xavier Institute",
@@ -32270,8 +32237,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/call-for-award-nominations-by-xavier-institute-faculty-teaching-role-information-technolog/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Call for Award Nominations by Xavier Institute",
@@ -32328,8 +32294,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-faculty-teaching-role-information-technology-software-2026-2/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Associate Professor & Assistant Professor",
@@ -32358,8 +32323,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/associate-professor-and-assistant-professor-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "VPMM Group of Educational Institutions, Krishnankoil. VPMM Group of Educational…",
@@ -32386,8 +32350,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/vpmm-group-of-educational-institutions-krishnankoil-vpmm-group-of-educational-faculty-teac/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "VPMM Group of Educational Institutions",
@@ -32414,8 +32377,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/vpmm-group-of-educational-institutions-faculty-teaching-role-m-sc-obg-pediatric-community/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Vice Principal",
@@ -32443,8 +32405,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/vice-principal-associate-professor-cse-it-multiple-departments-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "University of Delhi, Delhi",
@@ -32472,8 +32433,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/university-of-delhi-delhi-part-time-language-teacher-employment-type-temporary-chinese-jap/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "SRM Group of Institutions – Directorate of Research (Chennai – Ramapuram & Trichy)",
@@ -32501,8 +32461,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/srm-group-of-institutions-directorate-of-research-chennai-ramapuram-and-trichy-assistant-p/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Sri Venkateswara Institute",
@@ -32531,8 +32490,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/sri-venkateswara-institute-ph-d-experience-salary-details-as-per-norms-computer-science-cs/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Sardar Vallabhbhai National Institute of Technology, Surat (SVNIT Surat)",
@@ -32561,8 +32519,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/sardar-vallabhbhai-national-institute-of-technology-surat-svnit-surat-assistant-professor/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Rashtriya Raksha University",
@@ -32590,8 +32547,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/rashtriya-raksha-university-assistant-professor-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Nalanda University",
@@ -32619,8 +32575,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/nalanda-university-assistant-professor-librarian-1-post-deputy-librarian-1-post-library-as/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "M Institute of Science and Technology Assistant Professor",
@@ -32649,8 +32604,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/m-institute-of-science-and-technology-assistant-professor-assistant-professor-computer-sci/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Instructor",
@@ -32680,8 +32634,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/instructor-faculty-teaching-role-computer-applications-mca-bca-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Indian Institute of Technology Kharagpur (IIT Kharagpur)",
@@ -32709,8 +32662,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indian-institute-of-technology-kharagpur-iit-kharagpur-faculty-teaching-role-computer-scie/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "II Posts Across 17 Departments. Indian Institute",
@@ -32738,8 +32690,7 @@
       "is_archived": false,
       "data_state": "carried_forward",
       "first_seen_at": "2026-08-18",
-      "last_seen_at": "2026-08-31",
-      "missing_since": "2026-08-31"
+      "last_seen_at": "2026-08-31"
     },
     {
       "college": "HR Executive, Civil Supervisor & Website Executive",
@@ -32769,8 +32720,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/hr-executive-civil-supervisor-and-website-executive-faculty-teaching-role-computer-applica/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Hindusthan College",
@@ -32800,8 +32750,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/hindusthan-college-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Himachal Pradesh. All India Institute",
@@ -32829,8 +32778,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/himachal-pradesh-all-india-institute-associate-professor-information-technology-software-2/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Gokhale Institute",
@@ -32858,8 +32806,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/gokhale-institute-faculty-teaching-role-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "G.B. Pant University",
@@ -32887,8 +32834,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/g-b-pant-university-associate-professor-agronomy-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty",
@@ -32918,8 +32864,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-6/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty",
@@ -32945,8 +32890,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-4/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty",
@@ -32974,8 +32918,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-assistant-professor-computer-science-cse-2026-2/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty and Non-Teaching",
@@ -33004,8 +32947,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-and-non-teaching-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Central University of Odisha",
@@ -33034,8 +32976,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/central-university-of-odisha-assistant-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Central University",
@@ -33064,8 +33005,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/central-university-faculty-teaching-role-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Birla Institute",
@@ -33093,8 +33033,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/birla-institute-faculty-teaching-role-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Birla Institute",
@@ -33122,8 +33061,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/birla-institute-assistant-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Associate Professor, Assistant Professor and Trainer Posts. Ghani Khan Choudhury Institute",
@@ -33151,8 +33089,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/associate-professor-assistant-professor-and-trainer-posts-ghani-khan-choudhury-institute-a/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Assistant Professor & Associate Professor",
@@ -33181,8 +33118,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/assistant-professor-and-associate-professor-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Apply Online for Various Departments, Guwahati. Indian Institute",
@@ -33210,8 +33146,7 @@
       "last_seen_at": "2026-08-31",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/apply-online-for-various-departments-guwahati-indian-institute-assistant-professor-compute/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-31"
+      "data_state": "carried_forward"
     },
     {
       "college": "Apply for Registrar, Engineer & More Posts, Jote. National Institute",
@@ -33239,8 +33174,7 @@
       "is_archived": false,
       "data_state": "carried_forward",
       "first_seen_at": "2026-08-18",
-      "last_seen_at": "2026-08-31",
-      "missing_since": "2026-08-31"
+      "last_seen_at": "2026-08-31"
     },
     {
       "college": "State Universities / Engineering Colleges",
