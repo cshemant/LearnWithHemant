@@ -1,18 +1,20 @@
 {
   "sources_total": 44,
-  "sources_reached": 18,
-  "sources_failed": 26,
-  "candidate_count": 869,
+  "sources_reached": 15,
+  "sources_failed": 29,
+  "candidate_count": 681,
   "source_results": [
     {
       "state": "Rajasthan",
       "agency": "State Recruitment Portal",
       "url": "https://recruitment.rajasthan.gov.in/",
-      "landing_status": 200,
-      "detail_pages_fetched": 1,
+      "landing_status": null,
+      "detail_pages_fetched": 0,
       "pdfs_fetched": 0,
-      "candidates": 1,
-      "errors": []
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
     },
     {
       "state": "Rajasthan",
@@ -79,7 +81,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 1,
-      "candidates": 34,
+      "candidates": 46,
       "errors": []
     },
     {
@@ -255,9 +257,9 @@
       "agency": "Kerala PSC",
       "url": "https://www.keralapsc.gov.in/notifications",
       "landing_status": 200,
-      "detail_pages_fetched": 8,
+      "detail_pages_fetched": 6,
       "pdfs_fetched": 2,
-      "candidates": 16,
+      "candidates": 13,
       "errors": []
     },
     {
@@ -274,11 +276,13 @@
       "state": "West Bengal",
       "agency": "WBPSC",
       "url": "https://psc.wb.gov.in/",
-      "landing_status": 200,
-      "detail_pages_fetched": 3,
+      "landing_status": null,
+      "detail_pages_fetched": 0,
       "pdfs_fetched": 0,
-      "candidates": 85,
-      "errors": []
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
     },
     {
       "state": "Telangana",
@@ -478,11 +482,13 @@
       "state": "Meghalaya",
       "agency": "Meghalaya PSC Advertisements",
       "url": "https://mpsc.meghalaya.gov.in/advertisements.html",
-      "landing_status": 200,
-      "detail_pages_fetched": 4,
-      "pdfs_fetched": 10,
-      "candidates": 159,
-      "errors": []
+      "landing_status": null,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
     },
     {
       "state": "Tripura",
