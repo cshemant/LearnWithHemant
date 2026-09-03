@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-02T23:27:56+05:30",
+  "generated_at": "2026-09-03T12:48:11+05:30",
   "description": "Permanent ledger of every valid generated job URL. Do not replace this file with a smaller local snapshot.",
   "jobs": [
     {
@@ -691,7 +691,7 @@
       "last_date_iso": "2026-08-31",
       "last_date_display": "31-Aug-2026",
       "email": "drsbharathiraja@gmail.com",
-      "state": "Tamil Nadu",
+      "state": "Karnataka",
       "address": "Academy of Maritime Education and Training (AMET University), Kanathur, Chennai – 603112, Tamil Nadu, India, Reference Source: This Project Associate Recruitment notification was received directly from the institution.…",
       "verification_status": "Needs Official Verification",
       "status": "Closed",
@@ -700,7 +700,7 @@
       "source": "source_discovery",
       "source_name": "Source Discovery",
       "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Information Technology / Software, Professor, Tamil Nadu",
+      "profile_tags": "Information Technology / Software, Professor, Karnataka",
       "job": "Project Associate Professor Information Technology / Software",
       "slug": "project-associate-professor-information-technology-software-2026",
       "first_seen_at": "2026-09-02",
@@ -12405,33 +12405,6 @@
       "data_state": "carried_forward",
       "archived_at": "2026-08-14",
       "archive_reason": "deadline_expired"
-    },
-    {
-      "college": "Faculty",
-      "post": "Assistant Professor",
-      "department": "Computer Science / CSE",
-      "eligibility": "For Lecturer: B. E. / B.Tech. / M.E. / M.Tech. For Lab Technician: Diploma in Mechanical Engineering (DMECH), Diploma in EEE (DEEE), Diploma in ECE (DECE), Diploma in CSE (DCSE), or Any ITI For Office Staff: Any degree with English and Tamil typing knowledge…",
-      "last_date_iso": "2026-08-13",
-      "last_date_display": "13-Aug-2026",
-      "email": "893svpc@gmail.com",
-      "state": "Tamil Nadu",
-      "address": "The Principal, Sri Venkateswara Polytechnic College, Kazhudur (PO), Tittagudi (TK), Cuddalore – 606304 Reference Source: This job notification was received directly from the institution. Benefits of Joining Sri…",
-      "verification_status": "Needs Official Verification",
-      "status": "Closed",
-      "status_label": "Application Closed",
-      "status_class": "closed",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Computer Science / CSE, Assistant Professor, Tamil Nadu",
-      "job": "Faculty Assistant Professor Computer Science / CSE",
-      "slug": "faculty-assistant-professor-computer-science-cse-2026-3-2",
-      "first_seen_at": "2026-08-08",
-      "last_seen_at": "2026-08-21",
-      "is_archived": true,
-      "archived_at": "2026-08-14",
-      "archive_reason": "deadline_expired",
-      "detail_url": "/jobs/faculty-jobs/faculty-assistant-professor-computer-science-cse-2026-3-2/"
     },
     {
       "college": "Faculty and Nursing Faculty Posts, New Delhi. Delhi Pharmaceutical Sciences and Research…",
@@ -32948,7 +32921,9 @@
       "first_seen_at": "2026-09-02",
       "last_seen_at": "2026-09-02",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/shambhunath-institute-associate-professor-d-pharm-b-pharm-pharm-d-master-of-pharmacy-m-pha/"
+      "detail_url": "/jobs/faculty-jobs/shambhunath-institute-associate-professor-d-pharm-b-pharm-pharm-d-master-of-pharmacy-m-pha/",
+      "missing_since": "2026-09-02",
+      "data_state": "carried_forward"
     },
     {
       "college": "Rane Vidyalaya, Tiruchirappalli. Rane Vidyalaya School",
@@ -33063,7 +33038,9 @@
       "first_seen_at": "2026-09-02",
       "last_seen_at": "2026-09-02",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-3/"
+      "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-3/",
+      "missing_since": "2026-09-02",
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty",
@@ -33997,7 +33974,9 @@
       "first_seen_at": "2026-09-02",
       "last_seen_at": "2026-09-02",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/teaching-associate-professor-computer-science-cse-2026/"
+      "detail_url": "/jobs/faculty-jobs/teaching-associate-professor-computer-science-cse-2026/",
+      "missing_since": "2026-09-02",
+      "data_state": "carried_forward"
     },
     {
       "college": "Swami Vivekananda Group of Institute",
@@ -34227,6 +34206,30 @@
       "detail_url": "/jobs/faculty-jobs/pacific-school-assistant-professor-lecturer-employment-type-full-time-mechanical-engineeri/"
     },
     {
+      "college": "Leadership",
+      "post": "Faculty / Teaching Role",
+      "department": "Computer Science / CSE",
+      "eligibility": "Qualifications, experience, and pay structure strictly as per UGC Regulations, 2018 (and subsequent amendments), and applicable State Government norms Distinguished academic credentials and administrative leadership experience Retired or serving academicians…",
+      "last_date_iso": "2026-09-02",
+      "last_date_display": "02-Sep-2026",
+      "email": "karnatakauniversity12@gmail.com",
+      "state": "Goa",
+      "verification_status": "Needs Official Verification",
+      "status": "Active",
+      "status_label": "Source Verified",
+      "status_class": "good",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Faculty / Teaching Role, Goa",
+      "job": "Leadership Faculty / Teaching Role Computer Science / CSE",
+      "slug": "leadership-faculty-teaching-role-computer-science-cse-2026",
+      "first_seen_at": "2026-09-02",
+      "last_seen_at": "2026-09-02",
+      "is_archived": false,
+      "detail_url": "/jobs/faculty-jobs/leadership-faculty-teaching-role-computer-science-cse-2026/"
+    },
+    {
       "college": "Junior Research Fellow (JRF)/Project Associate – I",
       "post": "Faculty / Teaching Role",
       "department": "Electronics and Communication Engineering",
@@ -34311,6 +34314,31 @@
       "last_seen_at": "2026-09-02",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026/"
+    },
+    {
+      "college": "Faculty",
+      "post": "Assistant Professor",
+      "department": "Computer Science / CSE",
+      "eligibility": "Ph.D./M.E./M.Tech/MBA Vacancy available in departments (Science & Humanities): English; Mathematics Essential Qualifications (Science & Humanities): Ph.D./SET/NET Candidate Profile: Good communication skills, subject expertise, research aptitude, and a…",
+      "last_date_iso": "2026-09-02",
+      "last_date_display": "02-Sep-2026",
+      "email": "shreeengghr@gmail.com",
+      "state": "Karnataka",
+      "address": "Shreenivasa Engineering College, B. Pallipatti, Bommidi, Pappireddipatti (TK), Dharmapuri (DT) – 635 301 General Instructions for the candidates to apply for the Shreenivasa Engineering College jobs: Ensure you meet…",
+      "verification_status": "Needs Official Verification",
+      "status": "Active",
+      "status_label": "Source Verified",
+      "status_class": "good",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Assistant Professor, Karnataka",
+      "job": "Faculty Assistant Professor Computer Science / CSE",
+      "slug": "faculty-assistant-professor-computer-science-cse-2026-3-2",
+      "first_seen_at": "2026-08-08",
+      "last_seen_at": "2026-09-02",
+      "is_archived": false,
+      "detail_url": "/jobs/faculty-jobs/faculty-assistant-professor-computer-science-cse-2026-3-2/"
     },
     {
       "college": "Faculty",
