@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04T23:11:40+05:30",
+  "generated_at": "2026-09-05T12:31:31+05:30",
   "description": "Permanent ledger of every valid generated job URL. Do not replace this file with a smaller local snapshot.",
   "jobs": [
     {
@@ -5354,38 +5354,6 @@
       "last_seen_at": "2026-08-26",
       "is_archived": true,
       "detail_url": "/jobs/faculty-jobs/k-v-ranga-reddy-law-college-associate-professor-cse-it-multiple-departments-2026/",
-      "archived_at": "2026-08-27",
-      "archive_reason": "deadline_expired"
-    },
-    {
-      "college": "Junior Research Fellow(JRF)",
-      "post": "Faculty / Teaching Role",
-      "department": "Information Technology / Software",
-      "eligibility": "M.Sc./M.Sc. Tech./M.Tech. in Applied Geophysics/Applied Geology /Petroleum Exploration/BS-MS in Earth Science or Equivalent degree with 60% above or equivalent CGPA. The candidates must have qualified GATE/CSIR-UGC NET. Desirable",
-      "last_date_iso": "2026-08-26",
-      "last_date_display": "26-Aug-2026",
-      "email": "partham@iitism.ac.in, partha87presi@gmail.com",
-      "apply_link": "https://www.iitism.ac.in/",
-      "notification_link": "https://www.iitism.ac.in/",
-      "website_link": "https://www.iitism.ac.in/",
-      "state": "Jharkhand",
-      "address": "Indian Institute of Technology (Indian School of Mines), Dhanbad-826004, Jharkhand For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Previous article Indian Institute of Technology (ISM), Dhanbad…",
-      "verification_status": "Official Link Found",
-      "status": "Closed",
-      "status_label": "Application Closed",
-      "status_class": "closed",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Information Technology / Software, Faculty / Teaching Role, Jharkhand",
-      "job": "Junior Research Fellow(JRF) Faculty / Teaching Role Information Technology / Software",
-      "slug": "junior-research-fellow-jrf-faculty-teaching-role-information-technology-software-2026",
-      "first_seen_at": "2026-08-15",
-      "last_seen_at": "2026-08-19",
-      "is_archived": true,
-      "detail_url": "/jobs/faculty-jobs/junior-research-fellow-jrf-faculty-teaching-role-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-08-20",
       "archived_at": "2026-08-27",
       "archive_reason": "deadline_expired"
     },
@@ -33264,7 +33232,9 @@
       "first_seen_at": "2026-09-04",
       "last_seen_at": "2026-09-04",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-2/"
+      "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026-2/",
+      "missing_since": "2026-09-04",
+      "data_state": "carried_forward"
     },
     {
       "college": "Office of the Collector & District Magistrate, Mayurbhanj",
@@ -33346,6 +33316,34 @@
       "last_seen_at": "2026-09-04",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/nit-warangal-fdp-5th-international-conference-on-advanced-communications-and-faculty-teach/"
+    },
+    {
+      "college": "Research and Publication – A Practical FDP for Faculty and Researchers",
+      "post": "Assistant Professor",
+      "department": "Computer Science / CSE",
+      "eligibility": "Check qualification, subject code, experience and documents in official notice.",
+      "last_date_iso": "2026-09-22",
+      "last_date_display": "22-Sep-2026",
+      "contact_number": "+91 97053 35025",
+      "apply_link": "http://www.rbvrrwomenscollege.ac.in/",
+      "notification_link": "http://www.rbvrrwomenscollege.ac.in/",
+      "website_link": "https://www.rbvrrwomenscollege.ac.in/",
+      "state": "Telangana",
+      "address": "R.B.V.R.R Women’s College 9FWV+592, Chitrapuri Colony Rd, Chitrapuri Colony, Lingampally, Narayanguda, Hyderabad, Telangana 500027 Disclaimer source.com is publishing this Faculty Development Programme (FDP)…",
+      "verification_status": "Official Link Found",
+      "status": "Active",
+      "status_label": "Source Verified",
+      "status_class": "good",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Assistant Professor, Telangana",
+      "job": "Research and Publication – A Practical FDP for Faculty and Researchers Assistant Professor Computer Science / CSE",
+      "slug": "research-and-publication-a-practical-fdp-for-faculty-and-researchers-assistant-professor-c",
+      "first_seen_at": "2026-09-04",
+      "last_seen_at": "2026-09-04",
+      "is_archived": false,
+      "detail_url": "/jobs/faculty-jobs/research-and-publication-a-practical-fdp-for-faculty-and-researchers-assistant-professor-c/"
     },
     {
       "college": "Himachal Pradesh University",
@@ -33546,7 +33544,9 @@
       "first_seen_at": "2026-08-31",
       "last_seen_at": "2026-09-04",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/nit-jamshedpur-jamshedpur-faculty-teaching-role-information-technology-software-2026/"
+      "detail_url": "/jobs/faculty-jobs/nit-jamshedpur-jamshedpur-faculty-teaching-role-information-technology-software-2026/",
+      "missing_since": "2026-09-04",
+      "data_state": "carried_forward"
     },
     {
       "college": "Multiple Openings at GVR&S College",
@@ -34254,6 +34254,33 @@
       "detail_url": "/jobs/faculty-jobs/kurukshetra-university-teachers-on-stop-gap-arrangement-employment-type-lecture-basis-depa/"
     },
     {
+      "college": "Junior Research Fellow (JRF)",
+      "post": "Faculty / Teaching Role",
+      "department": "Information Technology / Software",
+      "eligibility": "Check qualification, subject code, experience and documents in official notice.",
+      "last_date_iso": "2026-09-10",
+      "last_date_display": "10-Sep-2026",
+      "apply_link": "https://www.amrita.edu/",
+      "notification_link": "https://www.amrita.edu/",
+      "website_link": "https://www.amrita.edu/",
+      "state": "Karnataka",
+      "address": "Amrita Vishwa Vidyapeetham Amritapuri Campus Amritapuri, Clappana P. O. Kollam – 690525 Kerala, India For Detailed Faculty job Advertisement (Read Carefully) : Click Here Join source Community WhatsApp Group WhatsApp…",
+      "verification_status": "Official Link Found",
+      "status": "Active",
+      "status_label": "Source Verified",
+      "status_class": "good",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Information Technology / Software, Faculty / Teaching Role, Karnataka",
+      "job": "Junior Research Fellow (JRF) Faculty / Teaching Role Information Technology / Software",
+      "slug": "junior-research-fellow-jrf-faculty-teaching-role-information-technology-software-2026",
+      "first_seen_at": "2026-09-04",
+      "last_seen_at": "2026-09-04",
+      "is_archived": false,
+      "detail_url": "/jobs/faculty-jobs/junior-research-fellow-jrf-faculty-teaching-role-information-technology-software-2026/"
+    },
+    {
       "college": "Government Medical College",
       "post": "Associate Professor Assistant Professor Tutor Civil Assistant Surgeon",
       "department": "CSE / IT / Multiple Departments",
@@ -34595,7 +34622,9 @@
       "first_seen_at": "2026-08-31",
       "last_seen_at": "2026-09-04",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/national-institute-faculty-teaching-role-electronics-and-communication-engineering-2026/"
+      "detail_url": "/jobs/faculty-jobs/national-institute-faculty-teaching-role-electronics-and-communication-engineering-2026/",
+      "missing_since": "2026-09-04",
+      "data_state": "carried_forward"
     },
     {
       "college": "MVJ College of Engineering, Bengaluru. MVJ College",
@@ -35200,7 +35229,9 @@
       "first_seen_at": "2026-09-04",
       "last_seen_at": "2026-09-04",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/sree-sowdambika-college-of-engineering-aruppukottai-626-134-tamil-nadu-assistant-professor/"
+      "detail_url": "/jobs/faculty-jobs/sree-sowdambika-college-of-engineering-aruppukottai-626-134-tamil-nadu-assistant-professor/",
+      "missing_since": "2026-09-04",
+      "data_state": "carried_forward"
     },
     {
       "college": "Savitribai Phule Pune University",
@@ -35425,6 +35456,33 @@
       "last_seen_at": "2026-09-04",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/kurukshetra-university-associate-professor-information-technology-software-2026/"
+    },
+    {
+      "college": "Kodaikanal, a quiet hill station tucked away in the Palani hills of South India. This…",
+      "post": "Faculty / Teaching Role",
+      "department": "Department of Physics Title of the Project : ‘Tunable Plasmonic-Graphene oxide Interactions for UltraTrace Raman…",
+      "eligibility": "CRS – Project Fellow (Junior) -1: M.Sc. (not earlier than 3 years) with a minimum of 55% marks in the concerned subject (for Science) CRS – Project Fellow (Junior) 1I: M.Sc. (not earlier than 3 years) with a minimum of 55% marks in the concerned subject (for…",
+      "last_date_iso": "2026-09-04",
+      "last_date_display": "04-Sep-2026",
+      "apply_link": "http://www.motherteresawomenuniv.ac.in",
+      "notification_link": "http://www.motherteresawomenuniv.ac.in",
+      "website_link": "https://www.motherteresawomenuniv.ac.in/",
+      "state": "Tamil Nadu",
+      "address": "Mother Teresa Women’s University, Attuvampatti Campus, Kodaikanal 624 102 For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Join source Community WhatsApp Group WhatsApp Channel Join Telegram Follow…",
+      "verification_status": "Official Link Found",
+      "status": "Active",
+      "status_label": "Source Verified",
+      "status_class": "good",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Department of Physics Title of the Project : ‘Tunable Plasmonic-Graphene oxide Interactions for UltraTrace Raman…, Faculty / Teaching Role, Tamil Nadu",
+      "job": "Kodaikanal, a quiet hill station tucked away in the Palani hills of South India. This… Faculty / Teaching Role Department of Physics Title of the Project : ‘Tunable Plasmonic-Graphene oxide Interactions for UltraTrace Raman…",
+      "slug": "kodaikanal-a-quiet-hill-station-tucked-away-in-the-palani-hills-of-south-india-this-facult",
+      "first_seen_at": "2026-09-04",
+      "last_seen_at": "2026-09-04",
+      "is_archived": false,
+      "detail_url": "/jobs/faculty-jobs/kodaikanal-a-quiet-hill-station-tucked-away-in-the-palani-hills-of-south-india-this-facult/"
     },
     {
       "college": "Guru Gobind Singh Indraprastha University",
