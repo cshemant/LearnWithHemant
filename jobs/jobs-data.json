@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-07T04:21:55+05:30",
-  "last_scan_at": "2026-09-07T04:21:55+05:30",
-  "last_successful_auto_update": "2026-09-07T04:21:55+05:30",
-  "updated_label": "Updated: 07 Sep 2026 • 26 active vacancies",
+  "generated_at": "2026-09-08T05:17:07+05:30",
+  "last_scan_at": "2026-09-08T05:17:07+05:30",
+  "last_successful_auto_update": "2026-09-08T05:17:07+05:30",
+  "updated_label": "Updated: 08 Sep 2026 • 26 active vacancies",
   "source": "active verified jobs + official all-India scanner",
   "manual_count": 0,
-  "auto_count": 24,
+  "auto_count": 20,
   "scan_status": "ok",
   "scan_report": {
     "sources_total": 44,
-    "sources_reached": 18,
-    "sources_failed": 26,
-    "candidate_count": 868,
+    "sources_reached": 17,
+    "sources_failed": 27,
+    "candidate_count": 837,
     "source_results": [
       {
         "state": "Rajasthan",
@@ -88,7 +88,7 @@
         "landing_status": 200,
         "detail_pages_fetched": 8,
         "pdfs_fetched": 1,
-        "candidates": 28,
+        "candidates": 22,
         "errors": []
       },
       {
@@ -195,11 +195,13 @@
         "state": "Jharkhand",
         "agency": "JPSC",
         "url": "https://www.jpsc.gov.in/",
-        "landing_status": 200,
-        "detail_pages_fetched": 8,
-        "pdfs_fetched": 10,
-        "candidates": 31,
-        "errors": []
+        "landing_status": null,
+        "detail_pages_fetched": 0,
+        "pdfs_fetched": 0,
+        "candidates": 0,
+        "errors": [
+          "landing page unavailable (network error)"
+        ]
       },
       {
         "state": "Maharashtra",
@@ -480,7 +482,7 @@
         "landing_status": 200,
         "detail_pages_fetched": 1,
         "pdfs_fetched": 10,
-        "candidates": 431,
+        "candidates": 432,
         "errors": []
       },
       {
@@ -506,12 +508,12 @@
         ]
       }
     ],
-    "useful_auto_count": 24,
+    "useful_auto_count": 20,
     "carried_auto_count": 0,
     "active_manual_count": 0,
     "watch_source_count": 21,
     "expired_manual_count": 5,
-    "final_dashboard_count": 24,
+    "final_dashboard_count": 20,
     "scan_status": "ok"
   },
   "watch_sources": [
@@ -1048,7 +1050,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE, M.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1069,7 +1071,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "advertisement-for-post-graduate-teacher-pgt-examination-2025",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-for-post-graduate-teacher-pgt-examination-2025/"
     },
@@ -1079,7 +1081,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE, M.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1100,7 +1102,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "advertisement-for-the-post-graduate-teacher-pgt-under-the-department-of-education-govt",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-for-the-post-graduate-teacher-pgt-under-the-department-of-education-govt/"
     },
@@ -1110,7 +1112,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1131,7 +1133,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "advertisement-for-the-post-of-trained-graduate-teacher-examination-secondary-level-2026",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-for-the-post-of-trained-graduate-teacher-examination-secondary-level-2026/"
     },
@@ -1141,7 +1143,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1162,7 +1164,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "advertisement-for-the-post-of-trained-graduate-teacher-examination-secondary-level-2026-2",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-for-the-post-of-trained-graduate-teacher-examination-secondary-level-2026-2/"
     },
@@ -1172,7 +1174,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1193,7 +1195,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "advertisement-for-the-trained-graduate-teacher-tgt-under-the-department-of-education-arun",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-for-the-trained-graduate-teacher-tgt-under-the-department-of-education-arun/"
     },
@@ -1203,7 +1205,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "",
       "type": "Office",
       "status": "Doubtful",
@@ -1224,7 +1226,7 @@
       "source_url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "slug": "advertisement-pdf",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-pdf/"
     },
@@ -1234,7 +1236,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "",
       "type": "Office",
       "status": "Doubtful",
@@ -1255,7 +1257,7 @@
       "source_url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "slug": "advertisement-pdf-2",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-pdf-2/"
     },
@@ -1335,7 +1337,6 @@
       "status": "Doubtful",
       "status_label": "Doubtful",
       "status_class": "caution",
-      "last_date_iso": "",
       "last_date_display": "Check official notice",
       "official_link": "https://uppsc.up.nic.in/OuterPages/CandidatePages/OTRAppForm/Applicant_OtrAuthentication.aspx?WEqGEem9m0+8Y4tNQqJiNYurmbKsjJR/fgSlThSTh6o=",
       "official_label": "Check",
@@ -1352,7 +1353,9 @@
       "first_seen_at": "2026-08-19",
       "last_seen_at": "2026-09-06",
       "is_archived": false,
-      "detail_url": "/jobs/fill-online-details-for-advt-no-a-7-e-1-2026-assistant-professor-government-degree-colleg/"
+      "detail_url": "/jobs/fill-online-details-for-advt-no-a-7-e-1-2026-assistant-professor-government-degree-colleg/",
+      "missing_since": "2026-09-07",
+      "data_state": "carried_forward"
     },
     {
       "job": "FILL ONLINE DETAILS FOR ADVT. NO.A-7/E-1/2026, ASSISTANT PROFESSOR, GOVERNMENT DEGREE COLLEG",
@@ -1366,7 +1369,6 @@
       "status": "Doubtful",
       "status_label": "Doubtful",
       "status_class": "caution",
-      "last_date_iso": "",
       "last_date_display": "Check official notice",
       "official_link": "https://uppsc.up.nic.in/CandidatePages/OTRAppForm/Applicant_OtrAuthentication.aspx?WEqGEem9m0+8Y4tNQqJiNYurmbKsjJR/fgSlThSTh6o=",
       "official_label": "Check",
@@ -1383,7 +1385,9 @@
       "first_seen_at": "2026-08-19",
       "last_seen_at": "2026-09-06",
       "is_archived": false,
-      "detail_url": "/jobs/fill-online-details-for-advt-no-a-7-e-1-2026-assistant-professor-government-degree-colle-2/"
+      "detail_url": "/jobs/fill-online-details-for-advt-no-a-7-e-1-2026-assistant-professor-government-degree-colle-2/",
+      "missing_since": "2026-09-07",
+      "data_state": "carried_forward"
     },
     {
       "job": "Go through the advertisement of respective post/posts",
@@ -1397,7 +1401,6 @@
       "status": "Doubtful",
       "status_label": "Doubtful",
       "status_class": "caution",
-      "last_date_iso": "",
       "last_date_display": "Check official notice",
       "official_link": "https://www.jpsc.gov.in/Civil_judge_junior_division_22_2023/login.php",
       "official_label": "Check",
@@ -1414,7 +1417,9 @@
       "first_seen_at": "2026-08-07",
       "last_seen_at": "2026-09-06",
       "is_archived": false,
-      "detail_url": "/jobs/go-through-the-advertisement-of-respective-post-posts/"
+      "detail_url": "/jobs/go-through-the-advertisement-of-respective-post-posts/",
+      "missing_since": "2026-09-07",
+      "data_state": "carried_forward"
     },
     {
       "job": "Go through the advertisement of respective posts",
@@ -1428,7 +1433,6 @@
       "status": "Doubtful",
       "status_label": "Doubtful",
       "status_class": "caution",
-      "last_date_iso": "",
       "last_date_display": "Check official notice",
       "official_link": "https://www.jpsc.gov.in/data/FAQ.pdf",
       "official_label": "Check",
@@ -1445,7 +1449,9 @@
       "first_seen_at": "2026-08-07",
       "last_seen_at": "2026-09-06",
       "is_archived": false,
-      "detail_url": "/jobs/go-through-the-advertisement-of-respective-posts/"
+      "detail_url": "/jobs/go-through-the-advertisement-of-respective-posts/",
+      "missing_since": "2026-09-07",
+      "data_state": "carried_forward"
     },
     {
       "job": "Instructions for Filling Application VACANCIES TO BE FILLED UP ON DIRECT RECRUITMENT BASIS F",
@@ -1453,7 +1459,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Office",
       "status": "Doubtful",
@@ -1474,7 +1480,7 @@
       "source_url": "https://recruit-delhi.nielit.gov.in/",
       "slug": "instructions-for-filling-application-vacancies-to-be-filled-up-on-direct-recruitment-basis-f",
       "first_seen_at": "2026-08-04",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/instructions-for-filling-application-vacancies-to-be-filled-up-on-direct-recruitment-basis-f/"
     },
@@ -1484,7 +1490,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE, M.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1505,7 +1511,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "notification-for-post-graduate-teacher-department-of-education",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/notification-for-post-graduate-teacher-department-of-education/"
     },
@@ -1515,7 +1521,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE, M.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1536,7 +1542,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "notification-for-post-graduate-teacher-pgt",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/notification-for-post-graduate-teacher-pgt/"
     },
@@ -1546,7 +1552,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1567,7 +1573,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "notification-for-the-post-of-trained-graduate-teacher-tgt",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/notification-for-the-post-of-trained-graduate-teacher-tgt/"
     },
@@ -1577,7 +1583,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1598,7 +1604,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "notification-for-trained-graduate-teacher-tgt-examination",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/notification-for-trained-graduate-teacher-tgt-examination/"
     },
@@ -1608,7 +1614,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE, M.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1629,7 +1635,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "notification-for-written-examination-mains-of-post-graduate-teacher-examination-2025",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/notification-for-written-examination-mains-of-post-graduate-teacher-examination-2025/"
     },
@@ -1639,7 +1645,7 @@
       "eligible_for": "B.Tech/M.Tech CSE or MCA verify exact post",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Computer/IT",
       "status": "Doubtful",
@@ -1660,7 +1666,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "notification-regarding-eligibility-of-b-ed-degree-w-r-t-wp-c-509-2025",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/notification-regarding-eligibility-of-b-ed-degree-w-r-t-wp-c-509-2025/"
     },
@@ -1670,7 +1676,7 @@
       "eligible_for": "B.Tech/M.Tech CSE or MCA verify exact post",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Computer/IT",
       "status": "Doubtful",
@@ -1691,7 +1697,7 @@
       "source_url": "https://www.ecil.co.in/jobopenings",
       "slug": "of-atomic-energy-enterprise-human-resources-recruitment-section-application-form-advert",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/of-atomic-energy-enterprise-human-resources-recruitment-section-application-form-advert/"
     },
@@ -1701,7 +1707,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE, M.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1722,7 +1728,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "provisionally-accepted-rejected-applications-for-post-graduate-teacher-examination-2025",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/provisionally-accepted-rejected-applications-for-post-graduate-teacher-examination-2025/"
     },
@@ -1732,7 +1738,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE, M.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1753,7 +1759,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "recruitment-test-notification-for-the-post-of-post-graduate-teacher-pgt-deptt-of-educatio",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/recruitment-test-notification-for-the-post-of-post-graduate-teacher-pgt-deptt-of-educatio/"
     },
@@ -1763,7 +1769,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE, M.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1784,7 +1790,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "recruitment-test-notification-for-the-post-of-post-graduate-teacher-deptt-of-education",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/recruitment-test-notification-for-the-post-of-post-graduate-teacher-deptt-of-education/"
     },
@@ -1794,7 +1800,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Office",
       "status": "Doubtful",
@@ -1815,7 +1821,7 @@
       "source_url": "https://www.ecil.co.in/jobopenings",
       "slug": "the-detailed-engineering-design-was-developed-from-a-conceptual-science-design",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/the-detailed-engineering-design-was-developed-from-a-conceptual-science-design/"
     },
@@ -1825,7 +1831,7 @@
       "eligible_for": "M.Tech/NET/SET/PhD as per official notice",
       "fit_reason": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
       "why": "Watch: Relevant for the CSE teaching route. Verify NET/SET/PhD, subject code, marks and institution rules",
-      "verified_on": "07 Sep 2026",
+      "verified_on": "08 Sep 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Teaching",
       "status": "Doubtful",
@@ -1846,7 +1852,7 @@
       "source_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
       "slug": "trained-graduate-teacher-notification",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-09-06",
+      "last_seen_at": "2026-09-07",
       "is_archived": false,
       "detail_url": "/jobs/trained-graduate-teacher-notification/"
     }
