@@ -1,8 +1,8 @@
 {
   "sources_total": 44,
-  "sources_reached": 18,
-  "sources_failed": 26,
-  "candidate_count": 879,
+  "sources_reached": 17,
+  "sources_failed": 27,
+  "candidate_count": 794,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -274,11 +274,13 @@
       "state": "West Bengal",
       "agency": "WBPSC",
       "url": "https://psc.wb.gov.in/",
-      "landing_status": 200,
-      "detail_pages_fetched": 3,
+      "landing_status": null,
+      "detail_pages_fetched": 0,
       "pdfs_fetched": 0,
-      "candidates": 85,
-      "errors": []
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
     },
     {
       "state": "Telangana",
