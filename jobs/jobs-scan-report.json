@@ -79,7 +79,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 1,
-      "candidates": 26,
+      "candidates": 22,
       "errors": []
     },
     {
@@ -483,7 +483,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 4,
       "pdfs_fetched": 10,
-      "candidates": 169,
+      "candidates": 172,
       "errors": []
     },
     {
