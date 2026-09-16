@@ -2,7 +2,7 @@
   "sources_total": 44,
   "sources_reached": 17,
   "sources_failed": 27,
-  "candidate_count": 796,
+  "candidate_count": 795,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -69,7 +69,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 1,
       "pdfs_fetched": 10,
-      "candidates": 49,
+      "candidates": 48,
       "errors": []
     },
     {
@@ -257,7 +257,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 2,
-      "candidates": 18,
+      "candidates": 16,
       "errors": []
     },
     {
@@ -473,7 +473,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 1,
       "pdfs_fetched": 10,
-      "candidates": 433,
+      "candidates": 435,
       "errors": []
     },
     {
@@ -483,7 +483,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 4,
       "pdfs_fetched": 10,
-      "candidates": 172,
+      "candidates": 173,
       "errors": []
     },
     {
