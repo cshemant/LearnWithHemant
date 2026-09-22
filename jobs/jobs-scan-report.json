@@ -2,7 +2,7 @@
   "sources_total": 44,
   "sources_reached": 17,
   "sources_failed": 27,
-  "candidate_count": 794,
+  "candidate_count": 795,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -473,7 +473,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 1,
       "pdfs_fetched": 10,
-      "candidates": 436,
+      "candidates": 437,
       "errors": []
     },
     {
