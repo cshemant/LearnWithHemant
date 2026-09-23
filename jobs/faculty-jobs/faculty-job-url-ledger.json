@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T23:41:23+05:30",
+  "generated_at": "2026-09-23T13:23:06+05:30",
   "description": "Permanent ledger of every valid generated job URL. Do not replace this file with a smaller local snapshot.",
   "jobs": [
     {
@@ -40131,7 +40131,9 @@
       "first_seen_at": "2026-09-22",
       "last_seen_at": "2026-09-22",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/director-professor-information-technology-software-2026/"
+      "detail_url": "/jobs/faculty-jobs/director-professor-information-technology-software-2026/",
+      "missing_since": "2026-09-22",
+      "data_state": "carried_forward"
     },
     {
       "college": "Assistant Professor. Central Institute",
@@ -41194,6 +41196,34 @@
       "data_state": "carried_forward"
     },
     {
+      "college": "Arulmigu Meenakshi Amman College of Engineering, Tiruvannamalai",
+      "post": "Associate Professor",
+      "department": "Computer Applications / MCA / BCA",
+      "eligibility": "The institution is looking for candidates who Meet the eligibility norms prescribed by AICTE and Anna University Have strong subject knowledge and teaching ability Are committed to academic excellence and student development Can contribute to research…",
+      "last_date_iso": "2026-09-28",
+      "last_date_display": "28-Sep-2026",
+      "email": "principal@amace.edu.in",
+      "apply_link": "https://www.amace.edu.in/",
+      "notification_link": "https://www.amace.edu.in/",
+      "website_link": "https://www.amace.edu.in/",
+      "state": "Tamil Nadu",
+      "address": "[email protected]",
+      "verification_status": "Official Link Found",
+      "status": "Active",
+      "status_label": "Source Verified",
+      "status_class": "good",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Applications / MCA / BCA, Associate Professor, Tamil Nadu",
+      "job": "Arulmigu Meenakshi Amman College of Engineering, Tiruvannamalai Associate Professor Computer Applications / MCA / BCA",
+      "slug": "arulmigu-meenakshi-amman-college-of-engineering-tiruvannamalai-associate-professor-compute",
+      "first_seen_at": "2026-09-22",
+      "last_seen_at": "2026-09-22",
+      "is_archived": false,
+      "detail_url": "/jobs/faculty-jobs/arulmigu-meenakshi-amman-college-of-engineering-tiruvannamalai-associate-professor-compute/"
+    },
+    {
       "college": "St. Francis de Sales College (Autonomous)",
       "post": "Associate Professor",
       "department": "CSE / IT / Multiple Departments",
@@ -41762,7 +41792,37 @@
       "first_seen_at": "2026-09-22",
       "last_seen_at": "2026-09-22",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/non-teaching-assistant-professor-cse-it-multiple-departments-2026/"
+      "detail_url": "/jobs/faculty-jobs/non-teaching-assistant-professor-cse-it-multiple-departments-2026/",
+      "missing_since": "2026-09-22",
+      "data_state": "carried_forward"
+    },
+    {
+      "college": "Job",
+      "post": "Lecturer",
+      "department": "CSE / IT / Multiple Departments",
+      "eligibility": "The institution is looking for candidates who Have good professional and communication skills Show strong commitment towards their work Are genuinely passionate about their role Can work well as part of a team Are interested in contributing to professional…",
+      "last_date_iso": "2026-09-22",
+      "last_date_display": "22-Sep-2026",
+      "email": "hrd@velhightech.com",
+      "apply_link": "https://velhightech.com/",
+      "notification_link": "https://velhightech.com/",
+      "website_link": "https://velhightech.com/",
+      "state": "Goa",
+      "address": "[email protected]",
+      "verification_status": "Official Link Found",
+      "status": "Active",
+      "status_label": "Source Verified",
+      "status_class": "good",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "CSE / IT / Multiple Departments, Lecturer, Goa",
+      "job": "Job Lecturer CSE / IT / Multiple Departments",
+      "slug": "job-lecturer-cse-it-multiple-departments-2026",
+      "first_seen_at": "2026-09-22",
+      "last_seen_at": "2026-09-22",
+      "is_archived": false,
+      "detail_url": "/jobs/faculty-jobs/job-lecturer-cse-it-multiple-departments-2026/"
     },
     {
       "college": "Faculty",
