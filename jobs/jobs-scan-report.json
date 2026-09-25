@@ -2,7 +2,7 @@
   "sources_total": 44,
   "sources_reached": 16,
   "sources_failed": 28,
-  "candidate_count": 773,
+  "candidate_count": 776,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -164,11 +164,13 @@
       "state": "Haryana",
       "agency": "HSSC",
       "url": "https://hssc.gov.in/",
-      "landing_status": 200,
-      "detail_pages_fetched": 4,
-      "pdfs_fetched": 10,
-      "candidates": 27,
-      "errors": []
+      "landing_status": null,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (network error)"
+      ]
     },
     {
       "state": "Jharkhand",
@@ -186,13 +188,11 @@
       "state": "Jharkhand",
       "agency": "JPSC",
       "url": "https://www.jpsc.gov.in/",
-      "landing_status": null,
-      "detail_pages_fetched": 0,
-      "pdfs_fetched": 0,
-      "candidates": 0,
-      "errors": [
-        "landing page unavailable (network error)"
-      ]
+      "landing_status": 200,
+      "detail_pages_fetched": 8,
+      "pdfs_fetched": 10,
+      "candidates": 31,
+      "errors": []
     },
     {
       "state": "Maharashtra",
@@ -257,9 +257,9 @@
       "agency": "Kerala PSC",
       "url": "https://www.keralapsc.gov.in/notifications",
       "landing_status": 200,
-      "detail_pages_fetched": 6,
+      "detail_pages_fetched": 8,
       "pdfs_fetched": 2,
-      "candidates": 13,
+      "candidates": 14,
       "errors": []
     },
     {
@@ -501,11 +501,11 @@
       ]
     }
   ],
-  "useful_auto_count": 21,
+  "useful_auto_count": 23,
   "carried_auto_count": 0,
   "active_manual_count": 0,
   "watch_source_count": 21,
   "expired_manual_count": 5,
-  "final_dashboard_count": 21,
+  "final_dashboard_count": 23,
   "scan_status": "ok"
 }
