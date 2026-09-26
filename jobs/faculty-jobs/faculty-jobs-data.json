@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-26T13:36:32+05:30",
-  "updated_label": "Updated: 26 Sep 2026, 01:36 PM IST • 97 active jobs",
+  "generated_at": "2026-09-26T23:33:45+05:30",
+  "updated_label": "Updated: 26 Sep 2026, 11:33 PM IST • 99 active jobs",
   "source": "manual verified faculty jobs + source discovery + enabled official-source scanner + protected email decoder",
   "manual_count": 3,
-  "auto_count": 91,
+  "auto_count": 92,
   "jobs": [
     {
       "college": "Rajiv Gandhi Centre for Biotechnology, Trivandrum",
@@ -453,15 +453,11 @@
       "eligibility": "Eligibility for Professor Eligibility A or B (i) An eminent scholar having a Ph.D. degree in the concerned/allied/relevant discipline, and published work of high quality, actively engaged in research with evidence of published work with, a minimum of 10…",
       "last_date_iso": "2026-10-11",
       "last_date_display": "11-Oct-2026",
-      "email": "",
-      "contact_number": "",
       "apply_link": "https://www.sggu.ac.in/recruitement.php",
       "notification_link": "https://www.sggu.ac.in/recruitement.php",
       "website_link": "https://www.sggu.ac.in/",
-      "city": "",
       "state": "Goa",
       "address": "Office of the Registrar, Shri Govind Guru University, At. Post. Vinzol, Ta. Godhra, Dist. Panchmahals, Gujarat-388713 For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Disclaimer for Candidates…",
-      "source_page": "",
       "verification_status": "Official Link Found",
       "status": "Active",
       "status_label": "Source Verified",
@@ -474,7 +470,10 @@
       "slug": "shri-govind-guru-university-godhra-about-professor-associate-professor-professor-botany-as",
       "first_seen_at": "2026-09-26",
       "last_seen_at": "2026-09-26",
-      "is_archived": false
+      "is_archived": false,
+      "detail_url": "/jobs/faculty-jobs/shri-govind-guru-university-godhra-about-professor-associate-professor-professor-botany-as/",
+      "missing_since": "2026-09-26",
+      "data_state": "carried_forward"
     },
     {
       "college": "Vaikunth Mehta National Institute of Cooperative Management, Pune About",
@@ -2459,6 +2458,36 @@
       "is_archived": false
     },
     {
+      "college": "Assistant Professor",
+      "post": "Assistant Professor",
+      "department": "Computer Science / CSE",
+      "eligibility": "The institution is looking for candidates who Hold a relevant PG degree with NET/SET/Ph.D. qualification Bring subject expertise suited to their applied department Are committed to teaching and contributing to a women-focused academic environment…",
+      "last_date_iso": "2026-09-26",
+      "last_date_display": "26-Sep-2026",
+      "email": "chezhianartsandscience@gmail.com",
+      "contact_number": "",
+      "apply_link": "https://chezhianwomencollege.in/",
+      "notification_link": "https://chezhianwomencollege.in/",
+      "website_link": "https://chezhianwomencollege.in/",
+      "city": "",
+      "state": "Tamil Nadu",
+      "address": "[email protected]",
+      "source_page": "",
+      "verification_status": "Official Link Found",
+      "status": "Active",
+      "status_label": "Source Verified",
+      "status_class": "good",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Assistant Professor, Tamil Nadu",
+      "job": "Assistant Professor Assistant Professor Computer Science / CSE",
+      "slug": "assistant-professor-assistant-professor-computer-science-cse-2026-2",
+      "first_seen_at": "2026-09-26",
+      "last_seen_at": "2026-09-26",
+      "is_archived": false
+    },
+    {
       "college": "Assistant Professor & Associate Professor",
       "post": "Associate Professor",
       "department": "CSE / IT / Multiple Departments",
@@ -2514,6 +2543,36 @@
       "profile_tags": "Entomology Computer Science Food Science & Technology, Associate Professor, Himachal Pradesh",
       "job": "Dr.Yashwant Singh Parmar University of Horticulture and Forestry Associate Professor Entomology Computer Science Food Science & Technology",
       "slug": "dr-yashwant-singh-parmar-university-of-horticulture-and-forestry-associate-professor-entom",
+      "first_seen_at": "2026-09-26",
+      "last_seen_at": "2026-09-26",
+      "is_archived": false
+    },
+    {
+      "college": "Job",
+      "post": "Assistant Professor",
+      "department": "Information Technology / Software",
+      "eligibility": "The institution is looking for candidates who Hold relevant qualifications for their chosen role Have good communication skills Possess job-related skills suited to the specific position Are committed to contributing to the institution’s growth across their…",
+      "last_date_iso": "2026-09-26",
+      "last_date_display": "26-Sep-2026",
+      "email": "hr@pkdasuniversity.ac.in",
+      "contact_number": "",
+      "apply_link": "https://www.pkdasuniversity.ac.in/careers",
+      "notification_link": "https://www.pkdasuniversity.ac.in/careers",
+      "website_link": "https://www.pkdasuniversity.ac.in/careers",
+      "city": "",
+      "state": "Kerala",
+      "address": "[email protected]",
+      "source_page": "",
+      "verification_status": "Official Link Found",
+      "status": "Active",
+      "status_label": "Source Verified",
+      "status_class": "good",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Information Technology / Software, Assistant Professor, Kerala",
+      "job": "Job Assistant Professor Information Technology / Software",
+      "slug": "job-assistant-professor-information-technology-software-2026",
       "first_seen_at": "2026-09-26",
       "last_seen_at": "2026-09-26",
       "is_archived": false
@@ -2876,6 +2935,6 @@
       "is_archived": false
     }
   ],
-  "active_count": 97,
-  "archive_count": 1403
+  "active_count": 99,
+  "archive_count": 1398
 }
