@@ -79,7 +79,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 1,
-      "candidates": 8,
+      "candidates": 3,
       "errors": []
     },
     {
@@ -257,7 +257,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 2,
-      "candidates": 17,
+      "candidates": 18,
       "errors": []
     },
     {
@@ -439,9 +439,9 @@
       "agency": "C-DOT Current Openings",
       "url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "landing_status": 200,
-      "detail_pages_fetched": 7,
-      "pdfs_fetched": 5,
-      "candidates": 37,
+      "detail_pages_fetched": 8,
+      "pdfs_fetched": 4,
+      "candidates": 48,
       "errors": []
     },
     {
