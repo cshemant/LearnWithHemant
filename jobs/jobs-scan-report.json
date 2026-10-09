@@ -2,7 +2,7 @@
   "sources_total": 44,
   "sources_reached": 17,
   "sources_failed": 27,
-  "candidate_count": 807,
+  "candidate_count": 812,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -143,9 +143,9 @@
       "agency": "NCS Govt Jobs",
       "url": "https://www.ncs.gov.in/job-seeker/Pages/GovtJob.aspx",
       "landing_status": 200,
-      "detail_pages_fetched": 3,
+      "detail_pages_fetched": 4,
       "pdfs_fetched": 0,
-      "candidates": 8,
+      "candidates": 18,
       "errors": []
     },
     {
@@ -255,9 +255,9 @@
       "agency": "Kerala PSC",
       "url": "https://www.keralapsc.gov.in/notifications",
       "landing_status": 200,
-      "detail_pages_fetched": 6,
+      "detail_pages_fetched": 8,
       "pdfs_fetched": 2,
-      "candidates": 13,
+      "candidates": 17,
       "errors": []
     },
     {
