@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-11T14:49:43+05:30",
-  "updated_label": "Updated: 11 Oct 2026, 02:49 PM IST • 56 active jobs",
+  "generated_at": "2026-10-12T00:47:46+05:30",
+  "updated_label": "Updated: 12 Oct 2026, 12:47 AM IST • 55 active jobs",
   "source": "manual verified faculty jobs + source discovery + enabled official-source scanner + protected email decoder",
   "manual_count": 3,
   "auto_count": 83,
@@ -1553,36 +1553,6 @@
       "data_state": "carried_forward"
     },
     {
-      "college": "Puducherry Technological University",
-      "post": "Assistant Professor",
-      "department": "Information Technology / Software",
-      "eligibility": "B.E./B.Tech. in Mechatronics or M.E./M.Tech. in Mechatronics with first class from a recognized University/Institution Mechatronics either in UG or PG or Both",
-      "last_date_iso": "2026-10-11",
-      "last_date_display": "11-Oct-2026",
-      "email": "director.academic@ptuniv.edu.in, hodmechatronics@ptuniv.edu.in",
-      "contact_number": "",
-      "apply_link": "https://cms.ptuniv.edu.in/file_contents/news_attachments/notices/GF%20notification%20PTU%20website.pdf",
-      "notification_link": "https://cms.ptuniv.edu.in/file_contents/news_attachments/notices/GF%20notification%20PTU%20website.pdf",
-      "website_link": "https://cms.ptuniv.edu.in/",
-      "city": "",
-      "state": "Telangana",
-      "address": "Puducherry Technological University East coast Road, Pillaichavady, Puducherry, 605 014. For Detailed Faculty Job Advertisement ( Read carefully) : Click Here Disclaimer for Candidates: Candidates are requested to…",
-      "source_page": "",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Information Technology / Software, Assistant Professor, Telangana",
-      "job": "Puducherry Technological University Assistant Professor Information Technology / Software",
-      "slug": "puducherry-technological-university-assistant-professor-information-technology-software-20",
-      "first_seen_at": "2026-10-09",
-      "last_seen_at": "2026-10-11",
-      "is_archived": false
-    },
-    {
       "college": "Private Engineering Colleges",
       "post": "Faculty / Trainer / Assistant Professor",
       "department": "CSE / IT / AI / Data Science",
@@ -1673,6 +1643,6 @@
       "is_archived": false
     }
   ],
-  "active_count": 56,
-  "archive_count": 1593
+  "active_count": 55,
+  "archive_count": 1594
 }
