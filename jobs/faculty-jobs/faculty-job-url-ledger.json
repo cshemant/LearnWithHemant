@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T03:19:08+05:30",
+  "generated_at": "2026-10-19T13:28:48+05:30",
   "description": "Permanent ledger of every valid generated job URL. Do not replace this file with a smaller local snapshot.",
   "jobs": [
     {
@@ -49401,7 +49401,6 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/govt-upper-age-limit-professor-pl-14a-associate-professor-pl-13a2-asst-prof-gr-i-pl-12-ass/",
-      "missing_since": "2026-10-18",
       "data_state": "carried_forward"
     },
     {
@@ -49430,8 +49429,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/central-university-associate-professor-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "The Institute of Mathematical Sciences, Chennai",
@@ -49459,8 +49457,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/the-institute-of-mathematical-sciences-chennai-faculty-positions-employment-type-full-time/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Director",
@@ -49489,8 +49486,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/director-assistant-professor-cse-it-multiple-departments-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Academic and Administrative",
@@ -49574,7 +49570,6 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/college-university-age-limit-subject-specialization-no-of-posts-2026/",
-      "missing_since": "2026-10-18",
       "data_state": "carried_forward"
     },
     {
@@ -49659,7 +49654,6 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/gautam-buddha-university-associate-professor-information-technology-software-2026/",
-      "missing_since": "2026-10-18",
       "data_state": "carried_forward"
     },
     {
@@ -49688,8 +49682,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/sreenarayanaguru-open-university-assistant-professor-computer-applications-mca-bca-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Sri Venkateswara College",
@@ -49745,8 +49738,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/non-teaching-faculty-assistant-professor-computer-applications-mca-bca-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Teaching Associate",
@@ -49802,8 +49794,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/vpmm-group-of-educational-institutions-virudhunagar-vpmm-group-of-educational-professor-cs/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "The Kavery Educational Institutions, Salem (Walk-in on 30",
@@ -49942,8 +49933,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/sainik-school-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Research Assistant",
@@ -50027,8 +50017,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/institutions-madurai-latha-mathavan-group-of-institutions-latha-mathavan-engineering-assoc/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Industry 4.0 and Beyond. PDPM Indian Institute",
@@ -50056,8 +50045,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/industry-4-0-and-beyond-pdpm-indian-institute-faculty-teaching-role-information-technology/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty Upgradation",
@@ -50086,8 +50074,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-upgradation-assistant-professor-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty",
@@ -50116,7 +50103,6 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026/",
-      "missing_since": "2026-10-18",
       "data_state": "carried_forward"
     },
     {
@@ -50230,8 +50216,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/academic-assistant-professor-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Tamil Nadu. Office of Industrial Consultancy and Sponsored Research (IC&SR), Indian…",
@@ -50287,8 +50272,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/teaching-associate-professor-cse-it-multiple-departments-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Teaching Associate",
@@ -50372,8 +50356,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/acharya-n-g-ranga-agricultural-university-angrau-agricultural-college-mahanandi-assistant/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Indira Gandhi National Open University",
@@ -50401,8 +50384,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/indira-gandhi-national-open-university-faculty-teaching-role-information-technology-softwa/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Central Govt",
@@ -50458,8 +50440,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/teaching-associate-professor-computer-applications-mca-bca-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Sethu Institute of Technology",
@@ -50680,8 +50661,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/cochin-university-assistant-professor-employment-type-tenure-basis-information-technology/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Teaching Assistant",
@@ -50709,8 +50689,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/teaching-assistant-remuneration-per-month-subject-specialization-no-of-posts-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Guest Teacher",
@@ -50738,8 +50717,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/guest-teacher-rs-1-500-per-day-rs-36-000-rs-1-800-per-day-rs-40-000-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Guest Faculty",
@@ -50767,8 +50745,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/guest-faculty-assistant-professor-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "St Joseph",
@@ -50796,8 +50773,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/st-joseph-faculty-teaching-role-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Malabar Polytechnic Campus",
@@ -50853,8 +50829,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/hospital-located-in-the-north-east-district-of-delhi-an-autonomous-institute-associate-pro/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Education",
@@ -50910,8 +50885,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/university-institute-of-legal-studies-uils-panjab-university-chandigarh-assistant-professo/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Guru Nanak Dev University",
@@ -50939,8 +50913,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/guru-nanak-dev-university-assistant-professor-officer-on-special-duty-english-punjabi-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Tamil Adhoc Faculty",
@@ -50969,8 +50942,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/tamil-adhoc-faculty-assistant-professor-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Job",
@@ -50999,8 +50971,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/job-associate-professor-information-technology-software-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Assistant Professor",
@@ -51029,8 +51000,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/assistant-professor-assistant-professor-computer-science-cse-2026-3/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Jawaharlal Nehru University",
@@ -51114,8 +51084,7 @@
       "last_seen_at": "2026-10-18",
       "is_archived": false,
       "detail_url": "/jobs/faculty-jobs/academic-careers-at-j-p-college-associate-professor-computer-science-cse-2026/",
-      "data_state": "carried_forward",
-      "missing_since": "2026-10-18"
+      "data_state": "carried_forward"
     },
     {
       "college": "Pondicherry University",
