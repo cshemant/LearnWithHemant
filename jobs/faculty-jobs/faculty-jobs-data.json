@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-24T13:11:39+05:30",
-  "updated_label": "Updated: 24 Oct 2026, 01:11 PM IST • 106 active jobs",
+  "generated_at": "2026-10-24T23:14:07+05:30",
+  "updated_label": "Updated: 24 Oct 2026, 11:14 PM IST • 106 active jobs",
   "source": "manual verified faculty jobs + source discovery + enabled official-source scanner + protected email decoder",
   "manual_count": 3,
-  "auto_count": 74,
+  "auto_count": 75,
   "jobs": [
     {
       "college": "Professor",
@@ -2394,36 +2394,6 @@
       "data_state": "carried_forward"
     },
     {
-      "college": "Faculty",
-      "post": "Associate Professor",
-      "department": "Computer Science / CSE",
-      "eligibility": "The institution is looking for candidates who Meet the qualification norms prescribed for their designation Have a strong academic and publication record, as applicable Are committed to the overall development of students Encourage cross-disciplinary…",
-      "last_date_iso": "2026-10-26",
-      "last_date_display": "26-Oct-2026",
-      "email": "jobs.institution@gmail.com",
-      "apply_link": "http://www.solamalaice.ac.in/",
-      "notification_link": "http://www.solamalaice.ac.in/",
-      "website_link": "http://www.solamalaice.ac.in/",
-      "state": "Tamil Nadu",
-      "address": "[email protected]",
-      "verification_status": "Official Link Found",
-      "status": "Active",
-      "status_label": "Source Verified",
-      "status_class": "good",
-      "source": "source_discovery",
-      "source_name": "Source Discovery",
-      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
-      "profile_tags": "Computer Science / CSE, Associate Professor, Tamil Nadu",
-      "job": "Faculty Associate Professor Computer Science / CSE",
-      "slug": "faculty-associate-professor-computer-science-cse-2026",
-      "first_seen_at": "2026-10-22",
-      "last_seen_at": "2026-10-22",
-      "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026/",
-      "missing_since": "2026-10-23",
-      "data_state": "carried_forward"
-    },
-    {
       "college": "Graphic Era University",
       "post": "Assistant Professor",
       "department": "Information Technology / Software",
@@ -2871,6 +2841,36 @@
       "data_state": "carried_forward"
     },
     {
+      "college": "Faculty",
+      "post": "Associate Professor",
+      "department": "Computer Science / CSE",
+      "eligibility": "For Computer Science Engineering and Biomedical Engineering, candidates must hold a Ph.D., or be pursuing a Ph.D., or hold an M.E. degree. For Mathematics, candidates must hold a Ph.D. or M.Phil with SLET/NET qualification. Candidate Profile: Strong academic…",
+      "last_date_iso": "2026-10-24",
+      "last_date_display": "24-Oct-2026",
+      "email": "careers@shanmugha.edu.in",
+      "contact_number": "7373654999",
+      "apply_link": "https://shanmugha.edu.in/",
+      "notification_link": "https://shanmugha.edu.in/",
+      "website_link": "https://shanmugha.edu.in/",
+      "city": "",
+      "state": "Tamil Nadu",
+      "address": "Sankari – Tiruchengode Main Road, Pullipalayam, Morur PO, Sankari TK, Salem DT, Tamil Nadu – 637304 Reference Source: This job notification was received directly from the institution. Benefits of Joining Sri Shanmugha…",
+      "source_page": "",
+      "verification_status": "Needs Official Verification",
+      "status": "Active",
+      "status_label": "Source Verified",
+      "status_class": "good",
+      "source": "source_discovery",
+      "source_name": "Source Discovery",
+      "fit_reason": "Vacancy data was discovered from an source and restructured into a compact decision format. Verify the official notice, email, deadline, eligibility and application method before applying.",
+      "profile_tags": "Computer Science / CSE, Associate Professor, Tamil Nadu",
+      "job": "Faculty Associate Professor Computer Science / CSE",
+      "slug": "faculty-associate-professor-computer-science-cse-2026",
+      "first_seen_at": "2026-10-24",
+      "last_seen_at": "2026-10-24",
+      "is_archived": false
+    },
+    {
       "college": "Faculty, Hostel Wardenand Lab Instructor",
       "post": "Associate Professor",
       "department": "Computer Science / CSE",
@@ -3171,5 +3171,5 @@
     }
   ],
   "active_count": 106,
-  "archive_count": 1707
+  "archive_count": 1703
 }
