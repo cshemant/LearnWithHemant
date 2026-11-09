@@ -3427,12 +3427,6 @@
     <priority>0.55</priority>
   </url>
   <url>
-    <loc>https://learnwithhemant.com/jobs/faculty-jobs/faculty-associate-professor-computer-science-cse-2026/</loc>
-    <lastmod>2026-11-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.55</priority>
-  </url>
-  <url>
     <loc>https://learnwithhemant.com/jobs/faculty-jobs/faculty-associate-professor-cse-it-multiple-departments-2026-2-2/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>monthly</changefreq>
@@ -7376,6 +7370,12 @@
   </url>
   <url>
     <loc>https://learnwithhemant.com/jobs/faculty-jobs/non-teaching-faculty-assistant-professor-computer-applications-mca-bca-2026/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://learnwithhemant.com/jobs/faculty-jobs/non-teaching-faculty-teaching-role-computer-science-cse-2026/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.55</priority>
