@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T07:13:34+05:30",
+  "generated_at": "2026-11-11T05:08:14+05:30",
   "description": "Permanent ledger of every valid generated job URL. Do not replace this file with a smaller local snapshot.",
   "jobs": [
     {
@@ -5216,7 +5216,7 @@
       "eligible_for": "B.Tech/M.Tech CSE or MCA verify exact post",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "09 Nov 2026",
+      "verified_on": "10 Nov 2026",
       "type": "Office",
       "status": "Doubtful",
       "status_label": "Doubtful",
@@ -5236,7 +5236,7 @@
       "source_url": "https://dsssb.delhi.gov.in/dsssb-vacancies",
       "slug": "date-08-07-2026-393-48-kb-download-notification-of-typing-test-for-various-posts-of-grade-i",
       "first_seen_at": "2026-10-28",
-      "last_seen_at": "2026-11-08",
+      "last_seen_at": "2026-11-10",
       "is_archived": false,
       "detail_url": "/jobs/date-08-07-2026-393-48-kb-download-notification-of-typing-test-for-various-posts-of-grade-i/"
     },
@@ -5246,7 +5246,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "09 Nov 2026",
+      "verified_on": "10 Nov 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Office",
       "status": "Doubtful",
@@ -5266,7 +5266,7 @@
       "source_url": "https://www.ecil.co.in/jobopenings",
       "slug": "the-detailed-engineering-design-was-developed-from-a-conceptual-science-design",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-08",
+      "last_seen_at": "2026-11-10",
       "is_archived": false,
       "detail_url": "/jobs/the-detailed-engineering-design-was-developed-from-a-conceptual-science-design/"
     },
@@ -5276,7 +5276,7 @@
       "eligible_for": "B.Tech/M.Tech CSE or MCA verify exact post",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "09 Nov 2026",
+      "verified_on": "10 Nov 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Computer/IT",
       "status": "Doubtful",
@@ -5296,7 +5296,7 @@
       "source_url": "https://www.ecil.co.in/jobopenings",
       "slug": "of-atomic-energy-enterprise-human-resources-recruitment-section-application-form-advert",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-08",
+      "last_seen_at": "2026-11-10",
       "is_archived": false,
       "detail_url": "/jobs/of-atomic-energy-enterprise-human-resources-recruitment-section-application-form-advert/"
     },
@@ -5306,7 +5306,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "09 Nov 2026",
+      "verified_on": "10 Nov 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Office",
       "status": "Doubtful",
@@ -5326,7 +5326,7 @@
       "source_url": "https://recruit-delhi.nielit.gov.in/",
       "slug": "instructions-for-filling-application-vacancies-to-be-filled-up-on-direct-recruitment-basis-f",
       "first_seen_at": "2026-08-04",
-      "last_seen_at": "2026-11-08",
+      "last_seen_at": "2026-11-10",
       "is_archived": false,
       "detail_url": "/jobs/instructions-for-filling-application-vacancies-to-be-filled-up-on-direct-recruitment-basis-f/"
     },
@@ -5358,7 +5358,9 @@
       "first_seen_at": "2026-08-07",
       "last_seen_at": "2026-11-08",
       "is_archived": false,
-      "detail_url": "/jobs/go-through-the-advertisement-of-respective-posts/"
+      "detail_url": "/jobs/go-through-the-advertisement-of-respective-posts/",
+      "missing_since": "2026-11-10",
+      "data_state": "carried_forward"
     },
     {
       "job": "Go through the advertisement of respective post/posts",
@@ -5388,7 +5390,9 @@
       "first_seen_at": "2026-08-07",
       "last_seen_at": "2026-11-08",
       "is_archived": false,
-      "detail_url": "/jobs/go-through-the-advertisement-of-respective-post-posts/"
+      "detail_url": "/jobs/go-through-the-advertisement-of-respective-post-posts/",
+      "missing_since": "2026-11-10",
+      "data_state": "carried_forward"
     },
     {
       "job": "Advertisement PDF",
@@ -5396,7 +5400,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "09 Nov 2026",
+      "verified_on": "10 Nov 2026",
       "type": "Office",
       "status": "Doubtful",
       "status_label": "Doubtful",
@@ -5415,7 +5419,7 @@
       "source_url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "slug": "advertisement-pdf-2",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-08",
+      "last_seen_at": "2026-11-10",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-pdf-2/"
     },
@@ -5425,7 +5429,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "09 Nov 2026",
+      "verified_on": "10 Nov 2026",
       "type": "Office",
       "status": "Doubtful",
       "status_label": "Doubtful",
@@ -5444,7 +5448,7 @@
       "source_url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "slug": "advertisement-pdf",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-08",
+      "last_seen_at": "2026-11-10",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-pdf/"
     }
