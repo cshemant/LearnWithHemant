@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T01:24:14+05:30",
+  "generated_at": "2026-11-16T15:29:41+05:30",
   "description": "Permanent ledger of every valid generated job URL. Do not replace this file with a smaller local snapshot.",
   "jobs": [
     {
@@ -57857,7 +57857,9 @@
       "first_seen_at": "2026-11-12",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/management-faculty-associate-professor-information-technology-software-2026/"
+      "detail_url": "/jobs/faculty-jobs/management-faculty-associate-professor-information-technology-software-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Education and Research on December 17-22, 2026 (OFFLINE MODE). COEP Technological…",
@@ -57884,7 +57886,9 @@
       "first_seen_at": "2026-11-12",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/education-and-research-on-december-17-22-2026-offline-mode-coep-technological-faculty-teac/"
+      "detail_url": "/jobs/faculty-jobs/education-and-research-on-december-17-22-2026-offline-mode-coep-technological-faculty-teac/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Public Sector",
@@ -57911,7 +57915,9 @@
       "first_seen_at": "2026-11-13",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/public-sector-associate-professor-subject-specialization-no-of-posts-2026/"
+      "detail_url": "/jobs/faculty-jobs/public-sector-associate-professor-subject-specialization-no-of-posts-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Junior Research Fellow",
@@ -57938,7 +57944,9 @@
       "first_seen_at": "2026-11-11",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/junior-research-fellow-assistant-professor-cse-it-multiple-departments-2026/"
+      "detail_url": "/jobs/faculty-jobs/junior-research-fellow-assistant-professor-cse-it-multiple-departments-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Logistics Faculty",
@@ -57996,7 +58004,9 @@
       "first_seen_at": "2026-11-13",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/management-faculty-experience-subject-specialization-no-of-posts-2026/"
+      "detail_url": "/jobs/faculty-jobs/management-faculty-experience-subject-specialization-no-of-posts-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "VPMM Group of Educational Institutions, Virudhunagar. VPMM Group of Educational…",
@@ -58024,7 +58034,9 @@
       "first_seen_at": "2026-11-13",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/vpmm-group-of-educational-institutions-virudhunagar-vpmm-group-of-educational-associate-pr/"
+      "detail_url": "/jobs/faculty-jobs/vpmm-group-of-educational-institutions-virudhunagar-vpmm-group-of-educational-associate-pr/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Teaching Faculty",
@@ -58052,7 +58064,9 @@
       "first_seen_at": "2026-11-04",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/teaching-faculty-associate-professor-subject-specialization-no-of-posts-2026/"
+      "detail_url": "/jobs/faculty-jobs/teaching-faculty-associate-professor-subject-specialization-no-of-posts-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Teaching",
@@ -58201,7 +58215,9 @@
       "first_seen_at": "2026-11-05",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/medicaps-university-faculty-teaching-role-computer-science-cse-2026/"
+      "detail_url": "/jobs/faculty-jobs/medicaps-university-faculty-teaching-role-computer-science-cse-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Maritime Faculty and Staff",
@@ -58259,7 +58275,9 @@
       "first_seen_at": "2026-11-04",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/junior-research-fellow-faculty-teaching-role-information-technology-software-2026/"
+      "detail_url": "/jobs/faculty-jobs/junior-research-fellow-faculty-teaching-role-information-technology-software-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty",
@@ -58287,7 +58305,9 @@
       "first_seen_at": "2026-11-02",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/faculty-lecturer-information-technology-software-2026/"
+      "detail_url": "/jobs/faculty-jobs/faculty-lecturer-information-technology-software-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Faculty",
@@ -58432,7 +58452,9 @@
       "first_seen_at": "2026-10-30",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/banaras-hindu-university-advertisement-notification-no-contractual-04-2026-2027-faculty-te/"
+      "detail_url": "/jobs/faculty-jobs/banaras-hindu-university-advertisement-notification-no-contractual-04-2026-2027-faculty-te/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Vice Chancellor",
@@ -58520,7 +58542,9 @@
       "first_seen_at": "2026-10-17",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/professor-professor-computer-science-cse-2026/"
+      "detail_url": "/jobs/faculty-jobs/professor-professor-computer-science-cse-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Post Graduate Teacher",
@@ -58547,7 +58571,9 @@
       "first_seen_at": "2026-11-13",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/post-graduate-teacher-subject-medium-no-of-posts-cse-it-multiple-departments-2026/"
+      "detail_url": "/jobs/faculty-jobs/post-graduate-teacher-subject-medium-no-of-posts-cse-it-multiple-departments-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Medical Faculty",
@@ -58574,7 +58600,9 @@
       "first_seen_at": "2026-10-29",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/medical-faculty-tentative-no-of-posts-information-technology-software-2026/"
+      "detail_url": "/jobs/faculty-jobs/medical-faculty-tentative-no-of-posts-information-technology-software-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Majuli University, Majuli Advertisement/Notification No.: MUC/RG/Recruit-161/2026/25",
@@ -58721,7 +58749,9 @@
       "first_seen_at": "2026-11-13",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/research-training-institute-assistant-professor-information-technology-software-2026/"
+      "detail_url": "/jobs/faculty-jobs/research-training-institute-assistant-professor-information-technology-software-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "November 2026 at Surya Group of Institutions, Villupuram. Surya Group of Institutions…",
@@ -58780,7 +58810,9 @@
       "first_seen_at": "2026-11-14",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/the-kavery-educational-institutions-about-associate-professor-computer-applications-mca-bc/"
+      "detail_url": "/jobs/faculty-jobs/the-kavery-educational-institutions-about-associate-professor-computer-applications-mca-bc/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Physical Education Faculty",
@@ -58808,7 +58840,9 @@
       "first_seen_at": "2026-11-13",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/physical-education-faculty-department-no-of-posts-sports-and-physical-education-1-2026/"
+      "detail_url": "/jobs/faculty-jobs/physical-education-faculty-department-no-of-posts-sports-and-physical-education-1-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "OASYS Institute",
@@ -58836,7 +58870,9 @@
       "first_seen_at": "2026-11-14",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/oasys-institute-associate-professor-computer-science-cse-2026/"
+      "detail_url": "/jobs/faculty-jobs/oasys-institute-associate-professor-computer-science-cse-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Himayam College",
@@ -58951,7 +58987,9 @@
       "first_seen_at": "2026-11-13",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/education-careers-2026-at-n-s-n-college-assistant-professor-computer-science-cse-2026/"
+      "detail_url": "/jobs/faculty-jobs/education-careers-2026-at-n-s-n-college-assistant-professor-computer-science-cse-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Teaching Careers 2026 at Viswam Engineering College",
@@ -59069,7 +59107,9 @@
       "first_seen_at": "2026-11-14",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/sree-dattha-institutions-autonomous-professor-cse-it-multiple-departments-2026/"
+      "detail_url": "/jobs/faculty-jobs/sree-dattha-institutions-autonomous-professor-cse-it-multiple-departments-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Sree Dattha Institutions (Autonomous)",
@@ -59097,7 +59137,9 @@
       "first_seen_at": "2026-11-14",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/sree-dattha-institutions-autonomous-cse-and-allied-non-cse-with-nptel-certifications-compu/"
+      "detail_url": "/jobs/faculty-jobs/sree-dattha-institutions-autonomous-cse-and-allied-non-cse-with-nptel-certifications-compu/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Project Assistant",
@@ -59125,7 +59167,9 @@
       "first_seen_at": "2026-11-04",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/project-assistant-associate-professor-information-technology-software-2026/"
+      "detail_url": "/jobs/faculty-jobs/project-assistant-associate-professor-information-technology-software-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Office Assistant",
@@ -59363,7 +59407,9 @@
       "first_seen_at": "2026-11-11",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/industry-4-0-framework-for-medical-applications-vimal-jyothi-engineering-college-assistant/"
+      "detail_url": "/jobs/faculty-jobs/industry-4-0-framework-for-medical-applications-vimal-jyothi-engineering-college-assistant/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Vignan",
@@ -59421,7 +59467,9 @@
       "first_seen_at": "2026-11-11",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/teaching-careers-2026-at-dhanalakshmi-srinivasan-college-associate-professor-computer-scie/"
+      "detail_url": "/jobs/faculty-jobs/teaching-careers-2026-at-dhanalakshmi-srinivasan-college-associate-professor-computer-scie/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Teaching",
@@ -59509,7 +59557,9 @@
       "first_seen_at": "2026-11-13",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/non-teaching-faculty-teaching-role-computer-science-cse-2026/"
+      "detail_url": "/jobs/faculty-jobs/non-teaching-faculty-teaching-role-computer-science-cse-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Job",
@@ -59657,7 +59707,9 @@
       "first_seen_at": "2026-11-13",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/guest-faculty-assistant-professor-information-technology-software-2026/"
+      "detail_url": "/jobs/faculty-jobs/guest-faculty-assistant-professor-information-technology-software-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Assistant Professor",
@@ -59774,7 +59826,9 @@
       "first_seen_at": "2026-11-05",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/lecturer-lecturer-cse-it-multiple-departments-2026/"
+      "detail_url": "/jobs/faculty-jobs/lecturer-lecturer-cse-it-multiple-departments-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Lecturer",
@@ -59861,7 +59915,9 @@
       "first_seen_at": "2026-11-12",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/christian-polytechnic-college-lecturer-information-technology-software-2026/"
+      "detail_url": "/jobs/faculty-jobs/christian-polytechnic-college-lecturer-information-technology-software-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Teaching Faculty",
@@ -59918,7 +59974,9 @@
       "first_seen_at": "2026-11-11",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/senior-research-fellow-associate-professor-information-technology-software-2026/"
+      "detail_url": "/jobs/faculty-jobs/senior-research-fellow-associate-professor-information-technology-software-2026/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "Project Intern",
@@ -60184,7 +60242,9 @@
       "first_seen_at": "2026-10-24",
       "last_seen_at": "2026-11-15",
       "is_archived": false,
-      "detail_url": "/jobs/faculty-jobs/apply-for-junior-research-fellow-drde-drdo-project-indian-institute-faculty-teaching-role/"
+      "detail_url": "/jobs/faculty-jobs/apply-for-junior-research-fellow-drde-drdo-project-indian-institute-faculty-teaching-role/",
+      "missing_since": "2026-11-15",
+      "data_state": "carried_forward"
     },
     {
       "college": "State Universities / Engineering Colleges",
