@@ -1,8 +1,8 @@
 {
   "sources_total": 44,
-  "sources_reached": 18,
-  "sources_failed": 26,
-  "candidate_count": 788,
+  "sources_reached": 17,
+  "sources_failed": 27,
+  "candidate_count": 738,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -116,12 +116,12 @@
       "state": "Central",
       "agency": "UPSC",
       "url": "https://upsc.gov.in/recruitment/recruitment-advertisement",
-      "landing_status": null,
+      "landing_status": 404,
       "detail_pages_fetched": 0,
       "pdfs_fetched": 0,
       "candidates": 0,
       "errors": [
-        "landing page unavailable (network error)"
+        "landing page unavailable (404)"
       ]
     },
     {
@@ -436,19 +436,21 @@
       "url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "landing_status": 200,
       "detail_pages_fetched": 8,
-      "pdfs_fetched": 4,
-      "candidates": 50,
+      "pdfs_fetched": 5,
+      "candidates": 53,
       "errors": []
     },
     {
       "state": "Central",
       "agency": "ECIL Current Job Openings",
       "url": "https://www.ecil.co.in/jobopenings",
-      "landing_status": 200,
-      "detail_pages_fetched": 8,
-      "pdfs_fetched": 10,
-      "candidates": 159,
-      "errors": []
+      "landing_status": 403,
+      "detail_pages_fetched": 0,
+      "pdfs_fetched": 0,
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (403)"
+      ]
     },
     {
       "state": "Goa",
@@ -497,11 +499,11 @@
       ]
     }
   ],
-  "useful_auto_count": 5,
+  "useful_auto_count": 4,
   "carried_auto_count": 0,
   "active_manual_count": 0,
   "watch_source_count": 21,
   "expired_manual_count": 5,
-  "final_dashboard_count": 5,
+  "final_dashboard_count": 4,
   "scan_status": "ok"
 }
