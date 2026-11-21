@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-20T07:01:33+05:30",
-  "last_scan_at": "2026-11-20T07:01:33+05:30",
-  "last_successful_auto_update": "2026-11-20T07:01:33+05:30",
-  "updated_label": "Updated: 20 Nov 2026 • 8 active vacancies",
+  "generated_at": "2026-11-21T06:22:50+05:30",
+  "last_scan_at": "2026-11-21T06:22:50+05:30",
+  "last_successful_auto_update": "2026-11-21T06:22:50+05:30",
+  "updated_label": "Updated: 21 Nov 2026 • 8 active vacancies",
   "source": "active verified jobs + official all-India scanner",
   "manual_count": 0,
-  "auto_count": 4,
+  "auto_count": 5,
   "scan_status": "ok",
   "scan_report": {
     "sources_total": 44,
-    "sources_reached": 17,
-    "sources_failed": 27,
-    "candidate_count": 738,
+    "sources_reached": 18,
+    "sources_failed": 26,
+    "candidate_count": 790,
     "source_results": [
       {
         "state": "Rajasthan",
@@ -86,7 +86,7 @@
         "landing_status": 200,
         "detail_pages_fetched": 8,
         "pdfs_fetched": 1,
-        "candidates": 13,
+        "candidates": 16,
         "errors": []
       },
       {
@@ -172,7 +172,7 @@
         "landing_status": 200,
         "detail_pages_fetched": 4,
         "pdfs_fetched": 10,
-        "candidates": 27,
+        "candidates": 26,
         "errors": []
       },
       {
@@ -262,7 +262,7 @@
         "landing_status": 200,
         "detail_pages_fetched": 8,
         "pdfs_fetched": 2,
-        "candidates": 16,
+        "candidates": 17,
         "errors": []
       },
       {
@@ -453,13 +453,11 @@
         "state": "Central",
         "agency": "ECIL Current Job Openings",
         "url": "https://www.ecil.co.in/jobopenings",
-        "landing_status": 403,
-        "detail_pages_fetched": 0,
-        "pdfs_fetched": 0,
-        "candidates": 0,
-        "errors": [
-          "landing page unavailable (403)"
-        ]
+        "landing_status": 200,
+        "detail_pages_fetched": 8,
+        "pdfs_fetched": 10,
+        "candidates": 159,
+        "errors": []
       },
       {
         "state": "Goa",
@@ -508,12 +506,12 @@
         ]
       }
     ],
-    "useful_auto_count": 4,
+    "useful_auto_count": 5,
     "carried_auto_count": 0,
     "active_manual_count": 0,
     "watch_source_count": 21,
     "expired_manual_count": 5,
-    "final_dashboard_count": 4,
+    "final_dashboard_count": 5,
     "scan_status": "ok"
   },
   "watch_sources": [
@@ -1050,7 +1048,7 @@
       "eligible_for": "B.Tech/M.Tech CSE or MCA verify exact post",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "20 Nov 2026",
+      "verified_on": "21 Nov 2026",
       "profile_tags": "",
       "type": "Office",
       "status": "Doubtful",
@@ -1071,7 +1069,7 @@
       "source_url": "https://dsssb.delhi.gov.in/dsssb-vacancies",
       "slug": "date-08-07-2026-393-48-kb-download-notification-of-typing-test-for-various-posts-of-grade-i",
       "first_seen_at": "2026-10-28",
-      "last_seen_at": "2026-11-20",
+      "last_seen_at": "2026-11-21",
       "is_archived": false,
       "detail_url": "/jobs/date-08-07-2026-393-48-kb-download-notification-of-typing-test-for-various-posts-of-grade-i/"
     },
@@ -1081,7 +1079,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "20 Nov 2026",
+      "verified_on": "21 Nov 2026",
       "profile_tags": "",
       "type": "Office",
       "status": "Doubtful",
@@ -1102,7 +1100,7 @@
       "source_url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "slug": "advertisement-pdf",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-20",
+      "last_seen_at": "2026-11-21",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-pdf/"
     },
@@ -1112,7 +1110,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "20 Nov 2026",
+      "verified_on": "21 Nov 2026",
       "profile_tags": "",
       "type": "Office",
       "status": "Doubtful",
@@ -1133,7 +1131,7 @@
       "source_url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "slug": "advertisement-pdf-2",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-20",
+      "last_seen_at": "2026-11-21",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-pdf-2/"
     },
@@ -1207,7 +1205,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "20 Nov 2026",
+      "verified_on": "21 Nov 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Office",
       "status": "Doubtful",
@@ -1228,7 +1226,7 @@
       "source_url": "https://recruit-delhi.nielit.gov.in/",
       "slug": "instructions-for-filling-application-vacancies-to-be-filled-up-on-direct-recruitment-basis-f",
       "first_seen_at": "2026-08-04",
-      "last_seen_at": "2026-11-20",
+      "last_seen_at": "2026-11-21",
       "is_archived": false,
       "detail_url": "/jobs/instructions-for-filling-application-vacancies-to-be-filled-up-on-direct-recruitment-basis-f/"
     },
@@ -1270,12 +1268,13 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "19 Nov 2026",
+      "verified_on": "21 Nov 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Office",
       "status": "Doubtful",
       "status_label": "Doubtful",
       "status_class": "caution",
+      "last_date_iso": "",
       "last_date_display": "Check official notice",
       "official_link": "https://www.ecil.co.in/aerospace_projects",
       "official_label": "Check",
@@ -1290,11 +1289,9 @@
       "source_url": "https://www.ecil.co.in/jobopenings",
       "slug": "the-detailed-engineering-design-was-developed-from-a-conceptual-science-design",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-19",
+      "last_seen_at": "2026-11-21",
       "is_archived": false,
-      "detail_url": "/jobs/the-detailed-engineering-design-was-developed-from-a-conceptual-science-design/",
-      "missing_since": "2026-11-20",
-      "data_state": "carried_forward"
+      "detail_url": "/jobs/the-detailed-engineering-design-was-developed-from-a-conceptual-science-design/"
     }
   ],
   "active_count": 8,
