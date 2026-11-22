@@ -2,7 +2,7 @@
   "sources_total": 44,
   "sources_reached": 18,
   "sources_failed": 26,
-  "candidate_count": 790,
+  "candidate_count": 789,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -65,9 +65,9 @@
       "agency": "BTSC",
       "url": "https://btsc.bihar.gov.in/recruitment",
       "landing_status": 200,
-      "detail_pages_fetched": 2,
+      "detail_pages_fetched": 3,
       "pdfs_fetched": 10,
-      "candidates": 70,
+      "candidates": 97,
       "errors": []
     },
     {
@@ -77,7 +77,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 1,
-      "candidates": 16,
+      "candidates": 15,
       "errors": []
     },
     {
@@ -251,9 +251,9 @@
       "agency": "Kerala PSC",
       "url": "https://www.keralapsc.gov.in/notifications",
       "landing_status": 200,
-      "detail_pages_fetched": 8,
+      "detail_pages_fetched": 6,
       "pdfs_fetched": 2,
-      "candidates": 17,
+      "candidates": 13,
       "errors": []
     },
     {
