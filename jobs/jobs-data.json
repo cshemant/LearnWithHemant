@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-23T05:59:42+05:30",
-  "last_scan_at": "2026-11-23T05:59:42+05:30",
-  "last_successful_auto_update": "2026-11-23T05:59:42+05:30",
-  "updated_label": "Updated: 23 Nov 2026 • 8 active vacancies",
+  "generated_at": "2026-11-24T10:15:13+05:30",
+  "last_scan_at": "2026-11-24T10:15:13+05:30",
+  "last_successful_auto_update": "2026-11-24T10:15:13+05:30",
+  "updated_label": "Updated: 24 Nov 2026 • 10 active vacancies",
   "source": "active verified jobs + official all-India scanner",
   "manual_count": 0,
-  "auto_count": 5,
+  "auto_count": 8,
   "scan_status": "ok",
   "scan_report": {
     "sources_total": 44,
-    "sources_reached": 18,
-    "sources_failed": 26,
-    "candidate_count": 787,
+    "sources_reached": 20,
+    "sources_failed": 24,
+    "candidate_count": 834,
     "source_results": [
       {
         "state": "Rajasthan",
@@ -74,9 +74,9 @@
         "agency": "BTSC",
         "url": "https://btsc.bihar.gov.in/recruitment",
         "landing_status": 200,
-        "detail_pages_fetched": 1,
+        "detail_pages_fetched": 3,
         "pdfs_fetched": 10,
-        "candidates": 48,
+        "candidates": 95,
         "errors": []
       },
       {
@@ -191,13 +191,11 @@
         "state": "Jharkhand",
         "agency": "JPSC",
         "url": "https://www.jpsc.gov.in/",
-        "landing_status": null,
-        "detail_pages_fetched": 0,
-        "pdfs_fetched": 0,
-        "candidates": 0,
-        "errors": [
-          "landing page unavailable (network error)"
-        ]
+        "landing_status": 200,
+        "detail_pages_fetched": 8,
+        "pdfs_fetched": 10,
+        "candidates": 31,
+        "errors": []
       },
       {
         "state": "Maharashtra",
@@ -262,7 +260,7 @@
         "landing_status": 200,
         "detail_pages_fetched": 8,
         "pdfs_fetched": 2,
-        "candidates": 16,
+        "candidates": 17,
         "errors": []
       },
       {
@@ -431,13 +429,11 @@
         "state": "Central",
         "agency": "Digital India Corporation Careers",
         "url": "https://dic.gov.in/careers/",
-        "landing_status": 403,
-        "detail_pages_fetched": 0,
+        "landing_status": 200,
+        "detail_pages_fetched": 3,
         "pdfs_fetched": 0,
-        "candidates": 0,
-        "errors": [
-          "landing page unavailable (403)"
-        ]
+        "candidates": 17,
+        "errors": []
       },
       {
         "state": "Central",
@@ -506,12 +502,12 @@
         ]
       }
     ],
-    "useful_auto_count": 5,
+    "useful_auto_count": 8,
     "carried_auto_count": 0,
     "active_manual_count": 0,
     "watch_source_count": 21,
     "expired_manual_count": 5,
-    "final_dashboard_count": 5,
+    "final_dashboard_count": 8,
     "scan_status": "ok"
   },
   "watch_sources": [
@@ -1043,13 +1039,43 @@
   ],
   "jobs": [
     {
+      "job": "Position Full Stack (AI) Developer No",
+      "subtitle": "Digital India Corporation Careers / Central",
+      "eligible_for": "Graduate/12th route check age and post rules",
+      "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
+      "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
+      "verified_on": "24 Nov 2026",
+      "profile_tags": "",
+      "type": "Office",
+      "status": "Doubtful",
+      "status_label": "Doubtful",
+      "status_class": "caution",
+      "last_date_iso": "2026-11-25",
+      "last_date_display": "25-Nov-2026",
+      "official_link": "https://dic.gov.in/jobs/full-stack-ai-developer/",
+      "official_label": "Check",
+      "notification_link": "https://dic.gov.in/jobs/full-stack-ai-developer/",
+      "notification_label": "Notification",
+      "apply_link": "https://dic.gov.in/jobs/full-stack-ai-developer/",
+      "apply_label": "Check",
+      "state": "Central",
+      "agency": "Digital India Corporation Careers",
+      "match_score": 20,
+      "source": "auto_scanner",
+      "source_url": "https://dic.gov.in/careers/",
+      "first_seen_at": "2026-11-24",
+      "last_seen_at": "2026-11-24",
+      "slug": "position-full-stack-ai-developer-no",
+      "is_archived": false,
+      "detail_url": "/jobs/position-full-stack-ai-developer-no/"
+    },
+    {
       "job": "Date: 08-07-2026 393.48 KB Download Notification of Typing Test for various posts of Grade-I",
       "subtitle": "DSSSB / Delhi",
       "eligible_for": "B.Tech/M.Tech CSE or MCA verify exact post",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "verified_on": "23 Nov 2026",
-      "profile_tags": "",
       "type": "Office",
       "status": "Doubtful",
       "status_label": "Doubtful",
@@ -1071,7 +1097,40 @@
       "first_seen_at": "2026-10-28",
       "last_seen_at": "2026-11-23",
       "is_archived": false,
-      "detail_url": "/jobs/date-08-07-2026-393-48-kb-download-notification-of-typing-test-for-various-posts-of-grade-i/"
+      "detail_url": "/jobs/date-08-07-2026-393-48-kb-download-notification-of-typing-test-for-various-posts-of-grade-i/",
+      "missing_since": "2026-11-24",
+      "data_state": "carried_forward"
+    },
+    {
+      "job": "Login Delhi Subordinate Services Selection Board Government of NCT of Delhi Notice of Exam a",
+      "subtitle": "DSSSB / Delhi",
+      "eligible_for": "B.Tech/M.Tech CSE or MCA verify exact post",
+      "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
+      "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
+      "verified_on": "24 Nov 2026",
+      "profile_tags": "",
+      "type": "Office",
+      "status": "Doubtful",
+      "status_label": "Doubtful",
+      "status_class": "caution",
+      "last_date_iso": "2026-12-05",
+      "last_date_display": "05-Dec-2026",
+      "official_link": "https://dsssb.delhi.gov.in/notice-of-exam",
+      "official_label": "Check",
+      "notification_link": "https://dsssb.delhi.gov.in/notice-of-exam",
+      "notification_label": "Notification",
+      "apply_link": "https://dsssb.delhi.gov.in/notice-of-exam",
+      "apply_label": "Check",
+      "state": "Delhi",
+      "agency": "DSSSB",
+      "match_score": 37,
+      "source": "auto_scanner",
+      "source_url": "https://dsssb.delhi.gov.in/dsssb-vacancies",
+      "first_seen_at": "2026-11-24",
+      "last_seen_at": "2026-11-24",
+      "slug": "login-delhi-subordinate-services-selection-board-government-of-nct-of-delhi-notice-of-exam-a",
+      "is_archived": false,
+      "detail_url": "/jobs/login-delhi-subordinate-services-selection-board-government-of-nct-of-delhi-notice-of-exam-a/"
     },
     {
       "job": "Advertisement PDF",
@@ -1079,7 +1138,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "23 Nov 2026",
+      "verified_on": "24 Nov 2026",
       "profile_tags": "",
       "type": "Office",
       "status": "Doubtful",
@@ -1100,7 +1159,7 @@
       "source_url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "slug": "advertisement-pdf",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-23",
+      "last_seen_at": "2026-11-24",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-pdf/"
     },
@@ -1110,7 +1169,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "23 Nov 2026",
+      "verified_on": "24 Nov 2026",
       "profile_tags": "",
       "type": "Office",
       "status": "Doubtful",
@@ -1131,7 +1190,7 @@
       "source_url": "https://www.cdot.in/cdotweb/web/current_openings.php",
       "slug": "advertisement-pdf-2",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-23",
+      "last_seen_at": "2026-11-24",
       "is_archived": false,
       "detail_url": "/jobs/advertisement-pdf-2/"
     },
@@ -1141,12 +1200,13 @@
       "eligible_for": "Graduate/Bachelor degree appears eligible subject needs manual check",
       "fit_reason": "Watch: Potential government vacancy source. Verify qualification, age, subject and deadline from the official notification",
       "why": "Watch: Potential government vacancy source. Verify qualification, age, subject and deadline from the official notification",
-      "verified_on": "16 Nov 2026",
+      "verified_on": "24 Nov 2026",
       "profile_tags": "B.Tech CSE",
       "type": "General/Other",
       "status": "Doubtful",
       "status_label": "Doubtful",
       "status_class": "caution",
+      "last_date_iso": "",
       "last_date_display": "Check official notice",
       "official_link": "https://www.jpsc.gov.in/Civil_judge_junior_division_22_2023/login.php",
       "official_label": "Check",
@@ -1161,11 +1221,9 @@
       "source_url": "https://www.jpsc.gov.in/",
       "slug": "go-through-the-advertisement-of-respective-post-posts",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-15",
+      "last_seen_at": "2026-11-24",
       "is_archived": false,
-      "detail_url": "/jobs/go-through-the-advertisement-of-respective-post-posts/",
-      "missing_since": "2026-11-17",
-      "data_state": "carried_forward"
+      "detail_url": "/jobs/go-through-the-advertisement-of-respective-post-posts/"
     },
     {
       "job": "Go through the advertisement of respective posts",
@@ -1173,12 +1231,13 @@
       "eligible_for": "Graduate/Bachelor degree appears eligible subject needs manual check",
       "fit_reason": "Watch: Potential government vacancy source. Verify qualification, age, subject and deadline from the official notification",
       "why": "Watch: Potential government vacancy source. Verify qualification, age, subject and deadline from the official notification",
-      "verified_on": "16 Nov 2026",
+      "verified_on": "24 Nov 2026",
       "profile_tags": "B.Tech CSE",
       "type": "General/Other",
       "status": "Doubtful",
       "status_label": "Doubtful",
       "status_class": "caution",
+      "last_date_iso": "",
       "last_date_display": "Check official notice",
       "official_link": "https://www.jpsc.gov.in/data/FAQ.pdf",
       "official_label": "Check",
@@ -1193,11 +1252,9 @@
       "source_url": "https://www.jpsc.gov.in/",
       "slug": "go-through-the-advertisement-of-respective-posts",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-15",
+      "last_seen_at": "2026-11-24",
       "is_archived": false,
-      "detail_url": "/jobs/go-through-the-advertisement-of-respective-posts/",
-      "missing_since": "2026-11-17",
-      "data_state": "carried_forward"
+      "detail_url": "/jobs/go-through-the-advertisement-of-respective-posts/"
     },
     {
       "job": "Instructions for Filling Application VACANCIES TO BE FILLED UP ON DIRECT RECRUITMENT BASIS F",
@@ -1205,7 +1262,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "23 Nov 2026",
+      "verified_on": "24 Nov 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Office",
       "status": "Doubtful",
@@ -1226,7 +1283,7 @@
       "source_url": "https://recruit-delhi.nielit.gov.in/",
       "slug": "instructions-for-filling-application-vacancies-to-be-filled-up-on-direct-recruitment-basis-f",
       "first_seen_at": "2026-08-04",
-      "last_seen_at": "2026-11-23",
+      "last_seen_at": "2026-11-24",
       "is_archived": false,
       "detail_url": "/jobs/instructions-for-filling-application-vacancies-to-be-filled-up-on-direct-recruitment-basis-f/"
     },
@@ -1268,7 +1325,7 @@
       "eligible_for": "Graduate/12th route check age and post rules",
       "fit_reason": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
       "why": "Watch: Potential CSE/IT role. Open the official notice and verify exact degree, age and experience requirements",
-      "verified_on": "23 Nov 2026",
+      "verified_on": "24 Nov 2026",
       "profile_tags": "B.Tech CSE",
       "type": "Office",
       "status": "Doubtful",
@@ -1289,11 +1346,11 @@
       "source_url": "https://www.ecil.co.in/jobopenings",
       "slug": "the-detailed-engineering-design-was-developed-from-a-conceptual-science-design",
       "first_seen_at": "2026-08-07",
-      "last_seen_at": "2026-11-23",
+      "last_seen_at": "2026-11-24",
       "is_archived": false,
       "detail_url": "/jobs/the-detailed-engineering-design-was-developed-from-a-conceptual-science-design/"
     }
   ],
-  "active_count": 8,
+  "active_count": 10,
   "archive_count": 130
 }
