@@ -1,8 +1,8 @@
 {
   "sources_total": 44,
-  "sources_reached": 20,
-  "sources_failed": 24,
-  "candidate_count": 834,
+  "sources_reached": 19,
+  "sources_failed": 25,
+  "candidate_count": 818,
   "source_results": [
     {
       "state": "Rajasthan",
@@ -65,9 +65,9 @@
       "agency": "BTSC",
       "url": "https://btsc.bihar.gov.in/recruitment",
       "landing_status": 200,
-      "detail_pages_fetched": 3,
+      "detail_pages_fetched": 1,
       "pdfs_fetched": 10,
-      "candidates": 95,
+      "candidates": 47,
       "errors": []
     },
     {
@@ -420,11 +420,13 @@
       "state": "Central",
       "agency": "Digital India Corporation Careers",
       "url": "https://dic.gov.in/careers/",
-      "landing_status": 200,
-      "detail_pages_fetched": 3,
+      "landing_status": 403,
+      "detail_pages_fetched": 0,
       "pdfs_fetched": 0,
-      "candidates": 17,
-      "errors": []
+      "candidates": 0,
+      "errors": [
+        "landing page unavailable (403)"
+      ]
     },
     {
       "state": "Central",
@@ -493,11 +495,11 @@
       ]
     }
   ],
-  "useful_auto_count": 8,
+  "useful_auto_count": 7,
   "carried_auto_count": 0,
   "active_manual_count": 0,
   "watch_source_count": 21,
   "expired_manual_count": 5,
-  "final_dashboard_count": 8,
+  "final_dashboard_count": 7,
   "scan_status": "ok"
 }
