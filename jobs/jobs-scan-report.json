@@ -2,16 +2,16 @@
   "sources_total": 44,
   "sources_reached": 19,
   "sources_failed": 25,
-  "candidate_count": 818,
+  "candidate_count": 817,
   "source_results": [
     {
       "state": "Rajasthan",
       "agency": "State Recruitment Portal",
       "url": "https://recruitment.rajasthan.gov.in/",
       "landing_status": 200,
-      "detail_pages_fetched": 1,
+      "detail_pages_fetched": 0,
       "pdfs_fetched": 0,
-      "candidates": 1,
+      "candidates": 0,
       "errors": []
     },
     {
@@ -65,9 +65,9 @@
       "agency": "BTSC",
       "url": "https://btsc.bihar.gov.in/recruitment",
       "landing_status": 200,
-      "detail_pages_fetched": 1,
+      "detail_pages_fetched": 3,
       "pdfs_fetched": 10,
-      "candidates": 47,
+      "candidates": 95,
       "errors": []
     },
     {
@@ -77,7 +77,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 8,
       "pdfs_fetched": 1,
-      "candidates": 16,
+      "candidates": 10,
       "errors": []
     },
     {
@@ -479,7 +479,7 @@
       "landing_status": 200,
       "detail_pages_fetched": 4,
       "pdfs_fetched": 10,
-      "candidates": 182,
+      "candidates": 184,
       "errors": []
     },
     {
